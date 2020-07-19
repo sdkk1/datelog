@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
+  enum sex: { man: 1, woman: 2 }
+
   private
 
   def downcase_email
