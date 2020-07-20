@@ -11,11 +11,22 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
+  validates :introduce, length: { maximum: 255 }
+
   enum sex: { man: 1, woman: 2 }
+
+  mount_uploader :picture, PictureUploader
+  validate :picture_size
 
   private
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "5MB以内にしてください")
+    end
   end
 end
