@@ -1,2 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% provide(:title, "ユーザー詳細") %>
+<h1>ユーザー詳細</h1>
+<%= @user.picture %>
+<%= @user.name %>
+<%= @user.introduction %><br>
