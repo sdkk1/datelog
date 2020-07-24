@@ -30,3 +30,5 @@ Style/MixinUsage:
 Style/MutableConstant:
   Enabled: false
 
+Rails/HelperInstanceVariable:
+  Enabled: false
