@@ -1,10 +1,9 @@
 <%= form_with model: @user, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class = 'form-group'>
-    <label for="file_photo" class="rounded-circle userProfileImg">
-      <div class="userProfileImg_description"><%= yield(:picture_text)%></div>
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', id: "file_photo" %>
-    </label>
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
   </div>
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {

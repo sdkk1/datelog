@@ -19,6 +19,7 @@ ja:
         sex: 性別
         man: 男
         woman: 女
+        picture: プロフィール画像
         created_at: 登録日時
         updated_at: 更新日時
   date:
