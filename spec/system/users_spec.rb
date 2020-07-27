@@ -40,8 +40,42 @@ RSpec.describe "Users", type: :system do
     end
   end
 
+  describe "ユーザー編集ページ" do
+    before do
+      login_for_system(user)
+      visit edit_user_path(user)
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されることを確認" do
+        expect(page).to have_title full_title('ユーザー編集')
+      end
+    end
+
+    it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
+      fill_in "ユーザー名", with: "Edit Example User"
+      fill_in "メールアドレス", with: "edit-user@example.com"
+      fill_in "パスワード", with: ""
+      fill_in "パスワード(確認)", with: ""
+      click_button "更新する"
+      expect(page).to have_content "プロフィールが更新されました！"
+      expect(user.reload.name).to eq "Edit Example User"
+      expect(user.reload.email).to eq "edit-user@example.com"
+    end
+
+    it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
+      fill_in "ユーザー名", with: ""
+      fill_in "メールアドレス", with: ""
+      click_button "更新する"
+      expect(page).to have_content 'ユーザー名を入力してください'
+      expect(page).to have_content 'メールアドレスを入力してください'
+      expect(page).to have_content 'メールアドレスは不正な値です'
+    end
+  end
+
   describe "ユーザー詳細ページ" do
     before do
+      login_for_system(user)
       visit user_path(user)
     end
 

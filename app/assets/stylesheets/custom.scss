@@ -81,6 +81,25 @@ input {
   }
 }
 
+// プロフィールページ
+.title-profile {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.user-picture-box {
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.show-user-name {
+  display: inline-block;
+}
+
+.account-edit {
+  margin-top: 20px;
+}
+
 // ヘッダー
 .navbar ul{
   margin-top: 12px;
