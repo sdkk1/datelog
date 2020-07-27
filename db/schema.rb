@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_131625) do
     t.string "name"
     t.string "email"
     t.text "introduction"
-    t.string "sex"
+    t.integer "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
