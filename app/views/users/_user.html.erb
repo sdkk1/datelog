@@ -1,0 +1,12 @@
+<li>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="user-picture-box">
+        <%= image_tag user.picture_url(:thumb) if user.picture? %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 class="show-user-name"><%= link_to user.name, user %></h4>
+    </div>
+  </div>
+</li>
