@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   let!(:user) { create(:user) }
+  let!(:admin_user) { create(:user, :admin) }
 
   describe "新規登録ページ" do
     before do
@@ -71,6 +72,15 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content 'メールアドレスを入力してください'
       expect(page).to have_content 'メールアドレスは不正な値です'
     end
+
+    context "アカウント削除処理", js: true do
+      it "正しく削除できること" do
+        page.accept_confirm("本当にこのユーザーを削除してもよろしいですか？") do
+          click_link "ユーザーを削除する"
+        end
+        expect(page).to have_content "自分のアカウントを削除しました"
+      end
+    end
   end
 
   describe "ユーザー詳細ページ" do
@@ -96,13 +106,31 @@ RSpec.describe "Users", type: :system do
   end
 
   describe "ユーザー一覧ページ" do
-    it "ぺージネーションが表示されること" do
-      create_list(:user, 31)
-      login_for_system(user)
-      visit users_path
-      expect(page).to have_css "div.pagination"
-      User.paginate(page: 1).each do |u|
-        expect(page).to have_link u.name, href: user_path(u)
+    context "管理者ユーザーの場合" do
+      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(admin_user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          expect(page).to have_content "削除" unless u == admin_user
+        end
+      end
+    end
+
+    context "管理者ユーザー以外の場合" do
+      it "ぺージネーション、自分のアカウントのみ削除ボタンが表示されること" do
+        create_list(:user, 30)
+        login_for_system(user)
+        visit users_path
+        expect(page).to have_css "div.pagination"
+        User.paginate(page: 1).each do |u|
+          expect(page).to have_link u.name, href: user_path(u)
+          if u == user
+            expect(page).to have_content "削除"
+          end
+        end
       end
     end
   end
