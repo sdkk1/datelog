@@ -8,6 +8,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      datespot: デートスポット
     attributes:
       user:
         id: ID
@@ -22,6 +23,16 @@ ja:
         picture: プロフィール画像
         created_at: 登録日時
         updated_at: 更新日時
+      datespot:
+        id: ID
+        name: 店名
+        area: エリア
+        price: 価格帯
+        keyword: キーワード
+        point: ポイント
+        caution: 注意点
+        picture: 写真
+        user_id: ユーザーID
   date:
     abbr_day_names:
     - 日
