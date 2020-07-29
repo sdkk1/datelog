@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :dishes, dependent: :destroy
+  has_many :datespots, dependent: :destroy
   before_save :downcase_email
 
   validates :name, presence: true, length: { maximum: 50 }
