@@ -15,4 +15,15 @@
       <% end %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-9">
+      <% if @user.datespots.any? %>
+        <h3>デートスポット (<%= @user.datespots.count %>)</h3>
+        <ol class="datespots">
+          <%= render @datespots %>
+        </ol>
+        <%= will_paginate @datespots %>
+      <% end %>
+    </div>
+  </div>
 </div>

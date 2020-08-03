@@ -1,0 +1,10 @@
+<li id="datespot-<%= datespot.id %>">
+  <span class="datespot-name"><%= link_to datespot.name, "#" %></span><br>
+  <span class="area">【エリア】<%= datespot.area %></span><br>
+  <span class="price">【価格帯】<%= datespot.price %></span><br>
+  <span class="keyword">【キーワード】<%= datespot.keyword %></span><br>
+  <span class="user-name">【投稿者】<%= link_to @user.name, @user %></span><br>
+  <span class="timestamp">
+    <%= time_ago_in_words(datespot.created_at) %>前に投稿
+  </span>
+</li>
