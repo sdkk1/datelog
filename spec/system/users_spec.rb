@@ -86,6 +86,7 @@ RSpec.describe "Users", type: :system do
   describe "ユーザー詳細ページ" do
     before do
       login_for_system(user)
+      create_list(:datespot, 10, user: user)
       visit user_path(user)
     end
 
@@ -101,6 +102,28 @@ RSpec.describe "Users", type: :system do
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
+      end
+
+      it "ユーザー編集ページへのリンクが表示されていることを確認" do
+        expect(page).to have_link 'ユーザー編集', href: edit_user_path(user)
+      end
+
+      it "デートスポットの件数が表示されていることを確認" do
+        expect(page).to have_content "デートスポット (#{user.datespots.count})"
+      end
+
+      it "デートスポットの情報が表示されていることを確認" do
+        Datespot.take(5).each do |datespot|
+          expect(page).to have_link datespot.name
+          expect(page).to have_content datespot.area
+          expect(page).to have_content datespot.price
+          expect(page).to have_content datespot.keyword
+          expect(page).to have_link datespot.user.name
+        end
+      end
+
+      it "デートスポットのページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
       end
     end
   end
