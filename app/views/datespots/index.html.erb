@@ -1,0 +1,15 @@
+<% provide(:title, "投稿一覧") %>
+<div class="container">
+  <h3 class="title-datespots-index">投稿一覧</h3>
+  <div class="row">
+    <div class="col-md-9">
+      <% if @datespots.any? %>
+        <h3>デートスポット (<%= @datespots.count %>)</h3>
+        <ol class="datespots">
+          <%= render @datespots %>
+        </ol>
+        <%= will_paginate @datespots %>
+      <% end %>
+    </div>
+  </div>
+</div>
