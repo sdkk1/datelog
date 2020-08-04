@@ -81,7 +81,16 @@ input {
   }
 }
 
-// プロフィールページ
+.input-need {
+  color: red;
+  font-size: 13px;
+}
+
+.input-unneed {
+  font-size: 13px;
+}
+
+// ユーザー詳細ページ
 .title-profile {
   padding-bottom: 10px;
   border-bottom: 1px solid #eaeaea;

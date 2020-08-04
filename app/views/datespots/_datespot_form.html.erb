@@ -1,0 +1,28 @@
+<%= form_with model: @datespot, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class = 'form-group'>
+    <%= f.label :name %> <span class="input-need">※必須(50文字以内)</span>
+    <%= f.text_field :name, class: 'form-control', id: 'datespot_name' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :area %> <span class="input-need">※必須</span>
+    <%= f.text_field :area, class: 'form-control', id: 'datespot_area' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :price %> <span class="input-need">※必須</span>
+    <%= f.text_field :price, class: 'form-control', id: 'datespot_price' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :keyword %> <span class="input-need">※必須(50文字以内)</span>
+    <%= f.text_field :keyword, class: 'form-control', id: 'datespot_keyword' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :point %> <span class="input-unneed">※任意(255文字以内)</span>
+    <%= f.text_field :point, class: 'form-control', id: 'datespot_point' %>
+  </div>
+  <div class = 'form-group'>
+    <%= f.label :caution %> <span class="input-unneed">※任意(255文字以内)</span>
+    <%= f.text_field :caution, class: 'form-control', id: 'datespot_caution' %>
+  </div>
+  <%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>

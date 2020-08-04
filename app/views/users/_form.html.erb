@@ -1,7 +1,7 @@
 <%= form_with model: @user, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class = 'form-group'>
-    <%= f.label :picture %>
+    <%= f.label :picture %> <span class="input-unneed">※任意</span>
     <%= f.file_field :picture %>
     <%= f.hidden_field :picture_cache %>
   </div>
@@ -14,30 +14,30 @@
     });
   </script>
   <div class = 'form-group'>
-    <%= f.label :name %>
+    <%= f.label :name %> <span class="input-need">※必須(50文字以内)</span>
     <%= f.text_field :name, class: 'form-control', id: 'user_name' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :email %>
+    <%= f.label :email %> <span class="input-need">※必須(255文字以内)</span>
     <%= f.email_field :email, class: 'form-control', id: 'user_email' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :password %>
+    <%= f.label :password %> <span class="input-need">※必須(6文字以上)</span>
     <%= f.password_field :password, class: 'form-control', id: 'user_password' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation %>　<span class="input-need">※必須(6文字以上)</span>
     <%= f.password_field :password_confirmation, class: 'form-control', id: 'user_password_confirmation' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :sex %><br />
+    <%= f.label :sex %>　<span class="input-unneed">※任意</span><br />
     <%= f.label :man %>
     <%= f.radio_button :sex, :man %>
     <%= f.label :woman %>
     <%= f.radio_button :sex, :woman %>
   </div>
   <div class="form-group">
-    <%= f.label :introduction %>
+    <%= f.label :introduction %>　<span class="input-unneed">※任意(255文字以内)</span>
     <%= text_area :user, :introduction,class:"form-control" %>
   </div>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
