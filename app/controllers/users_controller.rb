@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "デートログへようこそ！"
-      redirect_to @user
+      redirect_to datespots_url
     else
       render 'new'
     end

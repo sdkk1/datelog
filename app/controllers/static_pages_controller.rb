@@ -1,10 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-  end
-
-  def about
-  end
-
-  def terms
+    @datespots = Datespot.paginate(page: params[:page], per_page: 5)
   end
 end

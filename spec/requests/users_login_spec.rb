@@ -15,9 +15,9 @@ RSpec.describe "ログイン", type: :request do
       email: user.email,
       password: user.password
     } }
-    redirect_to user
+    redirect_to datespots_url
     follow_redirect!
-    expect(response).to render_template('users/show')
+    expect(response).to render_template('datespots/index')
     expect(is_logged_in?).to be_truthy
     delete logout_path
     expect(is_logged_in?).not_to be_truthy

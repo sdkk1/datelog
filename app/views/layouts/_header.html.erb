@@ -2,8 +2,9 @@
   <div class="container">
     <%= link_to(image_tag("", :alt => ""), root_url, id: 'logo') %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if logged_in? %>
+      <% if logged_in? %>
+        <%= link_to(image_tag("logo.png", :alt => ""), datespots_path, id: 'logo') %>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'ユーザー一覧', users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -17,11 +18,14 @@
               <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>
           </li>
-        <% else %>
+        </ul>
+      <% else %>
+        <%= link_to(image_tag("logo.png", :alt => ""), root_url, id: 'logo') %>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to '新規登録', signup_path %></li>
           <li><%= link_to 'ログイン', login_path %></li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </nav>
   </div>
 </header>

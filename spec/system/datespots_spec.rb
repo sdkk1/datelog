@@ -16,6 +16,10 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_title full_title('投稿一覧')
       end
 
+      it "デートスポットの件数が表示されていることを確認" do
+        expect(page).to have_content "デートスポット (#{Datespot.all.count})"
+      end
+
       it "デートスポットの情報が表示されていることを確認" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
