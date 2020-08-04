@@ -6,8 +6,8 @@ RSpec.describe "StaticPages", type: :system do
       visit root_path
     end
 
-    it "デートログの文字列が存在することを確認" do
-      expect(page).to have_content 'デートログ'
+    it "datelogの文字列が存在することを確認" do
+      expect(page).to have_content 'datelog'
     end
 
     it "正しいタイトルが表示されることを確認" do

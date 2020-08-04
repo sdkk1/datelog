@@ -1,5 +1,17 @@
 <center>
-  <h1>デートログへようこそ！</h1>
-  <h2>あなたのデートログ、作りませんか？</h2>
-  <p>今日のデート、もう迷わない！</p>
+  <h1>datelog</h1>
+  <h2>お気に入りのデートスポット投稿サイト</h2>
 </center>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <% if @datespots.any? %>
+        <h3>デートスポット (<%= @datespots.count %>)</h3>
+        <ol class="datespots">
+          <%= render @datespots %>
+        </ol>
+        <%= will_paginate @datespots %>
+      <% end %>
+    </div>
+  </div>
+</div>

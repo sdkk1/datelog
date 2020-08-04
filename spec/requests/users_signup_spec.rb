@@ -19,9 +19,9 @@ RSpec.describe "新規登録", type: :request do
         password_confirmation: "password"
       } }
     }.to change(User, :count).by(1)
-    redirect_to @user
+    redirect_to datespots_url
     follow_redirect!
-    expect(response).to render_template('users/show')
+    expect(response).to render_template('datespots/index')
     expect(is_logged_in?).to be_truthy
   end
 
