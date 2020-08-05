@@ -5,6 +5,10 @@ class DatespotsController < ApplicationController
     @datespot = Datespot.new
   end
 
+  def show
+    @datespot = Datespot.find(params[:id])
+  end
+
   def index
     @datespots = Datespot.paginate(page: params[:page], per_page: 5)
   end
