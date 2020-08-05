@@ -1,5 +1,6 @@
 class DatespotsController < ApplicationController
-  before_action :logged_in_user, only: [:new]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @datespot = Datespot.new
@@ -42,5 +43,10 @@ class DatespotsController < ApplicationController
   def datespot_params
     params.require(:datespot).permit(:name, :area, :price,
                                      :keyword, :point, :caution)
+  end
+
+  def correct_user
+    @datespot = current_user.datespots.find_by(id: params[:id])
+    redirect_to root_url if @datespot.nil?
   end
 end
