@@ -23,6 +23,20 @@ class DatespotsController < ApplicationController
     end
   end
 
+  def edit
+    @datespot = Datespot.find(params[:id])
+  end
+
+  def update
+    @datespot = Datespot.find(params[:id])
+    if @datespot.update_attributes(datespot_params)
+      flash[:success] = "投稿が更新されました！"
+      redirect_to @datespot
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def datespot_params
