@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Datespots", type: :system do
   let!(:user) { create(:user) }
+  let!(:datespot) { create(:datespot, user: user) }
 
   describe "投稿一覧ページ" do
     before do
@@ -84,6 +85,28 @@ RSpec.describe "Datespots", type: :system do
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "登録する"
         expect(page).to have_content "店名を入力してください"
+      end
+    end
+  end
+
+  describe "投稿詳細ページ" do
+    context "ページレイアウト" do
+      before do
+        visit datespot_path(datespot)
+      end
+
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title("#{datespot.name}")
+      end
+
+      it "投稿情報が表示されること" do
+        expect(page).to have_content datespot.name
+        expect(page).to have_content datespot.user.name
+        expect(page).to have_content datespot.area
+        expect(page).to have_content datespot.price
+        expect(page).to have_content datespot.keyword
+        expect(page).to have_content datespot.point
+        expect(page).to have_content datespot.caution
       end
     end
   end
