@@ -2,6 +2,11 @@
 <div class="container">
   <div class="row">
     <h2 class="datespot-name"><%= @datespot.name %></h2>
+    <div class="change-datespot">
+      <% if current_user == @datespot.user %>
+        <%= link_to "編集", edit_datespot_path(@datespot), class: 'edit-datespot' %>　
+      <% end %>
+    </div>
     <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
     <h4 class="area">【エリア】<%= @datespot.area %></h4>
     <h4 class="price">【価格帯】<%= @datespot.price %></h4>

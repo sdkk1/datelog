@@ -72,7 +72,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "キーワード", with: "焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        click_button "登録する"
+        click_button "投稿する"
         expect(page).to have_content "投稿が登録されました！"
       end
 
@@ -83,7 +83,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "キーワード", with: "焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        click_button "登録する"
+        click_button "投稿する"
         expect(page).to have_content "店名を入力してください"
       end
     end
@@ -107,6 +107,55 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.keyword
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
+      end
+    end
+  end
+
+  describe "投稿編集ページ" do
+    before do
+      login_for_system(user)
+      visit datespot_path(datespot)
+      click_link "編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title('投稿編集')
+      end
+
+      it "入力部分に適切なラベルが表示されること" do
+        expect(page).to have_content '店名'
+        expect(page).to have_content 'エリア'
+        expect(page).to have_content '価格帯'
+        expect(page).to have_content 'キーワード'
+        expect(page).to have_content 'ポイント'
+        expect(page).to have_content '注意点'
+      end
+    end
+
+    context "投稿の更新処理" do
+      it "有効な更新" do
+        fill_in "店名", with: "ももたろう"
+        fill_in "エリア", with: "恵比寿"
+        fill_in "価格帯", with: "1万円〜"
+        fill_in "キーワード", with: "焼き鳥"
+        fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
+        fill_in "注意点", with: "お酒の種類は少ない"
+        click_button "更新する"
+        expect(page).to have_content "投稿が更新されました！"
+        expect(datespot.reload.name).to eq "ももたろう"
+        expect(datespot.reload.area).to eq "恵比寿"
+        expect(datespot.reload.price).to eq "1万円〜"
+        expect(datespot.reload.keyword).to eq "焼き鳥"
+        expect(datespot.reload.point).to eq "シックな店内で落ち着いた雰囲気のお店"
+        expect(datespot.reload.caution).to eq "お酒の種類は少ない"
+      end
+
+      it "無効な更新" do
+        fill_in "店名", with: ""
+        click_button "更新する"
+        expect(page).to have_content '店名を入力してください'
+        expect(datespot.reload.name).not_to eq ""
       end
     end
   end
