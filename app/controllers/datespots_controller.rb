@@ -38,6 +38,18 @@ class DatespotsController < ApplicationController
     end
   end
 
+  def destroy
+    @datespot = Datespot.find(params[:id])
+    if current_user.admin? || current_user?(@datespot.user)
+      @datespot.destroy
+      flash[:success] = "投稿が削除されました"
+      redirect_to request.referrer || root_url
+    else
+      flash[:danger] = "他人の投稿は削除できません"
+      redirect_to root_url
+    end
+  end
+
   private
 
   def datespot_params
