@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :system do
+  let!(:user) { create(:user) }
+
   describe "HomePage" do
     before do
       create_list(:datespot, 10)
@@ -20,6 +22,16 @@ RSpec.describe "StaticPages", type: :system do
         expect(page).to have_content "デートスポット (#{Datespot.all.count})"
       end
 
+      it "デートスポットのページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
+      end
+    end
+
+    context "デートスポットの情報(認可されたユーザーの場合)" do
+      before do
+        login_for_system(user)
+      end
+
       it "デートスポットの情報が表示されていることを確認" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
@@ -29,9 +41,17 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link datespot.user.name
         end
       end
+    end
 
-      it "デートスポットのページネーションが表示されていることを確認" do
-        expect(page).to have_css "div.pagination"
+    context "デートスポットの情報(ログインしていないユーザーの場合)" do
+      it "デートスポットの情報が表示されていることを確認" do
+        Datespot.take(5).each do |datespot|
+          expect(page).to have_link datespot.name
+          expect(page).to have_content datespot.area
+          expect(page).to have_content datespot.price
+          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.user.name
+        end
       end
     end
   end
