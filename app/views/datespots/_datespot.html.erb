@@ -3,8 +3,18 @@
   <span class="area">【エリア】<%= datespot.area %></span><br>
   <span class="price">【価格帯】<%= datespot.price %></span><br>
   <span class="keyword">【キーワード】<%= datespot.keyword %></span><br>
-  <span class="user-name">【投稿者】<%= link_to datespot.user.name, datespot.user %></span><br>
+  <% if logged_in? %>
+    <span class="user-name">【投稿者】<%= link_to datespot.user.name, datespot.user %></span><br>
+  <% else %>
+    <span class="user-name">【投稿者】<%= datespot.user.name %></span><br>
+  <% end %>
   <span class="timestamp">
     <%= time_ago_in_words(datespot.created_at) %>前に投稿
   </span>
+  <% if logged_in? %>
+    <% if current_user.admin? || (current_user == datespot.user) %>
+      <%= link_to "削除", datespot_path(datespot), method: :delete,
+                        data: { confirm: "本当に削除しますか？" } %>
+    <% end %>
+  <% end %>
 </li>

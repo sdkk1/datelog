@@ -1,5 +1,5 @@
 class DatespotsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
   def new
@@ -35,6 +35,18 @@ class DatespotsController < ApplicationController
       redirect_to @datespot
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    @datespot = Datespot.find(params[:id])
+    if current_user.admin? || current_user?(@datespot.user)
+      @datespot.destroy
+      flash[:success] = "投稿が削除されました"
+      redirect_to request.referrer == user_url(@datespot.user) ? user_url(@datespot.user) : datespots_url
+    else
+      flash[:danger] = "他人の投稿は削除できません"
+      redirect_to datespots_url
     end
   end
 

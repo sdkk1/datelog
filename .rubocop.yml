@@ -35,3 +35,6 @@ Rails/HelperInstanceVariable:
 
 Airbnb/DefaultScope:
   Enabled: false
+
+Metrics/LineLength:
+  Enabled: false

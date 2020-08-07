@@ -6,8 +6,18 @@
       <% if current_user == @datespot.user %>
         <%= link_to "編集", edit_datespot_path(@datespot), class: 'edit-datespot' %>　
       <% end %>
+      <% if logged_in? %>
+        <% if current_user.admin? || (current_user == @datespot.user) %>
+          <%= link_to "削除", datespot_path(@datespot), method: :delete, class: 'delete-datespot',
+                            data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
+      <% end %>
     </div>
-    <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
+    <% if logged_in? %>
+      <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
+    <% else %>
+      <h4 class="user-name">【投稿者】<%= @datespot.user.name %></h4>
+    <% end %>
     <h4 class="area">【エリア】<%= @datespot.area %></h4>
     <h4 class="price">【価格帯】<%= @datespot.price %></h4>
     <h4 class="keyword">【キーワード】<%= @datespot.keyword %></h4>
