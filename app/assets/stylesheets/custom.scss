@@ -153,6 +153,12 @@ h2.datespot-name {
   font-size: 15px;
 }
 
+.datespot-picture img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
 // ヘッダー
 .navbar ul{
   margin-top: 12px;

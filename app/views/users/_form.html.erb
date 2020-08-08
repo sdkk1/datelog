@@ -1,10 +1,9 @@
 <%= form_with model: @user, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class = 'form-group'>
+  <span class="picture">
     <%= f.label :picture %> <span class="input-unneed">※任意</span>
-    <%= f.file_field :picture %>
-    <%= f.hidden_field :picture_cache %>
-  </div>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'user_picture' %>
+  </span>
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {
       var size_in_megabytes = this.files[0].size/1024/1024;
