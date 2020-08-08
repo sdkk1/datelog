@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "新規登録", type: :request do
+  let(:picture_path) { File.join(Rails.root, 'spec/fixtures/test_user.jpg') }
+  let(:picture) { Rack::Test::UploadedFile.new(picture_path) }
+
   before do
     get signup_path
   end
@@ -16,7 +19,8 @@ RSpec.describe "新規登録", type: :request do
         name: "Example User",
         email: "user@example.com",
         password: "password",
-        password_confirmation: "password"
+        password_confirmation: "password",
+        picture: picture,
       } }
     }.to change(User, :count).by(1)
     redirect_to datespots_url
@@ -31,7 +35,8 @@ RSpec.describe "新規登録", type: :request do
         name: "",
         email: "user@example.com",
         password: "password",
-        password_confirmation: "pass"
+        password_confirmation: "pass",
+        picture: picture,
       } }
     }.not_to change(User, :count)
     expect(is_logged_in?).not_to be_truthy

@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe "投稿", type: :request do
   let!(:user) { create(:user) }
   let!(:datespot) { create(:datespot, user: user) }
+  let(:picture_path) { File.join(Rails.root, 'spec/fixtures/test_datespot.jpg') }
+  let(:picture) { Rack::Test::UploadedFile.new(picture_path) }
 
   context "ログインしているユーザーの場合" do
     before do
@@ -16,7 +18,7 @@ RSpec.describe "投稿", type: :request do
       end
     end
 
-    it "有効な料理データで登録できること" do
+    it "有効な投稿で登録できること" do
       expect {
         post datespots_path, params: { datespot: {
           name: "ももたろう",
@@ -25,13 +27,14 @@ RSpec.describe "投稿", type: :request do
           keyword: "焼き鳥",
           point: "シックな店内で落ち着いた雰囲気のお店",
           caution: "お酒の種類は少ない",
+          picture: picture,
         } }
       }.to change(Datespot, :count).by(1)
       follow_redirect!
       expect(response).to render_template('datespots/index')
     end
 
-    it "無効な料理データでは登録できないこと" do
+    it "無効な投稿では登録できないこと" do
       expect {
         post datespots_path, params: { datespot: {
           name: "",
@@ -40,6 +43,7 @@ RSpec.describe "投稿", type: :request do
           keyword: "焼き鳥",
           point: "シックな店内で落ち着いた雰囲気のお店",
           caution: "お酒の種類は少ない",
+          picture: picture,
         } }
       }.not_to change(Datespot, :count)
       expect(response).to render_template('datespots/new')

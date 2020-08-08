@@ -1,4 +1,9 @@
 <li id="datespot-<%= datespot.id %>">
+  <span class="picture">
+    <% if datespot.picture.url.present? %>
+      <%= link_to((image_tag datespot.picture.thumb200.url), datespot_path(datespot.id), class: 'datespot-picture') %>
+    <% end %>
+  </span>
   <span class="datespot-name"><%= link_to datespot.name, datespot_path(datespot) %></span><br>
   <span class="area">【エリア】<%= datespot.area %></span><br>
   <span class="price">【価格帯】<%= datespot.price %></span><br>

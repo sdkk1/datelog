@@ -1,9 +1,11 @@
 <li>
   <div class="row">
     <div class="col-md-6">
-      <div class="user-picture-box">
-        <%= image_tag user.picture_url(:thumb) if user.picture? %>
-      </div>
+      <span class="picture">
+        <% if user.picture.url.present? %>
+          <%= link_to((image_tag user.picture.thumb200.url), user_path(user.id), class: 'user-picture') %>
+        <% end %>
+      </span>
     </div>
     <div class="col-md-6">
       <h4 class="user-name"><%= link_to user.name, user %></h4>

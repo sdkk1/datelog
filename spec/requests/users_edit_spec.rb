@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe "プロフィール編集", type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
+  let(:picture2_path) { File.join(Rails.root, 'spec/fixtures/test_user2.jpg') }
+  let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) }
 
   context "認可されたユーザーの場合" do
     it "レスポンスが正常に表示されること(フレンドリーフォワーディング)" do
@@ -13,7 +15,8 @@ RSpec.describe "プロフィール編集", type: :request do
         name: "Example User",
         email: "user@example.com",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "",
+        picture: picture2
       } }
       redirect_to user
       follow_redirect!
