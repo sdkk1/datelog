@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :picture) }
   let!(:admin_user) { create(:user, :admin) }
 
   describe "新規登録ページ" do
@@ -25,6 +25,7 @@ RSpec.describe "Users", type: :system do
         fill_in "メールアドレス", with: "user@example.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "password"
+        attach_file "user[picture]", "#{Rails.root}/spec/fixtures/test_user.jpg"
         click_button "登録する"
         expect(page).to have_content "デートログへようこそ！"
       end
@@ -58,10 +59,12 @@ RSpec.describe "Users", type: :system do
       fill_in "メールアドレス", with: "edit-user@example.com"
       fill_in "パスワード", with: ""
       fill_in "パスワード(確認)", with: ""
+      attach_file "user[picture]", "#{Rails.root}/spec/fixtures/test_user2.jpg"
       click_button "更新する"
       expect(page).to have_content "プロフィールが更新されました！"
       expect(user.reload.name).to eq "Edit Example User"
       expect(user.reload.email).to eq "edit-user@example.com"
+      expect(user.reload.picture.url).to include "test_user2.jpg"
     end
 
     it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
@@ -102,6 +105,7 @@ RSpec.describe "Users", type: :system do
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
+        expect(page).to have_link nil, href: user_path(user), class: 'user-picture'
       end
 
       it "ユーザー編集ページへのリンクが表示されていることを確認" do

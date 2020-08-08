@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <span class="picture">
     <%= f.label :picture %> <span class="input-unneed">※任意</span>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'file_picture' %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'datespot_picture' %>
   </span>
   <% if @datespot.picture.present? %>
     <%= image_tag @datespot.picture.thumb200.url, id: :picture_prev %>
