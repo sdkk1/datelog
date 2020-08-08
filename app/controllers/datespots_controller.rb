@@ -54,7 +54,7 @@ class DatespotsController < ApplicationController
 
   def datespot_params
     params.require(:datespot).permit(:name, :area, :price, :keyword,
-                                     :point, :caution, :picture)
+                                     :point, :caution, :picture, :remove_picture)
   end
 
   def correct_user

@@ -2,8 +2,12 @@
   <%= render 'shared/error_messages', object: f.object %>
   <span class="picture">
     <%= f.label :picture %> <span class="input-unneed">※任意</span>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'datespot_picture' %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'file_picture' %>
   </span>
+  <% if @datespot.picture.present? %>
+    <%= image_tag @datespot.picture.thumb200.url, id: :picture_prev %>
+    <p><%= f.check_box :remove_picture %>画像を削除する</p>
+  <% end %>
   <script type="text/javascript">
     $('#datespot_picture').bind('change', function() {
       var size_in_megabytes = this.files[0].size/1024/1024;
