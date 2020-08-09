@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe "Relationships", type: :system do
   let!(:user) { create(:user) }
   let!(:user2) { create(:user) }
-  let!(:user3) { create(:user) }
 
   describe "フォローページ" do
     before do
       create(:relationship, follower_id: user.id, followed_id: user2.id)
-      create(:relationship, follower_id: user.id, followed_id: user3.id)
       login_for_system(user)
       visit following_user_path(user)
     end
@@ -45,7 +43,6 @@ RSpec.describe "Relationships", type: :system do
   describe "フォロワーページ" do
     before do
       create(:relationship, follower_id: user2.id, followed_id: user.id)
-      create(:relationship, follower_id: user3.id, followed_id: user.id)
       login_for_system(user)
       visit followers_user_path(user)
     end
