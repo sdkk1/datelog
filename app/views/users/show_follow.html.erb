@@ -1,0 +1,27 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <span class="picture">
+        <% if @user.picture.url.present? %>
+          <%= link_to((image_tag @user.picture.thumb200.url), user_path(@user.id), class: 'user-picture') %>
+        <% end %>
+      </span>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "プロフィール", @user %></span>
+      <span><b>投稿数</b><%= @user.datespots.count %><b>件</b></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>
