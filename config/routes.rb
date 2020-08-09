@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   delete :logout,    to: 'sessions#destroy'
 
   resources :datespots
+
+  resources :relationships, only: [:create, :destroy]
 end
