@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :favorite do
-    user_id 1
-    datespot_id 1
+    association :user
+    association :datespot
   end
 end
