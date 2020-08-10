@@ -4,6 +4,7 @@ RSpec.describe "Users", type: :system do
   let!(:user) { create(:user, :picture) }
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
+  let!(:datespot) { create(:datespot, user: user) }
 
   describe "新規登録ページ" do
     before do
@@ -140,6 +141,16 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_button 'フォロー中'
         click_button 'フォロー中'
         expect(page).to have_button 'フォローする'
+      end
+    end
+
+    context "お気に入り登録/解除" do
+      it "ユーザー詳細ページから投稿のお気に入り登録/解除ができること" do
+        expect(user.favorite?(datespot)).to be_falsey
+        user.favorite(datespot)
+        expect(user.favorite?(datespot)).to be_truthy
+        user.unfavorite(datespot)
+        expect(user.favorite?(datespot)).to be_falsey
       end
     end
   end

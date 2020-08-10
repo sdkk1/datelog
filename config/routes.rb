@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   resources :datespots
 
   resources :relationships, only: [:create, :destroy]
+
+  post   "favorites/:datespot_id/create"  => "favorites#create"
+  delete "favorites/:datespot_id/destroy" => "favorites#destroy"
 end
