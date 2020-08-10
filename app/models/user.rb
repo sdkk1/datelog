@@ -49,6 +49,21 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
 
+  # 投稿をお気に入り登録する
+  def favorite(datespot)
+    Favorite.create!(user_id: id, datespot_id: datespot.id)
+  end
+
+  # 投稿をお気に入り解除する
+  def unfavorite(datespot)
+    Favorite.find_by(user_id: id, datespot_id: datespot.id).destroy
+  end
+
+  # 現在のユーザーがお気に入り登録してたらtrueを返す
+  def favorite?(datespot)
+    !Favorite.find_by(user_id: id, datespot_id: datespot.id).nil?
+  end
+
   private
 
   def downcase_email
