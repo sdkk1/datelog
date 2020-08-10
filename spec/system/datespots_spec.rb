@@ -129,6 +129,21 @@ RSpec.describe "Datespots", type: :system do
         end
       end
     end
+
+    context "お気に入り登録/解除" do
+      before do
+        login_for_system(user)
+        visit datespots_path
+      end
+
+      it "投稿一覧ページから投稿のお気に入り登録/解除ができること" do
+        expect(user.favorite?(datespot)).to be_falsey
+        user.favorite(datespot)
+        expect(user.favorite?(datespot)).to be_truthy
+        user.unfavorite(datespot)
+        expect(user.favorite?(datespot)).to be_falsey
+      end
+    end
   end
 
   describe "投稿ページ" do
@@ -282,6 +297,24 @@ RSpec.describe "Datespots", type: :system do
 
       it "削除ボタンが表示されないこと" do
         expect(page).to have_no_link "削除"
+      end
+    end
+
+    context "お気に入り登録/解除" do
+      before do
+        login_for_system(user)
+        visit datespot_path(datespot)
+      end
+
+      it "投稿詳細ページから投稿のお気に入り登録/解除ができること", js: true do
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{datespot.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{datespot.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{datespot.id}/create"
       end
     end
   end
