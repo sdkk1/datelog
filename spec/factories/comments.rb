@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    datespot_id 1
-    user_id 1
-    content "MyText"
+    user_id { 1 }
+    content { "美味しそうですね！" }
+    association :datespot
   end
 end
