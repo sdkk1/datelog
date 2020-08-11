@@ -16,6 +16,10 @@ class Datespot < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validate :picture_size
 
+  def feed_comment(datespot_id)
+    Comment.where("datespot_id = ?", datespot_id)
+  end
+
   private
 
   def picture_size

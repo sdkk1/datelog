@@ -1,4 +1,5 @@
 <% provide(:title, "#{@datespot.name}") %>
+<% @comments  = @datespot.feed_comment(@datespot.id) %>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -22,16 +23,22 @@
           <% end %>
         <% end %>
       </div>
-      <% if logged_in? %>
-        <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
-      <% else %>
-        <h4 class="user-name">【投稿者】<%= @datespot.user.name %></h4>
-      <% end %>
-      <h4 class="area">【エリア】<%= @datespot.area %></h4>
-      <h4 class="price">【価格帯】<%= @datespot.price %></h4>
-      <h4 class="keyword">【キーワード】<%= @datespot.keyword %></h4>
-      <h4 class="point">【ポイント】<%= @datespot.point %></h4>
-      <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
+      <div class="datespot-info">
+        <% if logged_in? %>
+          <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
+        <% else %>
+          <h4 class="user-name">【投稿者】<%= @datespot.user.name %></h4>
+        <% end %>
+        <h4 class="area">【エリア】<%= @datespot.area %></h4>
+        <h4 class="price">【価格帯】<%= @datespot.price %></h4>
+        <h4 class="keyword">【キーワード】<%= @datespot.keyword %></h4>
+        <h4 class="point">【ポイント】<%= @datespot.point %></h4>
+        <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
+      </div>
+      <div class="comment">
+        <%= render "comments/feed_comments" %>
+        <%= render "comments/new_form" %>
+      </div>
     </div>
   </div>
 </div>
