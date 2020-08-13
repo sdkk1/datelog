@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe "Datespots", type: :system do
   let!(:admin_user) { create(:user, :admin) }
   let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
   let!(:datespot) { create(:datespot, :picture, user: user) }
+  let!(:comment) { create(:comment, user_id: user.id, datespot: datespot) }
 
   describe "投稿一覧ページ" do
     before do
@@ -315,6 +317,33 @@ RSpec.describe "Datespots", type: :system do
         link.click
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{datespot.id}/create"
+      end
+    end
+
+    context "コメント登録/削除" do
+      it "自分の投稿に対するコメントの登録と削除が正常に完了すること" do
+        login_for_system(user)
+        visit datespot_path(datespot)
+        fill_in "comment_content", with: "オシャレですね！"
+        click_button "コメント"
+        within find("#comment-#{Comment.last.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: 'オシャレですね！'
+        end
+        expect(page).to have_content "コメントを追加しました！"
+        click_link "削除", href: comment_path(Comment.last)
+        expect(page).not_to have_selector 'span', text: 'オシャレですね！'
+        expect(page).to have_content "コメントを削除しました"
+      end
+
+      it "別ユーザーによる投稿のコメントには削除リンクが無いこと" do
+        login_for_system(other_user)
+        visit datespot_path(datespot)
+        within find("#comment-#{comment.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: comment.content
+          expect(page).not_to have_link '削除', href: datespot_path(datespot)
+        end
       end
     end
   end
