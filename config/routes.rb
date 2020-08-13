@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get :favorites, to: 'favorites#index'
   post   "favorites/:datespot_id/create"  => "favorites#create"
   delete "favorites/:datespot_id/destroy" => "favorites#destroy"
+
+  resources :comments, only: [:create, :destroy]
 end

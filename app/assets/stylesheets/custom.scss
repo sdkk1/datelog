@@ -172,6 +172,28 @@ h2.datespot-name {
   color: grey;
 }
 
+.title-comment {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+// コメント
+.comments {
+  list-style: none;
+  li {
+    font-size: 14px;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    .comment {
+      font-size: 16px;
+    }
+  }
+}
+
+.comment-create-at {
+  color: grey;
+}
+
 // ヘッダー
 .navbar ul{
   margin-top: 12px;
