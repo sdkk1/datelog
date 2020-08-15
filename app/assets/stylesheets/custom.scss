@@ -30,6 +30,11 @@ textarea {
   }
 }
 
+ul, li {
+  list-style: none;
+  padding-left: 0;
+}
+
 // テキストの見栄え
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;

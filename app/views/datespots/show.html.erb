@@ -1,5 +1,4 @@
 <% provide(:title, "#{@datespot.name}") %>
-<% @comments  = @datespot.feed_comment(@datespot.id) %>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -36,8 +35,20 @@
         <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
       </div>
       <div class="comment">
-        <%= render "comments/feed_comments" %>
-        <%= render "comments/new_form" %>
+        <ul>
+          <li class="comment-create">
+            <h3 class="text-left title">コメント</h3>
+          </li>
+          <li id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+          </li>
+        </ul>
+        <% if logged_in? %>
+          <div class="comment-create">
+            <h3 class="text-left">コメントを投稿する</h3>
+            <%= render partial: 'comments/form', locals: { comment: @comment, datespot: @datespot } %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

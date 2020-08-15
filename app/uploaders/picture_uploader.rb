@@ -36,6 +36,11 @@ class PictureUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [200, 200, "Center"]
   end
 
+  # コメント表示用：50 * 50の正方形に中央から切り抜き
+  version :thumb50 do
+    process resize_to_fill: [50, 50, "Center"]
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
