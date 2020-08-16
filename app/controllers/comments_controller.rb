@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.destroy
+    if current_user.id == @comment.user_id && @comment.destroy
       render :index
     end
   end

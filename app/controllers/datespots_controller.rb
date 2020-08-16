@@ -9,7 +9,7 @@ class DatespotsController < ApplicationController
   def show
     @datespot = Datespot.find(params[:id])
     @comment = Comment.new
-    @comments = @datespot.comments.order(created_at: :desc)
+    @comments = @datespot.comments
   end
 
   def index

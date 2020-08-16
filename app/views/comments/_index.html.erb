@@ -1,28 +1,30 @@
 <%= comments.count %>件のコメント
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
-    <div class="comment-box">
-      <div class="comment-avatar">
-      <% if logged_in? %>
-        <%= link_to((image_tag comment.user.picture.thumb50.url), user_path(comment.user.id), class: "comment-image") %>
-      <% else %>
-        <%= image_tag comment.user.picture.thumb50.url class: "comment-image" %>
-      <% end %>
-      </div>
-      <div class="comment-text">
+    <li id="comment-<%= comment.id %>">
+      <div class="comment-box">
+        <div class="comment-avatar">
         <% if logged_in? %>
-          <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
+          <%= link_to((image_tag comment.user.picture.thumb50.url), user_path(comment.user.id), class: "comment-image") %>
         <% else %>
-          <p><%= comment.user.name%></p>
+          <%= image_tag comment.user.picture.thumb50.url class: "comment-image" %>
         <% end %>
-        <p><%= comment.content %></p>
-        <% if comment.user == current_user %>
-          <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
-        <% end %>
+        </div>
+        <div class="comment-text">
+          <% if logged_in? %>
+            <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
+          <% else %>
+            <p><%= comment.user.name%></p>
+          <% end %>
+          <p><%= comment.content %></p>
+          <% if comment.user == current_user %>
+            <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
+          <% end %>
+        </div>
+        <span class="comment-date pull-right">
+          <%= l comment.created_at %>
+        </span>
       </div>
-      <span class="comment-date pull-right">
-        <%= l comment.created_at %>
-      </span>
-    </div>
+    </li>
   <% end %>
 <% end %>
