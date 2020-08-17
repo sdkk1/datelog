@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   post   :login,     to: 'sessions#create'
   delete :logout,    to: 'sessions#destroy'
 
-  resources :datespots
+  resources :datespots do
+    resources :comments, only: [:create, :destroy]
+  end
 
   resources :relationships, only: [:create, :destroy]
 
@@ -22,5 +24,4 @@ Rails.application.routes.draw do
   post   "favorites/:datespot_id/create"  => "favorites#create"
   delete "favorites/:datespot_id/destroy" => "favorites#destroy"
 
-  resources :comments, only: [:create, :destroy]
 end

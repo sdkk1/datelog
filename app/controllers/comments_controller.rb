@@ -3,23 +3,23 @@ class CommentsController < ApplicationController
 
   def create
     @datespot = Datespot.find(params[:datespot_id])
-    @user = @datespot.user
-    @comment = @datespot.comments.build(user_id: current_user.id, content: params[:comment][:content])
-    if !@datespot.nil? && @comment.save
-      flash[:success] = "コメントを追加しました！"
-    else
-      flash[:danger] = "空のコメントは投稿できません。"
+    @comment = @datespot.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      render :index
     end
-    redirect_to request.referrer || root_url
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @datespot = @comment.datespot
-    if current_user.id == @comment.user_id
-      @comment.destroy
-      flash[:success] = "コメントを削除しました"
+    if current_user.id == @comment.user_id && @comment.destroy
+      render :index
     end
-    redirect_to datespot_url(@datespot)
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content, :datespot_id, :user_id)
   end
 end
