@@ -430,6 +430,8 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
+    rspec-retry (0.6.2)
+      rspec-core (> 3.3)
     rspec-support (3.9.3)
     rubocop (0.76.0)
       jaro_winkler (~> 1.5.1)
@@ -547,6 +549,7 @@ DEPENDENCIES
   rails (= 5.2.3)
   rails-controller-testing
   rspec-rails (~> 4.0.0.beta2)
+  rspec-retry
   rubocop-airbnb
   sassc-rails
   selenium-webdriver
