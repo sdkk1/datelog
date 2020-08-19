@@ -12,11 +12,6 @@ RSpec.describe Notification, type: :model do
     expect(notification).not_to be_valid
   end
 
-  it "datespot_idがnilの場合、無効であること" do
-    notification.datespot_id = nil
-    expect(notification).not_to be_valid
-  end
-
   it "varietyがnilの場合、無効であること" do
     notification.variety = nil
     expect(notification).not_to be_valid

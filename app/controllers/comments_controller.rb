@@ -3,10 +3,17 @@ class CommentsController < ApplicationController
 
   def create
     @datespot = Datespot.find(params[:datespot_id])
+    @user = @datespot.user
     @comment = @datespot.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       render :index
+    end
+    if @user != current_user
+      @user.notifications.create(datespot_id: @datespot.id, variety: 2,
+                                 from_user_id: current_user.id,
+                                 content: @comment.content)
+      @user.update_attribute(:notification, true)
     end
   end
 
