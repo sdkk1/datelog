@@ -5,4 +5,9 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications
     current_user.update_attribute(:notification, false)
   end
+
+  def destroy
+    @notifications = current_user.notifications.destroy_all
+    redirect_to notifications_path
+  end
 end
