@@ -16,7 +16,7 @@
     <span class="user-name">【投稿者】<%= datespot.user.name %></span><br>
   <% end %>
   <span class="timestamp">
-    <%= time_ago_in_words(datespot.created_at) %>前に投稿
+    <%= l datespot.created_at %>
   </span>
   <% if logged_in? %>
     <% if current_user.admin? || (current_user == datespot.user) %>

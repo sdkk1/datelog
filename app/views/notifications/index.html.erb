@@ -1,0 +1,19 @@
+<% provide(:title, "通知一覧") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>通知一覧 (<%= @notifications.count %>)</h3>
+    </div>
+  </div>
+  <% if @notifications.present? %>
+    <div class="delete-notice">
+      <%= link_to "全削除", "/notifications/destroy", method: :delete,
+      data: { confirm: '全ての通知を削除します。本当に削除してよろしいでしょうか？' } %>
+    </div>
+    <ol class="notifications">
+      <%= render @notifications %>
+    </ol>
+  <% else %>
+    <p>通知はありません</p>
+  <% end %>
+</div>
