@@ -33,8 +33,8 @@ RSpec.describe "通知機能", type: :request do
     end
 
     context "自分以外のユーザーの投稿に対して" do
-      it "お気に入り登録によって通知が作成されること" do
-        post "/favorites/#{other_datespot.id}/create"
+      it "リスト登録によって通知が作成されること" do
+        post "/lists/#{other_datespot.id}/create"
         expect(user.reload.notification).to be_falsey
         expect(other_user.reload.notification).to be_truthy
       end
@@ -50,8 +50,8 @@ RSpec.describe "通知機能", type: :request do
     end
 
     context "自分の投稿に対して" do
-      it "お気に入り登録によって通知が作成されないこと" do
-        post "/favorites/#{datespot.id}/create"
+      it "リスト登録によって通知が作成されないこと" do
+        post "/lists/#{datespot.id}/create"
         expect(user.reload.notification).to be_falsey
       end
 

@@ -1,6 +1,5 @@
 <header class="navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to(image_tag("", :alt => ""), root_url, id: 'logo') %>
     <nav>
       <% if logged_in? %>
         <%= link_to(image_tag("logo.png", :alt => ""), datespots_path, id: 'logo') %>
@@ -14,6 +13,7 @@
           <%= link_to notifications_path do %><span>通知</span><% end %>
           </li>
           <li><%= link_to 'お気に入り一覧', favorites_path %></li>
+          <li><%= link_to '行く予定リスト', lists_path %></li>
           <li><%= link_to 'ユーザー一覧', users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

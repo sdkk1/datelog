@@ -23,7 +23,7 @@ RSpec.describe "お気に入り機能", type: :request do
     end
   end
 
-  describe "お気に入り処理" do
+  describe "お気に入り登録/解除機能" do
     context "ログインしている場合" do
       before do
         login_for_request(user)

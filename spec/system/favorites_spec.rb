@@ -31,7 +31,7 @@ RSpec.describe "Favorites", type: :system do
       expect(page).to have_content datespot.price
       expect(page).to have_content datespot.keyword
       expect(page).to have_link datespot.user.name
-      expect(page).to have_content other_datespot.name
+      expect(page).to have_link other_datespot.name
       expect(page).to have_content other_datespot.area
       expect(page).to have_content other_datespot.price
       expect(page).to have_content other_datespot.keyword

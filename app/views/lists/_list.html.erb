@@ -1,17 +1,23 @@
-<% @datespot = Datespot.find(favorite.datespot_id) %>
-<li id="datespot-<%= @datespot.id %>">
-  <p><%= l favorite.created_at %></p>
+<% @list = list %>
+<% @datespot = Datespot.find(list.datespot_id) %>
+<% user = User.find(list.from_user_id) %>
+<li id="list-<%= @datespot.id %>">
+  <p><%= l list.created_at %></p>
   <div class="row">
     <div class="col-md-4">
-      <div class="favorite-datespot">
-        <p class="list-message">この投稿をお気に入りに追加しました。</p>
+      <div class="list-datespot">
+        <% if list.user_id == list.from_user_id %>
+          <p class="list-message">この投稿を行く予定リストに追加しました。</p>
+        <% else %>
+          <p class="list-message"><%= link_to user.name, user_path(user) %>さんがこの投稿に行きたいリクエストをしました。</p>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4">
-      <%= link_to "お気に入りから削除", "/favorites/#{@datespot.id}/destroy",
+      <%= link_to "リストから削除", "/lists/#{list.id}/destroy",
                                   method: :delete,
-                                  class: 'unlike',
-                                  data: { confirm: "本当にお気に入りから削除しますか？" } %>
+                                  class: "unlist",
+                                  data: { confirm: "本当にリストから削除しますか？" } %>
     </div>
   </div>
   <div class="row">
