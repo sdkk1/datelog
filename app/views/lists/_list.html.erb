@@ -1,0 +1,35 @@
+<% @list = list %>
+<% @datespot = Datespot.find(list.datespot_id) %>
+<% user = User.find(list.from_user_id) %>
+<li id="list-<%= @datespot.id %>">
+  <p><%= l list.created_at %></p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="list-datespot">
+        <% if list.user_id == list.from_user_id %>
+          <p class="list-message">この投稿を行く予定リストに追加しました。</p>
+        <% else %>
+          <p class="list-message"><%= link_to user.name, user_path(user) %>さんがこの投稿に行きたいリクエストをしました。</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <%= link_to "リストから削除", "/lists/#{list.id}/destroy",
+                                  method: :delete,
+                                  class: "unlist",
+                                  data: { confirm: "本当にリストから削除しますか？" } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to((image_tag @datespot.picture.thumb400.url), datespot_path(@datespot.id), class: 'datespot-picture') %>
+    </div>
+    <div class="col-md-6">
+      <span class="datespot-name"><%= link_to @datespot.name, datespot_path(@datespot) %></span><br>
+      <span class="area">【エリア】<%= @datespot.area %></span><br>
+      <span class="price">【価格帯】<%= @datespot.price %></span><br>
+      <span class="keyword">【キーワード】<%= @datespot.keyword %></span><br>
+      <span class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></span><br>
+    </div>
+  </div>
+</li>
