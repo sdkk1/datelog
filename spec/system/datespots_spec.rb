@@ -10,13 +10,10 @@ RSpec.describe "Datespots", type: :system do
   describe "投稿一覧ページ" do
     before do
       create_list(:datespot, 10)
+      visit datespots_path
     end
 
     context "ページレイアウト(共通)" do
-      before do
-        visit datespots_path
-      end
-
       it "「投稿一覧」の文字列が存在することを確認" do
         expect(page).to have_content '投稿一覧'
       end
@@ -37,7 +34,6 @@ RSpec.describe "Datespots", type: :system do
     context "ページレイアウト(管理者ユーザーの場合)" do
       before do
         login_for_system(admin_user)
-        visit datespots_path
       end
 
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
@@ -58,12 +54,8 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "投稿削除(管理者ユーザーの場合)", js: true do
-      before do
-        login_for_system(admin_user)
-        visit datespots_path
-      end
-
       it "投稿を削除後、削除成功のフラッシュが表示されること" do
+        login_for_system(admin_user)
         page.accept_confirm("本当に削除しますか？") do
           click_on "削除", match: :first
         end
@@ -74,7 +66,6 @@ RSpec.describe "Datespots", type: :system do
     context "ページレイアウト(管理者ユーザー以外の場合)" do
       before do
         login_for_system(user)
-        visit datespots_path
       end
 
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
@@ -95,12 +86,8 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "投稿削除(管理者ユーザー以外の場合)", js: true do
-      before do
-        login_for_system(user)
-        visit datespots_path
-      end
-
       it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
+        login_for_system(user)
         if datespot == user.datespots
           page.accept_confirm("本当に削除しますか？") do
             click_on "削除", match: :first
@@ -111,10 +98,6 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "ページレイアウト(ログインしていないユーザーの場合)" do
-      before do
-        visit datespots_path
-      end
-
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクなし)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
@@ -133,17 +116,24 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "お気に入り登録/解除" do
-      before do
-        login_for_system(user)
-        visit datespots_path
-      end
-
       it "投稿一覧ページから投稿のお気に入り登録/解除ができること" do
+        login_for_system(user)
         expect(user.favorite?(datespot)).to be_falsey
         user.favorite(datespot)
         expect(user.favorite?(datespot)).to be_truthy
         user.unfavorite(datespot)
         expect(user.favorite?(datespot)).to be_falsey
+      end
+    end
+
+    context "リスト登録/解除" do
+      it "投稿一覧ページから投稿のリスト登録/解除ができること" do
+        login_for_system(user)
+        expect(user.list?(datespot)).to be_falsey
+        user.list(datespot)
+        expect(user.list?(datespot)).to be_truthy
+        user.unlist(List.first)
+        expect(user.list?(datespot)).to be_falsey
       end
     end
   end
@@ -200,9 +190,12 @@ RSpec.describe "Datespots", type: :system do
   end
 
   describe "投稿詳細ページ" do
+    before do
+      visit datespot_path(datespot)
+    end
+
     context "ページレイアウト（共通）" do
       it "正しいタイトルが表示されること" do
-        visit datespot_path(datespot)
         expect(page).to have_title full_title("#{datespot.name}")
       end
     end
@@ -230,12 +223,9 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "投稿削除(管理者ユーザーの場合)", js: true do
-      before do
+      it "投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
         visit datespot_path(datespot)
-      end
-
-      it "投稿を削除後、削除成功のフラッシュが表示されること" do
         page.accept_confirm("本当に削除しますか？") do
           click_on "削除"
         end
@@ -266,12 +256,9 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "投稿削除(管理者ユーザー以外の場合)", js: true do
-      before do
+      it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(user)
         visit datespot_path(datespot)
-      end
-
-      it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
         if datespot == user.datespots
           page.accept_confirm("本当に削除しますか？") do
             click_on "削除"
@@ -282,10 +269,6 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "ページレイアウト(ログインしていないユーザーの場合)" do
-      before do
-        visit datespot_path(datespot)
-      end
-
       it "投稿情報が表示されること(投稿者のリンクなし)" do
         expect(page).to have_content datespot.name
         expect(page).to have_content datespot.user.name
@@ -303,12 +286,9 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "お気に入り登録/解除" do
-      before do
+      it "投稿詳細ページから投稿のお気に入り登録/解除ができること", js: true do
         login_for_system(user)
         visit datespot_path(datespot)
-      end
-
-      it "投稿詳細ページから投稿のお気に入り登録/解除ができること", js: true do
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{datespot.id}/create"
         link.click
@@ -317,6 +297,21 @@ RSpec.describe "Datespots", type: :system do
         link.click
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{datespot.id}/create"
+      end
+    end
+
+    context "リスト登録/解除" do
+      it "投稿詳細ページからリスト登録/解除ができること", js: true do
+        login_for_system(user)
+        visit datespot_path(datespot)
+        link = find('.list')
+        expect(link[:href]).to include "/lists/#{datespot.id}/create"
+        link.click
+        link = find('.unlist')
+        expect(link[:href]).to include "/lists/#{List.first.id}/destroy"
+        link.click
+        link = find('.list')
+        expect(link[:href]).to include "/lists/#{datespot.id}/create"
       end
     end
 

@@ -153,14 +153,27 @@ RSpec.describe "Users", type: :system do
         expect(user.favorite?(datespot)).to be_falsey
       end
     end
+
+    context "リスト登録/解除" do
+      it "ユーザー詳細ページから投稿のリスト登録/解除ができること" do
+        expect(user.list?(datespot)).to be_falsey
+        user.list(datespot)
+        expect(user.list?(datespot)).to be_truthy
+        user.unlist(List.first)
+        expect(user.list?(datespot)).to be_falsey
+      end
+    end
   end
 
   describe "ユーザー一覧ページ" do
+    before do
+      create_list(:user, 30)
+      visit users_path
+    end
+
     context "管理者ユーザーの場合" do
       it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
-        create_list(:user, 30)
         login_for_system(admin_user)
-        visit users_path
         expect(page).to have_css "div.pagination"
         User.paginate(page: 1).each do |u|
           expect(page).to have_link u.name, href: user_path(u)
@@ -171,9 +184,7 @@ RSpec.describe "Users", type: :system do
 
     context "管理者ユーザー以外の場合" do
       it "ぺージネーション、自分のアカウントのみ削除ボタンが表示されること" do
-        create_list(:user, 30)
         login_for_system(user)
-        visit users_path
         expect(page).to have_css "div.pagination"
         User.paginate(page: 1).each do |u|
           expect(page).to have_link u.name, href: user_path(u)
