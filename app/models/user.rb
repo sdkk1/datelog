@@ -67,6 +67,21 @@ class User < ApplicationRecord
     !Favorite.find_by(user_id: id, datespot_id: datespot.id).nil?
   end
 
+  # 投稿をリストに登録する
+  def list(datespot)
+    List.create!(user_id: datespot.user_id, datespot_id: datespot.id, from_user_id: id)
+  end
+
+  # 投稿をリストから解除する
+  def unlist(list)
+    list.destroy
+  end
+
+  # 現在のユーザーがリスト登録してたらtrueを返す
+  def list?(datespot)
+    !List.find_by(datespot_id: datespot.id, from_user_id: id).nil?
+  end
+
   private
 
   def downcase_email

@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   delete "favorites/:datespot_id/destroy" => "favorites#destroy"
 
   resources :notifications,　only: [:index, :destroy]
+
+  get :lists, to: 'lists#index'
+  post   "lists/:datespot_id/create" => "lists#create"
+  delete "lists/:list_id/destroy"    => "lists#destroy"
 end
