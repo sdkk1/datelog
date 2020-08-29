@@ -19,8 +19,8 @@ end
 
 10.times do |n|
   Datespot.create!(name: Faker::Restaurant.name,
-                  area: "恵比寿",
-                  price: "1万円〜",
+                  place: 0,
+                  range: 0,
                   keyword: "焼き鳥",
                   user_id: 1)
 end

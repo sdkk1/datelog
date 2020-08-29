@@ -24,15 +24,15 @@ RSpec.describe Datespot, type: :model do
     end
 
     it "エリアがなければ無効な状態であること" do
-      datespot = build(:datespot, area: nil)
+      datespot = build(:datespot, place: nil)
       datespot.valid?
-      expect(datespot.errors[:area]).to include("を入力してください")
+      expect(datespot.errors[:place]).to include("を入力してください")
     end
 
     it "価格帯がなければ無効な状態であること" do
-      datespot = build(:datespot, price: nil)
+      datespot = build(:datespot, range: nil)
       datespot.valid?
-      expect(datespot.errors[:price]).to include("を入力してください")
+      expect(datespot.errors[:range]).to include("を入力してください")
     end
 
     it "キーワードがなければ無効な状態であること" do

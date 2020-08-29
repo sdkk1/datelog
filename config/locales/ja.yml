@@ -27,8 +27,8 @@ ja:
       datespot:
         id: ID
         name: 店名
-        area: エリア
-        price: 価格帯
+        place: エリア
+        range: 価格帯
         keyword: キーワード
         point: ポイント
         caution: 注意点
