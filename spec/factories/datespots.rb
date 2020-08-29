@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :datespot do
     name { Faker::Restaurant.name }
-    area { "恵比寿" }
-    price { "1万円〜" }
+    place { 0 }
+    range { 0 }
     keyword { "焼き鳥" }
     point { "シックな店内で落ち着いた雰囲気のお店" }
     caution { "お酒の種類は少ない" }

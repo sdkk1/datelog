@@ -121,8 +121,8 @@ RSpec.describe "Users", type: :system do
       it "デートスポットの情報が表示されていることを確認" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.area
-          expect(page).to have_content datespot.price
+          expect(page).to have_content datespot.place_i18n
+          expect(page).to have_content datespot.range_i18n
           expect(page).to have_content datespot.keyword
           expect(page).to have_link datespot.user.name
         end

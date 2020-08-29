@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   validates :introduction, length: { maximum: 255 }
 
-  enum sex: { man: 1, woman: 2 }
+  enum sex: { man: 0, woman: 1 }
 
   mount_uploader :picture, PictureUploader
   validate :picture_size

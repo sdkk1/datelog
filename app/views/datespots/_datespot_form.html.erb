@@ -21,12 +21,12 @@
     <%= f.text_field :name, class: 'form-control', id: 'datespot_name' %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :area %> <span class="input-need">※必須</span>
-    <%= f.text_field :area, class: 'form-control', id: 'datespot_area' %>
+    <%= f.label :place %> <span class="input-need">※必須</span>
+    <%= f.select :place, options_for_select(Datespot.places_i18n.invert, selected: f.object.place), { include_blank: true }, { class: 'form-control', id: 'datespot_place' } %>
   </div>
   <div class = 'form-group'>
-    <%= f.label :price %> <span class="input-need">※必須</span>
-    <%= f.text_field :price, class: 'form-control', id: 'datespot_price' %>
+    <%= f.label :range %> <span class="input-need">※必須</span>
+    <%= f.select :range, options_for_select(Datespot.ranges_i18n.invert, selected: f.object.range), { include_blank: true }, { class: 'form-control', id: 'datespot_range' } %>
   </div>
   <div class = 'form-group'>
     <%= f.label :keyword %> <span class="input-need">※必須(50文字以内)</span>

@@ -22,8 +22,8 @@ RSpec.describe "投稿", type: :request do
       expect {
         post datespots_path, params: { datespot: {
           name: "ももたろう",
-          area: "恵比寿",
-          price: "1万円〜",
+          place: "Ginza",
+          range: "price_min",
           keyword: "焼き鳥",
           point: "シックな店内で落ち着いた雰囲気のお店",
           caution: "お酒の種類は少ない",
@@ -38,8 +38,8 @@ RSpec.describe "投稿", type: :request do
       expect {
         post datespots_path, params: { datespot: {
           name: "",
-          area: "恵比寿",
-          price: "1万円〜",
+          place: "Ginza",
+          range: "price_min",
           keyword: "焼き鳥",
           point: "シックな店内で落ち着いた雰囲気のお店",
           caution: "お酒の種類は少ない",

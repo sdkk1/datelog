@@ -20,8 +20,8 @@
     </div>
     <div class="col-md-6">
       <span class="datespot-name"><%= link_to @datespot.name, datespot_path(@datespot) %></span><br>
-      <span class="area">【エリア】<%= @datespot.area %></span><br>
-      <span class="price">【価格帯】<%= @datespot.price %></span><br>
+      <span class="place">【エリア】<%= @datespot.place_i18n %></span><br>
+      <span class="range">【価格帯】<%= @datespot.range_i18n %></span><br>
       <span class="keyword">【キーワード】<%= @datespot.keyword %></span><br>
       <span class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></span><br>
     </div>
