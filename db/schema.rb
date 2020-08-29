@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_145951) do
+ActiveRecord::Schema.define(version: 2020_08_29_064908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer "datespot_id"
-    t.integer "user_id"
-    t.text "content"
+    t.integer "datespot_id", null: false
+    t.integer "user_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["datespot_id"], name: "index_comments_on_datespot_id"
@@ -26,53 +26,51 @@ ActiveRecord::Schema.define(version: 2020_08_26_145951) do
   end
 
   create_table "datespots", force: :cascade do |t|
-    t.string "name"
-    t.string "area"
-    t.string "price"
-    t.text "keyword"
+    t.string "name", null: false
+    t.text "keyword", null: false
     t.text "point"
     t.text "caution"
     t.string "picture"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "place"
-    t.integer "range"
+    t.integer "place", null: false
+    t.integer "range", null: false
     t.index ["user_id", "created_at"], name: "index_datespots_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_datespots_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "datespot_id"
+    t.integer "user_id", null: false
+    t.integer "datespot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "datespot_id"], name: "index_favorites_on_user_id_and_datespot_id", unique: true
   end
 
   create_table "lists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "datespot_id"
-    t.integer "from_user_id"
+    t.integer "user_id", null: false
+    t.integer "datespot_id", null: false
+    t.integer "from_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "datespot_id"
-    t.integer "variety"
+    t.integer "variety", null: false
     t.text "content"
-    t.integer "from_user_id"
+    t.integer "from_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
@@ -81,8 +79,8 @@ ActiveRecord::Schema.define(version: 2020_08_26_145951) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.text "introduction"
     t.integer "sex"
     t.datetime "created_at", null: false
