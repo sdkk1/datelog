@@ -48,6 +48,8 @@ gem 'bootstrap-will_paginate'
 
 gem 'enum_help'
 
+gem 'acts-as-taggable-on', '~> 6.0'
+
 group :production do
   gem 'fog'
 end

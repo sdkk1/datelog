@@ -3,7 +3,7 @@ FactoryBot.define do
     name { Faker::Restaurant.name }
     place { 0 }
     range { 0 }
-    keyword { "焼き鳥" }
+    tag_list { "オシャレ" }
     point { "シックな店内で落ち着いた雰囲気のお店" }
     caution { "お酒の種類は少ない" }
     association :user

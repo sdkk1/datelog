@@ -35,18 +35,6 @@ RSpec.describe Datespot, type: :model do
       expect(datespot.errors[:range]).to include("を入力してください")
     end
 
-    it "キーワードがなければ無効な状態であること" do
-      datespot = build(:datespot, keyword: nil)
-      datespot.valid?
-      expect(datespot.errors[:keyword]).to include("を入力してください")
-    end
-
-    it "キーワードが50文字以内であること" do
-      datespot = build(:datespot, keyword: "あ" * 51)
-      datespot.valid?
-      expect(datespot.errors[:keyword]).to include("は50文字以内で入力してください")
-    end
-
     it "ポイントが255文字以内であること" do
       datespot = build(:datespot, point: "あ" * 256)
       datespot.valid?

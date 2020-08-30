@@ -14,6 +14,9 @@ class DatespotsController < ApplicationController
 
   def index
     @datespots = Datespot.paginate(page: params[:page], per_page: 5)
+    if params[:tag_name]
+      @datespots = Datespot.tagged_with("#{params[:tag_name]}").paginate(page: params[:page], per_page: 5)
+    end
   end
 
   def create
@@ -55,8 +58,8 @@ class DatespotsController < ApplicationController
   private
 
   def datespot_params
-    params.require(:datespot).permit(:name, :place, :range, :keyword,
-                                     :point, :caution, :picture, :remove_picture)
+    params.require(:datespot).permit(:name, :place, :range, :point, :caution,
+                                     :picture, :remove_picture, :tag_list)
   end
 
   def correct_user

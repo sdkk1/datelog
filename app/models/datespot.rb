@@ -11,12 +11,13 @@ class Datespot < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :place, presence: true
   validates :range, presence: true
-  validates :keyword, presence: true, length: { maximum: 50 }
   validates :point, length: { maximum: 255 }
   validates :caution, length: { maximum: 255 }
 
   mount_uploader :picture, PictureUploader
   validate :picture_size
+
+  acts_as_taggable_on :tags
 
   enum place: {
     Ginza: 0, Yurakucho: 1, Shinbashi: 2, Hamamatsucho: 3, Tamachi: 4, Shinjuku: 5,

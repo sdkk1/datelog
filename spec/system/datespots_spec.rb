@@ -41,7 +41,7 @@ RSpec.describe "Datespots", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
       end
@@ -73,7 +73,7 @@ RSpec.describe "Datespots", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
       end
@@ -103,7 +103,7 @@ RSpec.describe "Datespots", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_content datespot.user.name
         end
       end
@@ -168,7 +168,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "店名", with: "ももたろう"
         select '銀座', from: 'エリア'
         select '~2,000', from: '価格帯'
-        fill_in "キーワード", with: "焼き鳥"
+        fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         attach_file "datespot[picture]", "#{Rails.root}/spec/fixtures/test_datespot.jpg"
@@ -180,7 +180,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "店名", with: ""
         select '銀座', from: 'エリア'
         select '~2,000', from: '価格帯'
-        fill_in "キーワード", with: "焼き鳥"
+        fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "投稿する"
@@ -211,7 +211,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_link datespot.user.name
         expect(page).to have_content datespot.place_i18n
         expect(page).to have_content datespot.range_i18n
-        expect(page).to have_content datespot.keyword
+        expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
         expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
@@ -244,7 +244,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_link datespot.user.name
         expect(page).to have_content datespot.place_i18n
         expect(page).to have_content datespot.range_i18n
-        expect(page).to have_content datespot.keyword
+        expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
         expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
@@ -274,7 +274,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.user.name
         expect(page).to have_content datespot.place_i18n
         expect(page).to have_content datespot.range_i18n
-        expect(page).to have_content datespot.keyword
+        expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
         expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
@@ -355,7 +355,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "店名", with: "ももたろう"
         select '銀座', from: 'エリア'
         select '~2,000', from: '価格帯'
-        fill_in "キーワード", with: "焼き鳥"
+        fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         attach_file "datespot[picture]", "#{Rails.root}/spec/fixtures/test_datespot2.jpg"
@@ -364,7 +364,7 @@ RSpec.describe "Datespots", type: :system do
         expect(datespot.reload.name).to eq "ももたろう"
         expect(datespot.reload.place_i18n).to eq "銀座"
         expect(datespot.reload.range_i18n).to eq "~2,000"
-        expect(datespot.reload.keyword).to eq "焼き鳥"
+        expect(datespot.reload.tag_list).to eq ["オシャレ", "焼き鳥"]
         expect(datespot.reload.point).to eq "シックな店内で落ち着いた雰囲気のお店"
         expect(datespot.reload.caution).to eq "お酒の種類は少ない"
         expect(datespot.reload.picture.url).to include "test_datespot2.jpg"
