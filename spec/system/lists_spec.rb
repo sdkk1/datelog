@@ -30,13 +30,13 @@ RSpec.describe "Lists", type: :system do
       expect(page).to have_link datespot.name
       expect(page).to have_content datespot.place_i18n
       expect(page).to have_content datespot.range_i18n
-      expect(page).to have_content datespot.keyword
+      expect(page).to have_content datespot.tag_list
       expect(page).to have_link datespot.user.name
       expect(page).to have_content "#{other_user.name}さんがこの投稿に行きたいリクエストをしました。"
       expect(page).to have_link datespot_2.name
       expect(page).to have_content datespot_2.place_i18n
       expect(page).to have_content datespot_2.range_i18n
-      expect(page).to have_content datespot_2.keyword
+      expect(page).to have_content datespot_2.tag_list
       expect(page).to have_link datespot_2.user.name
       user.unlist(List.first)
       visit lists_path

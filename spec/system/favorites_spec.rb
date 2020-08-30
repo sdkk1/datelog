@@ -29,12 +29,12 @@ RSpec.describe "Favorites", type: :system do
       expect(page).to have_link datespot.name
       expect(page).to have_content datespot.place_i18n
       expect(page).to have_content datespot.range_i18n
-      expect(page).to have_content datespot.keyword
+      expect(page).to have_content datespot.tag_list
       expect(page).to have_link datespot.user.name
       expect(page).to have_link other_datespot.name
       expect(page).to have_content other_datespot.place_i18n
       expect(page).to have_content other_datespot.range_i18n
-      expect(page).to have_content other_datespot.keyword
+      expect(page).to have_content other_datespot.tag_list
       expect(page).to have_link other_datespot.user.name
       user.unfavorite(other_datespot)
       visit favorites_path

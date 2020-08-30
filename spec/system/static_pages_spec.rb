@@ -43,7 +43,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
       end
@@ -80,7 +80,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
       end
@@ -118,7 +118,7 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.place_i18n
           expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.keyword
+          expect(page).to have_content datespot.tag_list
           expect(page).to have_content datespot.user.name
         end
       end

@@ -29,7 +29,7 @@ ja:
         name: 店名
         place: エリア
         range: 価格帯
-        keyword: キーワード
+        tag_list: キーワード
         point: ポイント
         caution: 注意点
         picture: 写真

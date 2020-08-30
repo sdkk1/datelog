@@ -31,7 +31,7 @@
         <% end %>
         <h4 class="place">【エリア】<%= @datespot.place_i18n %></h4>
         <h4 class="range">【価格帯】<%= @datespot.range_i18n %></h4>
-        <h4 class="keyword">【キーワード】<%= @datespot.keyword %></h4>
+        <h4 class="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
         <h4 class="point">【ポイント】<%= @datespot.point %></h4>
         <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
       </div>

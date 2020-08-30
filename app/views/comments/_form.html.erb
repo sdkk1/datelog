@@ -1,4 +1,4 @@
 <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |f| %>
-  <%= f.text_area :content, id: "comment_content" %>
+  <%= f.text_area :content, placeholder: "コメントを入力", id: "comment_content" %>
   <%= f.submit "コメントする", class: "btn btn-outline-dark comment-submit float-right" %>
 <% end %>

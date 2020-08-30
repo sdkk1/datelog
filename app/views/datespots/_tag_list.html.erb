@@ -1,0 +1,5 @@
+<% tag_list.each do |tag| %>
+  <span class="badge badge-primary mr-1 p-2">
+    <p><%= link_to tag, datespots_path(tag_name: tag), class: "text-white" %></p>
+  </span>
+<% end %>
