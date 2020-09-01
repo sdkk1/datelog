@@ -1,31 +1,18 @@
-<% user = User.find(notification.from_user_id) %>
-<% datespot = Datespot.find(notification.datespot_id) if notification.datespot_id.present? %>
+<% @user = User.find(notification.from_user_id) %>
+<% @datespot = Datespot.find(notification.datespot_id) if notification.datespot_id.present? %>
 <li id="notification-<%= notification.id %>">
   <div>
     <% if notification.variety == 1 %>
       <p><%= l notification.created_at %></p>
-      <p class="notification-message">あなたの投稿が<%= link_to user.name, user_path(user) %>さんから行きたいリクエストされました。</p>
+      <p class="notification-message">あなたの投稿が<%= link_to @user.name, user_path(@user) %>さんから行きたいリクエストされました。</p>
     <% elsif notification.variety == 2 %>
       <p><%= l notification.created_at %></p>
-      <p class="notification-message">あなたの投稿に<%= link_to user.name, user_path(user) %>さんがコメントしました。
+      <p class="notification-message">あなたの投稿に<%= link_to @user.name, user_path(@user) %>さんがコメントしました。
       「<%= notification.content %>」</p>
     <% elsif notification.variety == 3 %>
       <p><%= l notification.created_at %></p>
-      <p class="notification-message"><%= link_to user.name, user_path(user) %>さんがあなたをフォローしました。
+      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんがあなたをフォローしました。
     <% end %>
   </div>
-  <% if datespot.present? %>
-    <div class="row">
-      <div class="col-md-2">
-        <%= link_to((image_tag datespot.picture.thumb400.url), datespot_path(datespot.id), class: 'datespot-picture') %>
-      </div>
-      <div class="col-md-7">
-        <span class="datespot-name"><%= link_to datespot.name, datespot_path(datespot) %></span><br>
-        <span class="place">【エリア】<%= datespot.place_i18n %></span><br>
-        <span class="range">【価格帯】<%= datespot.range_i18n %></span><br>
-        <span class="keyword">【キーワード】<%= render 'datespots/tag_list', tag_list: datespot.tag_list %></span><br>
-        <span class="user-name">【投稿者】<%= link_to datespot.user.name, datespot.user %></span><br>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'datespots/datespot_info' if @datespot.present? %>
 </li>

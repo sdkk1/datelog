@@ -59,8 +59,8 @@ RSpec.describe "Users", type: :system do
     it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
       fill_in "ユーザー名", with: "Edit Example User"
       fill_in "メールアドレス", with: "edit-user@example.com"
-      fill_in "パスワード", with: ""
-      fill_in "パスワード(確認)", with: ""
+      fill_in "パスワード", with: "foobar"
+      fill_in "パスワード(確認)", with: "foobar"
       attach_file "user[picture]", "#{Rails.root}/spec/fixtures/test_user2.jpg"
       click_button "更新する"
       expect(page).to have_content "プロフィールが更新されました！"
