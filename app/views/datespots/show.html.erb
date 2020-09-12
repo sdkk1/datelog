@@ -3,6 +3,13 @@
   <div class="row">
     <div class="col-md-4">
       <span class="picture">
+        <% if @datespot.images.attached? %>
+          <% @datespot.images.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+        <% end %>
+      </span>
+      <span class="picture">
         <% if @datespot.picture.url.present? %>
           <%= link_to((image_tag @datespot.picture.thumb400.url), datespot_path(@datespot.id), class: 'datespot-picture') %>
         <% end %>

@@ -4,6 +4,7 @@ class Datespot < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
+  acts_as_taggable_on :tags
 
   default_scope -> { order(created_at: :desc) }
 
@@ -17,7 +18,8 @@ class Datespot < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validate :picture_size
 
-  acts_as_taggable_on :tags
+  has_many_attached :images
+  validate :image_type, :image_size
 
   enum place: {
     Ginza: 0, Yurakucho: 1, Shinbashi: 2, Hamamatsucho: 3, Tamachi: 4, Shinjuku: 5,
@@ -43,6 +45,22 @@ class Datespot < ApplicationRecord
   def picture_size
     if picture.size > 5.megabytes
       errors.add(:picture, "5MB以内にしてください")
+    end
+  end
+
+  def image_type
+    images.each do |image|
+      if !image.blob.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:images, 'はjpegまたはpng形式でアップロードしてください')
+      end
+    end
+  end
+
+  def image_size
+    images.each do |image|
+      if image.blob.byte_size > 5.megabytes
+        errors.add(:images, "は5MB以内にしてください")
+      end
     end
   end
 end
