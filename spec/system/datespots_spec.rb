@@ -4,7 +4,7 @@ RSpec.describe "Datespots", type: :system do
   let!(:admin_user) { create(:user, :admin) }
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:datespot) { create(:datespot, :picture, user: user) }
+  let!(:datespot) { create(:datespot, user: user) }
   let!(:comment) { create(:comment, user: user, datespot: datespot) }
 
   describe "投稿一覧ページ" do
@@ -171,7 +171,6 @@ RSpec.describe "Datespots", type: :system do
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        attach_file "datespot[picture]", "#{Rails.root}/spec/fixtures/test_datespot.jpg"
         click_button "投稿する"
         expect(page).to have_content "投稿が登録されました！"
       end
@@ -214,7 +213,6 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
-        expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
       end
 
       it "削除ボタンが表示されること" do
@@ -247,7 +245,6 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
-        expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
       end
 
       it "自分の投稿のみ削除ボタンが表示されること" do
@@ -277,7 +274,6 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
-        expect(page).to have_link nil, href: datespot_path(datespot), class: 'datespot-picture'
       end
 
       it "削除ボタンが表示されないこと" do
@@ -358,7 +354,6 @@ RSpec.describe "Datespots", type: :system do
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        attach_file "datespot[picture]", "#{Rails.root}/spec/fixtures/test_datespot2.jpg"
         click_button "更新する"
         expect(page).to have_content "投稿が更新されました！"
         expect(datespot.reload.name).to eq "ももたろう"
@@ -367,7 +362,6 @@ RSpec.describe "Datespots", type: :system do
         expect(datespot.reload.tag_list).to eq ["オシャレ", "焼き鳥"]
         expect(datespot.reload.point).to eq "シックな店内で落ち着いた雰囲気のお店"
         expect(datespot.reload.caution).to eq "お酒の種類は少ない"
-        expect(datespot.reload.picture.url).to include "test_datespot2.jpg"
       end
 
       it "無効な更新" do

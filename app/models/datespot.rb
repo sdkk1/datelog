@@ -15,11 +15,8 @@ class Datespot < ApplicationRecord
   validates :point, length: { maximum: 255 }
   validates :caution, length: { maximum: 255 }
 
-  mount_uploader :picture, PictureUploader
-  validate :picture_size
-
   has_many_attached :images
-  validate :image_type, :image_size
+  validate :image_type, :image_size, :image_length
 
   enum place: {
     Ginza: 0, Yurakucho: 1, Shinbashi: 2, Hamamatsucho: 3, Tamachi: 4, Shinjuku: 5,
@@ -42,12 +39,6 @@ class Datespot < ApplicationRecord
 
   private
 
-  def picture_size
-    if picture.size > 5.megabytes
-      errors.add(:picture, "5MB以内にしてください")
-    end
-  end
-
   def image_type
     images.each do |image|
       if !image.blob.content_type.in?(%('image/jpeg image/png'))
@@ -59,8 +50,15 @@ class Datespot < ApplicationRecord
   def image_size
     images.each do |image|
       if image.blob.byte_size > 5.megabytes
-        errors.add(:images, "は5MB以内にしてください")
+        errors.add(:images, "は1つのファイル5MB以内にしてください")
       end
+    end
+  end
+
+  def image_length
+    if images.length > 6
+      images.purge
+      errors.add(:images, "は6枚以内にしてください")
     end
   end
 end

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @datespots = @user.datespots.paginate(page: params[:page], per_page: 5)
+    @datespots = @user.datespots.with_attached_images.includes(:taggings).paginate(page: params[:page], per_page: 5)
   end
 
   def index

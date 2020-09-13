@@ -13,7 +13,7 @@ class DatespotsController < ApplicationController
   end
 
   def index
-    @datespots = Datespot.paginate(page: params[:page], per_page: 5)
+    @datespots = Datespot.with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
     if params[:tag_name]
       @datespots = Datespot.tagged_with("#{params[:tag_name]}").paginate(page: params[:page], per_page: 5)
     end
@@ -35,6 +35,12 @@ class DatespotsController < ApplicationController
 
   def update
     @datespot = Datespot.find(params[:id])
+    if params[:datespot][:image_ids]
+      params[:datespot][:image_ids].each do |image_id|
+        image = @datespot.images.find(image_id)
+        image.purge
+      end
+    end
     if @datespot.update_attributes(datespot_params)
       flash[:success] = "投稿が更新されました！"
       redirect_to @datespot

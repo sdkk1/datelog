@@ -34,21 +34,17 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-
 gem 'bootstrap-sass'
 gem "font-awesome-sass"
-
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
-
 gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
 gem 'enum_help'
-
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rack-mini-profiler', require: false
 
 group :production do
   gem 'fog'
@@ -71,6 +67,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'bullet'
 end
 
 group :test do
