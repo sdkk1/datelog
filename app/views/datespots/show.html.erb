@@ -2,15 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <span class="datespot-image">
-        <% if @datespot.images.attached? %>
-          <% @datespot.images.each do |image| %>
-            <%= image_tag image.variant(resize:'400x400').processed %>
-          <% end %>
-        <% else %>
-          <%= image_tag 'thumb400_default.png'%>
-        <% end %>
-      </span>
+      <%= render 'image_slide_thumb400' %>
       <%= render 'users/favorite_form' if logged_in? %>
       <%= render 'users/list_form' if logged_in? %>
     </div>
