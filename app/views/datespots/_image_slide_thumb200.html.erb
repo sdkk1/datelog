@@ -1,15 +1,21 @@
-<div class="swiper-container">
-  <% if @datespot.images.attached? %>
+<% if @datespot.images.attached? %>
+  <div class="swiper-container slider">
     <div class="swiper-wrapper">
       <% @datespot.images.each do |image| %>
         <div class="swiper-slide"><%= image_tag image.variant(resize:'200x200').processed %></div>
       <% end %>
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
     <div class="swiper-scrollbar"></div>
-  <% else %>
-    <%= image_tag 'thumb200_default.png'%>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <%= image_tag 'thumb200_default.png'%>
+<% end %>
+<% if @datespot.images.attached? %>
+  <div class="swiper-container thumbnail">
+    <div class="swiper-wrapper">
+      <% @datespot.images.each do |image| %>
+        <div class="swiper-slide"><%= image_tag image.variant(resize:'200x200').processed %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
