@@ -1,7 +1,7 @@
 <% @list = list %>
 <% @datespot = Datespot.find(list.datespot_id) %>
 <% user = User.find(list.from_user_id) %>
-<li id="list-<%= @datespot.id %>">
+<li id="list-<%= list.id %>">
   <p><%= l list.created_at %></p>
   <div class="row">
     <div class="col-md-4">
@@ -20,5 +20,21 @@
                                   data: { confirm: "本当にリストから削除しますか？" } %>
     </div>
   </div>
-  <%= render 'datespots/datespot_info' %>
+  <div class="row">
+    <div class="col-md-3">
+      <% if @datespot.images.attached? %>
+        <div class="swiper-container slider-<%= list.id %>">
+          <div class="swiper-wrapper">
+            <% @datespot.images.each do |image| %>
+              <div class="swiper-slide"><%= image_tag image.variant(resize:'200x200').processed %></div>
+            <% end %>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      <% else %>
+        <%= image_tag 'thumb200_default.png'%>
+      <% end %>
+    </div>
+    <%= render 'datespots/datespot_info' %>
+  </div>
 </li>

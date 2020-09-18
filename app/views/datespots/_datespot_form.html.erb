@@ -1,21 +1,16 @@
 <%= form_with model: @datespot, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <span class="picture">
-    <%= f.label :picture %> <span class="input-unneed">※任意</span>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'datespot_picture' %>
-  </span>
-  <% if @datespot.picture.present? %>
-    <%= image_tag @datespot.picture.thumb200.url, id: :picture_prev %>
-    <p><%= f.check_box :remove_picture %>画像を削除する</p>
+  <div class = 'form-group'>
+    <%= f.label :images %> <span class="input-unneed">※任意(6枚まで)</span>
+    <%= f.file_field :images, multiple: true, class: 'form-control', id: 'datespot_image' %>
+  </div>
+  <% if @datespot.images.present? %>
+    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+    <% @datespot.images.each do |image| %>
+      <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+      <%= image_tag image.variant(resize:'200x200').processed  %> <br>
+    <% end %>
   <% end %>
-  <script type="text/javascript">
-    $('#datespot_picture').bind('change', function() {
-      var size_in_megabytes = this.files[0].size/1024/1024;
-      if (size_in_megabytes > 5) {
-        alert('ファイルサイズは最大で5MBまでです。');
-      }
-    });
-  </script>
   <div class = 'form-group'>
     <%= f.label :name %> <span class="input-need">※必須(50文字以内)</span>
     <%= f.text_field :name, placeholder: "店名を入力", class: 'form-control', id: 'datespot_name' %>

@@ -4,6 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
   </head>
   <body>
     <div id="page">
@@ -15,5 +16,7 @@
     </div>
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <%= render 'layouts/slider' %>
   </body>
 </html>

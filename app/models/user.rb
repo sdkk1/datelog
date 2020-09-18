@@ -9,6 +9,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :favorites, dependent: :destroy
+  has_many :favorite_datespots, through: :favorites, source: :datespot
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy

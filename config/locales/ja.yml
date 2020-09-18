@@ -32,7 +32,7 @@ ja:
         tag_list: キーワード
         point: ポイント
         caution: 注意点
-        picture: 写真
+        images: 写真
         user_id: ユーザーID
       comment:
         user_id: コメント者のID
