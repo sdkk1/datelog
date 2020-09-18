@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = current_user.favorites
+    @datespots = current_user.favorite_datespots.includes(:user)
   end
 
   def create

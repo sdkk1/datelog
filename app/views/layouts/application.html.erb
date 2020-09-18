@@ -17,29 +17,6 @@
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script>
-      var mainSlider = new Swiper('.slider', {
-        loop: true,
-        scrollbar: {
-          el: '.swiper-scrollbar',
-          hide: true,
-          draggable: true,
-        },
-      });
-
-      var Thumbnail = new Swiper('.thumbnail', {
-        loop: true,
-        slidesPerView: 1,
-        slideToClickedSlide: true,
-      });
-
-      mainSlider.on('slideChange', () => {
-        Thumbnail.slideToLoop(mainSlider.realIndex);
-      });
-
-      Thumbnail.on('slideChange', () => {
-        mainSlider.slideToLoop(Thumbnail.realIndex);
-      });
-    </script>
+    <%= render 'layouts/slider' %>
   </body>
 </html>

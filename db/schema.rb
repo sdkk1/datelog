@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_141733) do
+ActiveRecord::Schema.define(version: 2020_09_18_133007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,13 +65,6 @@ ActiveRecord::Schema.define(version: 2020_09_13_141733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "datespot_id"], name: "index_favorites_on_user_id_and_datespot_id", unique: true
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.integer "datespot_id"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "lists", force: :cascade do |t|

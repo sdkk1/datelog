@@ -1,0 +1,101 @@
+<script>
+  <% if @datespots.present? %>
+    <% @datespots.each do |datespot| %>
+      var mainSlider_<%= datespot.id %> = new Swiper('.slider-<%= datespot.id %>', {
+        loop: true,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: true,
+          draggable: true,
+        },
+      });
+
+      var Thumbnail_<%= datespot.id %> = new Swiper('.thumbnail-<%= datespot.id %>', {
+        loop: true,
+        slidesPerView: 1,
+        slideToClickedSlide: true,
+      });
+
+      mainSlider_<%= datespot.id %>.on('slideChange', () => {
+        Thumbnail_<%= datespot.id %>.slideToLoop(mainSlider_<%= datespot.id %>.realIndex);
+      });
+
+      Thumbnail_<%= datespot.id %>.on('slideChange', () => {
+        mainSlider_<%= datespot.id %>.slideToLoop(Thumbnail_<%= datespot.id %>.realIndex);
+      });
+    <% end %>
+  <% elsif @notifications.present? %>
+    <% @notifications.each do |notification| %>
+      var mainSlider_<%= notification.id %> = new Swiper('.slider-<%= notification.id %>', {
+        loop: true,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: true,
+          draggable: true,
+        },
+      });
+
+      var Thumbnail_<%= notification.id %> = new Swiper('.thumbnail-<%= notification.id %>', {
+        loop: true,
+        slidesPerView: 1,
+        slideToClickedSlide: true,
+      });
+
+      mainSlider_<%= notification.id %>.on('slideChange', () => {
+        Thumbnail_<%= notification.id %>.slideToLoop(mainSlider_<%= notification.id %>.realIndex);
+      });
+
+      Thumbnail_<%= notification.id %>.on('slideChange', () => {
+        mainSlider_<%= notification.id %>.slideToLoop(Thumbnail_<%= notification.id %>.realIndex);
+      });
+    <% end %>
+  <% elsif @lists.present? %>
+    <% @lists.each do |list| %>
+      var mainSlider_<%= list.id %> = new Swiper('.slider-<%= list.id %>', {
+        loop: true,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: true,
+          draggable: true,
+        },
+      });
+
+      var Thumbnail_<%= list.id %> = new Swiper('.thumbnail-<%= list.id %>', {
+        loop: true,
+        slidesPerView: 1,
+        slideToClickedSlide: true,
+      });
+
+      mainSlider_<%= list.id %>.on('slideChange', () => {
+        Thumbnail_<%= list.id %>.slideToLoop(mainSlider_<%= list.id %>.realIndex);
+      });
+
+      Thumbnail_<%= list.id %>.on('slideChange', () => {
+        mainSlider_<%= list.id %>.slideToLoop(Thumbnail_<%= list.id %>.realIndex);
+      });
+    <% end %>
+  <% elsif @datespot.present? %>
+    var mainSlider_<%= @datespot.id %> = new Swiper('.slider-<%= @datespot.id %>', {
+      loop: true,
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        hide: true,
+        draggable: true,
+      },
+    });
+
+    var Thumbnail_<%= @datespot.id %> = new Swiper('.thumbnail-<%= @datespot.id %>', {
+      loop: true,
+      slidesPerView: 1,
+      slideToClickedSlide: true,
+    });
+
+    mainSlider_<%= @datespot.id %>.on('slideChange', () => {
+      Thumbnail_<%= @datespot.id %>.slideToLoop(mainSlider_<%= @datespot.id %>.realIndex);
+    });
+
+    Thumbnail_<%= @datespot.id %>.on('slideChange', () => {
+      mainSlider_<%= @datespot.id %>.slideToLoop(Thumbnail_<%= @datespot.id %>.realIndex);
+    });
+  <% end %>
+</script>
