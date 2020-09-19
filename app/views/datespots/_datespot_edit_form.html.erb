@@ -1,0 +1,11 @@
+<%= form_with model: @datespot, local: true do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+  <% if @datespot.images.present? %>
+    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+    <% @datespot.images.each do |image| %>
+      <%= form.check_box :image_ids, {multiple: true}, image.id, false %>
+      <%= image_tag image.variant(resize:'200x200').processed  %> <br>
+    <% end %>
+  <% end %>
+  <%= render partial: 'datespot_info_form', locals: { form: form } %>
+<% end %>

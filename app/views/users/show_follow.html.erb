@@ -2,11 +2,11 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <span class="picture">
-        <% if @user.picture.url.present? %>
-          <%= link_to((image_tag @user.picture.thumb200.url), user_path(@user.id), class: 'user-picture') %>
-        <% end %>
-      </span>
+      <% if @user.avatars.attached? %>
+        <div class="swiper-slide"><%= image_tag @user.avatars.first.variant(resize:'400x400').processed %></div>
+      <% else %>
+        <%= image_tag 'thumb400_default.png'%>
+      <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "プロフィール", @user %></span>
       <span><b>投稿数</b><%= @user.datespots.count %><b>件</b></span>

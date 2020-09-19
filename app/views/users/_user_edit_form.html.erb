@@ -1,0 +1,11 @@
+<%= form_with model: @user, local: true do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+  <% if @user.avatars.present? %>
+    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+    <% @user.avatars.each do |avatar| %>
+      <%= form.check_box :avatar_ids, {multiple: true}, avatar.id, false %>
+      <%= image_tag avatar.variant(resize:'200x200').processed  %> <br>
+    <% end %>
+  <% end %>
+  <%= render partial: 'user_info_form', locals: { form: form } %>
+<% end %>

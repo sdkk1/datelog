@@ -4,11 +4,11 @@
     <li id="comment-<%= comment.id %>">
       <div class="comment-box">
         <div class="comment-avatar">
-        <% if logged_in? %>
-          <%= link_to((image_tag comment.user.picture.thumb50.url), user_path(comment.user.id), class: "comment-image") %>
-        <% else %>
-          <%= image_tag comment.user.picture.thumb50.url class: "comment-image" %>
-        <% end %>
+          <% if comment.user.avatars.attached? %>
+            <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
+          <% else %>
+            <%= image_tag 'thumb50_default.png'%>
+          <% end %>
         </div>
         <div class="comment-text">
           <% if logged_in? %>
