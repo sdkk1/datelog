@@ -21,7 +21,6 @@ RSpec.describe "Relationships", type: :system do
       end
 
       it "ユーザー情報が表示されていること" do
-        expect(page).to have_link nil, href: user_path(user), class: 'user-picture'
         expect(page).to have_content user.name
         expect(page).to have_link "プロフィール", href: user_path(user)
         expect(page).to have_content "投稿数#{user.datespots.count}件"
@@ -32,7 +31,6 @@ RSpec.describe "Relationships", type: :system do
       it "フォロー中のユーザーが表示されていること" do
         within find('.users') do
           user.following.each do |u|
-            expect(page).to have_link nil, href: user_path(u), class: 'user-picture'
             expect(page).to have_link u.name, href: user_path(u)
           end
         end
@@ -57,7 +55,6 @@ RSpec.describe "Relationships", type: :system do
       end
 
       it "ユーザー情報が表示されていること" do
-        expect(page).to have_link nil, href: user_path(user), class: 'user-picture'
         expect(page).to have_content user.name
         expect(page).to have_link "プロフィール", href: user_path(user)
         expect(page).to have_content "投稿数#{user.datespots.count}件"
@@ -68,7 +65,6 @@ RSpec.describe "Relationships", type: :system do
       it "フォロワーが表示されていること" do
         within find('.users') do
           user.followers.each do |u|
-            expect(page).to have_link nil, href: user_path(u), class: 'user-picture'
             expect(page).to have_link u.name, href: user_path(u)
           end
         end
