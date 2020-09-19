@@ -7,10 +7,6 @@ FactoryBot.define do
     introduction { "はじめまして。" }
     sex { 1 }
 
-    trait :picture do
-      picture { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test_user.jpg')) }
-    end
-
     trait :admin do
       admin { true }
     end

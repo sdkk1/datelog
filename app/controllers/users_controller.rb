@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.with_attached_avatars.paginate(page: params[:page])
   end
 
   def create
@@ -30,6 +30,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:avatar_ids]
+      params[:user][:avatar_ids].each do |avatar_id|
+        avatar = @user.avatars.find(avatar_id)
+        avatar.purge
+      end
+    end
     if @user.update_attributes(user_params)
       flash[:success] = "プロフィールが更新されました！"
       redirect_to @user
@@ -72,7 +78,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-                                 :sex, :introduction, :picture, :remove_picture)
+                                 :sex, :introduction, avatars: [])
   end
 
   # 正しいユーザーかどうか確認

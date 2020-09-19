@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
 
-  before_save :downcase_email
+  default_scope -> { order(created_at: :desc) }
 
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  before_save :downcase_email
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
@@ -30,8 +31,8 @@ class User < ApplicationRecord
 
   enum sex: { man: 0, woman: 1 }
 
-  mount_uploader :picture, PictureUploader
-  validate :picture_size
+  has_many_attached :avatars
+  validate :avatar_type, :avatar_size, :avatar_length
 
   # ユーザーをフォローする
   def follow(other_user)
@@ -89,9 +90,28 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  def picture_size
-    if picture.size > 5.megabytes
-      errors.add(:picture, "5MB以内にしてください")
+  def avatar_type
+    avatars.each do |avatar|
+      if !avatar.blob.content_type.in?(%('image/jpeg image/png'))
+        avatar.purge
+        errors.add(:avatars, 'はjpegまたはpng形式でアップロードしてください')
+      end
+    end
+  end
+
+  def avatar_size
+    avatars.each do |avatar|
+      if avatar.blob.byte_size > 5.megabytes
+        avatar.purge
+        errors.add(:avatars, "は1つのファイル5MB以内にしてください")
+      end
+    end
+  end
+
+  def avatar_length
+    if avatars.length > 4
+      avatars.purge
+      errors.add(:avatars, "は4枚以内にしてください")
     end
   end
 end
