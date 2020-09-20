@@ -32,13 +32,10 @@
         <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
       </div>
       <div class="comment">
-        <ul>
-          <li class="comment-create">
-            <h3 class="text-left title">コメント</h3>
-          </li>
-          <li id="comments_area">
-            <%= render partial: 'comments/index', locals: { comments: @comments } %>
-          </li>
+        <h3 class="text-left title">コメント</h3>
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments } %>
+        </div>
         </ul>
         <% if logged_in? %>
           <div class="comment-create">

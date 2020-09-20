@@ -1,30 +1,66 @@
-<%= comments.count %>件のコメント
-<% comments.each do |comment| %>
-  <% unless comment.id.nil? %>
-    <li id="comment-<%= comment.id %>">
-      <div class="comment-box">
-        <div class="comment-avatar">
-          <% if comment.user.avatars.attached? %>
-            <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
-          <% else %>
-            <%= image_tag 'thumb50_default.png'%>
-          <% end %>
+<h4><%= comments.count %>件のコメント</h4>
+<h5 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</h5>
+<ul>
+  <% comments.first(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+      <li id="comment-<%= comment.id %>">
+        <div class="comment-box">
+          <div class="comment-avatar">
+            <% if comment.user.avatars.attached? %>
+              <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
+            <% else %>
+              <%= image_tag 'thumb50_default.png'%>
+            <% end %>
+          </div>
+          <div class="comment-text">
+            <% if logged_in? %>
+              <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
+            <% else %>
+              <p><%= comment.user.name%></p>
+            <% end %>
+            <p><%= comment.content %></p>
+            <% if comment.user == current_user %>
+              <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
+            <% end %>
+          </div>
+          <span class="comment-date pull-right">
+            <%= l comment.created_at %>
+          </span>
         </div>
-        <div class="comment-text">
-          <% if logged_in? %>
-            <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
-          <% else %>
-            <p><%= comment.user.name%></p>
-          <% end %>
-          <p><%= comment.content %></p>
-          <% if comment.user == current_user %>
-            <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
-          <% end %>
-        </div>
-        <span class="comment-date pull-right">
-          <%= l comment.created_at %>
-        </span>
-      </div>
-    </li>
+      </li>
+    <% end %>
   <% end %>
-<% end %>
+</ul>
+<div class="collapse" id="collapseExample">
+  <ul>
+    <% comments.offset(2).each do |comment| %>
+      <% unless comment.id.nil? %>
+        <li id="comment-<%= comment.id %>">
+          <div class="comment-box">
+            <div class="comment-avatar">
+              <% if comment.user.avatars.attached? %>
+                <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
+              <% else %>
+                <%= image_tag 'thumb50_default.png'%>
+              <% end %>
+            </div>
+            <div class="comment-text">
+              <% if logged_in? %>
+                <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
+              <% else %>
+                <p><%= comment.user.name%></p>
+              <% end %>
+              <p><%= comment.content %></p>
+              <% if comment.user == current_user %>
+                <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
+              <% end %>
+            </div>
+            <span class="comment-date pull-right">
+              <%= l comment.created_at %>
+            </span>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
