@@ -11,25 +11,25 @@ RSpec.describe Datespot, type: :model do
       expect(datespot).to be_valid
     end
 
-    it "店名がなければ無効な状態であること" do
+    it "名称・店名がなければ無効な状態であること" do
       datespot = build(:datespot, name: nil)
       datespot.valid?
       expect(datespot.errors[:name]).to include("を入力してください")
     end
 
-    it "店名が50文字以内であること" do
+    it "名称・店名が50文字以内であること" do
       datespot = build(:datespot, name: "あ" * 51)
       datespot.valid?
       expect(datespot.errors[:name]).to include("は50文字以内で入力してください")
     end
 
-    it "エリアがなければ無効な状態であること" do
-      datespot = build(:datespot, place: nil)
+    it "住所がなければ無効な状態であること" do
+      datespot = build(:datespot, address: nil)
       datespot.valid?
-      expect(datespot.errors[:place]).to include("を入力してください")
+      expect(datespot.errors[:address]).to include("を入力してください")
     end
 
-    it "価格帯がなければ無効な状態であること" do
+    it "予算がなければ無効な状態であること" do
       datespot = build(:datespot, range: nil)
       datespot.valid?
       expect(datespot.errors[:range]).to include("を入力してください")

@@ -26,7 +26,7 @@ ja:
         updated_at: 更新日時
       datespot:
         id: ID
-        name: 店名
+        name: 名称・店名
         address: 住所
         range: 予算
         tag_list: キーワード
