@@ -7,8 +7,8 @@
   <%= form.text_field :name, placeholder: "店名を入力", class: 'form-control', id: 'datespot_name' %>
 </div>
 <div class = 'form-group'>
-  <%= form.label :place %> <span class="input-need">※必須</span>
-  <%= form.select :place, options_for_select(Datespot.places_i18n.invert, selected: form.object.place), { include_blank: "エリアを選択" }, { class: 'form-control', id: 'datespot_place' } %>
+  <%= form.label :address %> <span class="input-need">※必須</span>
+  <%= form.text_field :address, placeholder: "住所を入力", class: 'form-control', id: 'datespot_address' %>
 </div>
 <div class = 'form-group'>
   <%= form.label :range %> <span class="input-need">※必須</span>
