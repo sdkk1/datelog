@@ -24,8 +24,10 @@ function initMap() {
         map: map,
         animation: google.maps.Animation.DROP
       });
+      //取得した座標の生成
+      var latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
       //情報ウィンドウに表示するコンテンツを作成
-      var content = '<div id="map_content"><p>' + title + '<br />' + address + '</p></div>';
+      var content = `<div id="map_content"><p>${title}<br/>${address}<br/><a href="https://maps.google.co.jp/maps?q=${latlng}&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>`;
       //情報ウィンドウのインスタンスを生成
       var infowindow = new google.maps.InfoWindow({
         content: content,
