@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :datespot do
     name { Faker::Restaurant.name }
-    place { 0 }
+    address { "東京都渋谷区恵比寿西" }
     range { 0 }
     tag_list { "オシャレ" }
     point { "シックな店内で落ち着いた雰囲気のお店" }

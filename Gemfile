@@ -45,6 +45,7 @@ gem 'bootstrap-will_paginate'
 gem 'enum_help'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rack-mini-profiler', require: false
+gem 'dotenv-rails'
 
 group :production do
   gem 'fog'

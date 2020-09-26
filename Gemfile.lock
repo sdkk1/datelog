@@ -104,6 +104,10 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-inflector (0.2.0)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
@@ -546,6 +550,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   enum_help
   factory_bot_rails (~> 4.10.0)
   faker

@@ -26,9 +26,9 @@ ja:
         updated_at: 更新日時
       datespot:
         id: ID
-        name: 店名
-        place: エリア
-        range: 価格帯
+        name: 名称・店名
+        address: 住所
+        range: 予算
         tag_list: キーワード
         point: ポイント
         caution: 注意点
@@ -238,50 +238,6 @@ ja:
     pm: 午後
   enums:
     datespot:
-      place:
-        Ginza: 銀座
-        Yurakucho: 有楽町
-        Shinbashi: 新橋
-        Hamamatsucho: 浜松町
-        Tamachi: 田町
-        Shinjuku: 新宿
-        Yoyogi: 代々木
-        Okubo: 大久保
-        Shibuya: 渋谷
-        Omotesando: 表参道
-        Aoyama: 青山
-        Harajuku: 原宿
-        Akasaka: 赤坂
-        Roppongi: 六本木
-        Azabu: 麻布
-        Marunouchi: 丸の内
-        Nihonbashi: 日本橋
-        Kanda: 神田
-        Ningyocho: 人形町
-        Ikebukuro: 池袋
-        Jiyugaoka: 自由が丘
-        Sangenjaya: 三軒茶屋
-        Futakotamagawa: 二子玉川
-        Shinagawa: 品川
-        Gotanda: 五反田
-        Osaki: 大崎
-        Odaiba: お台場
-        Toyosu: 豊洲
-        ebisu: 恵比寿
-        Hiroo: 広尾
-        Shirogane: 白金
-        Daikanyama: 代官山
-        Nakameguro: 中目黒
-        Meguro: 目黒
-        Iidabashi: 飯田橋
-        Yotsuya: 四ツ谷
-        Kagurazaka: 神楽坂
-        Ueno: 上野
-        Asakusa: 浅草
-        Nakano: 中野
-        Kichijoji: 吉祥寺
-        Tachikawa: 立川
-        Others: その他
       range:
         price_min: ~2,000
         price4000: 2,000~4,000
@@ -292,6 +248,4 @@ ja:
         price20000: 15,000~20,000
         price25000: 20,000~25,000
         price30000: 25,000~30,000
-        price40000: 30,000~40,000
-        price50000: 40,000~50,000
-        price_max: 50,000~
+        price_max: 30,000~

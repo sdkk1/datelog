@@ -39,7 +39,7 @@ RSpec.describe "Datespots", type: :system do
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.place_i18n
+          expect(page).to have_content datespot.address
           expect(page).to have_content datespot.range_i18n
           expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
@@ -71,7 +71,7 @@ RSpec.describe "Datespots", type: :system do
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.place_i18n
+          expect(page).to have_content datespot.address
           expect(page).to have_content datespot.range_i18n
           expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
@@ -101,7 +101,7 @@ RSpec.describe "Datespots", type: :system do
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクなし)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.place_i18n
+          expect(page).to have_content datespot.address
           expect(page).to have_content datespot.range_i18n
           expect(page).to have_content datespot.tag_list
           expect(page).to have_content datespot.user.name
@@ -154,9 +154,9 @@ RSpec.describe "Datespots", type: :system do
       end
 
       it "入力部分に適切なラベルが表示されること" do
-        expect(page).to have_content '店名'
-        expect(page).to have_content 'エリア'
-        expect(page).to have_content '価格帯'
+        expect(page).to have_content '名称・店名'
+        expect(page).to have_content '住所'
+        expect(page).to have_content '予算'
         expect(page).to have_content 'キーワード'
         expect(page).to have_content 'ポイント'
         expect(page).to have_content '注意点'
@@ -165,9 +165,9 @@ RSpec.describe "Datespots", type: :system do
 
     context "投稿する処理" do
       it "有効な情報で投稿を行うと投稿成功のフラッシュが表示されること" do
-        fill_in "店名", with: "ももたろう"
-        select '銀座', from: 'エリア'
-        select '~2,000', from: '価格帯'
+        fill_in "名称・店名", with: "ももたろう"
+        fill_in "住所", with: "東京都渋谷区恵比寿西"
+        select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
@@ -176,14 +176,14 @@ RSpec.describe "Datespots", type: :system do
       end
 
       it "無効な情報で投稿を行うと投稿失敗のフラッシュが表示されること" do
-        fill_in "店名", with: ""
-        select '銀座', from: 'エリア'
-        select '~2,000', from: '価格帯'
+        fill_in "名称・店名", with: ""
+        fill_in "住所", with: "東京都渋谷区恵比寿西"
+        select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "投稿する"
-        expect(page).to have_content "店名を入力してください"
+        expect(page).to have_content "名称・店名を入力してください"
       end
     end
   end
@@ -208,7 +208,7 @@ RSpec.describe "Datespots", type: :system do
       it "投稿情報が表示されること(投稿者のリンクあり)" do
         expect(page).to have_content datespot.name
         expect(page).to have_link datespot.user.name
-        expect(page).to have_content datespot.place_i18n
+        expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
@@ -240,7 +240,7 @@ RSpec.describe "Datespots", type: :system do
       it "投稿情報が表示されること(投稿者のリンクあり)" do
         expect(page).to have_content datespot.name
         expect(page).to have_link datespot.user.name
-        expect(page).to have_content datespot.place_i18n
+        expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
@@ -269,7 +269,7 @@ RSpec.describe "Datespots", type: :system do
       it "投稿情報が表示されること(投稿者のリンクなし)" do
         expect(page).to have_content datespot.name
         expect(page).to have_content datespot.user.name
-        expect(page).to have_content datespot.place_i18n
+        expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
         expect(page).to have_content datespot.point
@@ -337,9 +337,9 @@ RSpec.describe "Datespots", type: :system do
       end
 
       it "入力部分に適切なラベルが表示されること" do
-        expect(page).to have_content '店名'
-        expect(page).to have_content 'エリア'
-        expect(page).to have_content '価格帯'
+        expect(page).to have_content '名称・店名'
+        expect(page).to have_content '住所'
+        expect(page).to have_content '予算'
         expect(page).to have_content 'キーワード'
         expect(page).to have_content 'ポイント'
         expect(page).to have_content '注意点'
@@ -348,16 +348,16 @@ RSpec.describe "Datespots", type: :system do
 
     context "投稿の更新処理" do
       it "有効な更新" do
-        fill_in "店名", with: "ももたろう"
-        select '銀座', from: 'エリア'
-        select '~2,000', from: '価格帯'
+        fill_in "名称・店名", with: "ももたろう"
+        fill_in "住所", with: "東京都渋谷区恵比寿西"
+        select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "更新する"
         expect(page).to have_content "投稿が更新されました！"
         expect(datespot.reload.name).to eq "ももたろう"
-        expect(datespot.reload.place_i18n).to eq "銀座"
+        expect(datespot.reload.address).to eq "東京都渋谷区恵比寿西"
         expect(datespot.reload.range_i18n).to eq "~2,000"
         expect(datespot.reload.tag_list).to eq ["オシャレ", "焼き鳥"]
         expect(datespot.reload.point).to eq "シックな店内で落ち着いた雰囲気のお店"
@@ -365,9 +365,9 @@ RSpec.describe "Datespots", type: :system do
       end
 
       it "無効な更新" do
-        fill_in "店名", with: ""
+        fill_in "名称・店名", with: ""
         click_button "更新する"
-        expect(page).to have_content '店名を入力してください'
+        expect(page).to have_content '名称・店名を入力してください'
         expect(datespot.reload.name).not_to eq ""
       end
     end

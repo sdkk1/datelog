@@ -12,7 +12,7 @@ RSpec.describe "投稿編集", type: :request do
       expect(response).to redirect_to edit_datespot_url(datespot)
       patch datespot_path(datespot), params: { datespot: {
         name: "ももたろう",
-        place: "Ginza",
+        address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
         point: "シックな店内で落ち着いた雰囲気のお店",
@@ -32,7 +32,7 @@ RSpec.describe "投稿編集", type: :request do
 
       patch datespot_path(datespot), params: { datespot: {
         name: "ももたろう",
-        place: "Ginza",
+        address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
         point: "シックな店内で落ち着いた雰囲気のお店",
@@ -52,7 +52,7 @@ RSpec.describe "投稿編集", type: :request do
 
       patch datespot_path(datespot), params: { datespot: {
         name: "ももたろう",
-        place: "Ginza",
+        address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
         point: "シックな店内で落ち着いた雰囲気のお店",

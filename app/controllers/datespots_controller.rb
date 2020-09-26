@@ -9,7 +9,7 @@ class DatespotsController < ApplicationController
   def show
     @datespot = Datespot.find(params[:id])
     @comment = Comment.new
-    @comments = @datespot.comments
+    @comments = @datespot.comments.includes(:user)
   end
 
   def index
@@ -64,8 +64,8 @@ class DatespotsController < ApplicationController
   private
 
   def datespot_params
-    params.require(:datespot).permit(:name, :place, :range, :point, :caution,
-                                     :picture, :remove_picture, :tag_list, images: [])
+    params.require(:datespot).permit(:name, :address, :range, :point, :caution,
+                                     :tag_list, images: [])
   end
 
   def correct_user

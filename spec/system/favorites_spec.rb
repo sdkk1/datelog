@@ -27,12 +27,12 @@ RSpec.describe "Favorites", type: :system do
       visit favorites_path
       expect(page).to have_css ".favorite-datespot", count: 2
       expect(page).to have_link datespot.name
-      expect(page).to have_content datespot.place_i18n
+      expect(page).to have_content datespot.address
       expect(page).to have_content datespot.range_i18n
       expect(page).to have_content datespot.tag_list
       expect(page).to have_link datespot.user.name
       expect(page).to have_link other_datespot.name
-      expect(page).to have_content other_datespot.place_i18n
+      expect(page).to have_content other_datespot.address
       expect(page).to have_content other_datespot.range_i18n
       expect(page).to have_content other_datespot.tag_list
       expect(page).to have_link other_datespot.user.name

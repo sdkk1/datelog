@@ -31,3 +31,5 @@ vendor/bundle
 datelog.drawio
 
 /public/uploads/
+
+/.env
