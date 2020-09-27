@@ -1,4 +1,18 @@
-<%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |f| %>
-  <%= f.text_area :content, placeholder: "コメントを入力", id: "comment_content" %>
-  <%= f.submit "コメントする", class: "btn btn-outline-dark comment-submit float-right" %>
+<%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
+  <div id="star">
+    <%= form.label :rate %>
+    <%= form.hidden_field :rate, id: :review_star %>
+  </div>
+  <%= form.text_area :content, placeholder: "コメントを入力", id: "comment_content" %>
+  <%= form.submit "コメントする", class: "btn btn-outline-dark comment-submit float-right" %>
 <% end %>
+<script>
+$('#star').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  scoreName: "comment[rate]",
+});
+</script>
