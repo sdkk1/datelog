@@ -3,8 +3,8 @@
     <%= form.label :rate %>
     <%= form.hidden_field :rate, id: :review_star %>
   </div>
-  <%= form.text_area :content, placeholder: "コメントを入力", id: "comment_content" %>
-  <%= form.submit "コメントする", class: "btn btn-outline-dark comment-submit float-right" %>
+  <%= form.text_area :content, placeholder: "口コミを入力", id: "comment_content" %>
+  <%= form.submit "口コミする", class: "btn btn-outline-dark comment-submit float-right", id: "button1"  %>
 <% end %>
 <script>
 $('#star').raty({

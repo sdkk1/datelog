@@ -1,2 +1,5 @@
 $("#comments_area").html("<%= j(render 'index', { comments: @comment.datespot.comments }) %>")
 $("textarea").val('')
+$('#button1').on('click', function(){
+  $('#star').children('img').attr('src', '/assets/star-off-6aaeebdaab93d594c005d366ce0d94fba02e7a07fd03557dbee8482f04a91c22.png');
+});
