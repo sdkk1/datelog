@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       render :index
+    else
+      render :error_messages
     end
     if @user != current_user
       @user.notifications.create(datespot_id: @datespot.id, variety: 2,
@@ -27,6 +29,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :datespot_id, :user_id, :rate)
+    params.require(:comment).permit(:content, :datespot_id, :user_id, :rate, :picture)
   end
 end

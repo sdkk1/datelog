@@ -48,6 +48,9 @@
             });
             </script>
             <p><%= comment.content %></p>
+            <% if comment.picture.attached? %>
+              <%= image_tag comment.picture.variant(resize:'200x200').processed %>
+            <% end %>
             <% if comment.user == current_user %>
               <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
             <% end %>
@@ -92,6 +95,9 @@
               });
               </script>
               <p><%= comment.content %></p>
+              <% if comment.picture.attached? %>
+                <%= image_tag comment.picture.variant(resize:'200x200').processed %>
+              <% end %>
               <% if comment.user == current_user %>
                 <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
               <% end %>
