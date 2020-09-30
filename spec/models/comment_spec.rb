@@ -18,15 +18,20 @@ RSpec.describe Comment, type: :model do
       expect(comment).not_to be_valid
     end
 
-    it "コメント内容がなければ無効な状態であること" do
+    it "口コミがなければ無効な状態であること" do
       comment = build(:comment, content: nil)
       expect(comment).not_to be_valid
     end
 
-    it "コメント内容が255文字以内であること" do
+    it "口コミが255文字以内であること" do
       comment = build(:comment, content: "あ" * 256)
       comment.valid?
       expect(comment.errors[:content]).to include("は255文字以内で入力してください")
+    end
+
+    it "評価がなければ無効な状態であること" do
+      comment = build(:comment, rate: nil)
+      expect(comment).not_to be_valid
     end
   end
 end
