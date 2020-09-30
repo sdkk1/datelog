@@ -7,8 +7,6 @@ $(function(){
 
    //fileが選択された時に発火するイベント
   $('#datespot_image').change(function(){
-    //選択したfileのオブジェクトをpropで取得
-    var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
@@ -19,7 +17,7 @@ $(function(){
       //Fileオブジェクトを読み込む
       fileReader.readAsDataURL(file);
       //DataTransfer構造のデバッグ
-      if(dataBox.items.length > 6){
+      if(dataBox.items.length > 5){
         return false;
      }
     });

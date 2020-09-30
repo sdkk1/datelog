@@ -1,4 +1,26 @@
-<%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |f| %>
-  <%= f.text_area :content, placeholder: "コメントを入力", id: "comment_content" %>
-  <%= f.submit "コメントする", class: "btn btn-outline-dark comment-submit float-right" %>
+<%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
+  <div id="error_messages"></div>
+  <div class = 'form-group' id = "star">
+    <%= form.label :rate %> <span class="input-need">※必須(0.5~5の段階評価)</span><br/>
+    <%= form.hidden_field :rate, id: :review_star %>
+  </div>
+  <div class = 'form-group'>
+    <%= form.label :content %> <span class="input-need">※必須(255文字以内)</span>
+    <%= form.text_area :content, placeholder: "口コミを入力", id: "comment_content" %>
+  </div>
+  <div class = 'form-group' id = "picture">
+    <%= form.label :picture %> <span class="input-unneed">※任意(1枚まで)</span>
+    <%= form.file_field :picture, id: 'comment_picture' %>
+  </div>
+  <%= form.submit "口コミする", class: "btn btn-outline-dark comment-submit float-right", id: "button1"  %>
 <% end %>
+<script>
+$('#star').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  scoreName: "comment[rate]",
+});
+</script>

@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.includes(datespot: { images_attachments: :blob })
   end
 
   def create

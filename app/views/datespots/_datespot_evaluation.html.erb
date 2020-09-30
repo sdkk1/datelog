@@ -1,0 +1,19 @@
+<% comments = @datespot.comments %>
+<% if comments.present? %>
+  <div id="rate-average-<%= @datespot.id %>"></div>
+  <script>
+    $('#rate-average-<%= @datespot.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= comments.average(:rate) %>,
+    });
+  </script>
+  <span>平均評価：<%= comments.average(:rate).round(1) %>点</span><br>
+  <span>口コミ数：<%= comments.count %>件</span>
+<% else %>
+  <span>(まだ口コミはありません)</span>
+<% end %>

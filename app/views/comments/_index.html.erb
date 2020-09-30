@@ -1,24 +1,56 @@
-<h4><%= comments.count %>件のコメント</h4>
-<h5 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</h5>
+<% if comments.present? %>
+  <div id="rate-average"></div>
+  <script>
+    $('#rate-average').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= comments.average(:rate) %>,
+    });
+  </script>
+  <h4>平均評価：<%= comments.average(:rate).round(1) %>点</h4>
+  <h4>口コミ数：<%= comments.count %>件</h4>
+  <h5 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</h5>
+<% else %>
+  <h4>(まだ口コミはありません)</h4>
+<% end %>
 <ul>
   <% comments.first(2).each do |comment| %>
     <% unless comment.id.nil? %>
       <li id="comment-<%= comment.id %>">
         <div class="comment-box">
-          <div class="comment-avatar">
+          <div class="comment-user">
             <% if comment.user.avatars.attached? %>
               <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
             <% else %>
               <%= image_tag 'thumb50_default.png'%>
             <% end %>
-          </div>
-          <div class="comment-text">
             <% if logged_in? %>
               <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
             <% else %>
               <p><%= comment.user.name%></p>
             <% end %>
+          </div>
+          <div class="comment-contents">
+            <div id="star-rate-<%= comment.id %>"></div>
+            <script>
+            $('#star-rate-<%= comment.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= comment.rate %>,
+            });
+            </script>
             <p><%= comment.content %></p>
+            <% if comment.picture.attached? %>
+              <%= image_tag comment.picture.variant(resize:'200x200').processed %>
+            <% end %>
             <% if comment.user == current_user %>
               <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
             <% end %>
@@ -37,20 +69,35 @@
       <% unless comment.id.nil? %>
         <li id="comment-<%= comment.id %>">
           <div class="comment-box">
-            <div class="comment-avatar">
+            <div class="comment-user">
               <% if comment.user.avatars.attached? %>
                 <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
               <% else %>
                 <%= image_tag 'thumb50_default.png'%>
               <% end %>
-            </div>
-            <div class="comment-text">
               <% if logged_in? %>
                 <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
               <% else %>
                 <p><%= comment.user.name%></p>
               <% end %>
+            </div>
+            <div class="comment-contents">
+              <div id="star-rate-<%= comment.id %>"></div>
+              <script>
+              $('#star-rate-<%= comment.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= comment.rate %>,
+              });
+              </script>
               <p><%= comment.content %></p>
+              <% if comment.picture.attached? %>
+                <%= image_tag comment.picture.variant(resize:'200x200').processed %>
+              <% end %>
               <% if comment.user == current_user %>
                 <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
               <% end %>

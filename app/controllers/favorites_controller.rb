@@ -2,8 +2,8 @@ class FavoritesController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @favorites = current_user.favorites
-    @datespots = current_user.favorite_datespots.includes(:user)
+    @favorites = current_user.favorites.includes(datespot: { images_attachments: :blob })
+    @datespots = current_user.favorite_datespots
   end
 
   def create

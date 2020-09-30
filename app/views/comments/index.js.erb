@@ -1,2 +1,8 @@
 $("#comments_area").html("<%= j(render 'index', { comments: @comment.datespot.comments }) %>")
+document.getElementById('error_messages').style.display = "none";
+$('#star').children('img').attr('src', '/assets/star-off-6aaeebdaab93d594c005d366ce0d94fba02e7a07fd03557dbee8482f04a91c22.png');
+$('input[name="comment[rate]"]').val(0)
 $("textarea").val('')
+var picture_form = document.getElementById('picture');
+var temp = picture_form.innerHTML;
+picture_form.innerHTML = temp;
