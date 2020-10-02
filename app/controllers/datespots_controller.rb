@@ -13,9 +13,19 @@ class DatespotsController < ApplicationController
   end
 
   def index
-    @datespots = Datespot.with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
-    if params[:tag_name]
-      @datespots = Datespot.tagged_with("#{params[:tag_name]}").paginate(page: params[:page], per_page: 5)
+    if params[:q].present?
+      @search = Datespot.ransack(params[:q])
+      @datespots = @search.result(distinct: true).with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
+      if params[:tag_name]
+        @datespots = @search.result(distinct: true).tagged_with("#{params[:tag_name]}").with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
+      end
+    else
+      params[:q] = { sorts: 'updated_at desc' }
+      @search = Datespot.ransack(params[:q])
+      @datespots = @search.result(distinct: true).with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
+      if params[:tag_name]
+        @datespots = @search.result(distinct: true).tagged_with("#{params[:tag_name]}").with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 5)
+      end
     end
   end
 

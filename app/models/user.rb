@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 
   validates :name, presence: true, length: { maximum: 50 }
 

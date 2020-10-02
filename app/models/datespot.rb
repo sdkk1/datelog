@@ -6,7 +6,7 @@ class Datespot < ApplicationRecord
   has_many :lists, dependent: :destroy
   acts_as_taggable_on :tags
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
 
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }

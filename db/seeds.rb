@@ -22,7 +22,7 @@ end
 
 5.times do |n|
   Datespot.create!(name: Faker::Restaurant.name,
-                  place: 0,
+                  address: "東京都渋谷区恵比寿西",
                   range: 0,
                   tag_list: "美味しい, オシャレ",
                   point: "シックな店内で落ち着いた雰囲気のお店",
@@ -32,7 +32,7 @@ end
 
 5.times do |n|
   Datespot.create!(name: Faker::Restaurant.name,
-                  place: 1,
+                  address: "東京都渋谷区恵比寿南",
                   range: 1,
                   tag_list: "美味しい, 安い",
                   point: "料理が安くて、美味しい",
