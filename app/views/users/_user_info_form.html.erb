@@ -15,18 +15,18 @@
   <%= form.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password' %>
 </div>
 <div class = 'form-group'>
-  <%= form.label :password_confirmation %>　<span class="input-need">※必須(6文字以上)</span>
+  <%= form.label :password_confirmation %> <span class="input-need">※必須(6文字以上)</span>
   <%= form.password_field :password_confirmation, placeholder: "パスワード（確認）を入力", class: 'form-control', id: 'user_password_confirmation' %>
 </div>
 <div class = 'form-group'>
-  <%= form.label :sex %>　<span class="input-unneed">※任意</span><br/>
+  <%= form.label :sex %> <span class="input-unneed">※任意</span><br/>
   <%= form.label :man %>
   <%= form.radio_button :sex, :man %>
   <%= form.label :woman %>
   <%= form.radio_button :sex, :woman %>
 </div>
 <div class="form-group">
-  <%= form.label :introduction %>　<span class="input-unneed">※任意(255文字以内)</span>
+  <%= form.label :introduction %> <span class="input-unneed">※任意(255文字以内)</span>
   <%= form.text_area :introduction, placeholder: "自己紹介を入力", class: "form-control" %>
 </div>
 <%= form.submit yield(:button_text), class: "btn btn-primary" %>

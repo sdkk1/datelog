@@ -12,7 +12,14 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.with_attached_avatars.paginate(page: params[:page])
+    if params[:q].present?
+      @search = User.ransack(params[:q])
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page])
+    else
+      params[:q] = { sorts: 'updated_at desc' }
+      @search = User.ransack(params[:q])
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page])
+    end
   end
 
   def create

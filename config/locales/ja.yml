@@ -19,8 +19,8 @@ ja:
         password_confirmation: パスワード(確認)
         introduction: 自己紹介
         sex: 性別
-        man: 男
-        woman: 女
+        man: 男性
+        woman: 女性
         avatars: プロフィール写真
         created_at: 登録日時
         updated_at: 更新日時
