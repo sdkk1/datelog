@@ -6,7 +6,25 @@
   </div>
   <div class="col-md-2">
     <div class='form-group'>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc'}, { selected: params[:q][:sorts] })%>
+      <%= form.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: "居住地で検索", class: 'form-control font-awesome' %>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class='form-group'>
+      <%= form.number_field :age_gteq, placeholder: "年齢で検索", class: 'form-control font-awesome' %>以上〜
+      <%= form.number_field :age_lt, placeholder: "年齢で検索", class: 'form-control font-awesome' %>未満
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class='form-group'>
+    　<%= form.radio_button :sex_eq, '', {:checked => true} %>指定なし
+      <%= form.radio_button :sex_eq, 0 %>男性
+      <%= form.radio_button :sex_eq, 1 %>女性
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class='form-group'>
+      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc'}, { selected: params[:q][:sorts] })%>
     </div>
   </div>
   <div class="col-md-2">

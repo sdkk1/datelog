@@ -21,15 +21,15 @@
       </div>
       <div class="datespot-info">
         <% if logged_in? %>
-          <h4 id="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
+          <h4 class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
         <% else %>
-          <h4 id="user-name">【投稿者】<%= @datespot.user.name %></h4>
+          <h4 class="user-name">【投稿者】<%= @datespot.user.name %></h4>
         <% end %>
-        <h4 id="address">【住所】<%= @datespot.address %></h4>
-        <h4 id="range">【予算】<%= @datespot.range_i18n %></h4>
-        <h4 id="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
-        <h4 id="point">【ポイント】<%= @datespot.point %></h4>
-        <h4 id="caution">【注意点】<%= @datespot.caution %></h4>
+        <h4 class="address">【住所】<%= @datespot.address %></h4>
+        <h4 class="range">【予算】<%= @datespot.range_i18n %></h4>
+        <h4 class="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
+        <h4 class="point">【ポイント】<%= @datespot.point %></h4>
+        <h4 class="caution">【注意点】<%= @datespot.caution %></h4>
       </div>
       <div class="comment">
         <h3 class="text-left title">口コミ</h3>

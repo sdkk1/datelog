@@ -29,10 +29,20 @@ class User < ApplicationRecord
 
   validates :introduction, length: { maximum: 255 }
 
-  enum sex: { man: 0, woman: 1 }
-
   has_many_attached :avatars
   validate :avatar_type, :avatar_size, :avatar_length
+
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  enum sex: { man: 0, woman: 1 }
+
+  enum age: {
+    age18: 18, age19: 19, age20: 20, age21: 21, age22: 22, age23: 23, age24: 24, age25: 25, age26: 26, age27: 27, age28: 28,
+    age29: 29, age30: 30, age31: 31, age32: 32, age33: 33, age34: 34, age35: 35, age36: 36, age37: 37, age38: 38, age39: 39,
+    age40: 40, age41: 41, age42: 42, age43: 43, age44: 44, age45: 45, age46: 46, age47: 47, age48: 48, age49: 49, age50: 50,
+    age50over: 51
+  }
 
   # ユーザーをフォローする
   def follow(other_user)

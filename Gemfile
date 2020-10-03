@@ -47,6 +47,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rack-mini-profiler', require: false
 gem 'dotenv-rails'
 gem 'ransack'
+gem 'jp_prefecture'
 
 group :production do
   gem 'fog'

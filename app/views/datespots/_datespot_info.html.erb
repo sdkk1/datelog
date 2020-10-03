@@ -1,9 +1,9 @@
-<span class="datespot-name"><%= link_to @datespot.name, datespot_path(@datespot) %></span><br>
-<span class="address">【住所】<%= @datespot.address %></span><br>
-<span class="range">【予算】<%= @datespot.range_i18n %></span><br>
-<span class="keyword">【キーワード】<%= render 'datespots/tag_list', tag_list: @datespot.tag_list %></span><br>
+<h4 class="datespot-name"><%= link_to @datespot.name, datespot_path(@datespot) %></h4><br>
 <% if logged_in? %>
   <span class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></span><br>
 <% else %>
   <span class="user-name">【投稿者】<%= @datespot.user.name %></span><br>
 <% end %>
+<span class="address">【住所】<%= @datespot.address %></span><br>
+<span class="range">【予算】<%= @datespot.range_i18n %></span><br>
+<span class="keyword">【キーワード】<%= render 'datespots/tag_list', tag_list: @datespot.tag_list %></span><br>
