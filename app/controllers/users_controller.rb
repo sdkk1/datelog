@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @datespots = @user.datespots.includes(:taggings, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 5)
+    @datespots = @user.datespots.includes(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 5).order('updated_at DESC')
   end
 
   def index
