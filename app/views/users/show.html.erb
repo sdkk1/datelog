@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-md-9">
       <% if @user.datespots.any? %>
-        <h3>デートスポット (<%= @user.datespots.count %>)</h3>
+        <h3>デートスポット (<%= @user.datespots_count %>)</h3>
         <ol class="datespots">
           <%= render @datespots %>
         </ol>

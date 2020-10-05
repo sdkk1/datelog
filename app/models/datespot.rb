@@ -1,5 +1,5 @@
 class Datespot < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: :datespots_count
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy

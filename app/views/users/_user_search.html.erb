@@ -24,7 +24,7 @@
   </div>
   <div class="col-md-2">
     <div class='form-group'>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc'}, { selected: params[:q][:sorts] })%>
+      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc', 'いいね数の多い順': 'followed_count desc', '投稿数の多い順': 'datespots_count desc'}, { selected: params[:q][:sorts] })%>
     </div>
   </div>
   <div class="col-md-2">
