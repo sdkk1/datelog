@@ -38,7 +38,7 @@ RSpec.describe "Lists", type: :system do
       expect(page).to have_content datespot_2.range_i18n
       expect(page).to have_content datespot_2.tag_list
       expect(page).to have_link datespot_2.user.name
-      user.unlist(List.first)
+      user.unlist(List.last)
       visit lists_path
       expect(page).to have_css ".list-datespot", count: 1
       expect(page).to have_content datespot.name
