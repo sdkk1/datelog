@@ -34,7 +34,7 @@
       <div class="comment">
         <h3 class="text-left title">口コミ</h3>
         <div id="comments_area">
-          <%= render partial: 'comments/index', locals: { comments: @comments } %>
+          <%= render partial: 'comments/index', locals: { comments: @comments, datespot: @datespot } %>
         </div>
         </ul>
         <% if logged_in? %>

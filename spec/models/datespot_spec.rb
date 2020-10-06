@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Datespot, type: :model do
-  let!(:datespot_one_month_ago) { create(:datespot, :one_month_ago) }
-  let!(:datespot_one_week_ago) { create(:datespot, :one_week_ago) }
-  let!(:datespot_yesterday) { create(:datespot, :yesterday) }
   let!(:datespot) { create(:datespot) }
 
   context "バリデーション" do
@@ -51,12 +48,6 @@ RSpec.describe Datespot, type: :model do
       datespot = build(:datespot, user_id: nil)
       datespot.valid?
       expect(datespot.errors[:user_id]).to include("を入力してください")
-    end
-  end
-
-  context "並び順" do
-    it "最も最近の投稿が最初の投稿になっていること" do
-      expect(datespot).to eq Datespot.first
     end
   end
 end

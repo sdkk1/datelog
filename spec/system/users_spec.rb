@@ -88,7 +88,7 @@ RSpec.describe "Users", type: :system do
   describe "ユーザー詳細ページ" do
     before do
       login_for_system(user)
-      create_list(:datespot, 10, user: user)
+      create_list(:datespot, 5, user: user)
       visit user_path(user)
     end
 
@@ -122,10 +122,6 @@ RSpec.describe "Users", type: :system do
           expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
-      end
-
-      it "デートスポットのページネーションが表示されていることを確認" do
-        expect(page).to have_css "div.pagination"
       end
     end
 
@@ -163,14 +159,13 @@ RSpec.describe "Users", type: :system do
 
   describe "ユーザー一覧ページ" do
     before do
-      create_list(:user, 30)
+      create_list(:user, 20)
       visit users_path
     end
 
     context "管理者ユーザーの場合" do
-      it "ぺージネーション、自分以外のユーザーの削除ボタンが表示されること" do
+      it "自分以外のユーザーの削除ボタンが表示されること" do
         login_for_system(admin_user)
-        expect(page).to have_css "div.pagination"
         User.paginate(page: 1).each do |u|
           expect(page).to have_link u.name, href: user_path(u)
           expect(page).to have_content "削除" unless u == admin_user
@@ -179,9 +174,8 @@ RSpec.describe "Users", type: :system do
     end
 
     context "管理者ユーザー以外の場合" do
-      it "ぺージネーション、自分のアカウントのみ削除ボタンが表示されること" do
+      it "自分のアカウントのみ削除ボタンが表示されること" do
         login_for_system(user)
-        expect(page).to have_css "div.pagination"
         User.paginate(page: 1).each do |u|
           expect(page).to have_link u.name, href: user_path(u)
           if u == user

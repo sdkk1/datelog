@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :datespot
+  belongs_to :datespot, counter_cache: :comments_count
 
   default_scope -> { order(created_at: :desc) }
 

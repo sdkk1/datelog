@@ -1,12 +1,10 @@
 class Datespot < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: :datespots_count
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
   acts_as_taggable_on :tags
-
-  default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }

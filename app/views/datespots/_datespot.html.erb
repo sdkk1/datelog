@@ -6,7 +6,7 @@
   <%= render 'datespots/datespot_evaluation' %><br>
   <%= render 'datespots/datespot_info' %>
   <span class="timestamp">
-    <%= l @datespot.created_at %>
+    <%= l @datespot.updated_at %>
   </span>
   <% if logged_in? %>
     <% if current_user.admin? || (current_user == @datespot.user) %>

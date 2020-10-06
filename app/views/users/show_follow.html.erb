@@ -9,7 +9,7 @@
       <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "プロフィール", @user %></span>
-      <span><b>投稿数</b><%= @user.datespots.count %><b>件</b></span>
+      <span>【投稿数】 <%= @user.datespots_count %> 件</span>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>

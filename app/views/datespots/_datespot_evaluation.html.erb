@@ -13,7 +13,20 @@
     });
   </script>
   <span>平均評価：<%= comments.average(:rate).round(1) %>点</span><br>
-  <span>口コミ数：<%= comments.count %>件</span>
+  <span>口コミ数：<%= @datespot.comments_count %>件</span>
 <% else %>
-  <span>(まだ口コミはありません)</span>
+  <div id="rate-average-<%= @datespot.id %>"></div>
+  <script>
+    $('#rate-average-<%= @datespot.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: 0,
+    });
+  </script>
+  <span>平均評価：0点</span><br>
+  <span>口コミ数：0件</span>
 <% end %>

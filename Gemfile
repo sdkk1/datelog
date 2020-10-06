@@ -46,6 +46,8 @@ gem 'enum_help'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rack-mini-profiler', require: false
 gem 'dotenv-rails'
+gem 'ransack'
+gem 'jp_prefecture'
 
 group :production do
   gem 'fog'
@@ -69,6 +71,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
   gem 'bullet'
+  gem 'pry-rails'
 end
 
 group :test do

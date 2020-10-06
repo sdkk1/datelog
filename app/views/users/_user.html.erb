@@ -6,6 +6,18 @@
     </div>
     <div class="col-md-6">
       <h4 class="user-name"><%= link_to @user.name, user %></h4>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <span>【投稿数】 <%= @user.datespots_count %> 件</span><br>
+      <% if @user.prefecture_code.present? %>
+        <span class="residence">【居住地】<%= @user.prefecture.name %></span><br>
+      <% else %>
+        <span class="residence">【居住地】</span><br>
+      <% end %>
+      <span class="age">【年齢】<%= @user.age_i18n %></span><br>
+      <span class="sex">【性別】<%= @user.sex_i18n %></span><br>
+      <span class="introduction">【自己紹介】<%= @user.introduction %></span><br>
       <% if (current_user.admin? && current_user != @user) || (!current_user.admin? && current_user == @user) %>
         <%= link_to "削除", user_path(@user), method: :delete,
                                       data: { confirm: "本当に削除しますか？" } %>

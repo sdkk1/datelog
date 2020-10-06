@@ -9,7 +9,7 @@ RSpec.describe "Datespots", type: :system do
 
   describe "投稿一覧ページ" do
     before do
-      create_list(:datespot, 10)
+      create_list(:datespot, 5)
       visit datespots_path
     end
 
@@ -24,10 +24,6 @@ RSpec.describe "Datespots", type: :system do
 
       it "デートスポットの件数が表示されていることを確認" do
         expect(page).to have_content "デートスポット (#{Datespot.all.count})"
-      end
-
-      it "デートスポットのページネーションが表示されていることを確認" do
-        expect(page).to have_css "div.pagination"
       end
     end
 

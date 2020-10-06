@@ -8,11 +8,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @datespots = @user.datespots.includes(:taggings, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 5)
+    @datespots = @user.datespots.includes(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 10).order('updated_at DESC')
   end
 
   def index
-    @users = User.with_attached_avatars.paginate(page: params[:page])
+    if params[:q].present?
+      @search = User.ransack(params[:q])
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page])
+    else
+      params[:q] = { sorts: 'updated_at desc' }
+      @search = User.ransack(params[:q])
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page])
+    end
   end
 
   def create
@@ -78,7 +85,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-                                 :sex, :introduction, avatars: [])
+                                 :prefecture_code, :age, :sex, :introduction, avatars: [])
   end
 
   # 正しいユーザーかどうか確認

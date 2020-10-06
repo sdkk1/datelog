@@ -17,10 +17,12 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
+        prefecture_code: 居住地
+        age: 年齢
         introduction: 自己紹介
         sex: 性別
-        man: 男
-        woman: 女
+        man: 男性
+        woman: 女性
         avatars: プロフィール写真
         created_at: 登録日時
         updated_at: 更新日時
@@ -251,3 +253,42 @@ ja:
         price25000: 20,000~25,000
         price30000: 25,000~30,000
         price_max: 30,000~
+    user:
+      sex:
+        man: 男性
+        woman: 女性
+      age:
+        age18: 18歳
+        age19: 19歳
+        age20: 20歳
+        age21: 21歳
+        age22: 22歳
+        age23: 23歳
+        age24: 24歳
+        age25: 25歳
+        age26: 26歳
+        age27: 27歳
+        age28: 28歳
+        age29: 29歳
+        age30: 30歳
+        age31: 31歳
+        age32: 32歳
+        age33: 33歳
+        age34: 34歳
+        age35: 35歳
+        age36: 36歳
+        age37: 37歳
+        age38: 38歳
+        age39: 39歳
+        age40: 40歳
+        age41: 41歳
+        age42: 42歳
+        age43: 43歳
+        age44: 44歳
+        age45: 45歳
+        age46: 46歳
+        age47: 47歳
+        age48: 48歳
+        age49: 49歳
+        age50: 50歳
+        age50over: 51歳~

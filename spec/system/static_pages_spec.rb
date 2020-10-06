@@ -7,7 +7,7 @@ RSpec.describe "StaticPages", type: :system do
 
   describe "トップページ" do
     before do
-      create_list(:datespot, 10)
+      create_list(:datespot, 5)
     end
 
     context "ページレイアウト(共通)" do
@@ -25,10 +25,6 @@ RSpec.describe "StaticPages", type: :system do
 
       it "デートスポットの件数が表示されていることを確認" do
         expect(page).to have_content "デートスポット (#{Datespot.all.count})"
-      end
-
-      it "デートスポットのページネーションが表示されていることを確認" do
-        expect(page).to have_css "div.pagination"
       end
     end
 

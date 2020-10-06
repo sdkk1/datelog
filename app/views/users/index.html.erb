@@ -1,9 +1,16 @@
 <% provide(:title, 'ユーザー一覧') %>
 <div class="container">
-  <h1>ユーザー一覧</h1>
-  <%= will_paginate %>
-  <ul class="users">
-    <%= render @users %>
-  </ul>
-  <%= will_paginate %> 
+  <h3 class="title-users-index">ユーザー一覧</h3>
+  <div class="row">
+    <%= render 'user_search' %>
+    <div class="col-md-9">
+      <% if @users.any? %>
+        <h3>ユーザー (<%= @users.count %>)</h3>
+        <ol class="users">
+          <%= render @users %>
+        </ol>
+        <%= will_paginate @users %>
+      <% end %>
+    </div>
+  </div>
 </div>
