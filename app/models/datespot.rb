@@ -5,6 +5,7 @@ class Datespot < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
   acts_as_taggable_on :tags
+  is_impressionable counter_cache: true
 
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }

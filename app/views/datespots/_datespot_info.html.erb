@@ -1,3 +1,4 @@
+<span>閲覧数：<%= @datespot.impressions_count %>回</span><br>
 <h4 class="datespot-name"><%= link_to @datespot.name, datespot_path(@datespot) %></h4><br>
 <% if logged_in? %>
   <span class="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></span><br>

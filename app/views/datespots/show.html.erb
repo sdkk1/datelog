@@ -30,6 +30,7 @@
         <h4 id="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
         <h4 id="point">【ポイント】<%= @datespot.point %></h4>
         <h4 id="caution">【注意点】<%= @datespot.caution %></h4>
+        <h4>閲覧数：<%= @datespot.impressions_count %>回</h4>
       </div>
       <div class="comment">
         <h3 class="text-left title">口コミ</h3>

@@ -48,6 +48,7 @@ gem 'rack-mini-profiler', require: false
 gem 'dotenv-rails'
 gem 'ransack'
 gem 'jp_prefecture'
+gem 'impressionist', '~> 1.6.1'
 
 group :production do
   gem 'fog'

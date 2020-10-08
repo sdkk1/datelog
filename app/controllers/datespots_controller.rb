@@ -1,6 +1,7 @@
 class DatespotsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  impressionist :actions => [:show], :unique => [:impressionable_id, :user_id]
 
   def new
     @datespot = Datespot.new
