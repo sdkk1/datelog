@@ -21,7 +21,7 @@
   </div>
   <div class="col-md-2">
     <div class='form-group'>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '口コミ数の多い順': 'comments_count desc'}, { selected: params[:q][:sorts] })%>
+      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '口コミ数の多い順': 'comments_count desc', '閲覧数の多い順': 'impressions_count desc'}, { selected: params[:q][:sorts] })%>
     </div>
   </div>
   <div class="col-md-2">

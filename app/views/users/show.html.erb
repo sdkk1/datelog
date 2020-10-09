@@ -10,6 +10,7 @@
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
+      <h4>【足跡】 <%= @user.impressions_count %>回</h4>
       <% if @user.prefecture_code.present? %>
         <h4 class="residence">【居住地】<%= @user.prefecture.name %></h4>
       <% else %>
