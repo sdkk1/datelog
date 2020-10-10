@@ -11,6 +11,22 @@ class DatespotsController < ApplicationController
     @datespot = Datespot.find(params[:id])
     @comment = Comment.new
     @comments = @datespot.comments.includes(:user)
+
+    if logged_in?
+      new_history = @datespot.browsing_histories.new
+      new_history.user_id = current_user.id
+      if current_user.browsing_histories.exists?(datespot_id: "#{params[:id]}")
+        old_history = current_user.browsing_histories.find_by(datespot_id: "#{params[:id]}")
+        old_history.destroy
+      end
+      new_history.save
+
+      histories_stock_limit = 5
+      histories = current_user.browsing_histories.all
+      if histories.count > histories_stock_limit
+        histories[0].destroy
+      end
+    end
   end
 
   def index

@@ -1,0 +1,15 @@
+<% provide(:title, "閲覧履歴一覧") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>閲覧履歴一覧 (<%= @histories.count %>)</h3>
+    </div>
+  </div>
+  <% if @histories.present? %>
+    <ol class="histories">
+      <%= render @histories %>
+    </ol>
+  <% else %>
+    <p>履歴はありません</p>
+  <% end %>
+</div>
