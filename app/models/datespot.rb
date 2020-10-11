@@ -27,6 +27,11 @@ class Datespot < ApplicationRecord
     Comment.where("datespot_id = ?", datespot_id)
   end
 
+  def update_rate_avarage
+    comments_average = comments.average(:rate)
+    update(rate_average: comments_average)
+  end
+
   private
 
   def image_type

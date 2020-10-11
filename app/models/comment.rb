@@ -12,6 +12,12 @@ class Comment < ApplicationRecord
   has_one_attached :picture
   validate :picture_type, :picture_size
 
+  after_save :update_rate_avarage
+
+  def update_rate_avarage
+    datespot.update_rate_avarage
+  end
+
   private
 
   def picture_type
