@@ -9,10 +9,10 @@
       starHalf: '<%= asset_path('star-half.png') %>',
       half: true,
       readOnly: true,
-      score: <%= comments.average(:rate) %>,
+      score: <%= @datespot.rate_average.round(1) %>,
     });
   </script>
-  <span>平均評価：<%= comments.average(:rate).round(1) %>点</span><br>
+  <span>平均評価：<%= @datespot.rate_average.round(1) %>点</span><br>
   <span>口コミ数：<%= @datespot.comments_count %>件</span>
 <% else %>
   <div id="rate-average-<%= @datespot.id %>"></div>

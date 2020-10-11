@@ -8,10 +8,10 @@
       starHalf: '<%= asset_path('star-half.png') %>',
       half: true,
       readOnly: true,
-      score: <%= comments.average(:rate) %>,
+      score: <%= @datespot.rate_average.round(1) %>,
     });
   </script>
-  <h4>平均評価：<%= comments.average(:rate).round(1) %>点</h4>
+  <h4>平均評価：<%= @datespot.rate_average.round(1) %>点</h4>
   <h4>口コミ数：<%= @datespot.comments_count %>件</h4>
   <h5 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</h5>
 <% else %>
