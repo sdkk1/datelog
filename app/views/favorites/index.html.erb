@@ -2,12 +2,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h3>　お気に入り一覧 (<%= @favorites.count %>)</h3>
+      <h3>お気に入り一覧 (<%= @favorites.count %>)</h3>
     </div>
   </div>
   <% if @favorites.present? %>
     <ol class="favorites">
       <%= render @favorites %>
     </ol>
+  <% else %>
+    <p>お気に入りはありません</p>
   <% end %>
 </div>
