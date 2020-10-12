@@ -151,17 +151,20 @@ RSpec.describe "Datespots", type: :system do
 
       it "入力部分に適切なラベルが表示されること" do
         expect(page).to have_content '名称・店名'
+        expect(page).to have_content '都道府県'
         expect(page).to have_content '住所'
         expect(page).to have_content '予算'
         expect(page).to have_content 'キーワード'
         expect(page).to have_content 'ポイント'
         expect(page).to have_content '注意点'
+        expect(page).to have_content '参考URL'
       end
     end
 
     context "投稿する処理" do
       it "有効な情報で投稿を行うと投稿成功のフラッシュが表示されること" do
         fill_in "名称・店名", with: "ももたろう"
+        select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
@@ -173,6 +176,7 @@ RSpec.describe "Datespots", type: :system do
 
       it "無効な情報で投稿を行うと投稿失敗のフラッシュが表示されること" do
         fill_in "名称・店名", with: ""
+        select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
@@ -334,17 +338,20 @@ RSpec.describe "Datespots", type: :system do
 
       it "入力部分に適切なラベルが表示されること" do
         expect(page).to have_content '名称・店名'
+        expect(page).to have_content '都道府県'
         expect(page).to have_content '住所'
         expect(page).to have_content '予算'
         expect(page).to have_content 'キーワード'
         expect(page).to have_content 'ポイント'
         expect(page).to have_content '注意点'
+        expect(page).to have_content '参考URL'
       end
     end
 
     context "投稿の更新処理" do
       it "有効な更新" do
         fill_in "名称・店名", with: "ももたろう"
+        select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
@@ -353,6 +360,7 @@ RSpec.describe "Datespots", type: :system do
         click_button "更新する"
         expect(page).to have_content "投稿が更新されました！"
         expect(datespot.reload.name).to eq "ももたろう"
+        expect(datespot.reload.prefecture.name).to eq "東京都"
         expect(datespot.reload.address).to eq "東京都渋谷区恵比寿西"
         expect(datespot.reload.range_i18n).to eq "~2,000"
         expect(datespot.reload.tag_list).to eq ["オシャレ", "焼き鳥"]

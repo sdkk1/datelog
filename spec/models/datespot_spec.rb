@@ -20,6 +20,12 @@ RSpec.describe Datespot, type: :model do
       expect(datespot.errors[:name]).to include("は50文字以内で入力してください")
     end
 
+    it "都道府県がなければ無効な状態であること" do
+      datespot = build(:datespot, prefecture_code: nil)
+      datespot.valid?
+      expect(datespot.errors[:prefecture_code]).to include("を入力してください")
+    end
+
     it "住所がなければ無効な状態であること" do
       datespot = build(:datespot, address: nil)
       datespot.valid?
