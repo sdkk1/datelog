@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_034719) do
+ActiveRecord::Schema.define(version: 2020_10_12_074835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_034719) do
     t.integer "comments_count", default: 0, null: false
     t.integer "impressions_count", default: 0, null: false
     t.float "rate_average", default: 0.0, null: false
+    t.integer "prefecture_code"
+    t.string "reference_url"
     t.index ["user_id", "created_at"], name: "index_datespots_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_datespots_on_user_id"
   end

@@ -30,6 +30,7 @@
         <h4 id="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
         <h4 id="point">【ポイント】<%= @datespot.point %></h4>
         <h4 id="caution">【注意点】<%= @datespot.caution %></h4>
+        <h4 id="reference_url">【参考URL】<a href="<%= @datespot.reference_url %>" target="_blank" rel="noopener noreferrer"><%= @datespot.reference_url %></a></h4>
         <h4>閲覧数：<%= @datespot.impressions_count %>回</h4>
       </div>
       <div class="comment">
@@ -49,3 +50,4 @@
   </div>
 </div>
 <%= render "map-show" %>
+<%= render "weather" %>

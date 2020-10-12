@@ -28,6 +28,7 @@ end
 
 5.times do |n|
   Datespot.create!(name: Faker::Restaurant.name,
+                  prefecture_code: 13,
                   address: "東京都渋谷区恵比寿西",
                   range: 0,
                   tag_list: "美味しい, オシャレ",
@@ -38,6 +39,7 @@ end
 
 5.times do |n|
   Datespot.create!(name: Faker::Restaurant.name,
+                  prefecture_code: 13,
                   address: "東京都渋谷区恵比寿南",
                   range: 1,
                   tag_list: "美味しい, 安い",

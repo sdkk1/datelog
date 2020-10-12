@@ -29,11 +29,13 @@ ja:
       datespot:
         id: ID
         name: 名称・店名
+        prefecture_code: 都道府県
         address: 住所
         range: 予算
         tag_list: キーワード
         point: ポイント
         caution: 注意点
+        reference_url: 参考URL
         images: 写真
         user_id: ユーザーID
       comment:
