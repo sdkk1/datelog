@@ -8,20 +8,4 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status "200"
     end
   end
-
-  describe "AboutPage" do
-    it "正常なレスポンスを返すこと" do
-      get about_path
-      expect(response).to be_successful
-      expect(response).to have_http_status "200"
-    end
-  end
-
-  describe "TermsPage" do
-    it "正常なレスポンスを返すこと" do
-      get use_of_terms_path
-      expect(response).to be_successful
-      expect(response).to have_http_status "200"
-    end
-  end
 end

@@ -18,6 +18,10 @@ class Datespot < ApplicationRecord
   has_many_attached :images
   validate :image_type, :image_size, :image_length
 
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+  validates :prefecture_code, presence: true
+
   enum range: {
     price_min: 0, price4000: 1, price6000: 2, price8000: 3, price10000: 4,
     price15000: 5, price20000: 6, price25000: 7, price30000: 8, price_max: 9

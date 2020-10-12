@@ -6,6 +6,10 @@
   <%= form.label :name %> <span class="input-need">※必須(50文字以内)</span>
   <%= form.text_field :name, placeholder: "店名を入力", class: 'form-control', id: 'datespot_name' %>
 </div>
+<div class="form-group">
+  <%= form.label :prefecture_code %> <span class="input-need">※必須</span>
+  <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: '都道府県を選択', class: 'form-control', id: 'datespot_prefecture' %>
+</div>
 <div class = 'form-group'>
   <%= form.label :address %> <span class="input-need">※必須</span>
   <%= form.text_field :address, placeholder: "住所を入力", class: 'form-control', id: 'datespot_address' %>
@@ -16,7 +20,7 @@
 </div>
 <div class = 'form-group'>
   <%= form.label :tag_list %> <span class="input-unneed">※任意</span>
-  <%= form.text_field :tag_list, placeholder: "キーワードをカンマ区切りで入力：(例) 美味しい,安い", class: 'form-control', id: 'datespot_tag' %>
+  <%= form.text_field :tag_list, placeholder: "キーワードをカンマ区切りで入力：(例) オシャレ,安い", value: @datespot.tag_list.join(',') , class: 'form-control', id: 'datespot_tag' %>
 </div>
 <div class = 'form-group'>
   <%= form.label :point %> <span class="input-unneed">※任意(255文字以内)</span>
@@ -25,5 +29,9 @@
 <div class = 'form-group'>
   <%= form.label :caution %> <span class="input-unneed">※任意(255文字以内)</span>
   <%= form.text_area :caution, placeholder: "注意点を入力", class: 'form-control', id: 'datespot_caution' %>
+</div>
+<div class = 'form-group'>
+  <%= form.label :reference_url %> <span class="input-unneed">※任意</span>
+  <%= form.text_field :reference_url, placeholder: "参考URLを入力", class: 'form-control', id: 'datespot_reference_url' %>
 </div>
 <%= form.submit yield(:button_text), class: "btn btn-primary" %>

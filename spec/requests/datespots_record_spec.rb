@@ -20,6 +20,7 @@ RSpec.describe "投稿", type: :request do
       expect {
         post datespots_path, params: { datespot: {
           name: "ももたろう",
+          prefecture_code: 13,
           address: "東京都渋谷区恵比寿西",
           range: "price_min",
           tag_list: "オシャレ,焼き鳥",
