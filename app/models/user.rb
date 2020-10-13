@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :browsing_histories, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
   is_impressionable counter_cache: true
 
   validates :name, presence: true, length: { maximum: 50 }
