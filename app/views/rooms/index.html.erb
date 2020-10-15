@@ -1,0 +1,20 @@
+<% provide(:title, "マッチング一覧") %>
+<div class="container">
+  <div class="row">
+    <% if @members.present?%>
+      <% @members.each do |member| %>
+          <section class="user_info">
+            <% if member.avatars.attached? %>
+              <div class="swiper-slide"><%= image_tag member.avatars.first.variant(resize:'50x50').processed %></div>
+            <% else %>
+              <%= image_tag 'thumb50_default.png'%>
+            <% end %>
+            <p class="user-name"><%= link_to member.name, member %></p>
+          </section>
+          <p class="latest-message">最新のメッセージ：<%= member.messages.take.try(:content) %></p>
+      <% end %>
+    <% else %>
+      <h4>マッチングしているユーザーはいません</h4>
+    <% end %>
+  </div>
+</div>

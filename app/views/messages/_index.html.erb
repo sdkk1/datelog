@@ -1,0 +1,26 @@
+<% if messages.present? %>
+  <ul>
+    <% messages.each do |message| %>
+      <li id="message-<%= message.id %>">
+        <div class="chat-box">
+          <div class="chat-face">
+            <% if message.user.avatars.attached? %>
+              <div class="swiper-slide"><%= image_tag message.user.avatars.first.variant(resize:'50x50').processed %></div>
+            <% else %>
+              <%= image_tag 'thumb50_default.png'%>
+            <% end %>
+          </div>
+          <div class="chat-hukidashi">
+            <p class="current-user-chat-text"><%= message.content %></p>
+            <p class="current-user-chat-time"><%= l message.created_at %></p>
+            <% if message.user == current_user %>
+              <%= link_to "削除", message_path(message), remote: true, method: :delete %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>メッセージはまだありません</h4>
+<% end %>

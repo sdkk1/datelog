@@ -1,13 +1,13 @@
 <% unless @user.id == current_user.id %>
   <% if (current_user.followed_by? @user) && (@user.followed_by? current_user)  %>
     <% if @have_room == true %>
-      <%= link_to "ダイレクトメッセージ", room_path(@room_id), class: "btn btn-primary" %>
+      <%= link_to "ダイレクトメッセージをする", room_path(@room_id), class: "btn btn-primary" %>
     <% else %>
       <%= form_with(model: @room, local: true) do |form| %>
         <%= fields_for @entry do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-        <%= form.submit "ダイレクトメッセージ", class: "btn btn-primary" %>
+        <%= form.submit "ダイレクトメッセージを始める", class: "btn btn-primary" %>
       <% end %>
     <% end %>
   <% end %>
