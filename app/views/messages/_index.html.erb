@@ -11,6 +11,7 @@
             <% end %>
           </div>
           <div class="chat-hukidashi">
+            <p class="current-user-name"><%= message.user.name %></p>
             <p class="current-user-chat-text"><%= message.content %></p>
             <p class="current-user-chat-time"><%= l message.created_at %></p>
             <% if message.user == current_user %>
