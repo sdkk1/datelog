@@ -67,11 +67,6 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
 
-  # マッチングしたユーザー
-  def matchers
-    following & followers
-  end
-
   # 投稿をお気に入り登録する
   def favorite(datespot)
     Favorite.create!(user_id: id, datespot_id: datespot.id)

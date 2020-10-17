@@ -23,7 +23,6 @@
         <%= link_to "ユーザー編集", edit_user_path(@user) %>
       <% end %>
       <%= render 'follow_form' if logged_in? %>
-      <%= render 'direct_message' if logged_in? %>
     </div>
   </div>
   <div class="row">

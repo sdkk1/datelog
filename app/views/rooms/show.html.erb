@@ -1,16 +1,15 @@
 <% provide(:title, "メッセージ一覧") %>
 <div class="container">
   <div class="row">
-    <% @entries.each do |entry| %>
+    <p><%= link_to "マッチング一覧へ戻る", rooms_path %></p>
     <section class="user_info">
-      <% if entry.user.avatars.attached? %>
-        <div class="swiper-slide"><%= image_tag entry.user.avatars.first.variant(resize:'200x200').processed %></div>
+      <% if @message_user.avatars.attached? %>
+        <div class="swiper-slide"><%= image_tag @message_user.avatars.first.variant(resize:'200x200').processed %></div>
       <% else %>
         <%= image_tag 'thumb200_default.png'%>
       <% end %>
-      <h4 class="user-name"><%= link_to entry.user.name, entry.user %></h4>
+      <h4 class="user-name"><%= link_to @message_user.name, @message_user %></h4>
     </section>
-    <% end %>
     <div class="messages">
       <div id="messages_area">
         <%= render partial: 'messages/index', locals: { messages: @messages } %>

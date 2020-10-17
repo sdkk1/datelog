@@ -1,5 +1,7 @@
 <%= form_with(model: message) do |form| %>
+  <div class = 'form-group'>
     <%= form.text_area :content, placeholder: "メッセージを入力して下さい" , size: "50x3" %>
-    <%= form.hidden_field :room_id, value: @room.id %><br>
+    <%= form.hidden_field :room_id, value: room.id %><br>
     <%= form.submit "送信する", class: "btn btn-success" %>
+  </div>
 <% end %>
