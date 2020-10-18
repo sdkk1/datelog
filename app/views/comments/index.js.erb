@@ -1,4 +1,4 @@
-$("#comments_area").html("<%= j(render 'index', { comments: @comment.datespot.comments }) %>")
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.datespot.comments.sort_desc }) %>")
 document.getElementById('error_messages').style.display = "none";
 $('#star').children('img').attr('src', '/assets/star-off-6aaeebdaab93d594c005d366ce0d94fba02e7a07fd03557dbee8482f04a91c22.png');
 $('input[name="comment[rate]"]').val(0)

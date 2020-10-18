@@ -11,7 +11,7 @@ class DatespotsController < ApplicationController
     impressionist(@datespot, "", :unique => [:impressionable_id, :user_id]) if logged_in?
 
     @comment = Comment.new
-    @comments = @datespot.comments.includes(:user)
+    @comments = @datespot.comments.includes(:user).sort_desc
 
     if logged_in?
       new_history = @datespot.browsing_histories.new

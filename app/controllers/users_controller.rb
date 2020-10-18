@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @datespots = @user.datespots.includes(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 10).order('updated_at DESC')
+    @datespots = @user.datespots.includes(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 10).sort_desc
   end
 
   def index
@@ -71,14 +71,14 @@ class UsersController < ApplicationController
   def following
     @title = "フォロー"
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.get_user_following
     render 'show_follow'
   end
 
   def followers
     @title = "フォロワー"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.get_user_followers
     render 'show_follow'
   end
 

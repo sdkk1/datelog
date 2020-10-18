@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 
   def index
     get_followed_user_ids = Relationship.where(followed_id: current_user.id).pluck(:follower_id)
-    @match_users = Relationship.where(followed_id: get_followed_user_ids, follower_id: current_user.id).includes(:followed).order("created_at DESC").map(&:followed)
+    @match_users = Relationship.where(followed_id: get_followed_user_ids, follower_id: current_user.id).includes(:followed).sort_desc.map(&:followed)
   end
 
   def create
@@ -24,6 +24,6 @@ class RoomsController < ApplicationController
     @message_user = @room.entries.where.not(user_id: current_user.id).first.user
 
     @message = Message.new
-    @messages = @room.messages.includes(:user).order("created_at ASC")
+    @messages = @room.messages.includes(:user)
   end
 end

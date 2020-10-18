@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @favorites = current_user.favorites.includes(datespot: { images_attachments: :blob }).order('created_at DESC')
+    @favorites = current_user.favorites.includes(datespot: { images_attachments: :blob }).sort_desc
     @datespots = current_user.favorite_datespots
   end
 

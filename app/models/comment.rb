@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :datespot, counter_cache: :comments_count
 
-  default_scope -> { order(created_at: :desc) }
+  scope :sort_desc, -> { order(created_at: :desc) }
 
   validates :user_id, presence: true
   validates :datespot_id, presence: true
