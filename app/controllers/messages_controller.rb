@@ -7,6 +7,8 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
     if @message.save
       render :index
+    else
+      render :error_messages
     end
   end
 

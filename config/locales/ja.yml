@@ -44,6 +44,8 @@ ja:
         content: 口コミ
         rate: 評価
         picture: 写真
+      message:
+        content: メッセージ
   date:
     abbr_day_names:
     - 日

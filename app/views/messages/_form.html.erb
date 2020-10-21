@@ -1,4 +1,5 @@
 <%= form_with(model: [room, message]) do |form| %>
+  <div id="error_messages"></div>
   <div class = 'form-group'>
     <%= form.text_area :content, placeholder: "メッセージを入力して下さい" , size: "50x3" %>
     <%= form.hidden_field :room_id, value: room.id %><br>
