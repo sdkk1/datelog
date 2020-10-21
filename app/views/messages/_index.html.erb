@@ -11,11 +11,11 @@
             <% end %>
           </div>
           <div class="chat-hukidashi">
-            <p class="current-user-name"><%= message.user.name %></p>
+            <p class="current-user-name"><%= link_to message.user.name, user_path(message.user.id) %></p>
             <p class="current-user-chat-text"><%= message.content %></p>
             <p class="current-user-chat-time"><%= l message.created_at %></p>
             <% if message.user == current_user %>
-              <%= link_to "削除", message_path(message), remote: true, method: :delete %>
+              <%= link_to "削除",room_message_path(message.room_id, message.id), remote: true, method: :delete %>
             <% end %>
           </div>
         </div>

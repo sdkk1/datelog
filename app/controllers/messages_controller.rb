@@ -2,12 +2,12 @@ class MessagesController < ApplicationController
   before_action :logged_in_user
 
   def create
-    if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
-      @message = Message.create(message_params)
-    else
-      flash.now[:danger] = "メッセージの送信に失敗しました"
+    @room = Room.find(params[:room_id])
+    @message = @room.messages.build(message_params)
+    @message.user_id = current_user.id
+    if @message.save
+      render :index
     end
-    redirect_to "/rooms/#{@message.room_id}"
   end
 
   def destroy
@@ -19,6 +19,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:user_id, :room_id, :content).merge(user_id: current_user.id)
+    params.require(:message).permit(:user_id, :room_id, :content)
   end
 end
