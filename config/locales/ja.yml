@@ -46,6 +46,7 @@ ja:
         picture: 写真
       message:
         content: メッセージ
+        picture: 写真
   date:
     abbr_day_names:
     - 日

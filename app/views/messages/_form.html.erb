@@ -1,8 +1,13 @@
 <%= form_with(model: [room, message]) do |form| %>
   <div id="error_messages"></div>
   <div class = 'form-group'>
-    <%= form.text_area :content, placeholder: "メッセージを入力して下さい" , size: "50x3" %>
-    <%= form.hidden_field :room_id, value: room.id %><br>
-    <%= form.submit "送信する", class: "btn btn-success" %>
+    <%= form.label :content %> <span class="input-need">※必須(255文字以内)</span>
+    <%= form.text_area :content, placeholder: "メッセージを入力", id: "message_content" %>
+    <%= form.hidden_field :room_id, value: room.id %>
   </div>
+  <div class = 'form-group' id = "picture">
+    <%= form.label :picture %> <span class="input-unneed">※任意(1枚まで)</span>
+    <%= form.file_field :picture, id: 'message_picture' %>
+  </div>
+  <%= form.submit "送信する", class: "btn btn-success" %>
 <% end %>
