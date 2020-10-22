@@ -10,6 +10,14 @@ class MessagesController < ApplicationController
     else
       render :error_messages
     end
+
+    @message_user = @room.entries.where.not(user_id: current_user.id).first.user
+    if @message_user != current_user
+      @message_user.notifications.create(variety: 4,
+                                         from_user_id: current_user.id,
+                                         content: @message.content)
+      @message_user.update_attribute(:notification, true)
+    end
   end
 
   def destroy

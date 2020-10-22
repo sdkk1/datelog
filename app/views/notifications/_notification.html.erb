@@ -11,7 +11,11 @@
       「<%= notification.content %>」</p>
     <% elsif notification.variety == 3 %>
       <p><%= l notification.created_at %></p>
-      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんがあなたをフォローしました。
+      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんがあなたにいいねをしました。</p>
+    <% elsif notification.variety == 4 %>
+      <p><%= l notification.created_at %></p>
+      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんからメッセージが届きました。
+      「<%= notification.content %>」</p>
     <% end %>
   </div>
   <% if @datespot.present? %>
