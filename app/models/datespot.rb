@@ -8,6 +8,8 @@ class Datespot < ApplicationRecord
   acts_as_taggable_on :tags
   is_impressionable counter_cache: true
 
+  scope :sort_desc, -> { order(updated_at: :desc) }
+
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :address, presence: true

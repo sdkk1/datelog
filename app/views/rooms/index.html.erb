@@ -1,0 +1,25 @@
+<% provide(:title, "マッチング一覧") %>
+<div class="container">
+  <div class="row">
+    <% if @match_users.present?%>
+      <h3><%= @match_users.size %>人とマッチングしています</h3>
+      <h4>マッチング一覧</h4>
+      <% @match_users.each do |match_user| %>
+        <section class="user_info">
+          <% if match_user.avatars.attached? %>
+            <div class="swiper-slide"><%= image_tag match_user.avatars.first.variant(resize:'50x50').processed %></div>
+          <% else %>
+            <%= image_tag 'thumb50_default.png'%>
+          <% end %>
+          <p class="user-name"><%= link_to match_user.name, match_user %></p>
+        </section>
+        <%= form_with model: @room do |form| %>
+          <%= form.hidden_field :user_id, value: match_user.id %>
+          <%= form.submit "メッセージをする", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h4>マッチングしているユーザーはいません</h4>
+    <% end %>
+  </div>
+</div>

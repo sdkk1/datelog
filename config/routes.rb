@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   post   :login,     to: 'sessions#create'
   delete :logout,    to: 'sessions#destroy'
 
+  resources :rooms, only: [:create, :show, :index] do
+    resources :messages, only: [:create, :destroy]
+  end
+
   resources :datespots do
     resources :comments, only: [:create, :destroy]
   end

@@ -1,22 +1,11 @@
-class Comment < ApplicationRecord
+class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :datespot, counter_cache: :comments_count
+  belongs_to :room
 
-  scope :sort_desc, -> { order(created_at: :desc) }
-
-  validates :user_id, presence: true
-  validates :datespot_id, presence: true
   validates :content, presence: true, length: { maximum: 255 }
-  validates :rate, numericality: { less_than_or_equal_to: 5, greater_than_or_equal_to: 0.5 }, presence: true
 
   has_one_attached :picture
   validate :picture_type, :picture_size
-
-  after_save :update_rate_avarage
-
-  def update_rate_avarage
-    datespot.update_rate_avarage
-  end
 
   private
 

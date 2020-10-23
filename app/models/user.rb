@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :browsing_histories, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
   is_impressionable counter_cache: true
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -44,52 +47,50 @@ class User < ApplicationRecord
     age50over: 51
   }
 
-  # ユーザーをフォローする
   def follow(other_user)
     following << other_user
   end
 
-  # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
   end
 
-  # 現在のユーザーがフォローされていたらtrueを返す
   def followed_by?(other_user)
     followers.include?(other_user)
   end
 
-  # 投稿をお気に入り登録する
+  def get_user_following
+    Relationship.where(follower_id: id).includes(:followed).order("created_at DESC").map(&:followed)
+  end
+
+  def get_user_followers
+    Relationship.where(followed_id: id).includes(:follower).order("created_at DESC").map(&:follower)
+  end
+
   def favorite(datespot)
     Favorite.create!(user_id: id, datespot_id: datespot.id)
   end
 
-  # 投稿をお気に入り解除する
   def unfavorite(datespot)
     Favorite.find_by(user_id: id, datespot_id: datespot.id).destroy
   end
 
-  # 現在のユーザーがお気に入り登録してたらtrueを返す
   def favorite?(datespot)
     !Favorite.find_by(user_id: id, datespot_id: datespot.id).nil?
   end
 
-  # 投稿をリストに登録する
   def list(datespot)
     List.create!(user_id: datespot.user_id, datespot_id: datespot.id, from_user_id: id)
   end
 
-  # 投稿をリストから解除する
   def unlist(list)
     list.destroy
   end
 
-  # 現在のユーザーがリスト登録してたらtrueを返す
   def list?(datespot)
     !List.find_by(datespot_id: datespot.id, from_user_id: id).nil?
   end

@@ -1,0 +1,6 @@
+$("#messages_area").html("<%= j(render 'index', { messages: @message.room.messages }) %>")
+document.getElementById('error_messages').style.display = "none";
+$("textarea").val('')
+var picture_form = document.getElementById('picture');
+var temp = picture_form.innerHTML;
+picture_form.innerHTML = temp;
