@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create]
 
   get :favorites, to: 'favorites#index'
   post   "favorites/:datespot_id/create"  => "favorites#create"

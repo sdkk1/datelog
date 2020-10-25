@@ -1,5 +1,6 @@
 class Notification < ApplicationRecord
   belongs_to :user
+  belongs_to :from_user, class_name: "User"
   belongs_to :datespot, optional: true
 
   scope :sort_desc, -> { order(created_at: :desc) }

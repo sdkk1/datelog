@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :favorite_datespots, through: :favorites, source: :datespot
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :from_notifications, class_name: "Notification", foreign_key: :from_user_id, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :browsing_histories, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -61,14 +62,6 @@ class User < ApplicationRecord
 
   def followed_by?(other_user)
     followers.include?(other_user)
-  end
-
-  def get_user_following
-    Relationship.where(follower_id: id).includes(:followed).order("created_at DESC").map(&:followed)
-  end
-
-  def get_user_followers
-    Relationship.where(followed_id: id).includes(:follower).order("created_at DESC").map(&:follower)
   end
 
   def favorite(datespot)
