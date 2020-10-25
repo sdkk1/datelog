@@ -125,14 +125,12 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "ユーザーのフォロー/アンフォロー処理", js: true do
-      it "ユーザーのフォロー/アンフォローができること" do
+    context "ユーザーをいいね！する", js: true do
+      it "ユーザーをいいね！できること" do
         visit user_path(other_user)
-        expect(page).to have_button 'いいねをする'
-        click_button 'いいねをする'
-        expect(page).to have_button 'いいねをやめる'
-        click_button 'いいねをやめる'
-        expect(page).to have_button 'いいねをする'
+        expect(page).to have_button 'いいね！'
+        click_button 'いいね！'
+        expect(page).to have_content 'いいね済'
       end
     end
 

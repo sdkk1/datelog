@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザーフォロー機能", type: :request do
+RSpec.describe "ユーザーのいいね！機能", type: :request do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
@@ -9,32 +9,16 @@ RSpec.describe "ユーザーフォロー機能", type: :request do
       login_for_request(user)
     end
 
-    it "ユーザーのフォローができること" do
+    it "ユーザーをいいね！できること" do
       expect {
         post relationships_path, params: { followed_id: other_user.id }
       }.to change(user.following, :count).by(1)
     end
 
-    it "ユーザーのAjaxによるフォローができること" do
+    it "ユーザーのAjaxによるいいね！ができること" do
       expect {
         post relationships_path, xhr: true, params: { followed_id: other_user.id }
       }.to change(user.following, :count).by(1)
-    end
-
-    it "ユーザーのアンフォローができること" do
-      user.follow(other_user)
-      relationship = user.active_relationships.find_by(followed_id: other_user.id)
-      expect {
-        delete relationship_path(relationship)
-      }.to change(user.following, :count).by(-1)
-    end
-
-    it "ユーザーのAjaxによるアンフォローができること" do
-      user.follow(other_user)
-      relationship = user.active_relationships.find_by(followed_id: other_user.id)
-      expect {
-        delete relationship_path(relationship), xhr: true
-      }.to change(user.following, :count).by(-1)
     end
   end
 
@@ -52,13 +36,6 @@ RSpec.describe "ユーザーフォロー機能", type: :request do
     it "createアクションは実行できず、ログインページへリダイレクトすること" do
       expect {
         post relationships_path
-      }.not_to change(Relationship, :count)
-      expect(response).to redirect_to login_path
-    end
-
-    it "destroyアクションは実行できず、ログインページへリダイレクトすること" do
-      expect {
-        delete relationship_path(user)
       }.not_to change(Relationship, :count)
       expect(response).to redirect_to login_path
     end

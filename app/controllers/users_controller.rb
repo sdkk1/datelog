@@ -71,14 +71,20 @@ class UsersController < ApplicationController
   def following
     @title = "フォロー"
     @user  = User.find(params[:id])
-    @users = @user.get_user_following
+
+    get_follower_user_ids = Relationship.where(follower_id: @user.id).pluck(:followed_id)
+    @users = User.includes(:passive_relationships).where(id: get_follower_user_ids).order("relationships.created_at DESC").paginate(page: params[:page])
+
     render 'show_follow'
   end
 
   def followers
     @title = "フォロワー"
     @user  = User.find(params[:id])
-    @users = @user.get_user_followers
+
+    get_followed_user_ids = Relationship.where(followed_id: @user.id).pluck(:follower_id)
+    @users = User.includes(:active_relationships).where(id: get_followed_user_ids).order("relationships.created_at DESC").paginate(page: params[:page])
+
     render 'show_follow'
   end
 
