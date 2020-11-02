@@ -38,6 +38,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-sass"
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
+gem "aws-sdk-s3", require: false
 gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
