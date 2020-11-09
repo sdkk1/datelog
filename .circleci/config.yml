@@ -11,9 +11,9 @@ jobs:
 
       - image: circleci/postgres:12.3
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_DB: datelog_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
 
     working_directory: ~/datelog
 
