@@ -62,6 +62,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rubocop-airbnb'
   gem "factory_bot_rails", "~> 4.10.0"
+  gem "rspec_junit_formatter"
 end
 
 group :development do
