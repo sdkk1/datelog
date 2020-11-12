@@ -6,13 +6,9 @@ jobs:
         environment:
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
-          POSTGRES_USER: postgres
-          PGHOST: 127.0.0.1
 
       - image: circleci/postgres
         environment:
-          POSTGRES_DB: datelog_test
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
 
     working_directory: ~/datelog
@@ -35,6 +31,8 @@ jobs:
           paths:
           - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run: mv config/database.yml.ci config/database.yml
 
       - run:
           name: Databasesetup
