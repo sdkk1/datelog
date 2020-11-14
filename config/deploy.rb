@@ -29,6 +29,8 @@ set :rbenv_ruby, '2.5.7'
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/date-match.pem']
 
+set :linked_files, %w{config/master.key}
+
 #出力するログのレベル
 set :log_level, :debug
 
