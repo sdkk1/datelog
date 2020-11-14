@@ -55,6 +55,10 @@ group :production do
   gem 'fog'
 end
 
+group :production, :staging do
+  gem 'unicorn'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -63,6 +67,10 @@ group :development, :test do
   gem 'rubocop-airbnb'
   gem "factory_bot_rails", "~> 4.10.0"
   gem "rspec_junit_formatter"
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
