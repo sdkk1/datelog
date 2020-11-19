@@ -16,6 +16,8 @@ set :deploy_to, '/var/www/rails/datelog'
 # シンボリックリンクをはるファイル
 set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
 
+set :linked_files, %w(config/master.key .env)
+
 # シンボリックリンクをはるフォルダ
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
@@ -24,12 +26,6 @@ set :keep_releases, 5
 
 # rubyのバージョン
 set :rbenv_ruby, '2.5.7'
-
-# どの公開鍵を利用してデプロイするか
-set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/date-match.pem']
-
-set :linked_files, %w{config/master.key}
 
 #出力するログのレベル
 set :log_level, :debug

@@ -65,7 +65,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "47:ea:8d:a1:7f:c7:0e:94:cb:79:9d:cc:76:c6:c0:03"
+            - "89:6e:20:9e:68:14:d2:07:28:28:f5:10:fa:6a:00:97"
 
       - deploy:
           name: Capistrano deploy
