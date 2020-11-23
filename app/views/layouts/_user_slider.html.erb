@@ -1,30 +1,5 @@
 <script>
-  <% if @users.present? %>
-    <% @users.each do |user| %>
-      var mainSlider__<%= user.id %> = new Swiper('.slider--<%= user.id %>', {
-        loop: true,
-        scrollbar: {
-          el: '.swiper-scrollbar',
-          hide: true,
-          draggable: true,
-        },
-      });
-
-      var Thumbnail__<%= user.id %> = new Swiper('.thumbnail--<%= user.id %>', {
-        loop: true,
-        slidesPerView: 1,
-        slideToClickedSlide: true,
-      });
-
-      mainSlider__<%= user.id %>.on('slideChange', () => {
-        Thumbnail__<%= user.id %>.slideToLoop(mainSlider__<%= user.id %>.realIndex);
-      });
-
-      Thumbnail__<%= user.id %>.on('slideChange', () => {
-        mainSlider__<%= user.id %>.slideToLoop(Thumbnail__<%= user.id %>.realIndex);
-      });
-    <% end %>
-  <% elsif @user.present? %>
+  <% if @user.present? %>
     var mainSlider__<%= @user.id %> = new Swiper('.slider--<%= @user.id %>', {
       loop: true,
       scrollbar: {

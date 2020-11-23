@@ -1,7 +1,16 @@
-<center>
-  <h1>datelog</h1>
-  <h2>お気に入りのデートスポット投稿サイト</h2>
-</center>
+<div class="swiper-container home-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slider-section1">
+        <%= render 'swiper_content' %>
+      </div>
+      <div class="swiper-slide slider-section2">
+        <%= render 'swiper_content' %>
+      </div>
+      <div class="swiper-slide slider-section3">
+        <%= render 'swiper_content' %>
+      </div>
+    </div>
+</div>
 <div class="container">
   <div class="row">
     <%= render 'datespots/datespot_search' %>

@@ -21,18 +21,11 @@
   <% if @datespot.present? %>
     <div class="row">
       <div class="col-md-3">
-        <% if @datespot.images.attached? %>
-          <div class="swiper-container slider-<%= notification.id %>">
-            <div class="swiper-wrapper">
-              <% @datespot.images.each do |image| %>
-                <div class="swiper-slide"><%= image_tag image.variant(resize:'200x200').processed %></div>
-              <% end %>
-            </div>
-            <div class="swiper-scrollbar"></div>
-          </div>
-        <% else %>
-          <%= image_tag 'thumb200_default.png'%>
-        <% end %>
+      <% if @datespot.images.attached? %>
+        <%= image_tag @datespot.images.first.variant(resize:'200x200').processed %>
+      <% else %>
+        <%= image_tag 'thumb200_default.png'%>
+      <% end %>
       </div>
     <div class="col-md-6">
       <%= render 'datespots/datespot_evaluation' %><br>
