@@ -4,19 +4,19 @@
 </div>
 <div class = 'form-group'>
   <%= form.label :name %> <span class="input-need">※必須(50文字以内)</span>
-  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'form-control', id: 'user_name' %>
+  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'form-control', id: 'user_name', required: true %>
 </div>
 <div class = 'form-group'>
   <%= form.label :email %> <span class="input-need">※必須(255文字以内)</span>
-  <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'form-control', id: 'user_email' %>
+  <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'form-control', id: 'user_email', required: true %>
 </div>
 <div class = 'form-group'>
   <%= form.label :password %> <span class="input-need">※必須(6文字以上)</span>
-  <%= form.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password' %>
+  <%= form.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password', required: true %>
 </div>
 <div class = 'form-group'>
   <%= form.label :password_confirmation %> <span class="input-need">※必須(6文字以上)</span>
-  <%= form.password_field :password_confirmation, placeholder: "パスワード（確認）を入力", class: 'form-control', id: 'user_password_confirmation' %>
+  <%= form.password_field :password_confirmation, placeholder: "パスワード（確認）を入力", class: 'form-control', id: 'user_password_confirmation', required: true %>
 </div>
 <div class="form-group">
   <%= form.label :prefecture_code %> <span class="input-unneed">※任意</span>

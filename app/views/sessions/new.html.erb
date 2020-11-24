@@ -5,11 +5,11 @@
       <%= form_for(:session, url: login_path, local: true) do |f| %>
       <div class = 'form-group'>
         <%= f.label 'メールアドレス' %>
-        <%= f.email_field :email, placeholder: "メールアドレスを入力", class: 'form-control', id: 'user_email' %>
+        <%= f.email_field :email, placeholder: "メールアドレスを入力", class: 'form-control', id: 'user_email', required: true %>
       </div>
       <div class = 'form-group'>
         <%= f.label 'パスワード' %>
-        <%= f.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password' %>
+        <%= f.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password', required: true %>
       </div>
       <%= f.submit 'ログイン', class: 'btn btn-primary' %>
     <% end %>
