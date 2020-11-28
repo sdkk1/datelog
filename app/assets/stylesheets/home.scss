@@ -6,6 +6,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+
     }
     .slider-section1 {
       background-image: url("home1.png");
@@ -16,5 +17,23 @@
     .slider-section3 {
       background-image: url("home3.png");
     }
+  }
+}
+
+.top-wrapper{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  top: 45%;
+  transform: translateY(-50%);
+  padding: 0 50px;
+  h1{
+      font-size: 4em;
+      padding-bottom: 10px;
+      letter-spacing: -.05em;
+  }
+  h2{
+      font-size: 2.1em;
   }
 }
