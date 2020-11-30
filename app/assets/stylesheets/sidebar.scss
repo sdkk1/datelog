@@ -1,0 +1,25 @@
+.sidebar {
+  background-color: #FAE98E;
+  text-align: center;
+  padding: 0;
+  height: 100vh;
+  width: 20%;
+  .sidebar_nav {
+    margin-top: 10%;
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      font-size: 2.4rem;
+      li {
+        margin: 15px 0;
+      }
+      .nav-item {
+        color: #A52F57;
+      }
+      .nav-icon {
+        margin-right: 15px;
+      }
+    }
+  }
+}
