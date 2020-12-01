@@ -1,0 +1,52 @@
+.content {
+  margin-top: 5%;
+
+  .form {
+    margin-bottom: 5%;
+
+    label {
+      font-size: 2.4rem;
+    }
+
+    .input-need, .input-unneed {
+      font-size: 1.5rem;
+      margin-left: 1%;
+    }
+
+    .input-form {
+      width: 40%;
+      font-size: 1.2rem;
+      line-height: 2.5;
+      border: 2px solid #A52F57;
+      border-radius: 10px;
+    }
+  }
+
+  .action {
+    margin-bottom: 5%;
+
+    .login-btn {
+      display: inline-block;
+      color: #FFFFFF;
+      vertical-align: middle;
+      width: 40%;
+      font-size: 1.2rem;
+      line-height: 2.5;
+      border: 2px solid #A52F57;
+      border-radius: 10px;
+      background-color: #A52F57;
+      box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
+    }
+
+    .login-btn:active {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+      border-bottom: none;
+    }
+  }
+
+  .signup {
+    font-size: 1.2rem;
+  }
+}
