@@ -22,7 +22,7 @@ ul, li {
 .main {
   background-color: #FFFFDD;
   text-align: center;
-  padding: 5% 5% 5%;
+  padding: 5% 5%;
   height: 100vh;
   width: 80%;
 }
@@ -45,10 +45,16 @@ textarea {
   resize: vertical;
 }
 
-.center {
+// フッター
+footer {
+  display: inline-block !important;
   text-align: center;
-  h1 {
-    margin-bottom: 10px;
+  width: 75%;
+  border-top: 3px solid #A52F57;
+  margin-top: 5%;
+
+  .copyright {
+    margin-top: 3%;
   }
 }
 
@@ -306,17 +312,6 @@ a.list, a.unlist {
   margin-bottom: 10px;
   img {
     width: 150px;
-  }
-}
-
-// フッター
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-  small {
-    float: center;
   }
 }
 
