@@ -6,7 +6,7 @@
   width: 20%;
 
   .sidebar_nav {
-    margin-top: 10%;
+    margin-top: 5%;
 
     .nav {
       display: flex;
@@ -15,15 +15,42 @@
       font-size: 2.4rem;
 
       li {
-        margin: 15px 0;
+        margin: 5% 0;
       }
 
       .nav-item {
         color: #A52F57;
+
+        a {
+          position: relative;
+          text-decoration: none;
+        }
+
+        a::after {
+          position: absolute;
+          content: '';
+          display: inline-block;
+          background: #A52F57;
+          height: 3px;
+          width: 100%;
+          top: 75%;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: all 0.3s ease-out;
+          margin-top: 5%;
+        }
+
+        a:hover::after {
+          opacity: 1;
+          top: 100%;
+          height: 3px;
+        }
       }
-      
+
       .nav-icon {
-        margin-right: 15px;
+        margin-right: 5%;
       }
     }
   }
