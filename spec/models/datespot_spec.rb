@@ -11,7 +11,7 @@ RSpec.describe Datespot, type: :model do
     it "名称・店名がなければ無効な状態であること" do
       datespot = build(:datespot, name: nil)
       datespot.valid?
-      expect(datespot.errors[:name]).to include("を入力してください")
+      expect(datespot.errors[:name]).to include("を入力または選択してください")
     end
 
     it "名称・店名が50文字以内であること" do
@@ -23,19 +23,19 @@ RSpec.describe Datespot, type: :model do
     it "都道府県がなければ無効な状態であること" do
       datespot = build(:datespot, prefecture_code: nil)
       datespot.valid?
-      expect(datespot.errors[:prefecture_code]).to include("を入力してください")
+      expect(datespot.errors[:prefecture_code]).to include("を入力または選択してください")
     end
 
     it "住所がなければ無効な状態であること" do
       datespot = build(:datespot, address: nil)
       datespot.valid?
-      expect(datespot.errors[:address]).to include("を入力してください")
+      expect(datespot.errors[:address]).to include("を入力または選択してください")
     end
 
     it "予算がなければ無効な状態であること" do
       datespot = build(:datespot, range: nil)
       datespot.valid?
-      expect(datespot.errors[:range]).to include("を入力してください")
+      expect(datespot.errors[:range]).to include("を入力または選択してください")
     end
 
     it "ポイントが255文字以内であること" do
@@ -53,7 +53,7 @@ RSpec.describe Datespot, type: :model do
     it "ユーザーIDがなければ無効な状態であること" do
       datespot = build(:datespot, user_id: nil)
       datespot.valid?
-      expect(datespot.errors[:user_id]).to include("を入力してください")
+      expect(datespot.errors[:user_id]).to include("を入力または選択してください")
     end
   end
 end

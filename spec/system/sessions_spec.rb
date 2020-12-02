@@ -47,20 +47,20 @@ RSpec.describe "Sessions", type: :system do
         expect(page).not_to have_content 'メールアドレスとパスワードの組み合わせが間違っています'
       end
 
-      it "有効なユーザーでのログイン前後でヘッダーが正しく表示されていることを確認" do
-        expect(page).to have_link '新規登録', href: signup_path
-        expect(page).to have_link 'ログイン', href: login_path
-        expect(page).not_to have_link 'ログアウト', href: logout_path
+      # it "有効なユーザーでのログイン前後でヘッダーが正しく表示されていることを確認" do
+      #   expect(page).to have_link '新規登録', href: signup_path
+      #   expect(page).to have_link 'ログイン', href: login_path
+      #   expect(page).not_to have_link 'ログアウト', href: logout_path
 
-        fill_in "user_email", with: user.email
-        fill_in "user_password", with: user.password
-        click_button "ログイン"
+      #   fill_in "user_email", with: user.email
+      #   fill_in "user_password", with: user.password
+      #   click_button "ログイン"
 
-        expect(page).to have_link 'ユーザー一覧', href: users_path
-        expect(page).to have_link 'ユーザー詳細', href: user_path(user)
-        expect(page).to have_link 'ログアウト', href: logout_path
-        expect(page).not_to have_link 'ログイン', href: login_path
-      end
+      #   expect(page).to have_link 'ユーザー一覧', href: users_path
+      #   expect(page).to have_link 'ユーザー詳細', href: user_path(user)
+      #   expect(page).to have_link 'ログアウト', href: logout_path
+      #   expect(page).not_to have_link 'ログイン', href: login_path
+      # end
     end
   end
 end

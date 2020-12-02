@@ -13,6 +13,7 @@ RSpec.describe "新規登録", type: :request do
   it "有効なユーザーで登録" do
     expect {
       post users_path, params: { user: {
+        sex: "man",
         name: "Example User",
         email: "user@example.com",
         password: "password",
