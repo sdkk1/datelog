@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <script src="https://kit.fontawesome.com/84eeecacff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
   </head>
   <body>
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <%= render 'layouts/home_slider' %>
     <%= render 'layouts/user_slider' %>

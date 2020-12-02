@@ -40,6 +40,7 @@ class User < ApplicationRecord
   jp_prefecture :prefecture_code
 
   enum sex: { man: 0, woman: 1 }
+  validates_presence_of :sex
 
   enum age: {
     age18: 18, age19: 19, age20: 20, age21: 21, age22: 22, age23: 23, age24: 24, age25: 25, age26: 26, age27: 27, age28: 28,

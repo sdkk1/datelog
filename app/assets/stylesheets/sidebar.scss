@@ -1,8 +1,8 @@
 .sidebar {
-  background-color: #FAE98E;
+  display: table-cell;
+  background-color: #f9e67e;
   text-align: center;
   padding: 0;
-  height: 100vh;
   width: 20%;
 
   .sidebar_nav {
@@ -13,10 +13,6 @@
       flex-wrap: wrap;
       flex-direction: column;
       font-size: 2.4rem;
-
-      li {
-        margin: 5% 0;
-      }
 
       .nav-item {
         color: #A52F57;
