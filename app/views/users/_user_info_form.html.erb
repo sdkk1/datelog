@@ -1,40 +1,46 @@
-<div class = 'form-group'>
-  <%= form.label :avatars %> <span class="input-unneed">※任意(4枚まで)</span>
-  <%= form.file_field :avatars, multiple: true, class: 'form-control', id: 'user_avatars' %>
+<div class='form'>
+  <%= form.label :sex %><span class="input-need">※必須</span><br>
+  <div class="radio-button">
+    <input id="user_man" type="radio" name="user[sex]" value="man" checked="checked">
+    <label for="user_man">男性</label>
+  </div>
+  <div class="radio-button">
+    <input id="user_woman" type="radio" name="user[sex]" value="woman">
+    <label for="user_woman">女性</label>
+  </div>
 </div>
-<div class = 'form-group'>
-  <%= form.label :name %> <span class="input-need">※必須(50文字以内)</span>
-  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'form-control', id: 'user_name' %>
+<div class='form'>
+  <%= form.label :name %><span class="input-need">※必須(50文字以内)</span><br>
+  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'input-form', id: 'user_name', required: true %>
 </div>
-<div class = 'form-group'>
-  <%= form.label :email %> <span class="input-need">※必須(255文字以内)</span>
-  <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'form-control', id: 'user_email' %>
+<div class='form'>
+  <%= form.label :email %><span class="input-need">※必須(255文字以内)</span><br>
+  <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'input-form', id: 'user_email', required: true %>
 </div>
-<div class = 'form-group'>
-  <%= form.label :password %> <span class="input-need">※必須(6文字以上)</span>
-  <%= form.password_field :password, placeholder: "パスワードを入力", class: 'form-control', id: 'user_password' %>
+<div class='form'>
+  <%= form.label :password %><span class="input-need">※必須(6文字以上)</span><br>
+  <%= form.password_field :password, placeholder: "パスワードを入力", class: 'input-form', id: 'user_password', required: true %>
 </div>
-<div class = 'form-group'>
-  <%= form.label :password_confirmation %> <span class="input-need">※必須(6文字以上)</span>
-  <%= form.password_field :password_confirmation, placeholder: "パスワード（確認）を入力", class: 'form-control', id: 'user_password_confirmation' %>
+<div class='form'>
+  <%= form.label :password_confirmation %><span class="input-need">※必須(6文字以上)</span><br>
+  <%= form.password_field :password_confirmation, placeholder: "パスワード（確認）を入力", class: 'input-form', id: 'user_password_confirmation', required: true %>
 </div>
-<div class="form-group">
-  <%= form.label :prefecture_code %> <span class="input-unneed">※任意</span>
-  <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: '居住地を選択', class: 'form-control', id: 'user_residence' %>
+<div class='form'>
+  <%= form.label :avatars %><span class="input-unneed">※任意(4枚まで)</span><br>
+  <%= form.file_field :avatars, multiple: true, class: 'input-form', id: 'user_avatars' %>
 </div>
-<div class = 'form-group'>
-  <%= form.label :age %> <span class="input-unneed">※任意</span>
-  <%= form.select :age, options_for_select(User.ages_i18n.invert, selected: form.object.age), { include_blank: "年齢を選択" }, { class: 'form-control', id: 'user_age' } %>
+<div class='form'>
+  <%= form.label :prefecture_code %><span class="input-unneed">※任意</span><br>
+  <%= form.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: '居住地を選択' %>
 </div>
-<div class = 'form-group'>
-  <%= form.label :sex %> <span class="input-unneed">※任意</span><br/>
-  <%= form.label :man %>
-  <%= form.radio_button :sex, :man, id: 'user_sex_man' %>
-  <%= form.label :woman %>
-  <%= form.radio_button :sex, :woman, id: 'user_sex_woman'  %>
+<div class='form'>
+  <%= form.label :age %><span class="input-unneed">※任意</span><br>
+  <%= form.select :age, options_for_select(User.ages_i18n.invert, selected: form.object.age), { include_blank: "年齢を選択" }, { class: 'input-form', id: 'user_age' } %>
 </div>
-<div class="form-group">
-  <%= form.label :introduction %> <span class="input-unneed">※任意(255文字以内)</span>
-  <%= form.text_area :introduction, placeholder: "自己紹介を入力", class: 'form-control', id: 'user_introduction' %>
+<div class='form'>
+  <%= form.label :introduction %><span class="input-unneed">※任意(255文字以内)</span><br>
+  <%= form.text_area :introduction, placeholder: "自己紹介を入力", class: 'input-form', id: 'user_introduction' %>
 </div>
-<%= form.submit yield(:button_text), class: "btn btn-primary" %>
+<div class="action">
+  <%= form.submit yield(:button_text), class: "login-btn" %>
+</div>

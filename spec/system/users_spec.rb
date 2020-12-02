@@ -37,7 +37,7 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "pass"
         click_button "登録する"
-        expect(page).to have_content "ユーザー名を入力してください"
+        expect(page).to have_content "ユーザー名を入力または選択してください"
         expect(page).to have_content "パスワード(確認)とパスワードの入力が一致しません"
       end
     end
@@ -56,6 +56,7 @@ RSpec.describe "Users", type: :system do
     end
 
     it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
+      choose '男性'
       fill_in "ユーザー名", with: "Edit Example User"
       fill_in "メールアドレス", with: "edit-user@example.com"
       fill_in "パスワード", with: "foobar"
@@ -69,10 +70,14 @@ RSpec.describe "Users", type: :system do
     it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
       fill_in "ユーザー名", with: ""
       fill_in "メールアドレス", with: ""
+      fill_in "パスワード", with: ""
+      fill_in "パスワード(確認)", with: ""
       click_button "更新する"
-      expect(page).to have_content 'ユーザー名を入力してください'
-      expect(page).to have_content 'メールアドレスを入力してください'
+      expect(page).to have_content 'ユーザー名を入力または選択してください'
+      expect(page).to have_content 'メールアドレスを入力または選択してください'
       expect(page).to have_content 'メールアドレスは不正な値です'
+      expect(page).to have_content 'パスワードを入力または選択してください'
+      expect(page).to have_content 'パスワードは6文字以上で入力してください'
     end
 
     context "アカウント削除処理", js: true do

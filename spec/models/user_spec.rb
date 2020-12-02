@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
     it "ユーザー名がなければ無効な状態であること" do
       user = build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("を入力してください")
+      expect(user.errors[:name]).to include("を入力または選択してください")
     end
 
     it "ユーザー名が50文字以内であること" do
@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     it "メールアドレスがなければ無効な状態であること" do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("を入力してください")
+      expect(user.errors[:email]).to include("を入力または選択してください")
     end
 
     it "メールアドレスが255文字以内であること" do
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
     it "パスワードがなければ無効な状態であること" do
       user = build(:user, password: nil, password_confirmation: nil)
       user.valid?
-      expect(user.errors[:password]).to include("を入力してください")
+      expect(user.errors[:password]).to include("を入力または選択してください")
     end
 
     it "パスワードが6文字以上であること" do

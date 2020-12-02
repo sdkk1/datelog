@@ -2,7 +2,11 @@
 <li>
   <div class="row">
     <div class="col-md-6">
-      <%= render 'users/avatar_slide_thumb200' %>
+      <% if @user.avatars.attached? %>
+        <%= image_tag @user.avatars.first.variant(resize:'200x200').processed %>
+      <% else %>
+        <%= image_tag 'thumb200_default.png'%>
+      <% end %>
     </div>
     <div class="col-md-6">
       <h4 class="user-name"><%= link_to @user.name, user %></h4>

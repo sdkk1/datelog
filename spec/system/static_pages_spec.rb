@@ -16,7 +16,7 @@ RSpec.describe "StaticPages", type: :system do
       end
 
       it "datelogの文字列が存在することを確認" do
-        expect(page).to have_content 'datelog'
+        expect(page).to have_content 'date-match'
       end
 
       it "正しいタイトルが表示されることを確認" do

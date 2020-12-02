@@ -1,0 +1,338 @@
+// 全ページ共通
+* {
+  box-sizing: border-box;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
+  color: #A52F57;
+}
+
+html {
+  /* ルートのフォントサイズを10pxに設定しておく */
+  font-size: 62.5%;
+}
+
+body {
+  /* ルートのフォントサイズを1.6em（16pxと同等のサイズ）に設定 */
+  font-size: 1.6em;
+}
+
+ul, li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.row {
+  table-layout: fixed;
+}
+
+.main {
+  display: table-cell;
+  background-color: #fefcf0;
+  text-align: center;
+  padding: 5% 5%;
+  width: 80%;
+
+  .heading {
+    border-bottom: 3px solid #A52F57;
+    padding-bottom: 5%;
+
+    .heading_title {
+      margin-top: 1%;
+      font-size: 4.8rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.alert-success, .alert-danger {
+  margin-bottom: 3% !important;
+}
+
+#error_explanation {
+  font-size: 1.5rem;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// フッター
+footer {
+  display: inline-block !important;
+  text-align: center;
+  width: 75%;
+  border-top: 3px solid #A52F57;
+  margin-top: 5%;
+
+  .copyright {
+    margin-top: 3%;
+  }
+}
+
+// テキストの見栄え
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+ #error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+// ユーザー詳細ページ
+.title-profile {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.user-picture-box {
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.show-user-name {
+  display: inline-block;
+}
+
+.account-edit {
+  margin-top: 20px;
+}
+
+// ユーザー一覧ページ
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px;
+  }
+ }
+
+// デートスポット
+.datespots {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+ }
+  .timestamp {
+    display: block;
+    margin-left: 10px;
+  }
+}
+.datespot-name {
+  display: inline-block;
+}
+
+h2.datespot-name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.change-datespot {
+  display: inline-block;
+}
+
+.edit-datespot .delete-datespot {
+  font-size: 15px;
+}
+
+.datespot-picture img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+// スライダー
+.swiper-container {
+  width: 100%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slider {
+  height: 80%;
+  width: 100%;
+}
+
+.thumbnail {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.thumbnail .swiper-slide {
+  height: 100%;
+  opacity: 0.4;
+}
+
+.thumbnail.swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+// マップ
+.map-container {
+  padding-top: 20px;
+}
+
+.map_wrapper {
+  position: relative; /* 子要素の基準とする */
+  width: 100%;
+  padding-top: 56.25%; /* 幅の 56.25% を高さとする場合（16:9）*/
+  border: 1px solid #CCC;
+}
+
+.map_wrapper .map {
+  position: absolute; /* 親要素のパディング領域に配置 */
+  width: 100%; /* 親コンテナの幅いっぱいに表示 */
+  height: 100%; /* 親コンテナの高さいっぱいに表示 */
+  top: 0;
+  left: 0;
+}
+
+#map{
+  height: 310px;
+  width: 550px;
+}
+
+// フォロー
+.stats {
+  margin: 5px 0;
+}
+
+// お気に入り
+.like-btn-unlike {
+  color: red;
+}
+.like-btn-like {
+  color: grey;
+}
+
+.title-comment {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+a.like, a.unlike {
+  text-decoration: none;
+}
+
+.favorites {
+  list-style: none;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+// コメント
+.comments {
+  list-style: none;
+  li {
+    font-size: 14px;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    .comment {
+      font-size: 16px;
+    }
+  }
+}
+
+.comment-create-at {
+  color: grey;
+}
+
+//通知
+li.new_notification > a > span {
+  color: red;
+}
+
+.notifications {
+  list-style: none;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+.notification-message {
+  font-size: 16px;
+}
+
+//リスト
+.list-btn-unlist {
+  color: red;
+  margin: 10px 0;
+}
+
+.list-btn-list {
+  color: grey;
+  margin: 10px 0;
+}
+
+a.list, a.unlist {
+  text-decoration: none;
+}
+
+.lists {
+  list-style: none;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+.list-message {
+  font-size: 16px;
+}
+
+// ヘッダー
+.navbar ul{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+ #logo {
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  img {
+    width: 150px;
+  }
+}
+
+// その他
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+}

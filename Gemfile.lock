@@ -54,7 +54,7 @@ GEM
       rest-client (~> 2.0)
     arel (9.0.0)
     ast (2.4.1)
-    autoprefixer-rails (9.8.4)
+    autoprefixer-rails (10.0.2.0)
       execjs
     aws-eventstream (1.1.0)
     aws-partitions (1.388.0)
@@ -76,9 +76,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (4.5.3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
     builder (3.2.4)
@@ -407,6 +408,7 @@ GEM
     pg (0.20.0)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
+    popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -604,7 +606,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
-  bootstrap-sass
+  bootstrap (~> 4.5.0)
   bootstrap-will_paginate
   bullet
   byebug

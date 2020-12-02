@@ -1,18 +1,58 @@
-<center>
-  <h1>datelog</h1>
-  <h2>お気に入りのデートスポット投稿サイト</h2>
-</center>
-<div class="container">
-  <div class="row">
-    <%= render 'datespots/datespot_search' %>
-    <div class="col-md-9">
-      <% if @datespots.any? %>
-        <h3>デートスポット (<%= @datespots.count %>)</h3>
-        <ol class="datespots">
-          <%= render @datespots %>
-        </ol>
-        <%= will_paginate @datespots %>
-      <% end %>
+<div class="swiper-container home-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slider-section1">
+        <%= render 'swiper_content' %>
+      </div>
+      <div class="swiper-slide slider-section2">
+        <%= render 'swiper_content' %>
+      </div>
+      <div class="swiper-slide slider-section3">
+        <%= render 'swiper_content' %>
+      </div>
+    </div>
+</div>
+<div class="feature-wrappper">
+  <div class="container">
+    <div class="features-title">
+      <span>date-match 3つの特徴</span>
+    </div>
+    <div class="features row">
+      <div class="feature col-md-4">
+        <i class="far fa-edit fa-10x"></i>
+        <div class="feature-title">
+          <span>1.デートの提案ができる</span>
+        </div>
+        <div class="feature-content">
+          <span>あなたの行きたい場所や気になっている場所を<br>提案してみましょう！</span>
+        </div>
+      </div>
+      <div class="feature col-md-4">
+        <i class="fas fa-search fa-10x"></i>
+        <div class="feature-title">
+          <span>2.デートの検索ができる</span>
+        </div>
+        <div class="feature-content">
+          <span>自分から提案する勇気がない人は、<br>自分の行きたい場所や気になっている場所が<br>提案されていないか検索してみましょう！</span>
+        </div>
+      </div>
+      <div class="feature col-md-4">
+        <i class="far fa-comments fa-10x"></i>
+        <div class="feature-title">
+          <span>3.デートへ招待ができる</span>
+        </div>
+        <div class="feature-content">
+          <span>気になるデートを提案している人を見つけたら、「いいね！」をしてみましょう！<br>お互いに「いいね！」をしたらマッチング！<br>メッセージをして、デートへ招待してみましょう！</span>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+<div class="container">
+  <% if @datespots.any? %>
+    <h3>デートスポット (<%= @datespots.count %>)</h3>
+    <ol class="datespots">
+      <%= render @datespots %>
+    </ol>
+    <%= will_paginate @datespots %>
+  <% end %>
 </div>

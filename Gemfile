@@ -34,13 +34,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "aws-sdk-s3", require: false
 gem 'faker'
-gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'enum_help'

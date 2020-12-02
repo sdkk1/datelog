@@ -1,8 +1,17 @@
 <% provide(:title, "新規登録") %>
 <% provide(:button_text, "登録する") %>
-<h1>新規登録</h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render 'user_new_form' %>
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'layouts/logging_out_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <%= render 'shared/flash_messages' %>
+        <h1 class="heading_title">新規登録</h1>
+      </div>
+      <div class="content">
+        <%= render 'user_new_form' %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </div>
 </div>

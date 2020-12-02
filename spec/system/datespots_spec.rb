@@ -183,7 +183,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "投稿する"
-        expect(page).to have_content "名称・店名を入力してください"
+        expect(page).to have_content "名称・店名を入力または選択してください"
       end
     end
   end
@@ -371,7 +371,7 @@ RSpec.describe "Datespots", type: :system do
       it "無効な更新" do
         fill_in "名称・店名", with: ""
         click_button "更新する"
-        expect(page).to have_content '名称・店名を入力してください'
+        expect(page).to have_content '名称・店名を入力または選択してください'
         expect(datespot.reload.name).not_to eq ""
       end
     end
