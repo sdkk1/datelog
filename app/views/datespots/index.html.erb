@@ -18,6 +18,9 @@
             <%= will_paginate @datespots %>
           <% end %>
         </div>
+        <span class="new-datespot">
+          <%= link_to new_datespot_path, id: "fab" do %><i class="far fa-edit"></i><% end %>
+        </span>
       </div>
       <%= render 'layouts/footer' %>
     </div>
