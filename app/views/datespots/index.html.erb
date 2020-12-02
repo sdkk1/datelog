@@ -1,16 +1,25 @@
-<% provide(:title, "投稿一覧") %>
-<div class="container">
-  <h3 class="title-datespots-index">投稿一覧</h3>
+<% provide(:title, "デートを探す") %>
+<div class="container-fluid">
   <div class="row">
-    <%= render 'datespot_search' %>
-    <div class="col-md-9">
-      <% if @datespots.any? %>
-        <h3>デートスポット (<%= @datespots.count %>)</h3>
-        <ol class="datespots">
-          <%= render @datespots %>
-        </ol>
-        <%= will_paginate @datespots %>
-      <% end %>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <%= render 'shared/flash_messages' %>
+        <h1 class="heading_title">デートを探す</h1>
+      </div>
+      <div class="content">
+        <%= render 'datespot_search' %>
+        <div class="col-md-9">
+          <% if @datespots.any? %>
+            <h3>デートスポット (<%= @datespots.count %>)</h3>
+            <ol class="datespots">
+              <%= render @datespots %>
+            </ol>
+            <%= will_paginate @datespots %>
+          <% end %>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
