@@ -1,14 +1,12 @@
 .sidebar {
-  display: table-cell;
   background-color: #f9e67e;
   text-align: center;
   padding: 0;
   width: 20%;
 
   .sidebar_nav {
-    margin-top: 5%;
-
     .nav {
+      margin-top: 5%;
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -36,7 +34,7 @@
           transform: translateX(-50%);
           opacity: 0;
           transition: all 0.3s ease-out;
-          margin-top: 5%;
+          margin-top: 7%;
         }
 
         a:hover::after {
