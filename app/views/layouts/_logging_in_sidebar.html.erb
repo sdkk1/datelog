@@ -1,7 +1,7 @@
 <% @user ||= current_user %>
 <div class="sidebar">
-  <%= link_to(image_tag("logo.png", :width => "100%", :height => "auto", :alt => "date-matchのロゴ"), datespots_path, class: "sidebar-brand") %>
-  <nav class="sidebar_nav sticked">
+  <%= link_to(image_tag("logo.png", :width => "100%", :height => "auto", :alt => "date-matchのロゴ"), datespots_path,) %>
+  <nav class="sidebar_nav sidebar_sticked">
     <ul class="nav">
       <li class="nav-item"><%= link_to datespots_path, class: "nav-item" do %><i class="zmdi zmdi-male-female zmdi-hc-lg nav-icon"></i>デートを探す<% end %></li>
       <li class="nav-item"><%= link_to lists_path, class: "nav-item" do %><i class="far fa-hand-paper nav-icon"></i>行きたい！<% end %></li>
