@@ -1,5 +1,7 @@
 // 全ページ共通
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
   color: #A52F57;
@@ -35,6 +37,11 @@ ul, li {
       font-size: 4.8rem;
       font-weight: bold;
     }
+  }
+
+  .content {
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 }
 
@@ -126,44 +133,6 @@ input {
     border-bottom: 1px;
   }
  }
-
-// デートスポット
-.datespots {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
- }
-  .timestamp {
-    display: block;
-    margin-left: 10px;
-  }
-}
-.datespot-name {
-  display: inline-block;
-}
-
-h2.datespot-name {
-  font-size: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.change-datespot {
-  display: inline-block;
-}
-
-.edit-datespot .delete-datespot {
-  font-size: 15px;
-}
-
-.datespot-picture img {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
 
 // スライダー
 .swiper-container {
@@ -283,16 +252,6 @@ li.new_notification > a > span {
 }
 
 //リスト
-.list-btn-unlist {
-  color: red;
-  margin: 10px 0;
-}
-
-.list-btn-list {
-  color: grey;
-  margin: 10px 0;
-}
-
 a.list, a.unlist {
   text-decoration: none;
 }

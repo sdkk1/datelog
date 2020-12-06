@@ -1,4 +1,4 @@
-<div id="list-<%= @datespot.id %>" class="list-button">
+<div class="datespot-list" id="list-<%= @datespot.id %>">
   <% if !current_user.nil? && current_user.list?(@datespot) %>
     <%= render 'users/unlist' %>
   <% else %>

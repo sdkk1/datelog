@@ -1,6 +1,4 @@
-<%= link_to "/favorites/#{@datespot.id}/destroy",
-            method: :delete,
-            class: 'unlike',
-            remote: true do %>
-  <div class="like-btn-unlike"><i class="fa fa-heart"></i> お気に入りに登録済み</div>
+<%= link_to "/favorites/#{@datespot.id}/destroy", method: :delete, class: 'unlike', remote: true do %>
+  <div class="like-btn-unlike"><i class="fa fa-heart"></i></div>
 <% end %>
+  <span><%= @datespot.favorites.count %></span>
