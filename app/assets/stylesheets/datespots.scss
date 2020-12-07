@@ -1,10 +1,13 @@
+@import "colors";
+@import "prefix";
+
 .datespots {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 
   .datespot {
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
     width: 30%;
@@ -107,9 +110,9 @@
         margin-right: 5%;
         font-size: 1rem;
         line-height: 2.5;
-        border: 2px solid #A52F57;
+        border: 2px solid $font-color__wine-red;
         border-radius: 5px;
-        background-color: #A52F57;
+        background-color: $font-color__wine-red;
         box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
 
         a {
@@ -119,8 +122,7 @@
       }
 
       .datespot-tag:active {
-        -webkit-transform: translateY(4px);
-        transform: translateY(4px);
+        @include ProprtySetPrefix(transform, translateY(4px));
         box-shadow: 0px 0px 0px rgba(0,0,0,0);
       }
     }
@@ -163,9 +165,9 @@
     position: relative;
     width: 84px;
     height: 84px;
-    background: #A52F57;
+    background: $font-color__wine-red;
     border-radius: 50%;
-    transition: 0.5s;
+    transition: 0.3s;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
   }
 
@@ -174,8 +176,7 @@
   }
 
   #fab:active {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
+    @include ProprtySetPrefix(transform, translateY(4px));
     box-shadow: 0px 0px 0px rgba(0,0,0,0);
   }
 
@@ -183,8 +184,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    @include ProprtySetPrefix(transform, translate(-50%, -50%));
     font-size: 28px;
     color: white;
   }

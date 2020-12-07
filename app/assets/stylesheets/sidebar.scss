@@ -1,5 +1,8 @@
+@import "colors";
+@import "prefix";
+
 .sidebar {
-  background-color: #f9e67e;
+  background-color: $main-color__yellow;
   text-align: center;
   padding: 0;
   width: 20%;
@@ -13,7 +16,7 @@
       font-size: 2rem;
 
       .nav-item {
-        color: #A52F57;
+        color: $font-color__wine-red;
         margin-bottom: 2%;
 
         a {
@@ -25,13 +28,12 @@
           position: absolute;
           content: '';
           display: inline-block;
-          background: #A52F57;
+          background: $font-color__wine-red;
           height: 3px;
           width: 100%;
           top: 75%;
           left: 50%;
-          -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+          @include ProprtySetPrefix(transform, translateX(-50%));
           opacity: 0;
           transition: all 0.3s ease-out;
           margin-top: 7%;

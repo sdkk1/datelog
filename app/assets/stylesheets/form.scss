@@ -1,3 +1,6 @@
+@import "colors";
+@import "prefix";
+
 .info_form {
   margin-bottom: 5%;
 
@@ -14,7 +17,7 @@
     width: 40%;
     font-size: 1.2rem;
     line-height: 2.5;
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
   }
@@ -23,7 +26,7 @@
     width: 40%;
     font-size: 1.2rem;
     line-height: 2.5;
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
   }
@@ -43,7 +46,7 @@
       display: none;
 
       &:checked + label {
-        border-bottom: 3px solid #A52F57;
+        border-bottom: 3px solid $font-color__wine-red;
       }
     }
   }
@@ -59,15 +62,14 @@
     width: 40%;
     font-size: 1.2rem;
     line-height: 2.5;
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
-    background-color: #A52F57;
+    background-color: $font-color__wine-red;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
   }
 
   .login-btn:active {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
+    @include ProprtySetPrefix(transform, translateY(4px));
     box-shadow: 0px 0px 0px rgba(0,0,0,0);
   }
 }
@@ -97,7 +99,7 @@
     width: 15%;
     font-size: 1.2rem;
     line-height: 2.5;
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
   }
@@ -108,9 +110,9 @@
     width: 5%;
     font-size: 1.2rem;
     line-height: 2.5;
-    border: 2px solid #A52F57;
+    border: 2px solid $font-color__wine-red;
     border-radius: 5px;
-    background-color: #A52F57;
+    background-color: $font-color__wine-red;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
 
     .search-icon {
@@ -119,8 +121,7 @@
   }
 
   .search_button:active {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
+    @include ProprtySetPrefix(transform, translateY(4px));
     box-shadow: 0px 0px 0px rgba(0,0,0,0);
   }
 }
