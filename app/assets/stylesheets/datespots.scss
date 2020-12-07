@@ -18,6 +18,16 @@
     .datespot-card-upper {
       .datespot-image {
         width: 100%;
+        opacity: 1;
+        transition: 0.5s ease-in-out;
+      }
+
+      .datespot-image:hover {
+        opacity: 0.5;
+      }
+
+      .datespot-no-image {
+        width: 100%;
       }
     }
 

@@ -2,9 +2,11 @@
 <li class="datespot" id="datespot-<%= @datespot.id %>">
   <div class="datespot-card-upper">
     <% if @datespot.images.attached? %>
-      <%= image_tag @datespot.images.first.variant(resize:'300x300!').processed, class: "datespot-image" %>
+      <%= link_to datespot_path(@datespot) do %>
+        <%= image_tag @datespot.images.first.variant(resize:'300x300!').processed, class: "datespot-image" %>
+      <% end %>
     <% else %>
-      <%= image_tag 'thumb400_default.png', class: "datespot-image" %>
+      <%= image_tag 'thumb400_default.png', class: "datespot-no-image" %>
     <% end %>
   </div>
   <div class="datespot-card-lower">
