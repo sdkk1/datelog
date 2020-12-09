@@ -13,7 +13,7 @@
           <ol class="datespots">
             <%= render @datespots %>
           </ol>
-          <%= will_paginate @datespots %>
+          <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1 %>
         <% end %>
         <span class="new-datespot">
           <%= link_to new_datespot_path, id: "fab" do %><i class="fas fa-plus"></i><% end %>
