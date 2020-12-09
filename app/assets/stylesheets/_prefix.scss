@@ -1,0 +1,8 @@
+// ベンダープレフィックス
+$set-prefix: '', '-webkit-';
+
+@mixin ProprtySetPrefix($name, $value) {
+  @each $prefix in $set-prefix {
+    #{$prefix}#{$name}: $value;
+  }
+}

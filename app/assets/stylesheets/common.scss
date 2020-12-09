@@ -1,8 +1,14 @@
+@import "colors";
+@import "prefix";
+
 // 全ページ共通
 * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
-  color: #A52F57;
+  color: $font-color__wine-red;
 }
 
 html {
@@ -15,31 +21,31 @@ body {
   font-size: 1.6em;
 }
 
-ul, li {
+ol, ul, dl {
+  margin-bottom: 0 !important;
   list-style: none;
-  padding-left: 0;
-}
-
-.row {
-  table-layout: fixed;
 }
 
 .main {
-  display: table-cell;
-  background-color: #fefcf0;
+  background-color: $base-color__light-yellow;
   text-align: center;
   padding: 5% 5%;
   width: 80%;
 
   .heading {
-    border-bottom: 3px solid #A52F57;
+    border-bottom: 3px solid $font-color__wine-red;
     padding-bottom: 5%;
 
-    .heading_title {
+    &_title {
       margin-top: 1%;
       font-size: 4.8rem;
       font-weight: bold;
     }
+  }
+
+  .content {
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 }
 
@@ -64,8 +70,7 @@ footer {
   display: inline-block !important;
   text-align: center;
   width: 75%;
-  border-top: 3px solid #A52F57;
-  margin-top: 5%;
+  border-top: 3px solid $font-color__wine-red;
 
   .copyright {
     margin-top: 3%;
@@ -132,44 +137,6 @@ input {
     border-bottom: 1px;
   }
  }
-
-// デートスポット
-.datespots {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
- }
-  .timestamp {
-    display: block;
-    margin-left: 10px;
-  }
-}
-.datespot-name {
-  display: inline-block;
-}
-
-h2.datespot-name {
-  font-size: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-.change-datespot {
-  display: inline-block;
-}
-
-.edit-datespot .delete-datespot {
-  font-size: 15px;
-}
-
-.datespot-picture img {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}
 
 // スライダー
 .swiper-container {
@@ -289,16 +256,6 @@ li.new_notification > a > span {
 }
 
 //リスト
-.list-btn-unlist {
-  color: red;
-  margin: 10px 0;
-}
-
-.list-btn-list {
-  color: grey;
-  margin: 10px 0;
-}
-
 a.list, a.unlist {
   text-decoration: none;
 }

@@ -15,7 +15,7 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "datelogの文字列が存在することを確認" do
+      it "date-matchの文字列が存在することを確認" do
         expect(page).to have_content 'date-match'
       end
 
@@ -42,26 +42,6 @@ RSpec.describe "StaticPages", type: :system do
           expect(page).to have_content datespot.tag_list
           expect(page).to have_link datespot.user.name
         end
-      end
-
-      it "全ての投稿に削除ボタンが表示されること" do
-        Datespot.take(5).each do |datespot|
-          expect(page).to have_link "削除"
-        end
-      end
-    end
-
-    context "投稿削除(管理者ユーザーの場合)", js: true do
-      before do
-        login_for_system(admin_user)
-        visit root_path
-      end
-
-      it "投稿を削除後、削除成功のフラッシュが表示されること" do
-        page.accept_confirm("本当に削除しますか？") do
-          click_on "削除", match: :first
-        end
-        expect(page).to have_content '投稿が削除されました'
       end
     end
 

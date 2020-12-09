@@ -1,32 +1,20 @@
+<div class='search_result'>
+  <% if params[:q][:name_cont].present? || params[:q][:user_name_cont].present? || params[:q][:address_cont].present? || params[:q][:tags_name_cont].present? %>
+    <p>検索結果: "<%= @datespots.count %>件"</p>
+    <p>名称・店名: "<%= params[:q][:name_cont] %>" , 投稿者: "<%= params[:q][:user_name_cont] %>" , 住所: "<%= params[:q][:address_cont] %>" , キーワード: "<%= params[:q][:tags_name_cont] %>"</p>
+  <% else %>
+    <p class="datespots_count">みんなの提案: <%= @datespots.count %>件</p>
+  <% end %>
+</div>
 <%= search_form_for @search do |form| %>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.search_field :name_cont, placeholder: "名称・店名で検索", class: 'form-control font-awesome' %>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.search_field :user_name_cont, placeholder: "投稿者で検索", class: 'form-control font-awesome' %>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.search_field :address_cont, placeholder: "住所で検索", class: 'form-control font-awesome' %>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.search_field :tags_name_cont, placeholder: "キーワードで検索", class: 'form-control font-awesome' %>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '評価の高い順': 'rate_average desc', '口コミ数の多い順': 'comments_count desc', '閲覧数の多い順': 'impressions_count desc'}, { selected: params[:q][:sorts] })%>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.submit nil, class: 'btn btn-primary' %>
-    </div>
+  <div class='search_form search_form_sticked'>
+    <%= form.search_field :name_cont, placeholder: "名称・店名で検索", class: 'search_field' %>
+    <%= form.search_field :user_name_cont, placeholder: "投稿者で検索", class: 'search_field' %>
+    <%= form.search_field :address_cont, placeholder: "住所で検索", class: 'search_field' %>
+    <%= form.search_field :tags_name_cont, placeholder: "キーワードで検索", class: 'search_field' %>
+    <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '評価の高い順': 'rate_average desc', '口コミ数の多い順': 'comments_count desc', '閲覧数の多い順': 'impressions_count desc'}, { selected: params[:q][:sorts] }, class: 'search_field' ) %>
+    <button type="submit" class="search_button">
+      <i class="fas fa-search search-icon"></i>
+    </button>
   </div>
 <% end %>

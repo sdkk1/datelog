@@ -1,32 +1,36 @@
 <% comments = @datespot.comments %>
 <% if comments.present? %>
-  <div id="rate-average-<%= @datespot.id %>"></div>
-  <script>
-    $('#rate-average-<%= @datespot.id %>').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @datespot.rate_average.round(1) %>,
-    });
-  </script>
-  <span>平均評価：<%= @datespot.rate_average.round(1) %>点</span><br>
-  <span>口コミ数：<%= @datespot.comments_count %>件</span>
+  <div class="datespot-rate-average">
+    <div id="rate-average-<%= @datespot.id %>"></div>
+    <script>
+      $('#rate-average-<%= @datespot.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @datespot.rate_average.round(1) %>,
+      });
+    </script>
+    <span class="datespot-rate-average-score"><%= @datespot.rate_average.round(1) %></span>
+  </div>
+  <span class="datespot-comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
 <% else %>
-  <div id="rate-average-<%= @datespot.id %>"></div>
-  <script>
-    $('#rate-average-<%= @datespot.id %>').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: 0,
-    });
-  </script>
-  <span>平均評価：0点</span><br>
-  <span>口コミ数：0件</span>
+  <div class="datespot-rate-average">
+    <div id="rate-average-<%= @datespot.id %>"></div>
+    <script>
+      $('#rate-average-<%= @datespot.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: 0,
+      });
+    </script>
+    <span class="datespot-rate-average-score"><%= @datespot.rate_average.round(1) %></span>
+  </div>
+  <span class="datespot-comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
 <% end %>

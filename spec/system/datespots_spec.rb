@@ -10,26 +10,31 @@ RSpec.describe "Datespots", type: :system do
   describe "投稿一覧ページ" do
     before do
       create_list(:datespot, 5)
-      visit datespots_path
     end
 
     context "ページレイアウト(共通)" do
-      it "「投稿一覧」の文字列が存在することを確認" do
-        expect(page).to have_content '投稿一覧'
+      before do
+        login_for_system(user)
+        visit datespots_path
+      end
+
+      it "「デートを探す」の文字列が存在することを確認" do
+        expect(page).to have_content 'デートを探す'
       end
 
       it "正しいタイトルが表示されることを確認" do
-        expect(page).to have_title full_title('投稿一覧')
+        expect(page).to have_title full_title('デートを探す')
       end
 
-      it "デートスポットの件数が表示されていることを確認" do
-        expect(page).to have_content "デートスポット (#{Datespot.all.count})"
+      it "みんなの提案の件数が表示されていることを確認" do
+        expect(page).to have_content "みんなの提案: #{Datespot.all.count}件"
       end
     end
 
     context "ページレイアウト(管理者ユーザーの場合)" do
       before do
         login_for_system(admin_user)
+        visit datespots_path
       end
 
       it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
@@ -41,19 +46,16 @@ RSpec.describe "Datespots", type: :system do
           expect(page).to have_link datespot.user.name
         end
       end
-
-      it "全ての投稿に削除ボタンが表示されること" do
-        Datespot.take(5).each do |datespot|
-          expect(page).to have_link "削除"
-        end
-      end
     end
 
     context "投稿削除(管理者ユーザーの場合)", js: true do
       it "投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
-        page.accept_confirm("本当に削除しますか？") do
-          click_on "削除", match: :first
+        visit datespots_path
+        within first('.datespot') do
+          page.accept_confirm("本当に削除しますか？") do
+            find('.datespot-delete').click
+          end
         end
         expect(page).to have_content '投稿が削除されました'
       end
@@ -84,29 +86,14 @@ RSpec.describe "Datespots", type: :system do
     context "投稿削除(管理者ユーザー以外の場合)", js: true do
       it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(user)
+        visit datespots_path
         if datespot == user.datespots
-          page.accept_confirm("本当に削除しますか？") do
-            click_on "削除", match: :first
+          within first('.datespot') do
+            page.accept_confirm("本当に削除しますか？") do
+              find('.datespot-delete').click
+            end
           end
           expect(page).to have_content '投稿が削除されました'
-        end
-      end
-    end
-
-    context "ページレイアウト(ログインしていないユーザーの場合)" do
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクなし)" do
-        Datespot.take(5).each do |datespot|
-          expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.address
-          expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.tag_list
-          expect(page).to have_content datespot.user.name
-        end
-      end
-
-      it "削除ボタンが表示されないこと" do
-        Datespot.take(5).each do |datespot|
-          expect(page).to have_no_link "削除"
         end
       end
     end
@@ -114,6 +101,7 @@ RSpec.describe "Datespots", type: :system do
     context "お気に入り登録/解除" do
       it "投稿一覧ページから投稿のお気に入り登録/解除ができること" do
         login_for_system(user)
+        visit datespots_path
         expect(user.favorite?(datespot)).to be_falsey
         user.favorite(datespot)
         expect(user.favorite?(datespot)).to be_truthy
@@ -125,6 +113,7 @@ RSpec.describe "Datespots", type: :system do
     context "リスト登録/解除" do
       it "投稿一覧ページから投稿のリスト登録/解除ができること" do
         login_for_system(user)
+        visit datespots_path
         expect(user.list?(datespot)).to be_falsey
         user.list(datespot)
         expect(user.list?(datespot)).to be_truthy
@@ -300,14 +289,16 @@ RSpec.describe "Datespots", type: :system do
       it "投稿詳細ページからリスト登録/解除ができること", js: true do
         login_for_system(user)
         visit datespot_path(datespot)
-        link = find('.list')
-        expect(link[:href]).to include "/lists/#{datespot.id}/create"
-        link.click
-        link = find('.unlist')
-        expect(link[:href]).to include "/lists/#{List.first.id}/destroy"
-        link.click
-        link = find('.list')
-        expect(link[:href]).to include "/lists/#{datespot.id}/create"
+        if datespot == user.datespots
+          link = find('.list')
+          expect(link[:href]).to include "/lists/#{datespot.id}/create"
+          link.click
+          link = find('.unlist')
+          expect(link[:href]).to include "/lists/#{List.first.id}/destroy"
+          link.click
+          link = find('.list')
+          expect(link[:href]).to include "/lists/#{datespot.id}/create"
+        end
       end
     end
 
