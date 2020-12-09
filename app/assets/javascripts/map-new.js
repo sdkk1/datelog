@@ -12,9 +12,9 @@ function initAutocomplete(){
     map: map
   });
 
-  var input = document.getElementById('address');
+  const input = document.getElementById('address');
 
-  var options = {
+  const options = {
       types: ['establishment'],
       componentRestrictions: {country: 'jp'}
   };
@@ -37,9 +37,9 @@ function codeAddress(){
         animation: google.maps.Animation.DROP
       });
 
-      var content = '<div id="map_content"><p>' + inputAddress + '</p></div>';
+      const content = '<div id="map_content"><p>' + inputAddress + '</p></div>';
 
-      var infowindow = new google.maps.InfoWindow({
+      const infowindow = new google.maps.InfoWindow({
         content: content,
       });
 
