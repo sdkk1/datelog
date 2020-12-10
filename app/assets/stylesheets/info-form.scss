@@ -1,19 +1,19 @@
 @import "colors";
 @import "prefix";
 
-.info_form {
+.info-form {
   margin-bottom: 5%;
 
   label {
     font-size: 2.4rem;
   }
 
-  .input-need, .input-unneed {
+  &__input-need, &__input-unneed {
     font-size: 1.5rem;
     margin-left: 1%;
   }
 
-  .input-form {
+  &__input-form {
     width: 40%;
     font-size: 1.2rem;
     line-height: 2.5;
@@ -31,7 +31,7 @@
     background-color: white;
   }
 
-  .radio-button {
+  &__radio-button {
     display: inline-flex;
     justify-content: space-between;
     height: 100%;

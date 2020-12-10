@@ -1,15 +1,15 @@
 <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
   <div id="error_messages"></div>
   <div class = 'form-group' id = "star">
-    <%= form.label :rate %> <span class="input-need">※必須(0.5~5の段階評価)</span><br/>
+    <%= form.label :rate %> <span class="info-form__input-need">※必須(0.5~5の段階評価)</span><br/>
     <%= form.hidden_field :rate, id: :review_star, required: true %>
   </div>
   <div class = 'form-group'>
-    <%= form.label :content %> <span class="input-need">※必須(255文字以内)</span>
+    <%= form.label :content %> <span class="info-form__input-need">※必須(255文字以内)</span>
     <%= form.text_area :content, placeholder: "口コミを入力", id: "comment_content", required: true %>
   </div>
   <div class = 'form-group' id = "picture">
-    <%= form.label :picture %> <span class="input-unneed">※任意(1枚まで)</span>
+    <%= form.label :picture %> <span class="info-form__input-unneed">※任意(1枚まで)</span>
     <%= form.file_field :picture, id: 'comment_picture' %>
   </div>
   <%= form.submit "口コミする", class: "btn btn-outline-dark comment-submit float-right", id: "button1"  %>
