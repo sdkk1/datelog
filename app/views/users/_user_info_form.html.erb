@@ -41,6 +41,6 @@
   <%= form.label :introduction %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>
   <%= form.text_area :introduction, placeholder: "自己紹介を入力", class: 'info-form__input-form', id: 'user_introduction' %>
 </div>
-<div class="action">
-  <%= form.submit yield(:button_text), class: "login-btn" %>
+<div class="action-btn">
+  <%= form.submit yield(:button_text), class: "action-btn__user" %>
 </div>
