@@ -31,22 +31,11 @@ ol, ul, dl {
   text-align: center;
   padding: 5% 5%;
   width: 80%;
+}
 
-  .heading {
-    border-bottom: 3px solid $font-color__wine-red;
-    padding-bottom: 5%;
-
-    &_title {
-      margin-top: 1%;
-      font-size: 4.8rem;
-      font-weight: bold;
-    }
-  }
-
-  .content {
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
+.content {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .alert-success, .alert-danger {
