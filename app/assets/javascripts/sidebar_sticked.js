@@ -1,8 +1,8 @@
 $(window).on('turbolinks:load', function() {
-  if($('.sidebar_sticked').length){
+  if($('.sidebar__nav').length){
     const row = $(".row");
     const sidebar = $(".sidebar");
-    const sidebar_sticked = $(".sidebar_sticked");
+    const sidebar_sticked = $(".sidebar__nav");
 
     // サイドバーの位置
     const sidebar_top = sidebar.offset().top;
