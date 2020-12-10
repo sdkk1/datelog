@@ -1,0 +1,13 @@
+@import "colors";
+@import "prefix";
+
+.footer {
+  display: inline-block !important;
+  text-align: center;
+  width: 75%;
+  border-top: 3px solid $font-color__wine-red;
+
+  &__copyright {
+    margin-top: 3%;
+  }
+}

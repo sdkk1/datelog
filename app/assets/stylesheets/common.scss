@@ -54,18 +54,6 @@ textarea {
   resize: vertical;
 }
 
-// フッター
-footer {
-  display: inline-block !important;
-  text-align: center;
-  width: 75%;
-  border-top: 3px solid $font-color__wine-red;
-
-  .copyright {
-    margin-top: 3%;
-  }
-}
-
 // テキストの見栄え
 h2 {
   font-size: 1.2em;
