@@ -1,7 +1,7 @@
 <% list = List.find_by(datespot_id: @datespot.id) %>
 <% if current_user != @datespot.user %>
   <%= link_to "/lists/#{list.id}/destroy", method: :delete, class: 'unlist', remote: true do %>
-    <div class="list-btn-list"><i class="fas fa-hand-paper"></i></div>
+    <div><i class="fas fa-hand-paper"></i></div>
   <% end %>
   <span><%= @datespot.lists.count %></span>
 <% end %>

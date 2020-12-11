@@ -1,6 +1,6 @@
 <% if current_user != @datespot.user %>
   <%= link_to "/lists/#{@datespot.id}/create", method: :post, class: 'list', remote: true do %>
-    <div class="list-btn-list"><i class="far fa-hand-paper"></i></div>
+    <div><i class="far fa-hand-paper"></i></div>
   <% end %>
   <span><%= @datespot.lists.count %></span>
 <% end %>

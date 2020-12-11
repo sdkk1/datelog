@@ -1,0 +1,134 @@
+@import "colors";
+@import "prefix";
+
+.datespot-info {
+  &__top {
+    display:flex;
+    justify-content: space-between;
+
+    &--datespot-name {
+      font-size: 1.6em;
+    }
+
+    &--datespot-change {
+      font-size: 1.6em;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__user {
+    font-size: 1.4em;
+    margin-top: 2%;
+
+    &--avatar {
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+      margin-right: 5%;
+    }
+  }
+
+  &__address, &__range {
+    display: inline-block;
+    width: 100%;
+    font-size: 1.4em;
+    margin-top: 2%;
+  }
+
+  &__icon {
+    margin-left: 2%;
+    margin-right: 8%;
+  }
+
+  &__evaluations {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 2%;
+
+    &--rate-average {
+      display:flex;
+      font-size: 1.4em;
+      margin-left: 1.75%;
+
+      &-score {
+        margin-top: 2%;
+      }
+    }
+
+    &--comment {
+      font-size: 1.4em;
+      margin-top: 1%;
+    }
+
+    &--impressions {
+      display:flex;
+      font-size: 1.4em;
+      margin-top: 1%;
+
+      &-icon {
+        margin-top: 10%;
+      }
+    }
+  }
+
+  &__keywords {
+    &--tag {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0 3%;
+      margin-top: 2%;
+      margin-right: 5%;
+      font-size: 1rem;
+      line-height: 2.5;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: $font-color__wine-red;
+      box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
+
+      a {
+        color: white;
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    &--tag:active {
+      @include ProprtySetPrefix(transform, translateY(4px));
+      box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    }
+  }
+
+  &__bottom {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 4%;
+
+    &--timestamp {
+      font-size: 1.4em;
+      margin-left: 2%;
+    }
+
+    &--actions {
+      display:flex;
+      font-size: 1.6em;
+
+      &-list {
+        display:flex;
+        margin-right: 10%;
+      }
+
+      &-favorite {
+        display:flex;
+      }
+    }
+  }
+}

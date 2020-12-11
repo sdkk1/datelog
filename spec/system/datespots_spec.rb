@@ -52,9 +52,9 @@ RSpec.describe "Datespots", type: :system do
       it "投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
         visit datespots_path
-        within first('.datespot') do
+        within first('.datespots__card') do
           page.accept_confirm("本当に削除しますか？") do
-            find('.datespot-delete').click
+            find('#datespot-delete').click
           end
         end
         expect(page).to have_content '投稿が削除されました'
@@ -88,9 +88,9 @@ RSpec.describe "Datespots", type: :system do
         login_for_system(user)
         visit datespots_path
         if datespot == user.datespots
-          within first('.datespot') do
+          within first('.datespots__card') do
             page.accept_confirm("本当に削除しますか？") do
-              find('.datespot-delete').click
+              find('#datespot-delete').click
             end
           end
           expect(page).to have_content '投稿が削除されました'

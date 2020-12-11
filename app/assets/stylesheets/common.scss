@@ -173,31 +173,6 @@ input {
   margin: 5px 0;
 }
 
-// お気に入り
-.like-btn-unlike {
-  color: red;
-}
-.like-btn-like {
-  color: grey;
-}
-
-.title-comment {
-  font-weight: bold;
-  font-size: 17px;
-}
-
-a.like, a.unlike {
-  text-decoration: none;
-}
-
-.favorites {
-  list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-}
-
 // コメント
 .comments {
   list-style: none;
@@ -229,23 +204,6 @@ li.new_notification > a > span {
 }
 
 .notification-message {
-  font-size: 16px;
-}
-
-//リスト
-a.list, a.unlist {
-  text-decoration: none;
-}
-
-.lists {
-  list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-}
-
-.list-message {
   font-size: 16px;
 }
 
