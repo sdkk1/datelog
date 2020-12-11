@@ -1,5 +1,5 @@
-@import "colors";
-@import "prefix";
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
 
 // 全ページ共通
 * {
@@ -26,18 +26,6 @@ ol, ul, dl {
   list-style: none;
 }
 
-.main {
-  background-color: $base-color__light-yellow;
-  text-align: center;
-  padding: 5% 5%;
-  width: 80%;
-}
-
-.content {
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
 .alert-success, .alert-danger {
   margin-bottom: 3% !important;
 }
@@ -46,63 +34,7 @@ ol, ul, dl {
   font-size: 1.5rem;
 }
 
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-// テキストの見栄え
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
-}
- #error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-// ユーザー詳細ページ
-.title-profile {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.user-picture-box {
-  margin-top: 0.5em;
-  margin-left: 1em;
-}
-
-.show-user-name {
-  display: inline-block;
-}
-
-.account-edit {
-  margin-top: 20px;
-}
+/* ↓は後で修正 */
 
 // ユーザー一覧ページ
 .users {
@@ -168,28 +100,6 @@ input {
   width: 550px;
 }
 
-// フォロー
-.stats {
-  margin: 5px 0;
-}
-
-// コメント
-.comments {
-  list-style: none;
-  li {
-    font-size: 14px;
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-    .comment {
-      font-size: 16px;
-    }
-  }
-}
-
-.comment-create-at {
-  color: grey;
-}
-
 //通知
 li.new_notification > a > span {
   color: red;
@@ -201,10 +111,6 @@ li.new_notification > a > span {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-}
-
-.notification-message {
-  font-size: 16px;
 }
 
 // ヘッダー
