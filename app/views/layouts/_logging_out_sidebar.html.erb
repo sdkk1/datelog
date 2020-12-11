@@ -1,10 +1,10 @@
 <div class="sidebar">
   <%= link_to(image_tag("logo.png", :width => "100%", :height => "auto", :alt => "date-matchのロゴ"), root_url) %>
-  <nav class="sidebar_nav sidebar_sticked">
-    <ul class="nav">
-      <li class="nav-item"><%= link_to root_url, class: "nav-item" do %><i class="fas fa-home nav-icon"></i>トップ<% end %></li>
-      <li class="nav-item"><%= link_to signup_path, class: "nav-item" do %><i class="fas fa-user-plus nav-icon"></i>新規登録<% end %></li>
-      <li class="nav-item"><%= link_to login_path, class: "nav-item" do %><i class="fas fa-sign-in-alt nav-icon"></i>ログイン<% end %></li>
+  <nav class="sidebar__nav">
+    <ul class="sidebar__nav--items">
+      <li class="sidebar__nav--item"><%= link_to root_url, class: "sidebar__nav--item" do %><i class="fas fa-home sidebar__nav--icon"></i>トップ<% end %></li>
+      <li class="sidebar__nav--item"><%= link_to signup_path, class: "sidebar__nav--item" do %><i class="fas fa-user-plus sidebar__nav--icon"></i>新規登録<% end %></li>
+      <li class="sidebar__nav--item"><%= link_to login_path, class: "sidebar__nav--item" do %><i class="fas fa-sign-in-alt sidebar__nav--icon"></i>ログイン<% end %></li>
     </ul>
   </nav>
 </div>

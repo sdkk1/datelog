@@ -1,0 +1,38 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.datespots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__card {
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+    width: 30%;
+    height: 25%;
+    margin-bottom: 3%;
+    text-align: left;
+  }
+
+  &__card-upper {
+    &--image {
+      width: 100%;
+      opacity: 1;
+      transition: 0.5s ease-in-out;
+    }
+
+    &--image:hover {
+      opacity: 0.5;
+    }
+
+    &--no-image {
+      width: 100%;
+    }
+  }
+
+  &__card-lower {
+    margin: 5%;
+  }
+}

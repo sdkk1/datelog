@@ -1,0 +1,57 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.info-form {
+  margin-bottom: 5%;
+
+  label {
+    font-size: 2.4rem;
+  }
+
+  &__input-need, &__input-unneed {
+    font-size: 1.5rem;
+    margin-left: 1%;
+  }
+
+  &__input-form {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  #user_prefecture_code {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  &__radio-button {
+    display: inline-flex;
+    justify-content: space-between;
+    height: 100%;
+
+    label {
+      cursor: pointer;
+      padding: 0 4px;
+      margin: 0 8px;
+    }
+
+    input[type=radio] {
+      display: none;
+
+      &:checked + label {
+        border-bottom: 3px solid $font-color__wine-red;
+      }
+    }
+  }
+
+  &__signup {
+    font-size: 1.6rem;
+  }
+}

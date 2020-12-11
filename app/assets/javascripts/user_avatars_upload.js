@@ -1,15 +1,15 @@
 $(function(){
   //DataTransferオブジェクトで、データを格納する箱を作る
-  var dataBox = new DataTransfer();
+  const dataBox = new DataTransfer();
 
   //querySelectorでfile_fieldを取得
-  var file_field = document.querySelector('input[type=file]')
+  const file_field = document.querySelector('input[type=file]')
 
    //fileが選択された時に発火するイベント
   $('#user_avatars').change(function(){
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
-      var fileReader = new FileReader();
+      const fileReader = new FileReader();
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
       //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入

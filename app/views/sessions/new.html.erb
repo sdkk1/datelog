@@ -5,23 +5,23 @@
     <div class="main">
       <div class="heading">
         <%= render 'shared/flash_messages' %>
-        <h1 class="heading_title">ログイン</h1>
+        <h1 class="heading__title">ログイン</h1>
       </div>
       <div class="content">
         <%= form_for(:session, url: login_path, local: true) do |form| %>
-          <div class='info_form'>
-            <%= form.label 'メールアドレス' %><span class="input-need">※必須(255文字以内)</span><br>
-            <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'input-form', id: 'user_email', required: true %>
+          <div class='info-form'>
+            <%= form.label 'メールアドレス' %><span class="info-form__input-need">※必須(255文字以内)</span><br>
+            <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'info-form__input-form', id: 'user_email', required: true %>
           </div>
-          <div class='info_form'>
-            <%= form.label 'パスワード' %><span class="input-need">※必須(6文字以上)</span><br>
-            <%= form.password_field :password, placeholder: "パスワードを入力", class: 'input-form', id: 'user_password', required: true %>
+          <div class='info-form'>
+            <%= form.label 'パスワード' %><span class="info-form__input-need">※必須(6文字以上)</span><br>
+            <%= form.password_field :password, placeholder: "パスワードを入力", class: 'info-form__input-form', id: 'user_password', required: true %>
           </div>
-          <div class="action">
-            <%= form.submit 'ログイン', class: "login-btn" %>
+          <div class="action-btn">
+            <%= form.submit 'ログイン', class: "action-btn__user" %>
           </div>
         <% end %>
-        <span class="signup">ユーザー登録をしていない方は<%= link_to 'こちら', signup_path %></span>
+        <span class="info-form__signup">ユーザー登録をしていない方は<%= link_to 'こちら', signup_path %></span>
       </div>
       <%= render 'layouts/footer' %>
     </div>

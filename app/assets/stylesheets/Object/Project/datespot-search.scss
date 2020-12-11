@@ -1,0 +1,52 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.datespot-search {
+  &__search-result {
+    display: inline-block;
+    font-size: 1.8rem;
+  }
+
+  &__datespots-count {
+    font-size: 2rem;
+    margin: 0 0 5%;
+  }
+
+  &__search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1% 0 3%;
+    z-index: 9;
+
+    &--search-field {
+      width: 15%;
+      font-size: 1.2rem;
+      line-height: 2.5;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    &--search-button {
+      display: inline-block;
+      vertical-align: middle;
+      width: 5%;
+      font-size: 1.2rem;
+      line-height: 2.5;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: $font-color__wine-red;
+      box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
+    }
+
+    &--search-button:active {
+      @include ProprtySetPrefix(transform, translateY(4px));
+      box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    }
+
+    &--search-icon {
+      color: white;
+    }
+  }
+}
