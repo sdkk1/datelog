@@ -1,8 +1,8 @@
 $(window).on('turbolinks:load', function() {
-  if($('.search_form_sticked').length){
+  if($('.datespot-search__search-form').length){
     const row = $(".row");
     const content = $(".content");
-    const search_form_sticked = $(".search_form_sticked");
+    const search_form_sticked = $(".datespot-search__search-form");
 
     // コンテンツの位置
     const content_top = content.offset().top;
