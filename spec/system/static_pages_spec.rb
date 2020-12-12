@@ -22,10 +22,6 @@ RSpec.describe "StaticPages", type: :system do
       it "正しいタイトルが表示されることを確認" do
         expect(page).to have_title full_title
       end
-
-      it "デートスポットの件数が表示されていることを確認" do
-        expect(page).to have_content "デートスポット (#{Datespot.all.count})"
-      end
     end
 
     context "ページレイアウト(管理者ユーザーの場合)" do
