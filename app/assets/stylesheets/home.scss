@@ -10,20 +10,20 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      background-color:rgba(255,255,255,0.5);
+      background-color:rgba(255,255,255,0.4);
       background-blend-mode:lighten;
     }
 
     .slider-section1 {
-      background-image: url("../home1.png");
+      background-image: image-url("home1.png");
     }
 
     .slider-section2 {
-      background-image: url("../home2.png");
+      background-image: image-url("home2.png");
     }
 
     .slider-section3 {
-      background-image: url("../home3.png");
+      background-image: image-url("home3.png");
     }
   }
 }
