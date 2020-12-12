@@ -1,13 +1,14 @@
-<div class="top-wrapper">
-  <div class="top-description">
+<div class="home__key-visual">
+  <div class="home__key-visual--title">
     <h1>date-match</h1>
-    <h2>デート提案型　マッチングサービス</h2>
-    <h2> 〜お互いの行きたいところから始まる新しい出会い形〜</h2>
+    <h2>デート提案型　マッチングサービス<br>〜お互いの行きたいところから始まる新しい出会いの形〜</h2>
   </div>
-  <div class="top-sign">
-    <%= link_to '新規登録', signup_path, class:"btn" %>
-    <%= link_to 'ログイン', login_path, class:"btn" %>
+  <div class="home__key-visual--sign">
+    <%= link_to '新規登録', signup_path, class: "home__key-visual--sign-btn" %>
+    <%= link_to 'ログイン', login_path, class: "home__key-visual--sign-btn" %>
+  </div>
+  <div class="home__key-visual--guest">
     <%# かんたんログイン %>
-    <p class="">※ かんたんログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せず閲覧いただけます。</p>
+    <span class="home__key-visual--guest-description">※ かんたんログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せずに閲覧いただけます。</span>
   </div>
 </div>
