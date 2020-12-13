@@ -47,31 +47,6 @@ ol, ul, dl {
   }
 }
 
-// マップ
-.map-container {
-  padding-top: 20px;
-}
-
-.map_wrapper {
-  position: relative; /* 子要素の基準とする */
-  width: 100%;
-  padding-top: 56.25%; /* 幅の 56.25% を高さとする場合（16:9）*/
-  border: 1px solid #CCC;
-}
-
-.map_wrapper .map {
-  position: absolute; /* 親要素のパディング領域に配置 */
-  width: 100%; /* 親コンテナの幅いっぱいに表示 */
-  height: 100%; /* 親コンテナの高さいっぱいに表示 */
-  top: 0;
-  left: 0;
-}
-
-#map{
-  height: 310px;
-  width: 550px;
-}
-
 //通知
 li.new_notification > a > span {
   color: red;

@@ -13,9 +13,13 @@
             <div class="datespot__card-upper-left">
               <%= render 'datespots/datespot-slider' %>
             </div>
-            <div class="datespot__card-upper-right"></div>
+            <div class="datespot__card-upper-right">
+              <h4 id="address">【住所】<%= @datespot.address %></h4>
+            </div>
           </div>
-          <div class="datespot__card-lower"></div>
+          <div class="datespot__card-lower">
+            <%= render "map-show" %>
+          </div>
         </div>
       </div>
       <%= render 'layouts/footer' %>
@@ -72,5 +76,4 @@
     </div>
   </div>
 </div>
-<%= render "map-show" %>
 <%= render "weather" %>
