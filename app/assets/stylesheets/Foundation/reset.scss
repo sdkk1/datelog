@@ -45,34 +45,6 @@ ol, ul, dl {
     padding: 10px 0;
     border-bottom: 1px;
   }
- }
-
-// スライダー
-.swiper-container {
-  width: 100%;
-  height: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.slider {
-  height: 80%;
-  width: 100%;
-}
-
-.thumbnail {
-  height: 20%;
-  box-sizing: border-box;
-  padding: 10px 0;
-}
-
-.thumbnail .swiper-slide {
-  height: 100%;
-  opacity: 0.4;
-}
-
-.thumbnail.swiper-slide-thumb-active {
-  opacity: 1;
 }
 
 // マップ
