@@ -1,0 +1,15 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__report {
+    margin: 0 1%;
+
+    &--date, &--temp-max, &--temp-min {
+      font-size: 1.2em;
+    }
+  }
+}

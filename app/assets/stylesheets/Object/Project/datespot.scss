@@ -9,6 +9,8 @@
   background-color: white;
 
   &__card-upper {
+    display: flex;
+    flex-wrap: wrap;
     height: 50%;
 
     &-left {

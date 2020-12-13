@@ -15,6 +15,7 @@
             </div>
             <div class="datespot__card-upper-right">
               <h4 id="address">【住所】<%= @datespot.address %></h4>
+              <%= render "weather" %>
             </div>
           </div>
           <div class="datespot__card-lower">
@@ -76,4 +77,3 @@
     </div>
   </div>
 </div>
-<%= render "weather" %>
