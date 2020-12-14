@@ -48,7 +48,7 @@
         </div>
         <div class="home__datespots--content">
           <% if @datespots.any? %>
-            <ol class="datespots">
+            <ol class="datespot-index">
               <%= render @datespots %>
             </ol>
             <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>

@@ -1,10 +1,11 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.datespot-info {
+.datespot-index-info {
   &__top {
     display:flex;
     justify-content: space-between;
+    margin-bottom: 2%;
 
     &--datespot-name {
       font-size: 1.6em;
@@ -21,7 +22,7 @@
 
   &__user {
     font-size: 1.4em;
-    margin-top: 2%;
+    margin-bottom: 2%;
 
     &--avatar {
       border-radius: 50%;
@@ -36,7 +37,7 @@
     display: inline-block;
     width: 100%;
     font-size: 1.4em;
-    margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   &__icon {
@@ -47,7 +48,7 @@
   &__evaluations {
     display:flex;
     justify-content: space-between;
-    margin-top: 2%;
+    margin-bottom: 4%;
 
     &--rate-average {
       display:flex;
@@ -71,6 +72,31 @@
 
       &-icon {
         margin-top: 10%;
+      }
+    }
+  }
+
+  &__bottom {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &--timestamp {
+      font-size: 1.4em;
+      margin-left: 2%;
+    }
+
+    &--actions {
+      display:flex;
+      font-size: 1.6em;
+
+      &-list {
+        display:flex;
+        margin-right: 10%;
+      }
+
+      &-favorite {
+        display:flex;
       }
     }
   }
@@ -104,31 +130,6 @@
     &--tag:active {
       @include ProprtySetPrefix(transform, translateY(4px));
       box-shadow: 0px 0px 0px rgba(0,0,0,0);
-    }
-  }
-
-  &__bottom {
-    display:flex;
-    justify-content: space-between;
-    margin-top: 4%;
-
-    &--timestamp {
-      font-size: 1.4em;
-      margin-left: 2%;
-    }
-
-    &--actions {
-      display:flex;
-      font-size: 1.6em;
-
-      &-list {
-        display:flex;
-        margin-right: 10%;
-      }
-
-      &-favorite {
-        display:flex;
-      }
     }
   }
 }

@@ -9,7 +9,7 @@ ja:
     models:
       user: ユーザー
       datespot: デートスポット
-      comment: 口コミ
+      comment: コメント
     attributes:
       user:
         id: ID
@@ -39,9 +39,9 @@ ja:
         images: 写真
         user_id: ユーザーID
       comment:
-        user_id: 口コミ者のID
-        dish_id: 口コミされた投稿のID
-        content: 口コミ
+        user_id: コメント者のID
+        dish_id: コメントされた投稿のID
+        content: コメント
         rate: 評価
         picture: 写真
       message:

@@ -1,0 +1,28 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.comment-form {
+  margin-bottom: 5%;
+
+  &__error-messages{
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 1.8rem;
+  }
+
+  &__input-need, &__input-unneed {
+    font-size: 1.4rem;
+    margin-left: 1%;
+  }
+
+  &__input-form {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 2;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+  }
+}

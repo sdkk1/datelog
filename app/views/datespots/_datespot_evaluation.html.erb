@@ -1,6 +1,6 @@
 <% comments = @datespot.comments %>
 <% if comments.present? %>
-  <div class="datespot-info__evaluations--rate-average">
+  <div class="datespot-index-info__evaluations--rate-average">
     <div id="rate-average-<%= @datespot.id %>"></div>
     <script>
       $('#rate-average-<%= @datespot.id %>').raty({
@@ -13,11 +13,11 @@
         score: <%= @datespot.rate_average.round(1) %>,
       });
     </script>
-    <span class="datespot-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
+    <span class="datespot-index-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
   </div>
-  <span class="datespot-info__evaluations--comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
+  <span class="datespot-index-info__evaluations--comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
 <% else %>
-  <div class="datespot-info__evaluations--rate-average">
+  <div class="datespot-index-info__evaluations--rate-average">
     <div id="rate-average-<%= @datespot.id %>"></div>
     <script>
       $('#rate-average-<%= @datespot.id %>').raty({
@@ -30,7 +30,7 @@
         score: 0,
       });
     </script>
-    <span class="datespot-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
+    <span class="datespot-index-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
   </div>
-  <span class="datespot-info__evaluations--comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
+  <span class="datespot-index-info__evaluations--comment"><i class="fas fa-comment-alt"></i><%= @datespot.comments_count %></span>
 <% end %>

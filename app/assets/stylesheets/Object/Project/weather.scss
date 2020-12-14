@@ -2,14 +2,24 @@
 @import "Object/Utility/prefix";
 
 .weather {
-  display: flex;
-  flex-wrap: wrap;
+  &__title {
+    margin-bottom: 3%;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid $font-color__wine-red;
+    font-size: 2.2em;
+  }
 
-  &__report {
-    margin: 0 1%;
+  &__content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    &--date, &--temp-max, &--temp-min {
-      font-size: 1.2em;
+    &--report{
+      margin: 0 1%;
+
+      &-date, &-temp-max, &-temp-min {
+        font-size: 1.4em;
+      }
     }
   }
 }

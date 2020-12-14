@@ -1,0 +1,15 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.comment-index {
+  display:flex;
+  justify-content: space-between;
+
+  &__left {
+    width: 50%;
+  }
+
+  &__right {
+    width: 50%;
+  }
+}

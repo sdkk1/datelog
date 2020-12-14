@@ -1,0 +1,52 @@
+<div class="datespot-index-info">
+  <div class="datespot-index-info__top">
+    <h4 class="datespot-index-info__top--datespot-name">
+      <%= link_to @datespot.name, datespot_path(@datespot) %>
+    </h4>
+    <div class="datespot-index-info__top--datespot-change">
+      <% if current_user == @datespot.user %>
+        <%= link_to edit_datespot_path(@datespot) do %>　
+          <i class="far fa-edit"></i>
+        <% end %>
+      <% end %>
+      <% if logged_in? %>
+        <% if current_user.admin? || (current_user == @datespot.user) %>
+          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, id: 'datespot-delete' do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="datespot-index-info__user">
+    <% if @datespot.user.avatars.attached? %>
+      <%= link_to @datespot.user do %>
+        <%= image_tag @datespot.user.avatars.first.variant(resize:'24x24').processed, class: "datespot-index-info__user--avatar" %>
+        <%= @datespot.user.name %>
+      <% end %>
+    <% else %>
+      <%= link_to @datespot.user do %>
+        <%= image_tag 'thumb50_default.png', class: "datespot-index-info__user--avatar" %>
+        <%= @datespot.user.name %>
+      <% end %>
+    <% end %>
+  </div>
+  <span class="datespot-index-info__address"><i class="fas fa-map-marker-alt fa-lg datespot-index-info__icon"></i><%= @datespot.address %></span><br>
+  <span class="datespot-index-info__range"><i class="fas fa-yen-sign fa-lg datespot-index-info__icon"></i><%= @datespot.range_i18n %></span><br>
+  <div class="datespot-index-info__evaluations">
+    <%= render 'datespots/datespot_evaluation' %>
+    <span class="datespot-index-info__evaluations--impressions"><i class="fas fa-eye datespot-index-info__evaluations--impressions-icon"></i><%= @datespot.impressions_count %></span>
+  </div>
+  <div class="datespot-index-info__bottom">
+    <span class="datespot-index-info__bottom--timestamp">
+      <%= l @datespot.updated_at %>
+    </span>
+    <div class="datespot-index-info__bottom--actions">
+      <%= render 'users/list_form' if logged_in? %>
+      <%= render 'users/favorite_form' if logged_in? %>
+    </div>
+  </div>
+  <div class="datespot-index-info__keywords">
+    <%= render 'datespots/tag_list', tag_list: @datespot.tag_list %>
+  </div>
+</div>
