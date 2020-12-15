@@ -12,7 +12,7 @@
     }
 
     &--datespot-change {
-      font-size: 1.6em;
+      font-size: 1.8em;
 
       a:hover {
         text-decoration: none;
@@ -29,6 +29,7 @@
       width: 24px;
       height: 24px;
       object-fit: cover;
+      margin-left: 0.5%;
       margin-right: 5%;
     }
   }
@@ -48,11 +49,11 @@
   &__evaluations {
     display:flex;
     justify-content: space-between;
-    margin-bottom: 4%;
+    margin-bottom: 3%;
 
     &--rate-average {
       display:flex;
-      font-size: 1.4em;
+      font-size: 1.6em;
       margin-left: 1.75%;
 
       &-score {
@@ -61,18 +62,8 @@
     }
 
     &--comment {
-      font-size: 1.4em;
+      font-size: 1.6em;
       margin-top: 1%;
-    }
-
-    &--impressions {
-      display:flex;
-      font-size: 1.4em;
-      margin-top: 1%;
-
-      &-icon {
-        margin-top: 10%;
-      }
     }
   }
 
@@ -88,16 +79,29 @@
 
     &--actions {
       display:flex;
+      justify-content: flex-end;
       font-size: 1.6em;
+
+      &-impressions {
+        display:flex;
+
+        &-icon {
+          margin-top: 15%;
+        }
+      }
 
       &-list {
         display:flex;
-        margin-right: 10%;
+        margin: 0 10%;
       }
 
       &-favorite {
         display:flex;
       }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
     }
   }
 

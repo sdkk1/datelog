@@ -55,7 +55,20 @@
 
     &--actions {
       display:flex;
+      justify-content: flex-end;
       font-size: 2em;
+
+      &-impressions {
+        display:flex;
+
+        &-icon {
+          margin-top: 20%;
+        }
+      }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
     }
   }
 

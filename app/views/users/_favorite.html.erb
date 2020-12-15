@@ -1,4 +1,4 @@
 <%= link_to "/favorites/#{@datespot.id}/create", method: :post, class: 'like', remote: true do %>
-  <div><i class="far fa-heart"></i></div>
+  <span><i class="far fa-heart"></i></span>
 <% end %>
 <span><%= @datespot.favorites.count %></span>

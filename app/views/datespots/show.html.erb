@@ -1,7 +1,11 @@
 <% provide(:title, "#{@datespot.name}") %>
 <div class="container-fluid">
   <div class="row">
-    <%= render 'layouts/logging_in_sidebar' %>
+    <% if logged_in? %>
+      <%= render 'layouts/logging_in_sidebar' %>
+    <% else %>
+      <%= render 'layouts/logging_out_sidebar' %>
+    <% end %>
     <div class="main">
       <div class="heading">
         <%= render 'shared/flash_messages' %>
@@ -27,8 +31,10 @@
             <div class="datespot-show__card-lower--comment">
               <div class="datespot-comment">
                 <%= render partial: 'comments/form', locals: { comment: @comment, datespot: @datespot } %>
-                <h3 class="datespot-comment__comment-index--title">コメント一覧</h3>
-                <%= render partial: 'comments/index', locals: { comments: @comments, datespot: @datespot } %>
+                <div class="datespot-comment__comment-index">
+                  <h3 class="datespot-comment__comment-index--title">コメント一覧</h3>
+                  <%= render partial: 'comments/index', locals: { comments: @comments, datespot: @datespot } %>
+                </div>
               </div>
             </div>
           </div>

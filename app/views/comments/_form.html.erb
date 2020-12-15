@@ -1,6 +1,6 @@
 <div class="datespot-comment__comment-form">
   <% if logged_in? %>
-    <h3 class="datespot-comment__comment-form--title">コメントする</h3>
+    <h3 class="datespot-comment__comment-form--title">コメントをする</h3>
     <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
       <div id="error_messages" class='comment-form__error-messages'></div>
       <div class='comment-form' id="star">
@@ -23,7 +23,6 @@
 </div>
 <script>
 $('#star').raty({
-  size: 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
