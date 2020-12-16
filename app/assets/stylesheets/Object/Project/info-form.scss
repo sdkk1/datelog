@@ -22,13 +22,17 @@
     background-color: white;
   }
 
-  #user_prefecture_code {
+  #user_prefecture_code, #datespot_prefecture_code {
     width: 40%;
     font-size: 1.2rem;
     line-height: 2.5;
     border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
+  }
+
+  select {
+    height: 3.4rem;
   }
 
   &__radio-button {

@@ -39,6 +39,11 @@
             </div>
           </div>
         </div>
+        <% if logged_in? %>
+          <span class="fab">
+            <%= link_to new_datespot_path, class: "fab__circle" do %><i class="fas fa-plus fab__circle--icon"></i><% end %>
+          </span>
+        <% end %>
       </div>
       <%= render 'layouts/footer' %>
     </div>
