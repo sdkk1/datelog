@@ -1,0 +1,108 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.datespot-show-info {
+  &__top {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid $font-color__wine-red;
+
+    &--user {
+      width: 50%;
+      font-size: 1.8em;
+      text-align: left;
+
+      &-avatar {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 5%;
+      }
+    }
+
+    &--datespot-change {
+      font-size: 2.4em;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__address, &__range, &__point, &__caution, &__reference-url {
+    display: inline-block;
+    margin-bottom: 3%;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid $font-color__wine-red;
+    width: 100%;
+    font-size: 1.8em;
+    text-align: left;
+  }
+
+  &__bottom {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1.5%;
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid $font-color__wine-red;
+
+    &--timestamp {
+      font-size: 1.8em;
+    }
+
+    &--actions {
+      display:flex;
+      justify-content: flex-end;
+      font-size: 2em;
+
+      &-impressions {
+        display:flex;
+
+        &-icon {
+          margin-top: 20%;
+        }
+      }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
+    }
+  }
+
+  &__keywords {
+    text-align: left;
+
+    &--tag {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0 3%;
+      margin-top: 2%;
+      margin-right: 5%;
+      font-size: 1rem;
+      line-height: 2.5;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: $font-color__wine-red;
+      box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
+
+      a {
+        color: white;
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    &--tag:active {
+      @include ProprtySetPrefix(transform, translateY(4px));
+      box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    }
+  }
+}

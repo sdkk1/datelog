@@ -2,9 +2,9 @@ function initMap() {
   //地図を表示する領域の div 要素のオブジェクトを変数に代入
   const target = document.getElementById('map');
   //マーカーのタイトル
-  const title = $('.datespot-name').text();
+  const title = $('#datespot-name').text();
   //HTMLに記載されている住所の取得
-  const address = document.getElementById('address').textContent;
+  const address = document.getElementById('datespot-address').textContent;
   //ジオコーディングのインスタンスの生成
   const geocoder = new google.maps.Geocoder();
 

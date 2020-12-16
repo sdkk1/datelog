@@ -1,16 +1,20 @@
 <% provide(:title, "デートを探す") %>
 <div class="container-fluid">
   <div class="row">
-    <%= render 'layouts/logging_in_sidebar' %>
+    <% if logged_in? %>
+      <%= render 'layouts/logging_in_sidebar' %>
+    <% else %>
+      <%= render 'layouts/logging_out_sidebar' %>
+    <% end %>
     <div class="main">
       <div class="heading">
         <%= render 'shared/flash_messages' %>
         <h1 class="heading__title">デートを探す</h1>
       </div>
       <div class="content">
-        <%= render 'datespot_search' %>
+        <%= render 'datespots/datespot_search' %>
         <% if @datespots.any? %>
-          <ol class="datespots">
+          <ol class="datespot-index">
             <%= render @datespots %>
           </ol>
           <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>

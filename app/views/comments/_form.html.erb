@@ -1,22 +1,28 @@
-<%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
-  <div id="error_messages"></div>
-  <div class = 'form-group' id = "star">
-    <%= form.label :rate %> <span class="info-form__input-need">※必須(0.5~5の段階評価)</span><br/>
-    <%= form.hidden_field :rate, id: :review_star, required: true %>
-  </div>
-  <div class = 'form-group'>
-    <%= form.label :content %> <span class="info-form__input-need">※必須(255文字以内)</span>
-    <%= form.text_area :content, placeholder: "口コミを入力", id: "comment_content", required: true %>
-  </div>
-  <div class = 'form-group' id = "picture">
-    <%= form.label :picture %> <span class="info-form__input-unneed">※任意(1枚まで)</span>
-    <%= form.file_field :picture, id: 'comment_picture' %>
-  </div>
-  <%= form.submit "口コミする", class: "btn btn-outline-dark comment-submit float-right", id: "button1"  %>
-<% end %>
+<div class="datespot-comment__comment-form">
+  <% if logged_in? %>
+    <h3 class="datespot-comment__comment-form--title">コメントをする</h3>
+    <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
+      <div id="error_messages" class='comment-form__error-messages'></div>
+      <div class='comment-form' id="star">
+        <%= form.label :rate %><span class="comment-form__input-need">※必須(0.5~5の段階評価)</span><br/>
+        <%= form.hidden_field :rate, required: true %>
+      </div>
+      <div class='comment-form'>
+        <%= form.label :content %><span class="comment-form__input-need">※必須(255文字以内)</span><br>
+        <%= form.text_area :content, placeholder: "コメントを入力", class: 'comment-form__input-form', required: true %>
+      </div>
+      <div class='comment-form' id="picture">
+        <%= form.label :picture %><span class="comment-form__input-unneed">※任意(1枚まで)</span><br>
+        <%= form.file_field :picture, class: 'comment-form__input-form' %>
+      </div>
+      <div class="action-btn">
+        <%= form.submit "コメントする", class: "action-btn__comment" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <script>
 $('#star').raty({
-  size: 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',

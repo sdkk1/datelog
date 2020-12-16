@@ -1,0 +1,13 @@
+<script>
+  <% if @datespot.present? %>
+    const datespot_swiper = new Swiper('.datespot-slider', {
+      effect: 'flip',
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: false,
+      },
+    });
+  <% end %>
+</script>

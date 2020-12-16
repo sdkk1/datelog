@@ -1,8 +1,11 @@
-<div id="weather"></div>
+<div class="weather">
+  <h3 class="weather__title">天気予報</h3>
+  <div id="weather" class="weather__content"></div>
+</div>
 <script type="text/javascript">
 $(function () {
   // 都道府県名を代入
-  var url = 'https://api.openweathermap.org/data/2.5/forecast?q=<%= @datespot.prefecture.name %>,jp&units=metric&appid=<%= ENV['OPEN_WEATHER_MAP_API']%>';
+  const url = 'https://api.openweathermap.org/data/2.5/forecast?q=<%= @datespot.prefecture.name %>,jp&units=metric&appid=<%= ENV['OPEN_WEATHER_MAP_API']%>';
 
   $.ajax({
       url: url,
@@ -10,11 +13,11 @@ $(function () {
       type: 'GET',
     })
     .done(function (data) {
-      var insertHTML = '';
+      let insertHTML = '';
 
       // デフォルトでは3時間ごとの天気を取得するため、
       // 8の倍数でデータを取得することにより、24時間ごとの天気を取得する
-      for (var i = 0; i <= 32; i = i + 8) {
+      for (let i = 0; i <= 32; i = i + 8) {
         insertHTML += buildHTML(data, i);
       }
       $('#weather').html(insertHTML);
@@ -27,24 +30,24 @@ $(function () {
 // 日本語で表示
 function buildHTML(data, i) {
   //曜日の日本語化のため、配列を用意する
-  var Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
+  const Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
   //日付、時間を取得
-  var date = new Date(data.list[i].dt_txt);
+  const date = new Date(data.list[i].dt_txt);
   //UTCとの時差を無くす(日本は-9時間のため9を足す)
   date.setHours(date.getHours() + 9);
   //月を取得。getMonth()は0~11を返すため1を足すことによって1月~12月を返すように設定
-  var month = date.getMonth() + 1;
+  const month = date.getMonth() + 1;
   //月＋日＋曜日をdayに代入。getDay()は0~6を返すためWeek配列内のインデックスに対応した文字列を取得
-  var day = month + '/' + date.getDate() + Week[date.getDay()];
+  const day = month + '/' + date.getDate() + Week[date.getDay()];
   //天気のアイコンを取得
-  var icon = data.list[i].weather[0].icon;
+  const icon = data.list[i].weather[0].icon;
 
-  var html =
-    '<div class="weather-report">' +
+  const html =
+    '<div class="weather__content--report">' +
       '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
-      '<span class="weather-date">' + day + "</span>" +
-      '<div class="weather-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
-      '<span class="weather-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
+      '<span class="weather__content--report-date">' + day + "</span>" +
+      '<div class="weather__content--report-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
+      '<span class="weather__content--report-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
     '</div>';
   return html
 }

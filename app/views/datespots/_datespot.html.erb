@@ -1,15 +1,15 @@
 <% @datespot = datespot %>
-<li class="datespots__card" id="datespot-<%= @datespot.id %>">
-  <div class="datespots__card-upper">
+<li class="datespot-index__card" id="datespot-<%= @datespot.id %>">
+  <div class="datespot-index__card-upper">
     <% if @datespot.images.attached? %>
       <%= link_to datespot_path(@datespot) do %>
-        <%= image_tag @datespot.images.first.variant(resize:'300x300!').processed, class: "datespots__card-upper--image" %>
+        <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "datespot-index__card-upper--image" %>
       <% end %>
     <% else %>
-      <%= image_tag 'thumb400_default.png', class: "datespots__card-upper--no-image" %>
+      <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--no-image" %>
     <% end %>
   </div>
-  <div class="datespots__card-lower">
-    <%= render 'datespots/datespot_info' %>
+  <div class="datespot-index__card-lower">
+    <%= render 'datespots/datespot_index_info' %>
   </div>
 </li>

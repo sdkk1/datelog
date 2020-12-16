@@ -1,6 +1,6 @@
 <script>
   <% if @user.present? %>
-    var mainSlider__<%= @user.id %> = new Swiper('.slider--<%= @user.id %>', {
+    const mainSlider__<%= @user.id %> = new Swiper('.slider--<%= @user.id %>', {
       loop: true,
       scrollbar: {
         el: '.swiper-scrollbar',
@@ -9,7 +9,7 @@
       },
     });
 
-    var Thumbnail__<%= @user.id %> = new Swiper('.thumbnail--<%= @user.id %>', {
+    const Thumbnail__<%= @user.id %> = new Swiper('.thumbnail--<%= @user.id %>', {
       loop: true,
       slidesPerView: 1,
       slideToClickedSlide: true,

@@ -1,126 +1,138 @@
-<% if comments.present? %>
-  <div id="rate-average"></div>
-  <script>
-    $('#rate-average').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @datespot.rate_average.round(1) %>,
-    });
-  </script>
-  <h4>平均評価：<%= @datespot.rate_average.round(1) %>点</h4>
-  <h4>口コミ数：<%= @datespot.comments_count %>件</h4>
-  <h5 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る...</h5>
-<% else %>
-  <div id="rate-average"></div>
-  <script>
-    $('#rate-average').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: 0,
-    });
-  </script>
-  <h4>平均評価：0点</h4>
-  <h4>口コミ数：0件</h4>
-<% end %>
-<ul>
-  <% comments.first(2).each do |comment| %>
-    <% unless comment.id.nil? %>
-      <li id="comment-<%= comment.id %>">
-        <div class="comment-box">
-          <div class="comment-user">
-            <% if comment.user.avatars.attached? %>
-              <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
-            <% else %>
-              <%= image_tag 'thumb50_default.png'%>
-            <% end %>
-            <% if logged_in? %>
-              <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
-            <% else %>
-              <p><%= comment.user.name%></p>
-            <% end %>
-          </div>
-          <div class="comment-contents">
-            <div id="star-rate-<%= comment.id %>"></div>
-            <script>
-            $('#star-rate-<%= comment.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= comment.rate %>,
-            });
-            </script>
-            <p><%= comment.content %></p>
-            <% if comment.picture.attached? %>
-              <%= image_tag comment.picture.variant(resize:'200x200').processed %>
-            <% end %>
-            <% if comment.user == current_user %>
-              <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
-            <% end %>
-          </div>
-          <span class="comment-date pull-right">
-            <%= l comment.created_at %>
-          </span>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-<div class="collapse" id="collapseExample">
-  <ul>
-    <% comments.offset(2).each do |comment| %>
-      <% unless comment.id.nil? %>
-        <li id="comment-<%= comment.id %>">
-          <div class="comment-box">
-            <div class="comment-user">
-              <% if comment.user.avatars.attached? %>
-                <div class="swiper-slide"><%= image_tag comment.user.avatars.first.variant(resize:'50x50').processed %></div>
-              <% else %>
-                <%= image_tag 'thumb50_default.png'%>
-              <% end %>
-              <% if logged_in? %>
-                <p><%= link_to comment.user.name, user_path(comment.user.id) %></p>
-              <% else %>
-                <p><%= comment.user.name%></p>
-              <% end %>
-            </div>
-            <div class="comment-contents">
-              <div id="star-rate-<%= comment.id %>"></div>
-              <script>
-              $('#star-rate-<%= comment.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= comment.rate %>,
-              });
-              </script>
-              <p><%= comment.content %></p>
-              <% if comment.picture.attached? %>
-                <%= image_tag comment.picture.variant(resize:'200x200').processed %>
-              <% end %>
-              <% if comment.user == current_user %>
-                <p><%= link_to '削除', datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true %></p>
-              <% end %>
-            </div>
-            <span class="comment-date pull-right">
-              <%= l comment.created_at %>
-            </span>
-          </div>
-        </li>
+<div id="comments_area">
+  <div class="comment-index">
+    <div class="comment-index__upper">
+      <% if comments.present? %>
+        <div id="rate-average"></div>
+        <script>
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @datespot.rate_average.round(1) %>,
+          });
+        </script>
+        <div class="comment-index__upper--rate-average">平均評価：<%= @datespot.rate_average.round(1) %>点</div>
+        <div class="comment-index__upper--comments-count">コメント数：<%= @datespot.comments_count %>件</div>
+        <div class="comment-index__upper--comments-more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">コメントをすべて表示</div>
+      <% else %>
+        <div id="rate-average"></div>
+        <script>
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: 0,
+          });
+        </script>
+        <div class="comment-index__upper--rate-average">平均評価：0点</div>
+        <div class="comment-index__upper--comments-count">コメント数：0件</div>
       <% end %>
-    <% end %>
-  </ul>
+    </div>
+    <div class="comment-index__lower">
+      <ul>
+        <% comments.first(2).each do |comment| %>
+          <% unless comment.id.nil? %>
+            <li id="comment-<%= comment.id %>">
+              <div class="comment-index__lower--info">
+                <div class="comment-index__lower--info-user">
+                  <% if comment.user.avatars.attached? %>
+                    <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                  <% else %>
+                    <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                  <% end %>
+                  <% if logged_in? %>
+                    <%= link_to comment.user.name, user_path(comment.user.id) %>
+                  <% else %>
+                    <%= comment.user.name %>
+                  <% end %>
+                </div>
+                <div class="comment-index__lower--info-timestamp">
+                  <%= l comment.created_at %>
+                </div>
+              </div>
+              <div class="comment-index__lower--icon">
+                <div id="star-rate-<%= comment.id %>"></div>
+                <script>
+                $('#star-rate-<%= comment.id %>').raty({
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= comment.rate %>,
+                });
+                </script>
+                <% if comment.user == current_user %>
+                  <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="comment-index__lower--comment">
+                <div class="comment-index__lower--comment-content"><%= comment.content %></div>
+                <% if comment.picture.attached? %>
+                  <div><%= image_tag comment.picture.variant(resize:'200x200').processed %></div>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class="collapse" id="collapseExample">
+        <ul>
+          <% comments.offset(2).each do |comment| %>
+            <% unless comment.id.nil? %>
+              <li id="comment-<%= comment.id %>">
+                <div class="comment-index__lower--info">
+                  <div class="comment-index__lower--info-user">
+                    <% if comment.user.avatars.attached? %>
+                      <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <% else %>
+                      <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                    <% end %>
+                    <% if logged_in? %>
+                      <%= link_to comment.user.name, user_path(comment.user.id) %>
+                    <% else %>
+                      <%= comment.user.name %>
+                    <% end %>
+                  </div>
+                  <div class="comment-index__lower--info-timestamp">
+                    <%= l comment.created_at %>
+                  </div>
+                </div>
+                <div class="comment-index__lower--icon">
+                  <div id="star-rate-<%= comment.id %>"></div>
+                  <script>
+                  $('#star-rate-<%= comment.id %>').raty({
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
+                  });
+                  </script>
+                  <% if comment.user == current_user %>
+                    <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="comment-index__lower--comment">
+                  <div class="comment-index__lower--comment-content"><%= comment.content %></div>
+                  <% if comment.picture.attached? %>
+                    <div><%= image_tag comment.picture.variant(resize:'200x200').processed %></div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

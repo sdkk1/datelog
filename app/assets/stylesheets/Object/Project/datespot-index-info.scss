@@ -1,17 +1,18 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.datespot-info {
+.datespot-index-info {
   &__top {
     display:flex;
     justify-content: space-between;
+    margin-bottom: 2%;
 
     &--datespot-name {
       font-size: 1.6em;
     }
 
     &--datespot-change {
-      font-size: 1.6em;
+      font-size: 1.8em;
 
       a:hover {
         text-decoration: none;
@@ -21,13 +22,14 @@
 
   &__user {
     font-size: 1.4em;
-    margin-top: 2%;
+    margin-bottom: 2%;
 
     &--avatar {
       border-radius: 50%;
       width: 24px;
       height: 24px;
       object-fit: cover;
+      margin-left: 0.5%;
       margin-right: 5%;
     }
   }
@@ -36,7 +38,7 @@
     display: inline-block;
     width: 100%;
     font-size: 1.4em;
-    margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   &__icon {
@@ -47,11 +49,11 @@
   &__evaluations {
     display:flex;
     justify-content: space-between;
-    margin-top: 2%;
+    margin-bottom: 3%;
 
     &--rate-average {
       display:flex;
-      font-size: 1.4em;
+      font-size: 1.6em;
       margin-left: 1.75%;
 
       &-score {
@@ -60,18 +62,46 @@
     }
 
     &--comment {
-      font-size: 1.4em;
+      font-size: 1.6em;
       margin-top: 1%;
     }
+  }
 
-    &--impressions {
-      display:flex;
+  &__bottom {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &--timestamp {
       font-size: 1.4em;
-      margin-top: 1%;
+      margin-left: 2%;
+    }
 
-      &-icon {
-        margin-top: 10%;
+    &--actions {
+      display:flex;
+      justify-content: flex-end;
+      font-size: 1.6em;
+
+      &-impressions {
+        display:flex;
+
+        &-icon {
+          margin-top: 15%;
+        }
       }
+
+      &-list {
+        display:flex;
+        margin: 0 10%;
+      }
+
+      &-favorite {
+        display:flex;
+      }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
     }
   }
 
@@ -104,31 +134,6 @@
     &--tag:active {
       @include ProprtySetPrefix(transform, translateY(4px));
       box-shadow: 0px 0px 0px rgba(0,0,0,0);
-    }
-  }
-
-  &__bottom {
-    display:flex;
-    justify-content: space-between;
-    margin-top: 4%;
-
-    &--timestamp {
-      font-size: 1.4em;
-      margin-left: 2%;
-    }
-
-    &--actions {
-      display:flex;
-      font-size: 1.6em;
-
-      &-list {
-        display:flex;
-        margin-right: 10%;
-      }
-
-      &-favorite {
-        display:flex;
-      }
     }
   }
 }

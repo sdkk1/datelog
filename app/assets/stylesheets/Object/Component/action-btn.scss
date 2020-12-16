@@ -4,7 +4,7 @@
 .action-btn {
   margin-bottom: 5%;
 
-  &__user {
+  &__user, &__comment {
     display: inline-block;
     color: white;
     vertical-align: middle;
@@ -17,7 +17,7 @@
     box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
   }
 
-  &__user:active {
+  &__user:active, &__comment:active {
     @include ProprtySetPrefix(transform, translateY(4px));
     box-shadow: 0px 0px 0px rgba(0,0,0,0);
   }

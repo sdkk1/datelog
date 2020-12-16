@@ -1,53 +1,46 @@
 <% provide(:title, "#{@datespot.name}") %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
-      <%= render 'datespots/image_slide_thumb400' %>
-      <%= render 'users/favorite_form' if logged_in? %>
-      <%= render 'users/list_form' if logged_in? %>
-    </div>
-    <div class="col-md-8">
-      <h2 class="datespot-name"><%= @datespot.name %></h2>
-      <div class="change-datespot">
-        <% if current_user == @datespot.user %>
-          <%= link_to "編集", edit_datespot_path(@datespot), class: 'edit-datespot' %>　
-        <% end %>
-        <% if logged_in? %>
-          <% if current_user.admin? || (current_user == @datespot.user) %>
-            <%= link_to "削除", datespot_path(@datespot), method: :delete, class: 'delete-datespot',
-                              data: { confirm: "本当に削除しますか？" } %>
-          <% end %>
-        <% end %>
+    <% if logged_in? %>
+      <%= render 'layouts/logging_in_sidebar' %>
+    <% else %>
+      <%= render 'layouts/logging_out_sidebar' %>
+    <% end %>
+    <div class="main">
+      <div class="heading">
+        <%= render 'shared/flash_messages' %>
+        <h1 class="heading__title" id="datespot-name"><%= @datespot.name %></h1>
       </div>
-      <div class="datespot-info">
-        <% if logged_in? %>
-          <h4 id="user-name">【投稿者】<%= link_to @datespot.user.name, @datespot.user %></h4>
-        <% else %>
-          <h4 id="user-name">【投稿者】<%= @datespot.user.name %></h4>
-        <% end %>
-        <h4 id="address">【住所】<%= @datespot.address %></h4>
-        <h4 id="range">【予算】<%= @datespot.range_i18n %></h4>
-        <h4 id="keyword">【キーワード】<%= render 'tag_list', tag_list: @datespot.tag_list %></h4>
-        <h4 id="point">【ポイント】<%= @datespot.point %></h4>
-        <h4 id="caution">【注意点】<%= @datespot.caution %></h4>
-        <h4 id="reference_url">【参考URL】<a href="<%= @datespot.reference_url %>" target="_blank" rel="noopener noreferrer"><%= @datespot.reference_url %></a></h4>
-        <h4>閲覧数：<%= @datespot.impressions_count %>回</h4>
-      </div>
-      <div class="comment">
-        <h3 class="text-left title">口コミ</h3>
-        <div id="comments_area">
-          <%= render partial: 'comments/index', locals: { comments: @comments, datespot: @datespot } %>
-        </div>
-        </ul>
-        <% if logged_in? %>
-          <div class="comment-create">
-            <h3 class="text-left">口コミする</h3>
-            <%= render partial: 'comments/form', locals: { comment: @comment, datespot: @datespot } %>
+      <div class="content">
+        <div class="datespot-show">
+          <div class="datespot-show__card-upper">
+            <div class="datespot-show__card-upper--image">
+              <%= render 'datespots/datespot-slider' %>
+            </div>
           </div>
-        <% end %>
+          <div class="datespot-show__card-lower">
+            <div class="datespot-show__card-lower--info">
+              <%= render 'datespots/datespot_show_info' %>
+            </div>
+            <div class="datespot-show__card-lower--weather">
+              <%= render "weather" %>
+            </div>
+            <div class="datespot-show__card-lower--map">
+              <%= render "map-show" %>
+            </div>
+            <div class="datespot-show__card-lower--comment">
+              <div class="datespot-comment">
+                <%= render partial: 'comments/form', locals: { comment: @comment, datespot: @datespot } %>
+                <div class="datespot-comment__comment-index">
+                  <h3 class="datespot-comment__comment-index--title">コメント一覧</h3>
+                  <%= render partial: 'comments/index', locals: { comments: @comments, datespot: @datespot } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
-<%= render "map-show" %>
-<%= render "weather" %>
