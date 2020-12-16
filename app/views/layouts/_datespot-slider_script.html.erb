@@ -1,5 +1,5 @@
 <script>
-  <% if @datespot.present? %>
+  if (document.querySelector(".datespot-slider")) {
     const datespot_swiper = new Swiper('.datespot-slider', {
       effect: 'flip',
       grabCursor: true,
@@ -9,5 +9,5 @@
         clickable: false,
       },
     });
-  <% end %>
+  }
 </script>
