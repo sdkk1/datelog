@@ -19,9 +19,11 @@
           </ol>
           <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
         <% end %>
-        <span class="fab">
-          <%= link_to new_datespot_path, class: "fab__circle" do %><i class="fas fa-plus fab__circle--icon"></i><% end %>
-        </span>
+        <% if logged_in? %>
+          <span class="fab">
+            <%= link_to new_datespot_path, class: "fab__circle" do %><i class="fas fa-plus fab__circle--icon"></i><% end %>
+          </span>
+        <% end %>
       </div>
       <%= render 'layouts/footer' %>
     </div>

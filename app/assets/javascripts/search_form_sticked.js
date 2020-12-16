@@ -1,7 +1,7 @@
 $(window).on('turbolinks:load', function() {
   if($('.datespot-search__search-form').length){
     const row = $(".row");
-    const content = $(".content") || $(".home__datespots--content");
+    const content = $(".content");
     const search_form_sticked = $(".datespot-search__search-form");
 
     // コンテンツの位置

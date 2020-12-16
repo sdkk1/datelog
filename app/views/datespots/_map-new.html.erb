@@ -1,8 +1,8 @@
-<div class="map-container">
-  <input id="address" type="textbox" placeholder="名称・店名を入れて住所検索">
-  <input type="button" value="地図で表示" onclick="codeAddress()">
-  <div class="map_wrapper">
-    <div id="map" class="map"></div>
+<div class="map-new">
+  <input class="map-new__form" id="address" type="textbox" placeholder="名称・店名を入れて住所検索">
+  <input class="map-new__submit" type="button" value="地図で表示" onclick="codeAddress()">
+  <div class="map-new__wrapper">
+    <div id="map" class="map-new__wrapper--content"></div>
   </div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY']%>&libraries=places&region=jp&callback=initAutocomplete" async defer></script>

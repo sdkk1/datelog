@@ -15,7 +15,7 @@
         </script>
         <div class="comment-index__upper--rate-average">平均評価：<%= @datespot.rate_average.round(1) %>点</div>
         <div class="comment-index__upper--comments-count">コメント数：<%= @datespot.comments_count %>件</div>
-        <div class="comment-index__upper--comments-more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">コメントをすべて表示</div>
+        <div class="comment-index__upper--comments-more" data-toggle="collapse" href="#comments-more" aria-expanded="false" aria-controls="comments-more"><i class="fas fa-comment-alt"></i> コメントを全て表示</div>
       <% else %>
         <div id="rate-average"></div>
         <script>
@@ -82,7 +82,7 @@
           <% end %>
         <% end %>
       </ul>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="comments-more">
         <ul>
           <% comments.offset(2).each do |comment| %>
             <% unless comment.id.nil? %>

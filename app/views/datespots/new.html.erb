@@ -1,10 +1,17 @@
-<% provide(:title, "投稿") %>
-<% provide(:button_text, "投稿する") %>
-<div class="container">
-  <h1>投稿する</h1>
+<% provide(:title, "提案する") %>
+<% provide(:button_text, "提案する") %>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= render 'datespot_new_form' %>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <%= render 'shared/flash_messages' %>
+        <h1 class="heading__title">提案する</h1>
+      </div>
+      <div class="content">
+        <%= render 'datespot_new_form' %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
