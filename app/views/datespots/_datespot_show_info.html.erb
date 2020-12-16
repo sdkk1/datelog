@@ -14,7 +14,7 @@
     </div>
     <div class="datespot-show-info__top--datespot-change">
       <% if current_user == @datespot.user %>
-        <%= link_to edit_datespot_path(@datespot) do %>　
+        <%= link_to edit_datespot_path(@datespot), id: 'datespot-edit' do %>　
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>

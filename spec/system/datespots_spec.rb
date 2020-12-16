@@ -52,7 +52,7 @@ RSpec.describe "Datespots", type: :system do
       it "投稿を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
         visit datespots_path
-        within first('.datespots__card') do
+        within first('.datespot-index__card') do
           page.accept_confirm("本当に削除しますか？") do
             find('#datespot-delete').click
           end
@@ -203,10 +203,6 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.point
         expect(page).to have_content datespot.caution
       end
-
-      it "削除ボタンが表示されること" do
-        expect(page).to have_link "削除"
-      end
     end
 
     context "投稿削除(管理者ユーザーの場合)", js: true do
@@ -214,7 +210,7 @@ RSpec.describe "Datespots", type: :system do
         login_for_system(admin_user)
         visit datespot_path(datespot)
         page.accept_confirm("本当に削除しますか？") do
-          click_on "削除"
+          find('#datespot-delete').click
         end
         expect(page).to have_content '投稿が削除されました'
       end
@@ -319,7 +315,7 @@ RSpec.describe "Datespots", type: :system do
     before do
       login_for_system(user)
       visit datespot_path(datespot)
-      click_link "編集"
+      find('#datespot-edit').click
     end
 
     context "ページレイアウト" do
