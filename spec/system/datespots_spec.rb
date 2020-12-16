@@ -131,11 +131,11 @@ RSpec.describe "Datespots", type: :system do
 
     context "ページレイアウト" do
       it "「投稿する」の文字列が存在すること" do
-        expect(page).to have_content '投稿する'
+        expect(page).to have_content '提案する'
       end
 
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('投稿')
+        expect(page).to have_title full_title('提案する')
       end
 
       it "入力部分に適切なラベルが表示されること" do
@@ -159,7 +159,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        click_button "投稿する"
+        click_button "提案する"
         expect(page).to have_content "投稿が登録されました！"
       end
 
@@ -171,7 +171,7 @@ RSpec.describe "Datespots", type: :system do
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
-        click_button "投稿する"
+        click_button "提案する"
         expect(page).to have_content "名称・店名を入力または選択してください"
       end
     end
