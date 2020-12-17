@@ -1,35 +1,33 @@
-<%= search_form_for @search do |form| %>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.search_field :name_cont, placeholder: "ユーザー名で検索", class: 'form-control font-awesome' %>
-    </div>
+<div class='user-search'>
+  <div class='user-search__search-result'>
+    <% if params[:q][:name_cont].present? || params[:q][:prefecture_code_eq].present? || params[:q][:age_gteq].present? || params[:q][:age_lt].present? || params[:q][:sex_eq].present? %>
+      <p>検索結果: <%= @users.count %>人</p>
+    <% else %>
+      <p class="user-search__users-count">ユーザー: <%= @users.count %>人</p>
+    <% end %>
   </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: "居住地で検索", class: 'form-control font-awesome' %>
+  <%= search_form_for @search do |form| %>
+    <div class='user-search__search-form'>
+      <%= form.search_field :name_cont, placeholder: "ユーザー名で検索", class: 'user-search__search-form--search-field' %>
+      <%= form.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: "居住地で検索", class: 'user-search__search-form--search-field' %>
+      <%= form.number_field :age_gteq, placeholder: "年齢で検索", class: 'user-search__search-form--search-field' %><span>歳以上</span>
+      <%= form.number_field :age_lt, placeholder: "年齢で検索", class: 'user-search__search-form--search-field' %><span>歳未満</span>
+      <div class="user-search__search-form--radio-button">
+        <input id="q_sex_eq_" type="radio" name="q[sex_eq]" value="">
+        <label for="q_sex_eq_">指定なし</label>
+      </div>
+      <div class="user-search__search-form--radio-button">
+        <input id="q_sex_eq_0" type="radio" name="q[sex_eq]" value="0">
+        <label for="q_sex_eq_0">男性</label>
+      </div>
+      <div class="user-search__search-form--radio-button">
+        <input id="q_sex_eq_1" type="radio" name="q[sex_eq]" value="1">
+        <label for="q_sex_eq_1">女性</label>
+      </div>
+      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc', 'いいね数の多い順': 'followed_count desc', '足跡の多い順': 'impressions_count desc', '投稿数の多い順': 'datespots_count desc'}, { selected: params[:q][:sorts] }, class: 'user-search__search-form--search-field')%>
+      <button type="submit" class="user-search__search-form--search-button">
+        <i class="fas fa-search user-search__search-form--search-icon"></i>
+      </button>
     </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.number_field :age_gteq, placeholder: "年齢で検索", class: 'form-control font-awesome' %>以上〜
-      <%= form.number_field :age_lt, placeholder: "年齢で検索", class: 'form-control font-awesome' %>未満
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-    　<%= form.radio_button :sex_eq, '', {:checked => true} %>指定なし
-      <%= form.radio_button :sex_eq, 0 %>男性
-      <%= form.radio_button :sex_eq, 1 %>女性
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc', 'いいね数の多い順': 'followed_count desc', '足跡の多い順': 'impressions_count desc', '投稿数の多い順': 'datespots_count desc'}, { selected: params[:q][:sorts] })%>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class='form-group'>
-      <%= form.submit nil, class: 'btn btn-primary' %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
