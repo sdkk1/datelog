@@ -1,0 +1,39 @@
+<div class="user-index-info">
+  <div class="user-index-info__top">
+    <h4 class="user-index-info__top--user-name">
+      <%= link_to @user.name, user_path(@user) %>
+    </h4>
+    <div class="user-index-info__top--user-change">
+      <% if current_user == @user %>
+        <%= link_to edit_user_path(@user), id: 'user-edit' do %>　
+          <i class="far fa-edit"></i>
+        <% end %>
+      <% end %>
+      <% if (current_user.admin? && current_user != @user) || (!current_user.admin? && current_user == @user) %>
+        <%= link_to user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, id: 'user-delete' do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <span class="user-index-info__residence"><i class="fas fa-map-marker-alt fa-lg user-index-info__icon"></i><%= @user.prefecture.name %></span><br>
+  <span class="user-index-info__age"><i class="fas fa-calendar user-index-info__icon"></i><%= @user.age_i18n %></span><br>
+  <span class="user-index-info__sex"><i class="fas fa-venus-mars user-index-info__icon"></i><%= @user.sex_i18n %></span><br>
+    <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon"></i><%= @user.introduction %></span><br>
+  <div class="user-index-info__bottom">
+    <span class="user-index-info__bottom--timestamp">
+      <%= l @user.updated_at %>
+    </span>
+    <div class="user-index-info__bottom--actions">
+      <span class="user-index-info__bottom--actions-impressions">
+        <i class="fas fa-shoe-prints"></i><%= @user.impressions_count %>
+      </span>
+      <span class="user-index-info__bottom--actions-datespots">
+        <i class="zmdi zmdi-male-female zmdi-hc-lg"></i><%= @user.datespots_count %>
+      </span>
+      <span class="user-index-info__bottom--actions-followed">
+        <i class="fas fa-thumbs-up"></i><span id="followers"><%= @user.followed_count %></span>
+      </span>
+    </div>
+  </div>
+</div>

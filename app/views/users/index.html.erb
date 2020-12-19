@@ -10,7 +10,7 @@
       <div class="content">
         <%= render 'user_search' %>
         <% if @users.any? %>
-          <ol class="users">
+          <ol class="user-index">
             <%= render @users %>
           </ol>
           <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
