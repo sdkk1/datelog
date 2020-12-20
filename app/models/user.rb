@@ -89,6 +89,14 @@ class User < ApplicationRecord
     !List.find_by(datespot_id: datespot.id, from_user_id: id).nil?
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "桜木　花道"
+      user.sex = 0
+    end
+  end
+
   private
 
   def downcase_email
