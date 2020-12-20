@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :check_guest, only: [:update, :destroy]
   impressionist :actions => [:show], :unique => [:impressionable_id, :user_id]
 
   def new
@@ -101,6 +102,15 @@ class UsersController < ApplicationController
     if !current_user?(@user)
       flash[:danger] = "このページへはアクセスできません"
       redirect_to(root_url)
+    end
+  end
+
+  # ゲストユーザーの変更・削除を制限
+  def check_guest
+    user = User.find(params[:id])
+    if user.email.downcase == 'guest@example.com'
+      redirect_to datespots_url
+      flash[:danger] = 'ゲストユーザーの変更・削除はできません'
     end
   end
 end

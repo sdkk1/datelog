@@ -8,7 +8,7 @@
     <%= link_to 'ログイン', login_path, class: "home__key-visual--sign-btn" %>
   </div>
   <div class="home__key-visual--guest">
-    <%# かんたんログイン %>
-    <span class="home__key-visual--guest-description">※ かんたんログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せずに閲覧いただけます。</span>
+    <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "home__key-visual--guest-btn" %><br>
+    <span class="home__key-visual--guest-description">※ ゲストログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せずに閲覧いただけます。</span>
   </div>
 </div>
