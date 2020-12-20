@@ -166,25 +166,15 @@ RSpec.describe "Users", type: :system do
       visit users_path
     end
 
-    context "管理者ユーザーの場合" do
-      it "自分以外のユーザーの削除ボタンが表示されること" do
+    context "アカウント削除処理(管理者ユーザーの場合)", js: true do
+      it "アカウントを削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
-        User.paginate(page: 1).each do |u|
-          expect(page).to have_link u.name, href: user_path(u)
-          expect(page).to have_content "削除" unless u == admin_user
-        end
-      end
-    end
-
-    context "管理者ユーザー以外の場合" do
-      it "自分のアカウントのみ削除ボタンが表示されること" do
-        login_for_system(user)
-        User.paginate(page: 1).each do |u|
-          expect(page).to have_link u.name, href: user_path(u)
-          if u == user
-            expect(page).to have_content "削除"
+        within first('.user-index__card') do
+          page.accept_confirm("本当に削除しますか？") do
+            find('#user-delete').click
           end
         end
+        expect(page).to have_content 'ユーザーの削除に成功しました'
       end
     end
   end
