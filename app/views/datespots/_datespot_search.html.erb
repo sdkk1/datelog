@@ -2,7 +2,6 @@
   <div class='datespot-search__search-result'>
     <% if params[:q][:name_cont].present? || params[:q][:user_name_cont].present? || params[:q][:address_cont].present? || params[:q][:tags_name_cont].present? %>
       <p>検索結果: <%= @datespots.count %>件</p>
-      <p>名称・店名: "<%= params[:q][:name_cont] %>" , 投稿者: "<%= params[:q][:user_name_cont] %>" , 住所: "<%= params[:q][:address_cont] %>" , キーワード: "<%= params[:q][:tags_name_cont] %>"</p>
     <% else %>
       <p class="datespot-search__datespots-count">みんなの提案: <%= @datespots.count %>件</p>
     <% end %>

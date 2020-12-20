@@ -1,14 +1,14 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.datespot-search {
+.user-search {
   &__search-result {
     display: inline-block;
     font-size: 1.8rem;
     margin-bottom: 1%;
   }
 
-  &__datespots-count {
+  &__users-count {
     font-size: 2rem;
     margin: 0 0 5%;
   }
@@ -17,11 +17,30 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     margin: 1% 0 3%;
     z-index: 9;
 
+    span {
+      font-size: 1.4rem;
+      background-color: $base-color__light-yellow;
+    }
+
+    select {
+      height: 3.4rem;
+    }
+
+    #q_prefecture_code_eq {
+      width: 12.5%;
+      font-size: 1.2rem;
+      line-height: 2.5;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: white;
+    }
+
     &--search-field {
-      width: 18%;
+      width: 12.5%;
       font-size: 1.2rem;
       line-height: 2.5;
       border: 2px solid $font-color__wine-red;
@@ -44,6 +63,27 @@
     &--search-button:active {
       @include ProprtySetPrefix(transform, translateY(4px));
       box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    }
+
+    &--radio-button {
+      display: inline-flex;
+      justify-content: space-between;
+      height: 100%;
+      font-size: 1.4rem;
+      margin-top: 0.5%;
+      background-color: $base-color__light-yellow;
+
+      label {
+        cursor: pointer;
+      }
+
+      input[type=radio] {
+        display: none;
+
+        &:checked + label {
+          border-bottom: 2px solid $font-color__wine-red;
+        }
+      }
     }
 
     &--search-icon {

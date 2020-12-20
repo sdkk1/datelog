@@ -11,7 +11,7 @@
 
     &--user {
       width: 50%;
-      font-size: 1.8em;
+      font-size: 1.8rem;
       text-align: left;
 
       &-avatar {
@@ -24,7 +24,7 @@
     }
 
     &--datespot-change {
-      font-size: 2.4em;
+      font-size: 2.4rem;
 
       a:hover {
         text-decoration: none;
@@ -38,7 +38,7 @@
     padding-bottom: 8px;
     border-bottom: 1.5px solid $font-color__wine-red;
     width: 100%;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     text-align: left;
   }
 
@@ -50,13 +50,13 @@
     border-bottom: 1.5px solid $font-color__wine-red;
 
     &--timestamp {
-      font-size: 1.8em;
+      font-size: 1.8rem;
     }
 
     &--actions {
       display:flex;
       justify-content: flex-end;
-      font-size: 2em;
+      font-size: 2rem;
 
       &-impressions {
         display:flex;

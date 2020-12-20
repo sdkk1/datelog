@@ -1,0 +1,60 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.user-index-info {
+  &__top {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &--user-name {
+      font-size: 1.8rem;
+    }
+
+    &--user-change {
+      font-size: 1.8rem;
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__residence, &__age, &__sex, &__introduction {
+    display: inline-block;
+    width: 100%;
+    font-size: 1.4rem;
+    margin-bottom: 2%;
+  }
+
+  &__icon {
+    margin-left: 2%;
+    margin-right: 8%;
+  }
+
+  &__bottom {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+
+    &--timestamp {
+      font-size: 1.4rem;
+      margin-left: 2%;
+    }
+
+    &--actions {
+      display:flex;
+      justify-content: flex-end;
+      font-size: 1.6rem;
+
+      &-impressions, &-datespots, &-followed {
+        display:flex;
+        margin-left: 10%;
+      }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
+    }
+  }
+}
