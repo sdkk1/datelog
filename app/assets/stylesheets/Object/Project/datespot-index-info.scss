@@ -8,11 +8,11 @@
     margin-bottom: 2%;
 
     &--datespot-name {
-      font-size: 1.6em;
+      font-size: 1.6rem;
     }
 
     &--datespot-change {
-      font-size: 1.8em;
+      font-size: 1.8rem;
 
       a:hover {
         text-decoration: none;
@@ -21,7 +21,7 @@
   }
 
   &__user {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     margin-bottom: 2%;
 
     &--avatar {
@@ -37,7 +37,7 @@
   &__address, &__range {
     display: inline-block;
     width: 100%;
-    font-size: 1.4em;
+    font-size: 1.4rem;
     margin-bottom: 2%;
   }
 
@@ -53,7 +53,7 @@
 
     &--rate-average {
       display:flex;
-      font-size: 1.6em;
+      font-size: 1.6rem;
       margin-left: 1.75%;
 
       &-score {
@@ -62,7 +62,7 @@
     }
 
     &--comment {
-      font-size: 1.6em;
+      font-size: 1.6rem;
       margin-top: 1%;
     }
   }
@@ -73,14 +73,14 @@
     margin-bottom: 2%;
 
     &--timestamp {
-      font-size: 1.4em;
+      font-size: 1.4rem;
       margin-left: 2%;
     }
 
     &--actions {
       display:flex;
       justify-content: flex-end;
-      font-size: 1.6em;
+      font-size: 1.6rem;
 
       &-impressions {
         display:flex;
