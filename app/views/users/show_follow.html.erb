@@ -1,26 +1,23 @@
 <% provide(:title, @title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <% if @user.avatars.attached? %>
-        <div class="swiper-slide"><%= image_tag @user.avatars.first.variant(resize:'400x400').processed %></div>
-      <% else %>
-        <%= image_tag 'thumb400_default.png'%>
-      <% end %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "プロフィール", @user %></span>
-      <span>【投稿数】 <%= @user.datespots_count %> 件</span>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <%= render 'shared/flash_messages' %>
+        <h1 class="heading__title"><%= @title %></h1>
+      </div>
+      <div class="content">
+        <% if @users.any? %>
+          <ol class="user-index">
+            <%= render @users %>
+          </ol>
+          <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+        <% else %>
+          ユーザーは存在しません
+        <% end %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </div>
 </div>
