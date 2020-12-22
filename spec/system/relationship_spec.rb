@@ -12,24 +12,16 @@ RSpec.describe "Relationships", type: :system do
     end
 
     context "ページレイアウト" do
-      it "「フォロー」の文字列が存在すること" do
-        expect(page).to have_content 'フォロー'
+      it "「いいね！一覧(自分から)」の文字列が存在すること" do
+        expect(page).to have_content 'いいね！一覧(自分から)'
       end
 
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('フォロー')
+        expect(page).to have_title full_title('いいね！一覧(自分から)')
       end
 
-      it "ユーザー情報が表示されていること" do
-        expect(page).to have_content user.name
-        expect(page).to have_link "プロフィール", href: user_path(user)
-        expect(page).to have_content "【投稿数】 #{user.datespots_count} 件"
-        expect(page).to have_link "#{user.following.count}人にいいねをしました", href: following_user_path(user)
-        expect(page).to have_link "#{user.followers.count}人にいいねをされました", href: followers_user_path(user)
-      end
-
-      it "フォロー中のユーザーが表示されていること" do
-        within find('.users') do
+      it "いいね！一覧(自分から)が表示されていること" do
+        within find('.user-index__card') do
           user.following.each do |u|
             expect(page).to have_link u.name, href: user_path(u)
           end
@@ -46,24 +38,16 @@ RSpec.describe "Relationships", type: :system do
     end
 
     context "ページレイアウト" do
-      it "「フォロワー」の文字列が存在すること" do
-        expect(page).to have_content 'フォロワー'
+      it "「いいね！一覧(相手から)」の文字列が存在すること" do
+        expect(page).to have_content 'いいね！一覧(相手から)'
       end
 
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('フォロワー')
+        expect(page).to have_title full_title('いいね！一覧(相手から)')
       end
 
-      it "ユーザー情報が表示されていること" do
-        expect(page).to have_content user.name
-        expect(page).to have_link "プロフィール", href: user_path(user)
-        expect(page).to have_content "【投稿数】 #{user.datespots_count} 件"
-        expect(page).to have_link "#{user.following.count}人にいいねをしました", href: following_user_path(user)
-        expect(page).to have_link "#{user.followers.count}人にいいねをされました", href: followers_user_path(user)
-      end
-
-      it "フォロワーが表示されていること" do
-        within find('.users') do
+      it "いいね！一覧(相手から)が表示されていること" do
+        within find('.user-index__card') do
           user.followers.each do |u|
             expect(page).to have_link u.name, href: user_path(u)
           end

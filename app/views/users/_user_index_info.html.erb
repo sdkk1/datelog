@@ -16,10 +16,16 @@
       <% end %>
     </div>
   </div>
-  <span class="user-index-info__residence"><i class="fas fa-map-marker-alt fa-lg user-index-info__icon"></i><%= @user.prefecture.name %></span><br>
-  <span class="user-index-info__age"><i class="fas fa-calendar user-index-info__icon"></i><%= @user.age_i18n %></span><br>
+  <% if @user.prefecture.present? %>
+    <span class="user-index-info__residence"><i class="fas fa-map-marker-alt fa-lg user-index-info__icon"></i><%= @user.prefecture.name %></span><br>
+  <% end %>
+  <% if @user.age.present? %>
+    <span class="user-index-info__age"><i class="fas fa-calendar user-index-info__icon"></i><%= @user.age_i18n %></span><br>
+  <% end %>
   <span class="user-index-info__sex"><i class="fas fa-venus-mars user-index-info__icon"></i><%= @user.sex_i18n %></span><br>
+  <% if @user.introduction.present? %>
     <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon"></i><%= @user.introduction %></span><br>
+  <% end %>
   <div class="user-index-info__bottom">
     <span class="user-index-info__bottom--timestamp">
       <%= l @user.updated_at %>
