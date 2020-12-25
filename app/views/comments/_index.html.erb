@@ -4,13 +4,15 @@
       <% if comments.present? %>
         <div id="rate-average"></div>
         <script>
-          $('#rate-average').raty({
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @datespot.rate_average.round(1) %>,
+          $(document).on('turbolinks:load', function() {
+            $('#rate-average').raty({
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= @datespot.rate_average.round(1) %>,
+            });
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：<%= @datespot.rate_average.round(1) %>点</div>
@@ -19,13 +21,15 @@
       <% else %>
         <div id="rate-average"></div>
         <script>
-          $('#rate-average').raty({
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: 0,
+          $(document).on('turbolinks:load', function() {
+            $('#rate-average').raty({
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: 0,
+            });
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：0点</div>
@@ -57,14 +61,16 @@
               <div class="comment-index__lower--icon">
                 <div id="star-rate-<%= comment.id %>"></div>
                 <script>
-                $('#star-rate-<%= comment.id %>').raty({
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  half: true,
-                  readOnly: true,
-                  score: <%= comment.rate %>,
-                });
+                  $(document).on('turbolinks:load', function() {
+                    $('#star-rate-<%= comment.id %>').raty({
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= comment.rate %>,
+                    });
+                  });
                 </script>
                 <% if comment.user == current_user %>
                   <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>
@@ -107,14 +113,16 @@
                 <div class="comment-index__lower--icon">
                   <div id="star-rate-<%= comment.id %>"></div>
                   <script>
-                  $('#star-rate-<%= comment.id %>').raty({
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: <%= comment.rate %>,
-                  });
+                    $(document).on('turbolinks:load', function() {
+                      $('#star-rate-<%= comment.id %>').raty({
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: <%= comment.rate %>,
+                      });
+                    });
                   </script>
                   <% if comment.user == current_user %>
                     <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>

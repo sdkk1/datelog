@@ -22,11 +22,13 @@
   <% end %>
 </div>
 <script>
-$('#star').raty({
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  half: true,
-  scoreName: "comment[rate]",
+$(document).on('turbolinks:load', function() {
+  $('#star').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    scoreName: "comment[rate]",
+  });
 });
 </script>
