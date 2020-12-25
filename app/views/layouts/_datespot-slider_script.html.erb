@@ -3,6 +3,11 @@
     const datespot_swiper = new Swiper('.datespot-slider', {
       effect: 'flip',
       grabCursor: true,
+      autoHeight: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
