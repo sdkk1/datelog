@@ -81,10 +81,10 @@ class DatespotsController < ApplicationController
     @datespot = Datespot.find(params[:id])
     if current_user.admin? || current_user?(@datespot.user)
       @datespot.destroy
-      flash[:success] = "投稿が削除されました"
+      flash[:success] = "投稿が削除されました！"
       redirect_to request.referrer == user_url(@datespot.user) ? user_url(@datespot.user) : datespots_url
     else
-      flash[:danger] = "他人の投稿は削除できません"
+      flash[:error] = "他人の投稿は削除できません。"
       redirect_to datespots_url
     end
   end

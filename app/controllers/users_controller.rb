@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "デートログへようこそ！"
+      flash[:success] = "date-matchへようこそ！"
       redirect_to datespots_url
     else
       render 'new'
@@ -57,14 +57,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.admin?
       @user.destroy
-      flash[:success] = "ユーザーの削除に成功しました"
+      flash[:success] = "ユーザーの削除に成功しました！"
       redirect_to users_url
     elsif current_user?(@user)
       @user.destroy
-      flash[:success] = "自分のアカウントを削除しました"
+      flash[:success] = "自分のアカウントを削除しました！"
       redirect_to root_url
     else
-      flash[:danger] = "他人のアカウントは削除できません"
+      flash[:error] = "他人のアカウントは削除できません。"
       redirect_to root_url
     end
   end
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     if !current_user?(@user)
-      flash[:danger] = "このページへはアクセスできません"
+      flash[:error] = "このページへはアクセスできません。"
       redirect_to(root_url)
     end
   end
@@ -110,7 +110,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user.email.downcase == 'guest@example.com'
       redirect_to datespots_url
-      flash[:danger] = 'ゲストユーザーの変更・削除はできません'
+      flash[:error] = 'ゲストユーザーの変更・削除はできません。'
     end
   end
 end
