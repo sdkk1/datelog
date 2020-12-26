@@ -11,7 +11,7 @@ class DatespotsController < ApplicationController
     impressionist(@datespot, "", :unique => [:impressionable_id, :user_id]) if logged_in?
 
     @comment = Comment.new
-    @comments = @datespot.comments.includes(:user).sort_desc
+    @comments = @datespot.comments.preload(:user).sort_desc
 
     if logged_in?
       new_history = @datespot.browsing_histories.new
@@ -33,16 +33,16 @@ class DatespotsController < ApplicationController
   def index
     if params[:q].present?
       @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.includes(:user, :taggings, :comments).paginate(page: params[:page], per_page: 15)
+      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 15)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 15)
+        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 15)
       end
     else
       params[:q] = { sorts: 'updated_at desc' }
       @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.includes(:user, :taggings, :comments).paginate(page: params[:page], per_page: 15)
+      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 15)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.includes(:user, :taggings).paginate(page: params[:page], per_page: 15)
+        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 15)
       end
     end
   end

@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   def index
     get_followed_user_ids = Relationship.where(followed_id: current_user.id).pluck(:follower_id)
     get_match_user_ids = Relationship.where(followed_id: get_followed_user_ids, follower_id: current_user.id).pluck(:followed_id)
-    @match_users = User.includes(:passive_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC").paginate(page: params[:page])
+    @match_users = User.eager_load(:passive_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC").paginate(page: params[:page])
   end
 
   def create
@@ -25,6 +25,6 @@ class RoomsController < ApplicationController
     @message_user = @room.entries.where.not(user_id: current_user.id).first.user
 
     @message = Message.new
-    @messages = @room.messages.includes(:user)
+    @messages = @room.messages.preload(:user)
   end
 end
