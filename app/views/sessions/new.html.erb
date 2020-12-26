@@ -20,6 +20,9 @@
           <div class="action-button">
             <%= form.submit 'ログイン', class: "action-button__submit" %>
           </div>
+          <div class="action-button">
+            <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "action-button__submit" %>
+          </div>
         <% end %>
         <span class="info-form__signup">ユーザー登録をしていない方は<%= link_to 'こちら', signup_path %></span>
       </div>
