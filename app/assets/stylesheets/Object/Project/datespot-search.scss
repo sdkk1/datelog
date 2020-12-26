@@ -41,6 +41,11 @@
       box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
     }
 
+    &--search-button:hover {
+      border: 2px solid $button-hover-color__pink;
+      background-color: $button-hover-color__pink;
+    }
+
     &--search-button:active {
       @include ProprtySetPrefix(transform, translateY(4px));
       box-shadow: 0px 0px 0px rgba(0,0,0,0);

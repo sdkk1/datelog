@@ -50,7 +50,7 @@
     }
 
     &--sign {
-      &-btn {
+      &-button {
         display: inline-block;
         color: white;
         vertical-align: middle;
@@ -64,7 +64,12 @@
         box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
       }
 
-      &-btn:active {
+      &-button:hover {
+        border: 2px solid $button-hover-color__pink;
+        background-color: $button-hover-color__pink;
+      }
+
+      &-button:active {
         @include ProprtySetPrefix(transform, translateY(4px));
         box-shadow: 0px 0px 0px rgba(0,0,0,0);
       }
@@ -82,7 +87,7 @@
         font-weight: bold;
       }
 
-      &-btn {
+      &-button {
         display: inline-block;
         color: white;
         vertical-align: middle;
@@ -96,7 +101,12 @@
         box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
       }
 
-      &-btn:active {
+      &-button:hover {
+        border: 2px solid $button-hover-color__pink;
+        background-color: $button-hover-color__pink;
+      }
+
+      &-button:active {
         @include ProprtySetPrefix(transform, translateY(4px));
         box-shadow: 0px 0px 0px rgba(0,0,0,0);
       }
