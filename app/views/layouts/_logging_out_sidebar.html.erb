@@ -1,10 +1,10 @@
-<div class="sidebar">
+<div class="sidebar logging-out-sidebar">
   <%= link_to(image_tag("logo.png", :width => "100%", :height => "auto", :alt => "date-matchのロゴ"), root_url) %>
-  <nav class="sidebar__nav">
-    <ul class="sidebar__nav--items">
-      <li class="sidebar__nav--item"><%= link_to root_url, class: "sidebar__nav--item" do %><i class="fas fa-home sidebar__nav--icon"></i>トップ<% end %></li>
-      <li class="sidebar__nav--item"><%= link_to signup_path, class: "sidebar__nav--item" do %><i class="fas fa-user-plus sidebar__nav--icon"></i>新規登録<% end %></li>
-      <li class="sidebar__nav--item"><%= link_to login_path, class: "sidebar__nav--item" do %><i class="fas fa-sign-in-alt sidebar__nav--icon"></i>ログイン<% end %></li>
+  <nav class="sidebar__nav logging-out-sidebar__nav">
+    <ul class="logging-out-sidebar__nav--items">
+      <li class="logging-out-sidebar__nav--item"><%= link_to root_url, class: "logging-out-sidebar__nav--item-link" do %><i class="fas fa-home logging-out-sidebar__nav--item-icon"></i>トップ<% end %></li>
+      <li class="logging-out-sidebar__nav--item"><%= link_to signup_path, class: "logging-out-sidebar__nav--item-link" do %><i class="fas fa-user-plus logging-out-sidebar__nav--item-icon"></i>新規登録<% end %></li>
+      <li class="logging-out-sidebar__nav--item"><%= link_to login_path, class: "logging-out-sidebar__nav--item-link" do %><i class="fas fa-sign-in-alt logging-out-sidebar__nav--item-icon"></i>ログイン<% end %></li>
     </ul>
   </nav>
 </div>

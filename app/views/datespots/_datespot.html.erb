@@ -6,7 +6,9 @@
         <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "datespot-index__card-upper--image" %>
       <% end %>
     <% else %>
-      <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--no-image" %>
+      <%= link_to datespot_path(@datespot) do %>
+        <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--image" %>
+      <% end %>
     <% end %>
   </div>
   <div class="datespot-index__card-lower">

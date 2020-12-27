@@ -4,7 +4,6 @@
     <%= render 'layouts/logging_out_sidebar' %>
     <div class="main">
       <div class="heading">
-        <%= render 'shared/flash_messages' %>
         <h1 class="heading__title">ログイン</h1>
       </div>
       <div class="content">
@@ -17,8 +16,11 @@
             <%= form.label 'パスワード' %><span class="info-form__input-need">※必須(6文字以上)</span><br>
             <%= form.password_field :password, placeholder: "パスワードを入力", class: 'info-form__input-form', id: 'user_password', required: true %>
           </div>
-          <div class="action-btn">
-            <%= form.submit 'ログイン', class: "action-btn__submit" %>
+          <div class="action-button">
+            <%= form.submit 'ログイン', class: "action-button__submit" %>
+          </div>
+          <div class="action-button">
+            <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "action-button__submit" %>
           </div>
         <% end %>
         <span class="info-form__signup">ユーザー登録をしていない方は<%= link_to 'こちら', signup_path %></span>

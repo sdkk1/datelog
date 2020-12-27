@@ -15,18 +15,20 @@
         <%= form.label :picture %><span class="comment-form__input-unneed">※任意(1枚まで)</span><br>
         <%= form.file_field :picture, class: 'comment-form__input-form' %>
       </div>
-      <div class="action-btn">
-        <%= form.submit "コメントする", class: "action-btn__submit" %>
+      <div class="action-button">
+        <%= form.submit "コメントする", class: "action-button__submit" %>
       </div>
     <% end %>
   <% end %>
 </div>
 <script>
-$('#star').raty({
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  half: true,
-  scoreName: "comment[rate]",
+$(document).on('turbolinks:load', function() {
+  $('#star').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    scoreName: "comment[rate]",
+  });
 });
 </script>

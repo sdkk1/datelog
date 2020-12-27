@@ -1,7 +1,7 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.action-btn {
+.action-button {
   margin-bottom: 5%;
 
   &__submit {
@@ -17,8 +17,18 @@
     box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
   }
 
+  &__submit:hover {
+    border: 2px solid $button-hover-color__pink;
+    background-color: $button-hover-color__pink;
+  }
+
   &__submit:active {
     @include ProprtySetPrefix(transform, translateY(4px));
     box-shadow: 0px 0px 0px rgba(0,0,0,0);
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
   }
 }

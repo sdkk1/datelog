@@ -50,6 +50,7 @@ gem 'dotenv-rails'
 gem 'ransack'
 gem 'jp_prefecture'
 gem 'impressionist', '~> 1.6.1'
+gem 'toastr-rails'
 
 group :production do
   gem 'fog'

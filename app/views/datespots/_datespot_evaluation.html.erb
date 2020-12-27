@@ -3,13 +3,15 @@
   <div class="datespot-index-info__evaluations--rate-average">
     <div id="rate-average-<%= @datespot.id %>"></div>
     <script>
-      $('#rate-average-<%= @datespot.id %>').raty({
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= @datespot.rate_average.round(1) %>,
+      $(document).on('turbolinks:load', function() {
+        $('#rate-average-<%= @datespot.id %>').raty({
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= @datespot.rate_average.round(1) %>,
+        });
       });
     </script>
     <span class="datespot-index-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
@@ -19,13 +21,15 @@
   <div class="datespot-index-info__evaluations--rate-average">
     <div id="rate-average-<%= @datespot.id %>"></div>
     <script>
-      $('#rate-average-<%= @datespot.id %>').raty({
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: 0,
+      $(document).on('turbolinks:load', function() {
+        $('#rate-average-<%= @datespot.id %>').raty({
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: 0,
+        });
       });
     </script>
     <span class="datespot-index-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>

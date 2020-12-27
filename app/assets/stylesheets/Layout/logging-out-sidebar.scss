@@ -1,0 +1,54 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.logging-out-sidebar {
+  background-color: $main-color__yellow;
+  padding: 0;
+  width: 20%;
+
+  &__nav--items {
+    margin-top: 7%;
+    padding: 0 27%;
+    font-size: 2rem;
+  }
+
+  &__nav--item {
+    color: $font-color__wine-red;
+    margin-bottom: 25%;
+
+    &-link {
+      width: 100%;
+      color: $font-color__wine-red;
+    }
+
+    &-link:hover {
+      color: $font-color__wine-red;
+      text-decoration: none;
+    }
+
+    a {
+      position: relative;
+    }
+
+    a::after {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      content: '';
+      background: $font-color__wine-red;
+      @include ProprtySetPrefix(transform, scale(0, 1));
+      transform-origin: center top;
+      transition: transform 0.3s;
+    }
+
+    a:hover::after {
+      @include ProprtySetPrefix(transform, scale(1, 1));
+    }
+
+    &-icon {
+      margin-right: 15%;
+    }
+  }
+}

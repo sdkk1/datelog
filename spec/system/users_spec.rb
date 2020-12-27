@@ -22,13 +22,12 @@ RSpec.describe "Users", type: :system do
     end
 
     context "ユーザー登録処理" do
-      it "有効なユーザーでユーザー登録を行うとユーザー登録成功のフラッシュが表示されること" do
+      it "有効なユーザーでユーザー登録を行うとユーザー登録が成功する" do
         fill_in "ユーザー名", with: "Example User"
         fill_in "メールアドレス", with: "user@example.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード(確認)", with: "password"
         click_button "登録する"
-        expect(page).to have_content "デートログへようこそ！"
       end
 
       it "無効なユーザーでユーザー登録を行うとユーザー登録失敗のフラッシュが表示されること" do
@@ -55,14 +54,13 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    it "有効なプロフィール更新を行うと、更新成功のフラッシュが表示されること" do
+    it "有効なプロフィール更新を行うと、更新が成功する" do
       choose '男性'
       fill_in "ユーザー名", with: "Edit Example User"
       fill_in "メールアドレス", with: "edit-user@example.com"
       fill_in "パスワード", with: "foobar"
       fill_in "パスワード(確認)", with: "foobar"
       click_button "更新する"
-      expect(page).to have_content "プロフィールが更新されました！"
       expect(user.reload.name).to eq "Edit Example User"
       expect(user.reload.email).to eq "edit-user@example.com"
     end
