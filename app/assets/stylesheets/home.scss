@@ -40,12 +40,14 @@
         font-size: 4.8rem;
         font-weight: bold;
         margin-bottom: 3%;
+        text-shadow: 2px 2px 3px white;
       }
 
       h2 {
         font-size: 3rem;
         font-weight: bold;
         margin-bottom: 3%;
+        text-shadow: 2px 2px 3px white;
       }
     }
 
@@ -54,9 +56,9 @@
         display: inline-block;
         color: white;
         vertical-align: middle;
-        width: 15%;
-        font-size: 1.2rem;
-        line-height: 2.5;
+        width: 20%;
+        font-size: 2rem;
+        line-height: 2;
         margin: 0 2% 4%;
         border: 2px solid $font-color__wine-red;
         border-radius: 5px;
@@ -85,15 +87,16 @@
         display: inline-block;
         font-size: 2rem;
         font-weight: bold;
+        text-shadow: 2px 2px 3px white;
       }
 
       &-button {
         display: inline-block;
         color: white;
         vertical-align: middle;
-        width: 15%;
-        font-size: 1.2rem;
-        line-height: 2.5;
+        width: 20%;
+        font-size: 2rem;
+        line-height: 2;
         margin: 0 2% 2%;
         border: 2px solid $font-color__wine-red;
         border-radius: 5px;
@@ -124,10 +127,10 @@
 
     &--title {
       background-color: $main-color__yellow;
-      font-size: 4.8rem;
+      font-size: 4rem;
       font-weight: bold;
       text-align: center;
-      padding: 1% 0;
+      padding: 0.5% 0;
       margin-bottom: 5%;
     }
 
@@ -223,10 +226,10 @@
 
     &--title {
       background-color: $main-color__yellow;
-      font-size: 4.8rem;
+      font-size: 4rem;
       font-weight: bold;
       text-align: center;
-      padding: 1% 0;
+      padding: 0.5% 0;
     }
 
     &--content {
@@ -242,7 +245,7 @@
       background-color: $main-color__yellow;
       font-size: 1.8rem;
       text-align: center;
-      padding: 2% 0;
+      padding: 1% 0;
     }
   }
 }
