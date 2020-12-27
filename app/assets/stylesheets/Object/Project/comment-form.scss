@@ -30,4 +30,8 @@
     border-radius: 5px;
     background-color: white;
   }
+
+  &__input-form::placeholder {
+    padding-left: 2%;
+  }
 }

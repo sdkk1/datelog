@@ -1,4 +1,4 @@
 <%= link_to "/favorites/#{@datespot.id}/destroy", method: :delete, class: 'unlike', remote: true do %>
   <span><i class="fa fa-heart"></i></span>
-<% end %>
+<% end %>&nbsp;
 <span><%= @datespot.favorites.count %></span>
