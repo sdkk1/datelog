@@ -151,7 +151,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "投稿する処理" do
-      it "有効な情報で投稿を行うと投稿成功のフラッシュが表示されること" do
+      it "有効な情報で投稿を行うと投稿が成功する" do
         fill_in "名称・店名", with: "ももたろう"
         select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
@@ -160,7 +160,6 @@ RSpec.describe "Datespots", type: :system do
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "提案する"
-        expect(page).to have_content "投稿が登録されました！"
       end
 
       it "無効な情報で投稿を行うと投稿失敗のフラッシュが表示されること" do
@@ -345,7 +344,6 @@ RSpec.describe "Datespots", type: :system do
         fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
         fill_in "注意点", with: "お酒の種類は少ない"
         click_button "更新する"
-        expect(page).to have_content "投稿が更新されました！"
         expect(datespot.reload.name).to eq "ももたろう"
         expect(datespot.reload.prefecture.name).to eq "東京都"
         expect(datespot.reload.address).to eq "東京都渋谷区恵比寿西"
