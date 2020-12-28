@@ -1,0 +1,17 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.user-show {
+  width: 75%;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid $font-color__wine-red;
+
+  &__card-upper {
+    width: 100%;
+  }
+
+  &__card-lower {
+    width: 100%;
+  }
+}

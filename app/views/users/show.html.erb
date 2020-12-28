@@ -1,39 +1,27 @@
-<% provide(:title, "ユーザー詳細") %>
-<div class="container">
-  <h3 class="title-profile">ユーザー詳細</h3>
+<% provide(:title, "#{@user.name}") %>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-6">
-      <%= render 'users/avatar_slide_thumb400' %>
-    </div>
-    <div class="col-md-6">
-      <h3 class="user-name"><%= @user.name %></h3>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-      <h4>【足跡】 <%= @user.impressions_count %>回</h4>
-      <% if @user.prefecture_code.present? %>
-        <h4 class="residence">【居住地】<%= @user.prefecture.name %></h4>
-      <% else %>
-        <h4 class="residence">【居住地】</h4>
-      <% end %>
-      <h4 class="age">【年齢】<%= @user.age_i18n %></h4>
-      <h4 class="sex">【性別】<%= @user.sex_i18n %></h4>
-      <h4 class="introduction">【自己紹介】<%= @user.introduction %></h4>
-      <% if current_user == @user %>
-        <%= link_to "ユーザー編集", edit_user_path(@user) %>
-      <% end %>
-      <%= render 'follow_form' if logged_in? %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-9">
-      <% if @user.datespots.any? %>
-        <h3>デートスポット (<%= @user.datespots_count %>)</h3>
-        <ol class="datespots">
-          <%= render @datespots %>
-        </ol>
-        <%= will_paginate @datespots %>
-      <% end %>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title"><%= @user.name %></h1>
+      </div>
+      <div class="content">
+        <div class="user-show">
+          <div class="user-show__card-upper">
+            <div class="user-show__card-upper--image">
+              <%= render 'users/user-slider' %>
+            </div>
+          </div>
+          <div class="user-show__card-lower">
+            <div class="user-show__card-lower--info">
+              <%= render 'users/user_show_info' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
+<%= render 'layouts/user-slider_script' %>
