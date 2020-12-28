@@ -6,14 +6,17 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  &__no-user {
+    font-size: 2.4rem;
+  }
+
   &__card {
-    border: 4px solid $font-color__wine-red;
-    border-radius: 5px;
-    background-color: white;
     width: 30%;
     height: 25%;
     margin-bottom: 3%;
     text-align: left;
+    background-color: white;
+    border: 1px solid $font-color__wine-red;
   }
 
   &__card-upper {

@@ -29,6 +29,10 @@
       background-color: white;
     }
 
+    &--search-field::placeholder {
+      padding-left: 3%;
+    }
+
     &--search-button {
       display: inline-block;
       vertical-align: middle;

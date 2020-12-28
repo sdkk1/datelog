@@ -36,7 +36,7 @@
     <span class="datespot-show-info__bottom--timestamp">更新日：<%= l @datespot.updated_at %></span>
     <div class="datespot-show-info__bottom--actions">
       <span class="datespot-show-info__bottom--actions-impressions">
-        <i class="fas fa-eye datespot-show-info__bottom--actions-impressions-icon"></i><%= @datespot.impressions_count %>
+        <i class="fas fa-eye datespot-show-info__bottom--actions-impressions-icon"></i>&nbsp;<%= @datespot.impressions_count %>
       </span>
       <%= render 'users/list_form' if logged_in? %>
       <%= render 'users/favorite_form' if logged_in? %>
