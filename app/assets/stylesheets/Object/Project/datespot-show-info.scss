@@ -24,7 +24,7 @@
     }
 
     &--datespot-change {
-      font-size: 2.4rem;
+      font-size: 3rem;
 
       a:hover {
         text-decoration: none;
@@ -56,13 +56,13 @@
     &--actions {
       display:flex;
       justify-content: flex-end;
-      font-size: 2rem;
+      font-size: 2.4rem;
 
       &-impressions {
         display:flex;
 
         &-icon {
-          margin-top: 20%;
+          margin-top: 15%;
         }
       }
     }

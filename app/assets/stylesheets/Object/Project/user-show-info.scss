@@ -1,0 +1,103 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.user-show-info {
+  &__status {
+    margin-bottom: 3%;
+    border-bottom: 1.5px solid $font-color__wine-red;
+    text-align: left;
+
+    &--title {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5%;
+      font-size: 2.4rem;
+    }
+
+    &--impressions {
+      font-size: 1.8rem;
+      margin-bottom: 1.5%;
+
+      i {
+        padding-right: 3%;
+      }
+    }
+
+    &--stats {
+      font-size: 1.8rem;
+      margin-bottom: 1.5%;
+
+      &-count {
+        padding-right: 5%;
+        color: $link-color__blue;
+      }
+
+      i {
+        padding-right: 3.7%;
+      }
+    }
+
+    &--follow-form {
+      margin-bottom: 2%;
+    }
+  }
+
+  &__introduction {
+    margin-bottom: 3%;
+    border-bottom: 1.5px solid $font-color__wine-red;
+    text-align: left;
+
+    &--title {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5%;
+      font-size: 2.4rem;
+    }
+
+    &--content {
+      margin-bottom: 1%;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__profile {
+    margin-bottom: 3%;
+    border-bottom: 1.5px solid $font-color__wine-red;
+    text-align: left;
+
+    &--user-change {
+      display:flex;
+      justify-content: space-between;
+
+      &-edit, &-delete {
+        font-size: 3rem;
+        margin-left: 2%;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+
+    &--user-change >:first-child {
+      margin-right: auto;
+    }
+
+    &--title {
+      display: inline-block;
+      margin-bottom: 1.5%;
+      font-size: 2.4rem;
+    }
+
+    &--content {
+      margin-bottom: 1%;
+      font-size: 1.8rem;
+
+      &-residence, &-age, &-sex, &-timestamp {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 1%;
+      }
+    }
+  }
+}
