@@ -2,7 +2,7 @@
 @import "Object/Utility/prefix";
 
 .user-show {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   background-color: white;
   border: 1px solid $font-color__wine-red;
@@ -12,6 +12,6 @@
   }
 
   &__card-lower {
-    padding: 5%
+    padding: 3%
   }
 }
