@@ -1,25 +1,41 @@
 <% provide(:title, "マッチング一覧") %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <% if @match_users.present?%>
-      <h3><%= @match_users.size %>人とマッチングしています</h3>
-      <h4>マッチング一覧</h4>
-      <% @match_users.each do |match_user| %>
-        <section class="user_info">
-          <% if match_user.avatars.attached? %>
-            <div class="swiper-slide"><%= image_tag match_user.avatars.first.variant(resize:'50x50').processed %></div>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title">マッチング一覧</h1>
+      </div>
+      <div class="content">
+        <div class="matching-index">
+          <% if @match_users.present?%>
+            <p class="matching-index__user-count"><%= @match_users.size %>人とマッチングしています</p>
+            <ul>
+              <% @match_users.each do |match_user| %>
+                <li class="matching-index__match-users">
+                  <% if match_user.avatars.attached? %>
+                    <%= image_tag match_user.avatars.first.variant(resize:'50x50').processed, class: "matching-index__match-users--avatar" %>
+                  <% else %>
+                    <%= image_tag 'thumb50_default.png', class: "matching-index__match-users--avatar" %>
+                  <% end %>
+                  <span class="matching-index__match-users--name"><%= link_to match_user.name, match_user %></span>
+                  <div class="matching-index__room-entry">
+                    <%= form_with model: @room do |form| %>
+                      <%= form.hidden_field :user_id, value: match_user.id %>
+                      <%= form.button :type => "submit", class: "matching-index__room-entry--icon" do %>
+                        <i class="far fa-comment-dots"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
           <% else %>
-            <%= image_tag 'thumb50_default.png'%>
+            <p class="matching-index__no-user">マッチングしているユーザーはいません</p>
           <% end %>
-          <p class="user-name"><%= link_to match_user.name, match_user %></p>
-        </section>
-        <%= form_with model: @room do |form| %>
-          <%= form.hidden_field :user_id, value: match_user.id %>
-          <%= form.submit "メッセージをする", class: "btn btn-primary" %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <h4>マッチングしているユーザーはいません</h4>
-    <% end %>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </div>
 </div>
