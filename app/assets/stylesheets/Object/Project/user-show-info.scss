@@ -28,13 +28,18 @@
       font-size: 1.8rem;
       margin-bottom: 1.5%;
 
-      &-count {
+      &-count-link {
         padding-right: 5%;
         color: $link-color__blue;
       }
 
+      &-count {
+        padding-right: 5%;
+        color: $font-color__wine-red;
+      }
+
       i {
-        padding-right: 3.7%;
+        padding-right: 3.5%;
       }
     }
 
