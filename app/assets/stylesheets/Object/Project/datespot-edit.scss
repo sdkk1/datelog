@@ -1,0 +1,24 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.datespot-edit {
+  margin-bottom: 2%;
+
+  &__description-title {
+    font-size: 2.4rem;
+  }
+
+  &__description-attention {
+    font-size: 1.6rem;
+  }
+
+  &__description-no-image {
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 3%;
+  }
+
+  &__image {
+    margin-bottom: 3%;
+  }
+}

@@ -62,9 +62,14 @@
   &__map {
     position: relative;
     display: inline-block;
+    color: $link-color__blue;
     font-size: 1.4rem;
     cursor: pointer;
     margin-left: 1%;
+
+    i {
+      color: $link-color__blue;
+    }
   }
 
   &__map::after {
@@ -74,7 +79,7 @@
     bottom: -3px;
     left: 0;
     content: '';
-    background: $font-color__wine-red;
+    background: $link-color__blue;
     @include ProprtySetPrefix(transform, scale(0, 1));
     transform-origin: center top;
     transition: transform 0.3s;
@@ -84,7 +89,7 @@
     @include ProprtySetPrefix(transform, scale(1, 1));
   }
 
-  &__guest-login, &__signup {
+  &__guest-login, &__signup, &__delete {
     margin-bottom: 2%;
     font-size: 1.6rem;
   }
