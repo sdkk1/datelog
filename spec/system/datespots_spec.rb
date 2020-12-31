@@ -319,7 +319,7 @@ RSpec.describe "Datespots", type: :system do
 
     context "ページレイアウト" do
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('投稿編集')
+        expect(page).to have_title full_title('編集する')
       end
 
       it "入力部分に適切なラベルが表示されること" do

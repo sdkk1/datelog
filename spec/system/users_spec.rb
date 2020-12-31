@@ -50,7 +50,7 @@ RSpec.describe "Users", type: :system do
 
     context "ページレイアウト" do
       it "正しいタイトルが表示されることを確認" do
-        expect(page).to have_title full_title('ユーザー編集')
+        expect(page).to have_title full_title('編集する')
       end
     end
 
