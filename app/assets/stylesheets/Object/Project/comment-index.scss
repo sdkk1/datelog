@@ -19,8 +19,13 @@
     &--comments-more {
       position: relative;
       display: inline-block;
+      color: $link-color__blue;
       font-size: 1.3rem;
       cursor: pointer;
+
+      i {
+        color: $link-color__blue;
+      }
     }
 
     &--comments-more::after {
@@ -30,7 +35,7 @@
       bottom: -3px;
       left: 0;
       content: '';
-      background: $font-color__wine-red;
+      background: $link-color__blue;
       @include ProprtySetPrefix(transform, scale(0, 1));
       transform-origin: center top;
       transition: transform 0.3s;
