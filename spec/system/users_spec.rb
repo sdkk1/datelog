@@ -110,7 +110,7 @@ RSpec.describe "Users", type: :system do
       end
 
       it "デートスポットの件数が表示されていることを確認" do
-        expect(page).to have_content "自分の提案一覧(#{user.datespots.count}件)"
+        expect(page).to have_content "提案一覧(#{user.datespots.count}件)"
       end
 
       it "デートスポットの情報が表示されていることを確認" do
