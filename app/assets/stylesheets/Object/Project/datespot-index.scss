@@ -6,6 +6,14 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  &__no-datespot-large {
+    font-size: 2.4rem;
+  }
+
+  &__no-datespot-small {
+    font-size: 1.8rem;
+  }
+
   &__card {
     width: 30%;
     height: 25%;

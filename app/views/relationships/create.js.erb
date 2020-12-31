@@ -1,2 +1,2 @@
 $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
-$("#followers").html('<%= @user.followed_count %>');
+$("#followers").html('<span id="followers" class="user-show-info__status--stats-count"><i class="fas fa-thumbs-up"></i><%= @user.followed_count %>人にいいねされました</span>');

@@ -96,12 +96,8 @@ RSpec.describe "Users", type: :system do
     end
 
     context "ページレイアウト" do
-      it "「ユーザー詳細」の文字列が存在することを確認" do
-        expect(page).to have_content 'ユーザー詳細'
-      end
-
       it "正しいタイトルが表示されることを確認" do
-        expect(page).to have_title full_title('ユーザー詳細')
+        expect(page).to have_title full_title(user.name)
       end
 
       it "ユーザー情報が表示されることを確認" do
@@ -110,11 +106,11 @@ RSpec.describe "Users", type: :system do
       end
 
       it "ユーザー編集ページへのリンクが表示されていることを確認" do
-        expect(page).to have_link 'ユーザー編集', href: edit_user_path(user)
+        expect(page).to have_selector '#user-edit'
       end
 
       it "デートスポットの件数が表示されていることを確認" do
-        expect(page).to have_content "デートスポット (#{user.datespots.count})"
+        expect(page).to have_content "自分の提案一覧(#{user.datespots.count}件)"
       end
 
       it "デートスポットの情報が表示されていることを確認" do
@@ -133,7 +129,7 @@ RSpec.describe "Users", type: :system do
         visit user_path(other_user)
         expect(page).to have_button 'いいね！'
         click_button 'いいね！'
-        expect(page).to have_content 'いいね済'
+        expect(page).to have_content 'いいね！済'
       end
     end
 
