@@ -1,11 +1,18 @@
 <%= form_with model: @user, local: true do |form| %>
   <%= render 'shared/error_messages', object: form.object %>
-  <% if @user.avatars.present? %>
-    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+  <div class="user-edit">
+    <% if @user.avatars.present? %>
+      <p class="user-edit__description-title">現在登録されている画像</p><p class="user-edit__description-attention">※削除する画像はチェックしてください</p>
     <% @user.avatars.each do |avatar| %>
       <%= form.check_box :avatar_ids, {multiple: true}, avatar.id, false %>
-      <%= image_tag avatar.variant(resize:'200x200').processed  %> <br>
+      <%= image_tag avatar.variant(resize:'250x250').processed, class:"user-edit__image" %><br>
     <% end %>
-  <% end %>
+    <% else %>
+      <p class="user-edit__description-title">現在登録されている画像</p><p class="user-edit__description-no-image">なし</p>
+    <% end %>
+  </div>
   <%= render partial: 'user_info_form', locals: { form: form } %>
 <% end %>
+<div class="info-form__delete">
+  <%= link_to "ユーザーを削除する", user_path(@user), method: :delete, data: { confirm: "本当にこのユーザーを削除してもよろしいですか？" } %>
+</div>
