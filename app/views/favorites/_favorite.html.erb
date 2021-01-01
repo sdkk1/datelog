@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="favorite-index__info">
-    <p class="favorite-index__info--description">この提案をお気に入りに追加しました</p><br>
+    <p class="favorite-index__info--description">この提案をお気に入りに<br>追加しました</p><br>
     <p class="favorite-index__info--timestamp"><%= l favorite.created_at %></p><br>
     <%= link_to "お気に入りから削除", "/favorites/#{@datespot.id}/destroy",
                                     method: :delete,

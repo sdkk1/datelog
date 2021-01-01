@@ -1,19 +1,27 @@
 <% provide(:title, "通知一覧") %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <h3>通知一覧 (<%= @notifications.count %>)</h3>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title">通知一覧</h1>
+      </div>
+      <div class="content">
+        <% if @notifications.present? %>
+          <p class="notification-index__notification-count">通知： <%= @notifications.count %>件</p><br>
+          <div class="notification-index__notification-all-delete">
+            <%= link_to "全削除", "/notifications/destroy", method: :delete,
+            data: { confirm: '全ての通知を削除します。本当に削除してよろしいでしょうか？' } %>
+          </div>
+          <ol>
+            <%= render @notifications %>
+          </ol>
+          <%= will_paginate @notifications, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+        <% else %>
+          <span class="notification-index__no-notification">通知はありません</span>
+        <% end %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
-  <% if @notifications.present? %>
-    <div class="delete-notice">
-      <%= link_to "全削除", "/notifications/destroy", method: :delete,
-      data: { confirm: '全ての通知を削除します。本当に削除してよろしいでしょうか？' } %>
-    </div>
-    <ol class="notifications">
-      <%= render @notifications %>
-    </ol>
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
 </div>
