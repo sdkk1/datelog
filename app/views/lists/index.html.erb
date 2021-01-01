@@ -1,15 +1,23 @@
-<% provide(:title, "行く予定リスト") %>
-<div class="container">
+<% provide(:title, "行きたい！一覧") %>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <h3>行く予定リスト (<%= @lists.count %>)</h3>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title">行きたい！一覧</h1>
+      </div>
+      <div class="content">
+        <% if @lists.present? %>
+          <p class="list-index__datespot-count">行きたい！リクエスト： <%= @lists.count %>件</p>
+          <ol>
+            <%= render @lists %>
+          </ol>
+          <%= will_paginate @lists, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+        <% else %>
+          <span class="list-index__no-datespot">行きたい！リクエストはありません</span>
+        <% end %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
-  <% if @lists.present? %>
-    <ol class="lists">
-      <%= render @lists %>
-    </ol>
-  <% else %>
-    <p>リストはありません</p>
-  <% end %>
 </div>

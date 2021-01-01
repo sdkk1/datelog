@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @lists = current_user.lists.preload(datespot: { images_attachments: :blob }).sort_desc
+    @lists = current_user.lists.preload(datespot: { images_attachments: :blob }).paginate(page: params[:page], per_page: 5).sort_desc
   end
 
   def create

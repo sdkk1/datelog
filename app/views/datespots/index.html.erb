@@ -18,7 +18,7 @@
           </ol>
           <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
         <% else %>
-          <span class="datespot-index__no-datespot-large">まだ提案がありません</span>
+          <span class="datespot-index__no-datespot-large">提案はありません</span>
         <% end %>
         <% if logged_in? %>
           <span class="fab">
