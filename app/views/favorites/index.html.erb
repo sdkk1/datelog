@@ -1,15 +1,23 @@
 <% provide(:title, "お気に入り一覧") %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <h3>お気に入り一覧 (<%= @favorites.count %>)</h3>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title">お気に入り一覧</h1>
+      </div>
+      <div class="content">
+        <% if @favorites.present? %>
+          <p class="favorite-index__datespot-count">お気に入りの提案： <%= @favorites.count %>件</p>
+          <ol>
+            <%= render @favorites %>
+          </ol>
+          <%= will_paginate @favorites, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+        <% else %>
+          <span class="favorite-index__no-datespot">まだお気に入りはありません</span>
+        <% end %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
-  <% if @favorites.present? %>
-    <ol class="favorites">
-      <%= render @favorites %>
-    </ol>
-  <% else %>
-    <p>お気に入りはありません</p>
-  <% end %>
 </div>
