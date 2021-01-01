@@ -26,6 +26,7 @@ RSpec.describe "Favorites", type: :system do
       user.favorite(other_datespot)
       visit favorites_path
       expect(page).to have_css ".favorite-index", count: 2
+      expect(page).to have_content "この提案をお気に入りに追加しました"
       expect(page).to have_link datespot.name
       expect(page).to have_content datespot.address
       expect(page).to have_content datespot.range_i18n
