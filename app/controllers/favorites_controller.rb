@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @favorites = current_user.favorites.preload(datespot: { images_attachments: :blob }).sort_desc
+    @favorites = current_user.favorites.preload(datespot: { images_attachments: :blob }).paginate(page: params[:page], per_page: 5).sort_desc
     @datespots = current_user.favorite_datespots
   end
 

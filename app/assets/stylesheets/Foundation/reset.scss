@@ -36,17 +36,6 @@ h4 {
 
 /* ↓は後で修正 */
 
-// ユーザー一覧ページ
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px;
-  }
-}
-
 //通知
 li.new_notification > a > span {
   color: red;
