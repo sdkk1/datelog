@@ -1,7 +1,7 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.favorite-index {
+.list-index {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +49,7 @@
   &__info {
     font-size: 1.8rem;
 
-    &--description, &--timestamp, &--unlike {
+    &--description, &--timestamp {
       display: inline-block;
       margin-bottom: 10%;
     }

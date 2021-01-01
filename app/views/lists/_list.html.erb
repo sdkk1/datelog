@@ -1,36 +1,24 @@
-<% @list = list %>
 <% @datespot = Datespot.find(list.datespot_id) %>
 <% user = User.find(list.from_user_id) %>
-<li id="list-<%= list.id %>">
-  <p><%= l list.created_at %></p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="list-datespot">
-        <% if list.user_id == list.from_user_id %>
-          <p class="list-message">この投稿を行く予定リストに追加しました。</p>
-        <% else %>
-          <p class="list-message"><%= link_to user.name, user_path(user) %>さんがこの投稿に行きたいリクエストをしました。</p>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <%= link_to "リストから削除", "/lists/#{list.id}/destroy",
-                                  method: :delete,
-                                  class: "unlist",
-                                  data: { confirm: "本当にリストから削除しますか？" } %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
+<li class="list-index" id="list-<%= list.id %>">
+  <div class="list-index__card" id="datespot-<%= @datespot.id %>">
+    <div class="list-index__card-upper">
       <% if @datespot.images.attached? %>
-        <%= image_tag @datespot.images.first.variant(resize:'200x200').processed %>
+        <%= link_to datespot_path(@datespot) do %>
+          <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "list-index__card-upper--image" %>
+        <% end %>
       <% else %>
-        <%= image_tag 'thumb200_default.png'%>
+        <%= link_to datespot_path(@datespot) do %>
+          <%= image_tag 'thumb400_default.png', class: "list-index__card-upper--image" %>
+        <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
-      <%= render 'datespots/datespot_evaluation' %><br>
+    <div class="list-index__card-lower">
       <%= render 'datespots/datespot_index_info' %>
     </div>
+  </div>
+  <div class="list-index__info">
+    <p class="list-index__info--description"><%= link_to user.name, user_path(user) %>さんが<br>この提案に行きたい！リクエストをしました</p><br>
+    <p class="list-index__info--timestamp"><%= l list.created_at %></p><br>
   </div>
 </li>
