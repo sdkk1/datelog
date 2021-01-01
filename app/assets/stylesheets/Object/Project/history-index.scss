@@ -1,0 +1,57 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.history-index {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid $font-color__wine-red;
+
+  &__datespot-count {
+    display: inline-block;
+    margin-bottom: 3%;
+    font-size: 2.4rem;
+  }
+
+  &__no-datespot {
+    font-size: 2.4rem;
+  }
+
+  &__card {
+    width: 40%;
+    height: 100%;
+    margin-bottom: 3%;
+    text-align: left;
+    background-color: white;
+    border: 1px solid $font-color__wine-red;
+  }
+
+  &__card-upper {
+    &--image {
+      width: 100%;
+      opacity: 1;
+      transition: 0.5s ease-in-out;
+    }
+
+    &--image:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__card-lower {
+    margin: 5%;
+  }
+
+  &__info {
+    font-size: 1.8rem;
+
+    &--description, &--timestamp {
+      display: inline-block;
+      margin-bottom: 10%;
+    }
+  }
+}

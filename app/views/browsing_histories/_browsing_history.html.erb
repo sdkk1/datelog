@@ -1,24 +1,23 @@
 <% @datespot = Datespot.find(browsing_history.datespot_id) %>
-<li id="datespot-<%= @datespot.id %>">
-  <p><%= l browsing_history.created_at %></p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="browsing_history-datespot">
-        <p class="list-message">この投稿を閲覧しました。</p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
+<li class="history-index" id="browsing_history-<%= browsing_history.id %>">
+  <div class="history-index__card" id="datespot-<%= @datespot.id %>">
+    <div class="history-index__card-upper">
       <% if @datespot.images.attached? %>
-        <%= image_tag @datespot.images.first.variant(resize:'200x200').processed %>
+        <%= link_to datespot_path(@datespot) do %>
+          <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "history-index__card-upper--image" %>
+        <% end %>
       <% else %>
-        <%= image_tag 'thumb200_default.png'%>
+        <%= link_to datespot_path(@datespot) do %>
+          <%= image_tag 'thumb400_default.png', class: "history-index__card-upper--image" %>
+        <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
-      <%= render 'datespots/datespot_evaluation' %><br>
+    <div class="history-index__card-lower">
       <%= render 'datespots/datespot_index_info' %>
     </div>
+  </div>
+  <div class="history-index__info">
+    <p class="history-index__info--description">この提案を閲覧しました</p><br>
+    <p class="history-index__info--timestamp"><%= l browsing_history.created_at %></p>
   </div>
 </li>
