@@ -1,15 +1,23 @@
 <% provide(:title, "閲覧履歴一覧") %>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-      <h3>閲覧履歴一覧 (<%= @histories.count %>)</h3>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title">閲覧履歴一覧</h1>
+      </div>
+      <div class="content">
+        <% if @histories.present? %>
+          <p class="history-index__datespot-count">閲覧履歴： <%= @histories.count %>件<br>(最大10件まで)</p>
+          <ol>
+            <%= render @histories %>
+          </ol>
+          <%= will_paginate @histories, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+        <% else %>
+          <span class="history-index__no-datespot">履歴はありません</span>
+        <% end %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
-  <% if @histories.present? %>
-    <ol class="histories">
-      <%= render @histories %>
-    </ol>
-  <% else %>
-    <p>履歴はありません</p>
-  <% end %>
 </div>

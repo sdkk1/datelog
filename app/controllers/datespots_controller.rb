@@ -22,7 +22,7 @@ class DatespotsController < ApplicationController
       end
       new_history.save
 
-      histories_stock_limit = 5
+      histories_stock_limit = 10
       histories = current_user.browsing_histories.all
       if histories.count > histories_stock_limit
         histories[0].destroy
