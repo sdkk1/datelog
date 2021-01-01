@@ -1,7 +1,7 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.list-index {
+.notification-index {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,13 +11,18 @@
   padding-bottom: 10px;
   border-bottom: 1.5px solid $font-color__wine-red;
 
-  &__datespot-count {
+  &__notification-count {
     display: inline-block;
-    margin-bottom: 3%;
     font-size: 2.4rem;
   }
 
-  &__no-datespot {
+  &__notification-all-delete {
+    display: inline-block;
+    margin-bottom: 3%;
+    font-size: 1.8rem;
+  }
+
+  &__no-notification {
     font-size: 2.4rem;
   }
 
@@ -50,7 +55,7 @@
     width: 40%;
     font-size: 1.8rem;
 
-    &--description, &--timestamp {
+    &--description, &--timestamp, &--unlike {
       display: inline-block;
       margin-bottom: 10%;
     }

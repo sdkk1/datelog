@@ -1,36 +1,89 @@
 <% @user = User.find(notification.from_user_id) %>
 <% @datespot = Datespot.find(notification.datespot_id) if notification.datespot_id.present? %>
-<li id="notification-<%= notification.id %>">
-  <div>
-    <% if notification.variety == 1 %>
-      <p><%= l notification.created_at %></p>
-      <p class="notification-message">あなたの投稿が<%= link_to @user.name, user_path(@user) %>さんから行きたいリクエストされました。</p>
-    <% elsif notification.variety == 2 %>
-      <p><%= l notification.created_at %></p>
-      <p class="notification-message">あなたの投稿に<%= link_to @user.name, user_path(@user) %>さんがコメントしました。
-      「<%= notification.content %>」</p>
-    <% elsif notification.variety == 3 %>
-      <p><%= l notification.created_at %></p>
-      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんがあなたにいいねをしました。</p>
-    <% elsif notification.variety == 4 %>
-      <p><%= l notification.created_at %></p>
-      <p class="notification-message"><%= link_to @user.name, user_path(@user) %>さんからメッセージが届きました。
-      「<%= notification.content %>」</p>
-    <% end %>
-  </div>
-  <% if @datespot.present? %>
-    <div class="row">
-      <div class="col-md-3">
-      <% if @datespot.images.attached? %>
-        <%= image_tag @datespot.images.first.variant(resize:'200x200').processed %>
-      <% else %>
-        <%= image_tag 'thumb200_default.png'%>
-      <% end %>
+<li class="notification-index" id="notification-<%= notification.id %>">
+  <% if notification.variety == 1 %>
+    <div class="notification-index__card" id="datespot-<%= @datespot.id %>">
+      <div class="notification-index__card-upper">
+        <% if @datespot.images.attached? %>
+          <%= link_to datespot_path(@datespot) do %>
+            <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% else %>
+          <%= link_to datespot_path(@datespot) do %>
+            <%= image_tag 'thumb400_default.png', class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% end %>
       </div>
-    <div class="col-md-6">
-      <%= render 'datespots/datespot_evaluation' %><br>
-      <%= render 'datespots/datespot_info' %>
+      <div class="notification-index__card-lower">
+        <%= render 'datespots/datespot_index_info' %>
+      </div>
     </div>
+    <div class="notification-index__info">
+      <p class="notification-index__info--description">あなたの提案に<%= link_to @user.name, user_path(@user) %>さんが<br>行きたい！リクエストをしました</p><br>
+      <p class="notification-index__info--timestamp"><%= l notification.created_at %></p>
+    </div>
+  <% elsif notification.variety == 2 %>
+    <div class="notification-index__card" id="datespot-<%= @datespot.id %>">
+      <div class="notification-index__card-upper">
+        <% if @datespot.images.attached? %>
+          <%= link_to datespot_path(@datespot) do %>
+            <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% else %>
+          <%= link_to datespot_path(@datespot) do %>
+            <%= image_tag 'thumb400_default.png', class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="notification-index__card-lower">
+        <%= render 'datespots/datespot_index_info' %>
+      </div>
+    </div>
+    <div class="notification-index__info">
+      <p class="notification-index__info--description">あなたの提案に<br><%= link_to @user.name, user_path(@user) %>さんがコメントしました<br>「<%= notification.content.slice(0..10) %>...」</p><br>
+      <p class="notification-index__info--timestamp"><%= l notification.created_at %></p>
+    </div>
+  <% elsif notification.variety == 3 %>
+    <div class="notification-index__card" id="user-<%= @user.id %>">
+      <div class="notification-index__card-upper">
+        <% if @user.avatars.attached? %>
+          <%= link_to user_path(@user) do %>
+            <%= image_tag @user.avatars.first.variant(resize:'400x400').processed, class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(@user) do %>
+            <%= image_tag 'thumb400_default.png', class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="notification-index__card-lower">
+        <%= render 'users/user_index_info' %>
+      </div>
+    </div>
+    <div class="notification-index__info">
+      <p class="notification-index__info--description"><%= link_to @user.name, user_path(@user) %>さんが<br>あなたにいいね！をしました</p><br>
+      <p class="notification-index__info--timestamp"><%= l notification.created_at %></p>
+    </div>
+  <% elsif notification.variety == 4 %>
+    <div class="notification-index__card" id="user-<%= @user.id %>">
+      <div class="notification-index__card-upper">
+        <% if @user.avatars.attached? %>
+          <%= link_to user_path(@user) do %>
+            <%= image_tag @user.avatars.first.variant(resize:'400x400').processed, class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(@user) do %>
+            <%= image_tag 'thumb400_default.png', class: "notification-index__card-upper--image" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="notification-index__card-lower">
+        <%= render 'users/user_index_info' %>
+      </div>
+    </div>
+    <div class="notification-index__info">
+      <p class="notification-index__info--description"><%= link_to @user.name, user_path(@user) %>さんから<br>メッセージが届きました<br>「<%= notification.content.slice(0..10) %>...」</p><br>
+      <p class="notification-index__info--timestamp"><%= l notification.created_at %></p>
     </div>
   <% end %>
 </li>
