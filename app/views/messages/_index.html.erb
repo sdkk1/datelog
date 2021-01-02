@@ -1,30 +1,46 @@
 <% if messages.present? %>
   <ul>
     <% messages.each do |message| %>
-      <li id="message-<%= message.id %>">
-        <div class="chat-box">
-          <div class="chat-face">
+      <% if message.user == current_user %>
+        <li class="message-index" id="message-<%= message.id %>">
+          <div class="message-index__right">
             <% if message.user.avatars.attached? %>
-              <div class="swiper-slide"><%= image_tag message.user.avatars.first.variant(resize:'50x50').processed %></div>
+              <%= image_tag message.user.avatars.first.variant(resize:'50x50').processed, class: "message-index__right--avatar" %><br>
             <% else %>
-              <%= image_tag 'thumb50_default.png'%>
+              <%= image_tag 'thumb50_default.png', class: "message-index__right--avatar" %><br>
             <% end %>
-          </div>
-          <div class="chat-hukidashi">
-            <p class="current-user-name"><%= link_to message.user.name, user_path(message.user.id) %></p>
-            <p class="current-user-chat-text"><%= message.content %></p>
+            <p class="message-index__right--message-content"><%= message.content %></p><br>
             <% if message.picture.attached? %>
-              <%= image_tag message.picture.variant(resize:'200x200').processed %>
+              <%= image_tag message.picture.variant(resize:'200x200').processed, class: "message-index__right--message-picture" %>
             <% end %>
-            <p class="current-user-chat-time"><%= l message.created_at %></p>
-            <% if message.user == current_user %>
-              <%= link_to "削除",room_message_path(message.room_id, message.id), remote: true, method: :delete %>
-            <% end %>
+            <div class="message-index__right--bottom">
+              <p class="message-index__right--bottom-timestamp"><%= l message.created_at %></p>
+              <% if message.user == current_user %>
+                <%= link_to room_message_path(message.room_id, message.id), remote: true, method: :delete do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% else %>
+        <li class="message-index" id="message-<%= message.id %>">
+          <div class="message-index__left">
+            <% if message.user.avatars.attached? %>
+              <%= image_tag message.user.avatars.first.variant(resize:'50x50').processed, class: "message-index__left--avatar" %><br>
+            <% else %>
+              <%= image_tag 'thumb50_default.png', class: "message-index__left--avatar" %><br>
+            <% end %>
+            <p class="message-index__left--message-content"><%= message.content %></p><br>
+            <% if message.picture.attached? %>
+              <%= image_tag message.picture.variant(resize:'200x200').processed, class: "message-index__left--message-picture" %>
+            <% end %>
+            <p class="message-index__left--timestamp"><%= l message.created_at %></p>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% else %>
-  <h4>メッセージはまだありません</h4>
+  <p class="message-index__no-message">メッセージはありません</p>
 <% end %>

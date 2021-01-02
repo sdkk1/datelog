@@ -1,22 +1,30 @@
-<% provide(:title, "メッセージ一覧") %>
-<div class="container">
+<% provide(:title, "#{@message_user.name}さんとのメッセージ") %>
+<div class="container-fluid">
   <div class="row">
-    <p><%= link_to "マッチング一覧へ戻る", rooms_path %></p>
-    <section class="user_info">
-      <% if @message_user.avatars.attached? %>
-        <div class="swiper-slide"><%= image_tag @message_user.avatars.first.variant(resize:'200x200').processed %></div>
-      <% else %>
-        <%= image_tag 'thumb200_default.png'%>
-      <% end %>
-      <h4 class="user-name"><%= link_to @message_user.name, @message_user %></h4>
-    </section>
-    <div class="messages">
-      <div id="messages_area">
-        <%= render partial: 'messages/index', locals: { messages: @messages } %>
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title" id="datespot-name"><%= @message_user.name %>さんとのメッセージ</h1>
       </div>
-      <div class="messages_create">
-        <%= render partial: 'messages/form', locals: { message: @message, room: @room } %>
+      <div class="content">
+        <div class="matching-show">
+          <div class="matching-show__user-info">
+            <% if @message_user.avatars.attached? %>
+              <%= image_tag @message_user.avatars.first.variant(resize:'200x200').processed, class: "matching-show__user-info--avatar" %>
+            <% else %>
+              <%= image_tag 'thumb200_default.png', class: "matching-show__user-info--avatar" %>
+            <% end %>
+            <span class="matching-show__user-info--name"><%= link_to @message_user.name, @message_user %></span>
+          </div>
+          <div class="matching-show__messages-area" id="messages_area">
+            <%= render partial: 'messages/index', locals: { messages: @messages } %>
+          </div>
+          <div class="matching-show__message-form">
+            <%= render partial: 'messages/form', locals: { message: @message, room: @room } %>
+          </div>
+        </div>
       </div>
+      <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>

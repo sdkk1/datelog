@@ -1,0 +1,83 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.message-index {
+  margin-bottom: 3%;
+
+  &__right {
+    text-align: right;
+
+    &--avatar {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-bottom: 1%;
+    }
+
+    &--message-content {
+      display: inline-block;
+      width: auto;
+      padding: 1%;
+      margin-bottom: 1%;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: white;
+      font-size: 1.4rem;
+    }
+
+    &--message-picture {
+      margin-bottom: 1%;
+    }
+
+    &--bottom {
+      display:flex;
+      justify-content: flex-end;
+
+      &-timestamp {
+        font-size: 1.4rem;
+        margin-right: 1%;
+      }
+
+      i {
+        margin-right: 1%;
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  &__left {
+    text-align: left;
+
+    &--avatar {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-bottom: 1%;
+    }
+
+    &--message-content {
+      display: inline-block;
+      width: auto;
+      padding: 1%;
+      margin-bottom: 1%;
+      border: 2px solid $font-color__wine-red;
+      border-radius: 5px;
+      background-color: white;
+      font-size: 1.4rem;
+    }
+
+    &--message-picture {
+      margin-bottom: 1%;
+    }
+
+    &--timestamp {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__no-message {
+    font-size: 2.4rem;
+  }
+}
