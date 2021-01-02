@@ -1,13 +1,15 @@
 <%= form_with(model: [room, message]) do |form| %>
-  <div id="error_messages" class='comment-form__error-messages'></div>
-  <div class = 'form-group'>
-    <%= form.label :content %> <span class="info-form__input-need">※必須(255文字以内)</span>
-    <%= form.text_area :content, placeholder: "メッセージを入力", id: "message_content", required: true %>
+  <div id="error_messages" class='message-form__error-messages'></div>
+  <div class='message-form'>
+    <%= form.label :content %><span class="message-form__input-need">※必須(255文字以内)</span><br>
+    <%= form.text_area :content, placeholder: "メッセージを入力", class: 'message-form__input-form', id: "message_content", required: true %>
     <%= form.hidden_field :room_id, value: room.id %>
   </div>
-  <div class = 'form-group' id = "picture">
-    <%= form.label :picture %> <span class="info-form__input-unneed">※任意(1枚まで)</span>
-    <%= form.file_field :picture, id: 'message_picture' %>
+  <div class='message-form' id="picture">
+    <%= form.label :picture %><span class="message-form__input-unneed">※任意(1枚まで)</span><br>
+    <%= form.file_field :picture, class: 'message-form__input-form', id: 'message_picture' %>
   </div>
-  <%= form.submit "送信する", class: "btn btn-success" %>
+  <div class="action-button">
+    <%= form.submit "送信する", class: "action-button__submit" %>
+  </div>
 <% end %>
