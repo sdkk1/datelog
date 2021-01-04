@@ -10,17 +10,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @datespots = @user.datespots.preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 15).sort_desc
+    @datespots = @user.datespots.preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 9).sort_desc
   end
 
   def index
     if params[:q].present?
       @search = User.ransack(params[:q])
-      @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 15)
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 9)
     else
       params[:q] = { sorts: 'updated_at desc' }
       @search = User.ransack(params[:q])
-      @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 15)
+      @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 9)
     end
   end
 
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
 
     get_follower_user_ids = Relationship.where(follower_id: @user.id).pluck(:followed_id)
-    @users = User.eager_load(:passive_relationships).where(id: get_follower_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 15)
+    @users = User.eager_load(:passive_relationships).where(id: get_follower_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 9)
 
     render 'show_follow'
   end
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
 
     get_followed_user_ids = Relationship.where(followed_id: @user.id).pluck(:follower_id)
-    @users = User.eager_load(:active_relationships).where(id: get_followed_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 15)
+    @users = User.eager_load(:active_relationships).where(id: get_followed_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 9)
 
     render 'show_follow'
   end
