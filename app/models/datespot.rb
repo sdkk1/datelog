@@ -14,8 +14,8 @@ class Datespot < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :address, presence: true
   validates :range, presence: true
-  validates :point, length: { maximum: 255 }
-  validates :caution, length: { maximum: 255 }
+  validates :invitation, presence: true, length: { maximum: 50 }
+  validates :plan, length: { maximum: 255 }
 
   has_many_attached :images
   validate :image_type, :image_size, :image_length

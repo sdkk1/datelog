@@ -33,8 +33,8 @@ ja:
         address: 住所
         range: 予算
         tag_list: キーワード
-        point: ポイント
-        caution: 注意点
+        invitation: お誘い一言
+        plan: デート詳細
         reference_url: 参考URL
         images: 写真
         user_id: ユーザーID
