@@ -2,16 +2,22 @@
 @import "Object/Utility/prefix";
 
 .datespot-show-info {
-  &__top {
-    display:flex;
-    justify-content: space-between;
+  &__title {
     margin-bottom: 3%;
     padding-bottom: 8px;
     border-bottom: 1.5px solid $font-color__wine-red;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  &__top {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1%;
 
     &--user {
       width: 50%;
-      font-size: 1.8rem;
+      font-size: 2rem;
       text-align: left;
 
       &-avatar {
@@ -32,25 +38,20 @@
     }
   }
 
-  &__address, &__range, &__point, &__caution, &__reference-url {
+  &__address, &__range, &__invitation, &__reference-url {
     display: inline-block;
-    margin-bottom: 3%;
-    padding-bottom: 8px;
-    border-bottom: 1.5px solid $font-color__wine-red;
+    margin-bottom: 1%;
     width: 100%;
-    font-size: 1.8rem;
+    font-size: 2rem;
     text-align: left;
   }
 
   &__bottom {
     display:flex;
     justify-content: space-between;
-    margin-bottom: 1.5%;
-    padding-bottom: 5px;
-    border-bottom: 1.5px solid $font-color__wine-red;
 
     &--timestamp {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     &--actions {
@@ -74,6 +75,7 @@
 
   &__keywords {
     text-align: left;
+    padding-bottom: 8%;
 
     &--tag {
       display: inline-block;
@@ -109,5 +111,11 @@
       @include ProprtySetPrefix(transform, translateY(4px));
       box-shadow: 0px 0px 0px rgba(0,0,0,0);
     }
+  }
+
+  &__plan {
+    width: 100%;
+    font-size: 2rem;
+    text-align: left;
   }
 }

@@ -16,8 +16,8 @@ RSpec.describe "投稿編集", type: :request do
         address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
-        point: "シックな店内で落ち着いた雰囲気のお店",
-        caution: "お酒の種類は少ない",
+        invitation: "一緒にお食事しませんか？",
+        plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
       } }
       redirect_to datespot
       follow_redirect!
@@ -37,8 +37,8 @@ RSpec.describe "投稿編集", type: :request do
         address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
-        point: "シックな店内で落ち着いた雰囲気のお店",
-        caution: "お酒の種類は少ない",
+        invitation: "一緒にお食事しませんか？",
+        plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
       } }
       expect(response).to have_http_status "302"
       expect(response).to redirect_to login_path
@@ -58,8 +58,8 @@ RSpec.describe "投稿編集", type: :request do
         address: "東京都渋谷区恵比寿西",
         range: "price_min",
         tag_list: "オシャレ,焼き鳥",
-        point: "シックな店内で落ち着いた雰囲気のお店",
-        caution: "お酒の種類は少ない",
+        invitation: "一緒にお食事しませんか？",
+        plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
       } }
       expect(response).to have_http_status "302"
       expect(response).to redirect_to root_path

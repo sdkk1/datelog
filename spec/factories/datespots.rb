@@ -5,8 +5,8 @@ FactoryBot.define do
     prefecture_code { 13 }
     range { 0 }
     tag_list { "オシャレ" }
-    point { "シックな店内で落ち着いた雰囲気のお店" }
-    caution { "お酒の種類は少ない" }
+    invitation { "一緒にお食事しませんか？" }
+    plan { "オシャレなお店でお食事をしながら、会話を楽しむ。" }
     association :user
     created_at { Time.current }
   end

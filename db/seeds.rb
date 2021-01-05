@@ -272,8 +272,8 @@ guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-2.jpg"), file
                   address: "東京都渋谷区恵比寿西",
                   range: 0,
                   tag_list: "美味しい, オシャレ",
-                  point: "シックな店内で落ち着いた雰囲気のお店",
-                  caution: "お酒の種類は少ない",
+                  invitation: "一緒にお食事しませんか？",
+                  plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
                   user_id: 1)
 end
 
@@ -283,7 +283,7 @@ end
                   address: "東京都渋谷区恵比寿南",
                   range: 1,
                   tag_list: "美味しい, 安い",
-                  point: "料理が安くて、美味しい",
-                  caution: "店内は少し古い",
+                  invitation: "一緒にお食事しませんか？",
+                  plan: "安くて美味しいお店でお食事をしながら、会話を楽しむ。",
                   user_id: 2)
 end
