@@ -1,4 +1,5 @@
 <div class="datespot-show-info">
+  <h3 class="datespot-show-info__title">基本情報</h3>
   <div class="datespot-show-info__top">
     <div class="datespot-show-info__top--user">
       <% if @datespot.user.avatars.attached? %>
@@ -29,8 +30,7 @@
   </div>
   <span class="datespot-show-info__address" id="datespot-address">住所：<%= @datespot.address %></span><br>
   <span class="datespot-show-info__range">予算：<%= @datespot.range_i18n %></span><br>
-  <span class="datespot-show-info__point">ポイント：<%= @datespot.point %></span><br>
-  <span class="datespot-show-info__caution">注意点：<%= @datespot.caution %></span><br>
+  <span class="datespot-show-info__invitation">お誘い一言：<%= @datespot.invitation %></span><br>
   <span class="datespot-show-info__reference-url">参考URL：<a href="<%= @datespot.reference_url %>" target="_blank" rel="noopener noreferrer"><%= @datespot.reference_url %></a></span><br>
   <div class="datespot-show-info__bottom">
     <span class="datespot-show-info__bottom--timestamp">更新日：<%= l @datespot.updated_at %></span>
@@ -44,5 +44,9 @@
   </div>
   <div class="datespot-show-info__keywords">
     <%= render 'datespots/tag_list', tag_list: @datespot.tag_list %>
+  </div>
+  <h3 class="datespot-show-info__title">デート詳細</h3>
+  <div class="datespot-show-info__plan">
+    <%= simple_format(h(@datespot.plan)) %>
   </div>
 </div>

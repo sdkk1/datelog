@@ -34,7 +34,7 @@
     }
   }
 
-  &__address, &__range {
+  &__address, &__range, &__invitation {
     display: inline-block;
     width: 100%;
     font-size: 1.4rem;
@@ -44,6 +44,11 @@
   &__icon {
     margin-left: 2%;
     margin-right: 8%;
+  }
+
+  &__icon-invitation {
+    margin-left: 1.5%;
+    margin-right: 7%;
   }
 
   &__evaluations {

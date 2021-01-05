@@ -16,6 +16,10 @@
   <%= form.select :range, options_for_select(Datespot.ranges_i18n.invert, selected: form.object.range), { include_blank: "価格帯を選択" }, { class: 'info-form__input-form', required: true } %>
 </div>
 <div class='info-form'>
+  <%= form.label :invitation %><span class="info-form__input-need">※必須(50文字以内)</span><br>
+  <%= form.text_field :invitation, placeholder: "お誘い一言を入力", class: 'info-form__input-form' %>
+</div>
+<div class='info-form'>
   <%= form.label :images %><span class="info-form__input-unneed">※任意(6枚まで)</span><br>
   <%= form.file_field :images, multiple: true, class: 'info-form__input-form' %>
 </div>
@@ -24,16 +28,12 @@
   <%= form.text_field :tag_list, placeholder: "キーワードをカンマ区切りで入力：(例) オシャレ,安い", value: @datespot.tag_list.join(',') , class: 'info-form__input-form', id: 'datespot_tag' %>
 </div>
 <div class='info-form'>
-  <%= form.label :point %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>
-  <%= form.text_area :point, placeholder: "ポイントを入力", class: 'info-form__input-form' %>
-</div>
-<div class='info-form'>
-  <%= form.label :caution %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>
-  <%= form.text_area :caution, placeholder: "注意点を入力", class: 'info-form__input-form' %>
-</div>
-<div class='info-form'>
   <%= form.label :reference_url %><span class="info-form__input-unneed">※任意</span><br>
   <%= form.text_field :reference_url, placeholder: "参考URLを入力", class: 'info-form__input-form' %>
+</div>
+<div class='info-form'>
+  <%= form.label :plan %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>
+  <%= form.text_area :plan, placeholder: "デート詳細を入力", class: 'info-form__input-form' %>
 </div>
 <div class="action-button">
   <%= form.submit yield(:button_text), class: "action-button__submit" %>
