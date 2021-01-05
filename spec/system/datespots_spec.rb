@@ -143,10 +143,11 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content '都道府県'
         expect(page).to have_content '住所'
         expect(page).to have_content '予算'
+        expect(page).to have_content 'お誘い一言'
+        expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content 'ポイント'
-        expect(page).to have_content '注意点'
         expect(page).to have_content '参考URL'
+        expect(page).to have_content 'デート詳細'
       end
     end
 
@@ -157,8 +158,8 @@ RSpec.describe "Datespots", type: :system do
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
-        fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
-        fill_in "注意点", with: "お酒の種類は少ない"
+        fill_in "お誘い一言", with: "一緒にお食事しませんか？"
+        fill_in "デート詳細", with: "オシャレなお店でお食事をしながら、会話を楽しむ。"
         click_button "提案する"
       end
 
@@ -168,8 +169,8 @@ RSpec.describe "Datespots", type: :system do
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
-        fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
-        fill_in "注意点", with: "お酒の種類は少ない"
+        fill_in "お誘い一言", with: "一緒にお食事しませんか？"
+        fill_in "デート詳細", with: "オシャレなお店でお食事をしながら、会話を楽しむ。"
         click_button "提案する"
         expect(page).to have_content "名称・店名を入力または選択してください"
       end
@@ -199,8 +200,8 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
-        expect(page).to have_content datespot.point
-        expect(page).to have_content datespot.caution
+        expect(page).to have_content datespot.invitation
+        expect(page).to have_content datespot.plan
       end
     end
 
@@ -227,8 +228,8 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
-        expect(page).to have_content datespot.point
-        expect(page).to have_content datespot.caution
+        expect(page).to have_content datespot.invitation
+        expect(page).to have_content datespot.plan
       end
 
       it "自分の投稿のみ削除ボタンが表示されること" do
@@ -256,8 +257,8 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.address
         expect(page).to have_content datespot.range_i18n
         expect(page).to have_content datespot.tag_list
-        expect(page).to have_content datespot.point
-        expect(page).to have_content datespot.caution
+        expect(page).to have_content datespot.invitation
+        expect(page).to have_content datespot.plan
       end
 
       it "削除ボタンが表示されないこと" do
@@ -327,10 +328,11 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content '都道府県'
         expect(page).to have_content '住所'
         expect(page).to have_content '予算'
+        expect(page).to have_content 'お誘い一言'
+        expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content 'ポイント'
-        expect(page).to have_content '注意点'
         expect(page).to have_content '参考URL'
+        expect(page).to have_content 'デート詳細'
       end
     end
 
@@ -341,16 +343,16 @@ RSpec.describe "Datespots", type: :system do
         fill_in "住所", with: "東京都渋谷区恵比寿西"
         select '~2,000', from: '予算'
         fill_in "datespot_tag", with: "オシャレ,焼き鳥"
-        fill_in "ポイント", with: "シックな店内で落ち着いた雰囲気のお店"
-        fill_in "注意点", with: "お酒の種類は少ない"
+        fill_in "お誘い一言", with: "一緒にお食事しませんか？"
+        fill_in "デート詳細", with: "オシャレなお店でお食事をしながら、会話を楽しむ。"
         click_button "更新する"
         expect(datespot.reload.name).to eq "ももたろう"
         expect(datespot.reload.prefecture.name).to eq "東京都"
         expect(datespot.reload.address).to eq "東京都渋谷区恵比寿西"
         expect(datespot.reload.range_i18n).to eq "~2,000"
         expect(datespot.reload.tag_list).to eq ["オシャレ", "焼き鳥"]
-        expect(datespot.reload.point).to eq "シックな店内で落ち着いた雰囲気のお店"
-        expect(datespot.reload.caution).to eq "お酒の種類は少ない"
+        expect(datespot.reload.invitation).to eq "一緒にお食事しませんか？"
+        expect(datespot.reload.plan).to eq "オシャレなお店でお食事をしながら、会話を楽しむ。"
       end
 
       it "無効な更新" do

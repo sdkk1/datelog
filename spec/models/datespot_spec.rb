@@ -38,16 +38,22 @@ RSpec.describe Datespot, type: :model do
       expect(datespot.errors[:range]).to include("を入力または選択してください")
     end
 
-    it "ポイントが255文字以内であること" do
-      datespot = build(:datespot, point: "あ" * 256)
+    it "お誘い一言がなければ無効な状態であること" do
+      datespot = build(:datespot, invitation: nil)
       datespot.valid?
-      expect(datespot.errors[:point]).to include("は255文字以内で入力してください")
+      expect(datespot.errors[:invitation]).to include("を入力または選択してください")
     end
 
-    it "注意点が255文字以内であること" do
-      datespot = build(:datespot, caution: "あ" * 256)
+    it "お誘い一言が50文字以内であること" do
+      datespot = build(:datespot, invitation: "あ" * 51)
       datespot.valid?
-      expect(datespot.errors[:caution]).to include("は255文字以内で入力してください")
+      expect(datespot.errors[:invitation]).to include("は50文字以内で入力してください")
+    end
+
+    it "デート詳細が255文字以内であること" do
+      datespot = build(:datespot, plan: "あ" * 256)
+      datespot.valid?
+      expect(datespot.errors[:plan]).to include("は255文字以内で入力してください")
     end
 
     it "ユーザーIDがなければ無効な状態であること" do
