@@ -70,7 +70,7 @@ User.create!(
   age: 30,
   prefecture_code: 11,
   sex: 1,
-  introduction: "動物が大好きです！最近、犬を飼い始めました。",
+  introduction: "動物が大好きです！動物が好きな方と繋がりたいです！",
 )
 
 User.create!(
@@ -269,12 +269,12 @@ guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-2.jpg"), file
 
 # ============================== マッチング ==============================
 # ゲストユーザーのマッチング(3人とマッチング)
-Relationship.create!(follower_id:20, followed_id:21)
-Relationship.create!(follower_id:21, followed_id:20)
 Relationship.create!(follower_id:19, followed_id:21)
 Relationship.create!(follower_id:21, followed_id:19)
 Relationship.create!(follower_id:17, followed_id:21)
 Relationship.create!(follower_id:21, followed_id:17)
+Relationship.create!(follower_id:6, followed_id:21)
+Relationship.create!(follower_id:21, followed_id:6)
 
 # ゲストユーザーがいいね！された人(3人からいいね！をされる)
 Relationship.create!(follower_id:18, followed_id:21)
@@ -309,6 +309,40 @@ Relationship.create!(follower_id:12, followed_id:9)
 # user4がいいね！した人(2人にいいね！をする)
 Relationship.create!(follower_id:4, followed_id:16)
 Relationship.create!(follower_id:4, followed_id:6)
+
+# ============================== メッセージ ==============================
+# ゲストユーザーとuser19とのメッセージ内容
+Room.create!
+Entry.create!(user_id: 21, room_id: 1)
+Entry.create!(user_id: 19, room_id: 1)
+Message.create!(user_id:21, room_id:1, content: "初めまして！桜木と申します。よろしくお願いします！")
+Message.create!(user_id:19, room_id:1, content: "斎藤と申します。こちらこそ、よろしくお願いします！")
+Message.create!(user_id:21, room_id:1, content: "海外旅行がお好きなんですね！おすすめの場所とかありますか？")
+Message.create!(user_id:19, room_id:1, content: "やっぱりハワイですかね！プロフィール写真はハワイで撮ったものです！")
+Message.create!(user_id:21, room_id:1, content: "そうなんですね！良かったら、ハワイでおすすめのお店教えてください！")
+
+# ゲストユーザーとuser17とのメッセージ内容
+Room.create!
+Entry.create!(user_id: 21, room_id: 2)
+Entry.create!(user_id: 17, room_id: 2)
+Message.create!(user_id:17, room_id:2, content: "桜木さんのバスケ観戦デートが気になって、マッチングさせてもらいました！よろしくお願いします！")
+Message.create!(user_id:21, room_id:2, content: "バスケ好きさんとマッチングできて、嬉しいです！是非、バスケ観戦行きませんか？")
+Message.create!(user_id:17, room_id:2, content: "是非行きましょう！1階席から観戦できるなんて最高ですね！")
+Message.create!(user_id:21, room_id:2, content: "そうなんですよ！是非、楽しみましょう！後ほど、日時や集合場所をお伝えしますね！")
+Message.create!(user_id:17, room_id:2, content: "分かりました！お待ちしています(^ー^)")
+
+# ゲストユーザーとuser6とのメッセージ内容
+Room.create!
+Entry.create!(user_id: 21, room_id: 3)
+Entry.create!(user_id: 6, room_id: 3)
+Message.create!(user_id:6, room_id:3, content: "桜木さんと猫カフェに行きたいなと思って、マッチングさせてもらいました！")
+Message.create!(user_id:21, room_id:3, content: "動物がお好きなんですね！是非、一緒に行きましょう！")
+Message.create!(user_id:6, room_id:3, content: "ぜひお願いします！ちなみに、桜木さんはどんな猫の種類がお好きなんですか？")
+Message.create!(user_id:21, room_id:3, content: "私は、スコティッシュフォールドが好きです！吉田さんはいかがですか？")
+message = Message.find(14)
+message.picture.attach(io: File.open("app/assets/images/message/message1.jpg"), filename: "message1.jpg")
+Message.create!(user_id:6, room_id:3, content: "えー、一緒です！可愛いですよね！より、お話するのが楽しみなってきました(｡>ω<｡)")
+Message.create!(user_id:21, room_id:3, content: "本当ですか！それは嬉しい！是非、たくさんお話しましょう！")
 
 # ============================== デート作成 ==============================
 # デートを作成(12件)
