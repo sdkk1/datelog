@@ -1,7 +1,8 @@
+# ！！各モデルにidを指定すると、新規作成時にエラーとなるので、コメントアウト！！
 # ============================== ユーザー作成 ==============================
 # 男性ユーザー(10名)+女性ユーザー(10名)を作成　男女交互に5名ずつ作成
 User.create!(
-  id: 1,
+  # id: 1,
   name:  "佐藤　蒼",
   email: "example-1@example.com",
   password:              "foobar",
@@ -14,7 +15,7 @@ User.create!(
 )
 
 User.create!(
-  id: 2,
+  # id: 2,
   name:  "鈴木　樹",
   email: "example-2@example.com",
   password:              "foobar",
@@ -26,7 +27,7 @@ User.create!(
 )
 
 User.create!(
-  id: 3,
+  # id: 3,
   name:  "高橋　蓮",
   email: "example-3@example.com",
   password:              "foobar",
@@ -38,7 +39,7 @@ User.create!(
 )
 
 User.create!(
-  id: 4,
+  # id: 4,
   name:  "田中　陽翔",
   email: "example-4@example.com",
   password:              "foobar",
@@ -50,7 +51,7 @@ User.create!(
 )
 
 User.create!(
-  id: 5,
+  # id: 5,
   name:  "伊藤　律",
   email: "example-5@example.com",
   password:              "foobar",
@@ -62,7 +63,7 @@ User.create!(
 )
 
 User.create!(
-  id: 6,
+  # id: 6,
   name:  "吉田　陽葵",
   email: "example-6@example.com",
   password:              "foobar",
@@ -74,7 +75,7 @@ User.create!(
 )
 
 User.create!(
-  id: 7,
+  # id: 7,
   name:  "山田　凛",
   email: "example-7@example.com",
   password:              "foobar",
@@ -86,7 +87,7 @@ User.create!(
 )
 
 User.create!(
-  id: 8,
+  # id: 8,
   name:  "佐々木　詩",
   email: "example-8@example.com",
   password:              "foobar",
@@ -98,7 +99,7 @@ User.create!(
 )
 
 User.create!(
-  id: 9,
+  # id: 9,
   name:  "山口　結菜",
   email: "example-9@example.com",
   password:              "foobar",
@@ -110,7 +111,7 @@ User.create!(
 )
 
 User.create!(
-  id: 10,
+  # id: 10,
   name:  "松本　結愛",
   email: "example-10@example.com",
   password:              "foobar",
@@ -122,7 +123,7 @@ User.create!(
 )
 
 User.create!(
-  id: 11,
+  # id: 11,
   name:  "渡辺　朝陽",
   email: "example-11@example.com",
   password:              "foobar",
@@ -134,7 +135,7 @@ User.create!(
 )
 
 User.create!(
-  id: 12,
+  # id: 12,
   name:  "山本　湊",
   email: "example-12@example.com",
   password:              "foobar",
@@ -146,7 +147,7 @@ User.create!(
 )
 
 User.create!(
-  id: 13,
+  # id: 13,
   name:  "中村　新",
   email: "example-13@example.com",
   password:              "foobar",
@@ -158,7 +159,7 @@ User.create!(
 )
 
 User.create!(
-  id: 14,
+  # id: 14,
   name:  "小林　大和",
   email: "example-14@example.com",
   password:              "foobar",
@@ -170,7 +171,7 @@ User.create!(
 )
 
 User.create!(
-  id: 15,
+  # id: 15,
   name:  "加藤　大翔",
   email: "example-15@example.com",
   password:              "foobar",
@@ -182,7 +183,7 @@ User.create!(
 )
 
 User.create!(
-  id: 16,
+  # id: 16,
   name:  "井上　莉子",
   email: "example-16@example.com",
   password:              "foobar",
@@ -194,7 +195,7 @@ User.create!(
 )
 
 User.create!(
-  id: 17,
+  # id: 17,
   name:  "木村　結月",
   email: "example-17@example.com",
   password:              "foobar",
@@ -206,7 +207,7 @@ User.create!(
 )
 
 User.create!(
-  id: 18,
+  # id: 18,
   name:  "林　紬",
   email: "example-18@example.com",
   password:              "foobar",
@@ -218,7 +219,7 @@ User.create!(
 )
 
 User.create!(
-  id: 19,
+  # id: 19,
   name:  "斎藤　澪",
   email: "example-19@example.com",
   password:              "foobar",
@@ -230,7 +231,7 @@ User.create!(
 )
 
 User.create!(
-  id: 20,
+  # id: 20,
   name:  "清水　結衣",
   email: "example-20@example.com",
   password:              "foobar",
@@ -251,7 +252,7 @@ end
 
 # ゲストユーザーを作成
 User.create!(
-  id: 21,
+  # id: 21,
   name:  "桜木　花道",
   email: "guest@example.com",
   password:              "foobar",
@@ -347,7 +348,7 @@ Message.create!(user_id:21, room_id:3, content: "本当ですか！それは嬉�
 # ============================== デート作成 ==============================
 # デートを作成(12件)
 Datespot.create!(
-  id: 1,
+  # id: 1,
   name: "浅草",
   prefecture_code: 13,
   address: "東京都台東区浅草2-3-1",
@@ -361,7 +362,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 2,
+  # id: 2,
   name: "井の頭恩賜公園",
   prefecture_code: 13,
   address: "東京都武蔵野市御殿山1-18−31",
@@ -375,7 +376,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 3,
+  # id: 3,
   name: "叙々苑 六本木本店",
   prefecture_code: 13,
   address: "東京都港区六本木7-14-4",
@@ -389,7 +390,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 4,
+  # id: 4,
   name: "江の島",
   prefecture_code: 14,
   address: "神奈川県藤沢市江の島1-4-13",
@@ -405,7 +406,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 5,
+  # id: 5,
   name: "プラネタリウム満天",
   prefecture_code: 13,
   address: "東東京都豊島区東池袋3-1-3",
@@ -419,7 +420,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 6,
+  # id: 6,
   name: "東京タワー",
   prefecture_code: 13,
   address: "東京都港区芝公園4-2-8",
@@ -433,7 +434,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 7,
+  # id: 7,
   name: "横浜中華街",
   prefecture_code: 14,
   address: "神奈川県横浜市中区山下町",
@@ -447,7 +448,7 @@ Datespot.create!(
 )
 
 Datespot.create!(
-  id: 8,
+  # id: 8,
   name: "アリーナ立川立飛",
   prefecture_code: 13,
   address: "東京都立川市泉町500-4",
@@ -470,7 +471,7 @@ Datespot.create!(
 end
 
 Datespot.create!(
-  id: 9,
+  # id: 9,
   name: "てまりのおうち",
   prefecture_code: 13,
   address: "東京都武蔵野市吉祥寺2-13-14",
@@ -490,7 +491,7 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot9-1.jp
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot9-2.jpg"), filename: "datespot9-2.jpg")
 
 Datespot.create!(
-  id: 10,
+  # id: 10,
   name: "新宿西口思い出横丁",
   prefecture_code: 13,
   address: "東京都新宿区西新宿1-2",
@@ -509,7 +510,7 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot10-1.j
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot10-2.jpg"), filename: "datespot10-2.jpg")
 
 Datespot.create!(
-  id: 11,
+  # id: 11,
   name: "アクアパーク品川",
   prefecture_code: 13,
   address: "東京都港区高輪4-10−30",
@@ -532,7 +533,7 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot11-1.j
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot11-2.jpg"), filename: "datespot11-2.jpg")
 
 Datespot.create!(
-  id: 12,
+  # id: 12,
   name: "お台場",
   prefecture_code: 13,
   address: "東京都港区台場1-4",
