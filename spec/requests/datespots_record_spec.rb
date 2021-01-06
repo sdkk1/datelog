@@ -16,6 +16,22 @@ RSpec.describe "投稿", type: :request do
       end
     end
 
+    it "有効な投稿で登録できること" do
+      expect {
+        post datespots_path, params: { datespot: {
+          name: "ももたろう",
+          prefecture_code: 13,
+          address: "東京都渋谷区恵比寿西",
+          range: "price_min",
+          tag_list: "オシャレ,焼き鳥",
+          invitation: "一緒にお食事しませんか？",
+          plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
+        } }
+      }.to change(Datespot, :count).by(1)
+      follow_redirect!
+      expect(response).to render_template('datespots/index')
+    end
+
     it "無効な投稿では登録できないこと" do
       expect {
         post datespots_path, params: { datespot: {
