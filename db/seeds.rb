@@ -1,3 +1,4 @@
+# ============================== ユーザー作成 ==============================
 # 男性ユーザー(10名)+女性ユーザー(10名)を作成　男女交互に5名ずつ作成
 User.create!(
   id: 1,
@@ -266,6 +267,50 @@ guest = User.find(21)
 guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-1.jpg"), filename: "guest1-1.jpg")
 guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-2.jpg"), filename: "guest1-2.jpg")
 
+# ============================== マッチング ==============================
+# ゲストユーザーのマッチング(3人とマッチング)
+Relationship.create!(follower_id:20, followed_id:21)
+Relationship.create!(follower_id:21, followed_id:20)
+Relationship.create!(follower_id:19, followed_id:21)
+Relationship.create!(follower_id:21, followed_id:19)
+Relationship.create!(follower_id:17, followed_id:21)
+Relationship.create!(follower_id:21, followed_id:17)
+
+# ゲストユーザーがいいね！された人(3人からいいね！をされる)
+Relationship.create!(follower_id:18, followed_id:21)
+Relationship.create!(follower_id:10, followed_id:21)
+Relationship.create!(follower_id:7, followed_id:21)
+
+# ゲストユーザーがいいね！した人(3人にいいね！をする)
+Relationship.create!(follower_id:21, followed_id:16)
+Relationship.create!(follower_id:21, followed_id:9)
+Relationship.create!(follower_id:21, followed_id:8)
+
+# user15のマッチング(1人とマッチング)
+Relationship.create!(follower_id:16, followed_id:15)
+Relationship.create!(follower_id:15, followed_id:16)
+
+# user14のマッチング(1人とマッチング)
+Relationship.create!(follower_id:19, followed_id:14)
+Relationship.create!(follower_id:14, followed_id:19)
+
+# user11のマッチング(1人とマッチング)
+Relationship.create!(follower_id:4, followed_id:11)
+Relationship.create!(follower_id:11, followed_id:4)
+
+# user13がいいね！した人(2人にいいね！をする)
+Relationship.create!(follower_id:13, followed_id:17)
+Relationship.create!(follower_id:13, followed_id:7)
+
+# user12がいいね！した人(2人にいいね！をする)
+Relationship.create!(follower_id:12, followed_id:18)
+Relationship.create!(follower_id:12, followed_id:9)
+
+# user4がいいね！した人(2人にいいね！をする)
+Relationship.create!(follower_id:4, followed_id:16)
+Relationship.create!(follower_id:4, followed_id:6)
+
+# ============================== デート作成 ==============================
 # デートを作成(12件)
 Datespot.create!(
   id: 1,
