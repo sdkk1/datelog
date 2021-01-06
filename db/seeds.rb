@@ -370,22 +370,22 @@ Datespot.create!(
   tag_list: "公園,散歩,吉祥寺",
   reference_url: "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/seibuk/inokashira/index.html",
   plan: "緑が豊かな公園をゆったり散歩しながら、お話しませんか？
-  公園内にある「井の頭池」ではスワンボートを始めとするボートを漕ぐこともできます。",
-  user_id: 2,
+  最近カメラを始めたので、公園の景色を撮ったりもしたいです！",
+  user_id: 10,
 )
 
 Datespot.create!(
   id: 3,
-  name: "プラネタリウム満天",
+  name: "叙々苑 六本木本店",
   prefecture_code: 13,
-  address: "東東京都豊島区東池袋3-1-3",
-  range: 3,
-  invitation: "プラネタリウムを観よう！！",
-  tag_list: "プラネタリウム,癒し",
-  reference_url: "https://planetarium.konicaminolta.jp/manten/",
-  plan: "プラネタリウムで日頃の疲れを癒しませんか？
-  アロマオイルの香りと共に音楽を聞いて星空を見れるので、嫌なことが全て忘れられますよ。",
-  user_id: 4,
+  address: "東京都港区六本木7-14-4",
+  range: 5,
+  invitation: "美味しい焼肉食べませんか？",
+  tag_list: "焼肉,六本木",
+  reference_url: "https://www.jojoen.co.jp/shop/jojoen/roppongi/",
+  plan: "美味しいお肉を食べながら、二人でゆっくりとお話しましょう。
+  お会計が全てこちらで負担するので、お気軽に来てください！",
+  user_id: 1,
 )
 
 Datespot.create!(
@@ -406,16 +406,16 @@ Datespot.create!(
 
 Datespot.create!(
   id: 5,
-  name: "叙々苑 六本木本店",
+  name: "プラネタリウム満天",
   prefecture_code: 13,
-  address: "東京都港区六本木7-14-4",
-  range: 5,
-  invitation: "美味しい焼肉食べませんか？",
-  tag_list: "焼肉,六本木",
-  reference_url: "https://www.jojoen.co.jp/shop/jojoen/roppongi/",
-  plan: "美味しいお肉を食べながら、二人でゆっくりとお話しましょう。
-  お会計が全てこちらで負担するので、お気軽に来てください！",
-  user_id: 1,
+  address: "東東京都豊島区東池袋3-1-3",
+  range: 2,
+  invitation: "プラネタリウムを観よう！！",
+  tag_list: "プラネタリウム,癒し",
+  reference_url: "https://planetarium.konicaminolta.jp/manten/",
+  plan: "プラネタリウムで日頃の疲れを癒しませんか？
+  アロマオイルの香りと共に音楽を聞いて星空を見れるので、嫌なことが全て忘れられますよ。",
+  user_id: 7,
 )
 
 Datespot.create!(
@@ -523,7 +523,7 @@ Datespot.create!(
   しかも、イルカショーだけでなく、色とりどりの魚と出会う「リトルパラダイス」や
   海中散歩が楽しめる「ワンダーチューブ」など11のエリアがあり、見所満載です！！
   是非、ご一緒にいかがでしょうか？",
-  user_id: 14,
+  user_id: 4,
 )
 
 # デートの写真を2枚設定
@@ -553,3 +553,9 @@ Datespot.create!(
 datespot = Datespot.find(12)
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-1.jpg"), filename: "datespot12-1.jpg")
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-2.jpg"), filename: "datespot12-2.jpg")
+
+# ============================== 行きたい！リクエスト ==============================
+# ゲストユーザーの提案へ行きたい！リクエスト
+List.create!(id:1, user_id: 21, datespot_id: 12, from_user_id: 18)
+List.create!(id:2, user_id: 21, datespot_id: 8, from_user_id: 17)
+List.create!(id:3, user_id: 21, datespot_id: 9, from_user_id: 6)
