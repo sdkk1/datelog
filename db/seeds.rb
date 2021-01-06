@@ -269,7 +269,7 @@ guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-1.jpg"), file
 guest.avatars.attach(io: File.open("app/assets/images/guest/guest1-2.jpg"), filename: "guest1-2.jpg")
 
 # ============================== マッチング ==============================
-# ゲストユーザーのマッチング(3人とマッチング)
+# ゲストユーザーが3人とマッチングする
 Relationship.create!(follower_id:19, followed_id:21)
 Relationship.create!(follower_id:21, followed_id:19)
 Relationship.create!(follower_id:17, followed_id:21)
@@ -277,37 +277,37 @@ Relationship.create!(follower_id:21, followed_id:17)
 Relationship.create!(follower_id:6, followed_id:21)
 Relationship.create!(follower_id:21, followed_id:6)
 
-# ゲストユーザーがいいね！された人(3人からいいね！をされる)
+# ゲストユーザーが3人からいいね！をされる
 Relationship.create!(follower_id:18, followed_id:21)
 Relationship.create!(follower_id:10, followed_id:21)
 Relationship.create!(follower_id:7, followed_id:21)
 
-# ゲストユーザーがいいね！した人(3人にいいね！をする)
+# ゲストユーザーが3人にいいね！をする
 Relationship.create!(follower_id:21, followed_id:16)
 Relationship.create!(follower_id:21, followed_id:9)
 Relationship.create!(follower_id:21, followed_id:8)
 
-# user15のマッチング(1人とマッチング)
+# user15が1人とマッチングする
 Relationship.create!(follower_id:16, followed_id:15)
 Relationship.create!(follower_id:15, followed_id:16)
 
-# user14のマッチング(1人とマッチング)
+# user14が1人とマッチングする
 Relationship.create!(follower_id:19, followed_id:14)
 Relationship.create!(follower_id:14, followed_id:19)
 
-# user11のマッチング(1人とマッチング)
+# user11が1人とマッチングする
 Relationship.create!(follower_id:4, followed_id:11)
 Relationship.create!(follower_id:11, followed_id:4)
 
-# user13がいいね！した人(2人にいいね！をする)
+# user13が2人にいいね！をする
 Relationship.create!(follower_id:13, followed_id:17)
 Relationship.create!(follower_id:13, followed_id:7)
 
-# user12がいいね！した人(2人にいいね！をする)
+# user12が2人にいいね！をする
 Relationship.create!(follower_id:12, followed_id:18)
 Relationship.create!(follower_id:12, followed_id:9)
 
-# user4がいいね！した人(2人にいいね！をする)
+# user4が2人にいいね！をする
 Relationship.create!(follower_id:4, followed_id:16)
 Relationship.create!(follower_id:4, followed_id:6)
 
@@ -577,3 +577,40 @@ Favorite.create!(user_id: 21, datespot_id: 2)
 # ゲストユーザーの閲覧履歴
 BrowsingHistory.create!(user_id: 21, datespot_id: 5)
 BrowsingHistory.create!(user_id: 21, datespot_id: 2)
+
+# ============================== コメント ==============================
+# ！提案の並び順を崩さないように、datespot_idが小さい順（昇順）にコメントを作成！
+# 他の提案にコメントを作成-1
+Comment.create!(user_id: 16, datespot_id: 1, rate: 5, content: "あげまんじゅう食べたい！")
+
+# ゲストユーザーが他の提案にコメントをする-1
+Comment.create!(user_id: 21, datespot_id: 2, rate: 4, content: "公園をお散歩するの気持ち良さそうですね！")
+
+# 他の提案にコメントを作成-2
+Comment.create!(user_id: 16, datespot_id: 3, rate: 5, content: "美味しい焼肉食べたい！")
+Comment.create!(user_id: 7, datespot_id: 4, rate: 4, content: "海景色見たいです！")
+
+# ゲストユーザーが他の提案にコメントをする-2
+Comment.create!(user_id: 21, datespot_id: 5, rate: 5, content: "プラネタリウムいいですね！")
+
+# 他の提案にコメントを作成-3
+Comment.create!(user_id: 1, datespot_id: 5, rate: 5, content: "プラネタリウムで癒されたい・・・笑")
+Comment.create!(user_id: 10, datespot_id: 6, rate: 4, content: "綺麗な夜景を写真で撮りたい！")
+Comment.create!(user_id: 16, datespot_id: 7, rate: 5, content: "焼き小籠包食べたい！")
+
+# ゲストユーザーの提案にコメントされる-1
+Comment.create!(user_id: 2, datespot_id: 8, rate: 4, content: "男でもいいですか？笑")
+Comment.create!(user_id: 17, datespot_id: 8, rate: 5, content: "バスケ観戦いいですね！")
+Comment.create!(user_id: 18, datespot_id: 8, rate: 5, content: "ルールを教えてくれるのはいいですね！")
+Comment.create!(user_id: 1, datespot_id: 9, rate: 4, content: "猫カフェで癒されたい・・・笑")
+Comment.create!(user_id: 6, datespot_id: 9, rate: 5, content: "猫カフェ最高ですね！")
+Comment.create!(user_id: 7, datespot_id: 9, rate: 4, content: "興味あるんですけど、初めてでも大丈夫ですか？")
+
+# 他の提案にコメントを作成-4
+Comment.create!(user_id: 16, datespot_id: 10, rate: 5, content: "美味しいものも食べたい！")
+Comment.create!(user_id: 8, datespot_id: 11, rate: 5, content: "イルカショー迫力ありそう！")
+Comment.create!(user_id: 1, datespot_id: 11, rate: 5, content: "水族館で癒されたい・・・笑")
+
+# ゲストユーザーの提案にコメントされる-2
+Comment.create!(user_id: 9, datespot_id: 12, rate: 4, content: "自由の女神像の前で記念撮影したい！")
+Comment.create!(user_id: 10, datespot_id: 12, rate: 4, content: "臨海副都心の大パノラマを写真で撮りたい！")
