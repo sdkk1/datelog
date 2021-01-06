@@ -556,18 +556,23 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-2.j
 
 # ============================== 行きたい！リクエスト ==============================
 # ゲストユーザーの提案が行きたい！リクエストされる
-List.create!(id:1, user_id: 21, datespot_id: 12, from_user_id: 18)
-List.create!(id:2, user_id: 21, datespot_id: 8, from_user_id: 17)
-List.create!(id:3, user_id: 21, datespot_id: 9, from_user_id: 6)
+List.create!(user_id: 21, datespot_id: 12, from_user_id: 18)
+List.create!(user_id: 21, datespot_id: 8, from_user_id: 17)
+List.create!(user_id: 21, datespot_id: 9, from_user_id: 6)
 
 # ゲストユーザーが行きたい！リクエストをする
-List.create!(id:4, user_id: 7, datespot_id: 5, from_user_id: 21)
+List.create!(user_id: 7, datespot_id: 5, from_user_id: 21)
 
 # ============================== お気に入り登録 ==============================
 # ゲストユーザーの提案がお気に入り登録される
-Favorite.create!(id:1, user_id: 19, datespot_id: 12)
-Favorite.create!(id:2, user_id: 6, datespot_id: 9)
+Favorite.create!(user_id: 19, datespot_id: 12)
+Favorite.create!(user_id: 6, datespot_id: 9)
 
 # ゲストユーザーがお気に入り登録をする
-Favorite.create!(id:3, user_id: 21, datespot_id: 5)
-Favorite.create!(id:4, user_id: 21, datespot_id: 2)
+Favorite.create!(user_id: 21, datespot_id: 5)
+Favorite.create!(user_id: 21, datespot_id: 2)
+
+# ============================== 閲覧履歴 ==============================
+# ゲストユーザーの閲覧履歴
+BrowsingHistory.create!(user_id: 21, datespot_id: 5)
+BrowsingHistory.create!(user_id: 21, datespot_id: 2)
