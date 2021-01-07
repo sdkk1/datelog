@@ -71,20 +71,28 @@ class UsersController < ApplicationController
 
   def following
     @title = "いいね！一覧(自分から)"
-    @user  = User.find(params[:id])
+    @users_count = "いいね！した人"
+    @user = User.find(params[:id])
 
     get_follower_user_ids = Relationship.where(follower_id: @user.id).pluck(:followed_id)
-    @users = User.eager_load(:passive_relationships).where(id: get_follower_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 9)
+    get_match_user_ids = Relationship.where(followed_id: @user.id, follower_id: get_follower_user_ids).pluck(:follower_id)
+    @following = User.eager_load(:passive_relationships).where(id: get_follower_user_ids).order("relationships.created_at DESC")
+    @match_users = User.eager_load(:active_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC")
+    @users = @following - @match_users
 
     render 'show_follow'
   end
 
   def followers
     @title = "いいね！一覧(相手から)"
-    @user  = User.find(params[:id])
+    @users_count = "いいね！された人"
+    @user = User.find(params[:id])
 
     get_followed_user_ids = Relationship.where(followed_id: @user.id).pluck(:follower_id)
-    @users = User.eager_load(:active_relationships).where(id: get_followed_user_ids).order("relationships.created_at DESC").paginate(page: params[:page], per_page: 9)
+    get_match_user_ids = Relationship.where(followed_id: get_followed_user_ids, follower_id: @user.id).pluck(:followed_id)
+    @followers = User.eager_load(:active_relationships).where(id: get_followed_user_ids).order("relationships.created_at DESC")
+    @match_users = User.eager_load(:passive_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC")
+    @users = @followers - @match_users
 
     render 'show_follow'
   end

@@ -6,6 +6,15 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  &__users-count {
+    font-size: 2.4rem;
+  }
+
+  &__users-description {
+    font-size: 1.8rem;
+    margin-bottom: 3%;
+  }
+
   &__no-user {
     font-size: 2.4rem;
   }

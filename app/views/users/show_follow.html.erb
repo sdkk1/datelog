@@ -8,10 +8,11 @@
       </div>
       <div class="content">
         <% if @users.any? %>
+          <p class="user-index__users-count"><%= @users_count %>： <%= @users.count %>人</p>
+          <p class="user-index__users-description">※マッチングしたユーザーは除く</p>
           <ol class="user-index">
             <%= render @users %>
           </ol>
-          <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
         <% else %>
           <span class="user-index__no-user">ユーザーは存在しません</span>
         <% end %>
