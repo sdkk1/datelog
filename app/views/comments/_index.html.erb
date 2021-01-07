@@ -44,9 +44,21 @@
               <div class="comment-index__lower--info">
                 <div class="comment-index__lower--info-user">
                   <% if comment.user.avatars.attached? %>
-                    <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <% if logged_in? %>
+                      <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                        <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <% end %>
                   <% else %>
-                    <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                    <% if logged_in? %>
+                      <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                        <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                    <% end %>
                   <% end %>
                   <% if logged_in? %>
                     <%= link_to comment.user.name, user_path(comment.user.id) %>
@@ -96,9 +108,21 @@
                 <div class="comment-index__lower--info">
                   <div class="comment-index__lower--info-user">
                     <% if comment.user.avatars.attached? %>
-                      <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% if logged_in? %>
+                        <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                          <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
                     <% else %>
-                      <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% if logged_in? %>
+                        <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                          <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
                     <% end %>
                     <% if logged_in? %>
                       <%= link_to comment.user.name, user_path(comment.user.id) %>

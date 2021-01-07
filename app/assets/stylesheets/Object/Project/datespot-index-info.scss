@@ -37,6 +37,10 @@
       margin-left: 0.5%;
       margin-right: 5%;
     }
+
+    &--link:hover {
+      text-decoration: none;
+    }
   }
 
   &__address, &__range, &__invitation {

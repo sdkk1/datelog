@@ -67,6 +67,10 @@
           object-fit: cover;
           margin-right: 5%;
         }
+
+        &-link:hover {
+          text-decoration: none;
+        }
       }
 
       &-timestamp {

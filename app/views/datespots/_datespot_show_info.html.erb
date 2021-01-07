@@ -3,9 +3,21 @@
   <div class="datespot-show-info__top">
     <div class="datespot-show-info__top--user">
       <% if @datespot.user.avatars.attached? %>
-        <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-show-info__top--user-avatar" %>
+        <% if logged_in? %>
+          <%= link_to user_path(@datespot.user), class: "datespot-show-info__top--user-link" do %>
+            <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-show-info__top--user-avatar" %>
+          <% end %>
+        <% else %>
+          <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-show-info__top--user-avatar" %>
+        <% end %>
       <% else %>
-        <%= image_tag 'thumb50_default.png', class: "datespot-show-info__top--user-avatar" %>
+        <% if logged_in? %>
+          <%= link_to user_path(@datespot.user), class: "datespot-show-info__top--user-link" do %>
+            <%= image_tag 'thumb50_default.png', class: "datespot-show-info__top--user-avatar" %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'thumb50_default.png', class: "datespot-show-info__top--user-avatar" %>
+        <% end %>
       <% end %>
       <% if logged_in? %>
         <%= link_to @datespot.user.name, user_path(@datespot.user.id) %>

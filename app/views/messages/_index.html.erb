@@ -5,9 +5,13 @@
         <li class="message-index" id="message-<%= message.id %>">
           <div class="message-index__right">
             <% if message.user.avatars.attached? %>
-              <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__right--avatar" %><br>
+              <%= link_to user_path(message.user) do %>
+                <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__right--avatar" %><br>
+              <% end %>
             <% else %>
-              <%= image_tag 'thumb50_default.png', class: "message-index__right--avatar" %><br>
+              <%= link_to user_path(message.user) do %>
+                <%= image_tag 'thumb50_default.png', class: "message-index__right--avatar" %><br>
+              <% end %>
             <% end %>
             <p class="message-index__right--message-content"><%= message.content %></p><br>
             <% if message.picture.attached? %>
@@ -27,9 +31,13 @@
         <li class="message-index" id="message-<%= message.id %>">
           <div class="message-index__left">
             <% if message.user.avatars.attached? %>
-              <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__left--avatar" %><br>
+              <%= link_to user_path(message.user) do %>
+                <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__left--avatar" %><br>
+              <% end %>
             <% else %>
-              <%= image_tag 'thumb50_default.png', class: "message-index__left--avatar" %><br>
+              <%= link_to user_path(message.user) do %>
+                <%= image_tag 'thumb50_default.png', class: "message-index__left--avatar" %><br>
+              <% end %>
             <% end %>
             <p class="message-index__left--message-content"><%= message.content %></p><br>
             <% if message.picture.attached? %>
