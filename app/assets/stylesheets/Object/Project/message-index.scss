@@ -15,6 +15,10 @@
       margin-bottom: 1%;
     }
 
+    &--avatar:hover {
+      opacity: 0.7;
+    }
+
     &--message-content {
       display: inline-block;
       width: auto;
@@ -43,6 +47,10 @@
         margin-right: 1%;
         font-size: 1.8rem;
       }
+
+      &-delete:hover {
+        opacity: 0.7;
+      }
     }
   }
 
@@ -55,6 +63,10 @@
       height: 72px;
       object-fit: cover;
       margin-bottom: 1%;
+    }
+
+    &--avatar:hover {
+      opacity: 0.7;
     }
 
     &--message-content {

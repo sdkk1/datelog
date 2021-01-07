@@ -20,7 +20,7 @@
             <div class="message-index__right--bottom">
               <p class="message-index__right--bottom-timestamp"><%= l message.created_at %></p>
               <% if message.user == current_user %>
-                <%= link_to room_message_path(message.room_id, message.id), remote: true, method: :delete do %>
+                <%= link_to room_message_path(message.room_id, message.id), remote: true, method: :delete, class: "message-index__right--bottom-delete" do %>
                   <i class="far fa-trash-alt"></i>
                 <% end %>
               <% end %>

@@ -27,13 +27,13 @@
     </div>
     <div class="datespot-show-info__top--datespot-change">
       <% if current_user == @datespot.user %>
-        <%= link_to edit_datespot_path(@datespot), id: 'datespot-edit' do %>　
+        <%= link_to edit_datespot_path(@datespot), class: "datespot-show-info__top--datespot-change-edit", id: 'datespot-edit' do %>　
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>
       <% if logged_in? %>
         <% if current_user.admin? || (current_user == @datespot.user) %>
-          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, id: 'datespot-delete' do %>
+          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-show-info__top--datespot-change-delete", id: 'datespot-delete' do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         <% end %>

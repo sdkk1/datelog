@@ -30,6 +30,7 @@
 
       &-link:hover {
         text-decoration: none;
+        opacity: 0.7;
       }
     }
 
@@ -38,6 +39,10 @@
 
       a:hover {
         text-decoration: none;
+      }
+
+      &-edit:hover, &-delete:hover {
+        opacity: 0.7;
       }
     }
   }

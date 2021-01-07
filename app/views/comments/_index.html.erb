@@ -85,7 +85,7 @@
                   });
                 </script>
                 <% if comment.user == current_user %>
-                  <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>
+                  <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, class: "comment-index__lower--icon-delete", remote: true do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 <% end %>
