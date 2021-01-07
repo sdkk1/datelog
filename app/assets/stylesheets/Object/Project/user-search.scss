@@ -4,13 +4,17 @@
 .user-search {
   &__search-result {
     display: inline-block;
-    font-size: 1.8rem;
+    font-size: 2.4rem;
     margin-bottom: 1%;
   }
 
   &__users-count {
-    font-size: 2rem;
-    margin: 0 0 5%;
+    font-size: 2.4rem;
+  }
+
+  &__search-description {
+    font-size: 1.8rem;
+    margin-bottom: 3%;
   }
 
   &__search-form {

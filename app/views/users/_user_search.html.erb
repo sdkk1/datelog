@@ -3,7 +3,8 @@
     <% if params[:q][:name_cont].present? || params[:q][:prefecture_code_eq].present? || params[:q][:age_gteq].present? || params[:q][:age_lt].present? || params[:q][:sex_eq].present? %>
       <p>検索結果: <%= @users.count %>人</p>
     <% else %>
-      <p class="user-search__users-count">ユーザー: <%= @users.count %>人</p>
+      <p class="user-search__users-count">ユーザー: <%= @users.count-1 %>人</p>
+      <p class="user-search__search-description">※AND検索ができます</p>
     <% end %>
   </div>
   <%= search_form_for @search do |form| %>

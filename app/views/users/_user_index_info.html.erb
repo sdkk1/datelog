@@ -24,7 +24,7 @@
   <% end %>
   <span class="user-index-info__sex"><i class="fas fa-venus-mars user-index-info__icon"></i><%= @user.sex_i18n %></span><br>
   <% if @user.introduction.present? %>
-    <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon"></i><%= @user.introduction %></span><br>
+    <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon"></i><%= @user.introduction.slice(0..12) %>...</span><br>
   <% end %>
   <div class="user-index-info__bottom">
     <span class="user-index-info__bottom--timestamp">
