@@ -616,35 +616,35 @@ Comment.create!(user_id: 9, datespot_id: 12, rate: 4, content: "自由の女神�
 Comment.create!(user_id: 10, datespot_id: 12, rate: 4, content: "臨海副都心の大パノラマを写真で撮りたい！")
 
 # ============================== 通知 ==============================
-# ゲストユーザーの通知を作成(行きたい！リクエストをもらう)
-Notification.create!(user_id: 21, variety: 1, from_user_id: 18, datespot_id: 12)
-Notification.create!(user_id: 21, variety: 1, from_user_id: 17, datespot_id: 8)
-Notification.create!(user_id: 21, variety: 1, from_user_id: 6, datespot_id: 9)
-
-# ゲストユーザーの通知を作成(コメントされる)
+# ゲストユーザーの通知を作成(varietyは順不同)
+# variety: 1 → 行きたい！リクエストをもらう, variety: 2 → コメントをもらう, variety: 3 → いいね！をもらう, variety: 4 → メッセージをもらう
+# 5ページ目
 Notification.create!(user_id: 21, variety: 2, from_user_id: 2, datespot_id: 8, content: "男でもいいですか？笑")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 17, datespot_id: 8, content: "バスケ観戦いいですね！")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 18, datespot_id: 8, content: "ルールを教えてくれるのはいいですね！")
+Notification.create!(user_id: 21, variety: 1, from_user_id: 18, datespot_id: 12)
 Notification.create!(user_id: 21, variety: 2, from_user_id: 1, datespot_id: 9, content: "猫カフェで癒されたい・・・笑")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 6, datespot_id: 9, content: "猫カフェ最高ですね！")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 7, datespot_id: 9, content: "興味あるんですけど、初めてでも大丈夫ですか？")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 9, datespot_id: 12, content: "自由の女神像の前で記念撮影したい！")
-Notification.create!(user_id: 21, variety: 2, from_user_id: 10, datespot_id: 12, content: "臨海副都心の大パノラマを写真で撮りたい！")
-
-# ゲストユーザーの通知を作成(いいね！をもらう)
 Notification.create!(user_id: 21, variety: 3, from_user_id: 19)
-Notification.create!(user_id: 21, variety: 3, from_user_id: 17)
 Notification.create!(user_id: 21, variety: 3, from_user_id: 6)
-Notification.create!(user_id: 21, variety: 3, from_user_id: 18)
-Notification.create!(user_id: 21, variety: 3, from_user_id: 10)
-Notification.create!(user_id: 21, variety: 3, from_user_id: 7)
-
-# ゲストユーザーの通知を作成(メッセージされる)
+# 4ページ目
+Notification.create!(user_id: 21, variety: 2, from_user_id: 17, datespot_id: 8, content: "バスケ観戦いいですね！")
+Notification.create!(user_id: 21, variety: 2, from_user_id: 6, datespot_id: 9, content: "猫カフェ最高ですね！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 19, content: "斎藤と申します。こちらこそ、よろしくお願いします！")
-Notification.create!(user_id: 21, variety: 4, from_user_id: 19, content: "やっぱりハワイですかね！プロフィール写真はハワイで撮ったものです！")
+Notification.create!(user_id: 21, variety: 3, from_user_id: 17)
+Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "桜木さんと猫カフェに行きたいなと思って、マッチングさせてもらいました！")
+# 3ページ目
+Notification.create!(user_id: 21, variety: 2, from_user_id: 18, datespot_id: 8, content: "ルールを教えてくれるのはいいですね！")
+Notification.create!(user_id: 21, variety: 2, from_user_id: 7, datespot_id: 9, content: "興味あるんですけど、初めてでも大丈夫ですか？")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "桜木さんのバスケ観戦デートが気になって、マッチングさせてもらいました！よろしくお願いします！")
+Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "ぜひお願いします！ちなみに、桜木さんはどんな猫の種類がお好きなんですか？")
+Notification.create!(user_id: 21, variety: 3, from_user_id: 18)
+# 2ページ目
+Notification.create!(user_id: 21, variety: 1, from_user_id: 17, datespot_id: 8)
+Notification.create!(user_id: 21, variety: 2, from_user_id: 9, datespot_id: 12, content: "自由の女神像の前で記念撮影したい！")
+Notification.create!(user_id: 21, variety: 4, from_user_id: 19, content: "やっぱりハワイですかね！プロフィール写真はハワイで撮ったものです！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "是非行きましょう！1階席から観戦できるなんて最高ですね！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "分かりました！お待ちしています(^ー^)")
-Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "桜木さんと猫カフェに行きたいなと思って、マッチングさせてもらいました！")
-Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "ぜひお願いします！ちなみに、桜木さんはどんな猫の種類がお好きなんですか？")
+# 1ページ目
+Notification.create!(user_id: 21, variety: 1, from_user_id: 6, datespot_id: 9)
+Notification.create!(user_id: 21, variety: 2, from_user_id: 10, datespot_id: 12, content: "臨海副都心の大パノラマを写真で撮りたい！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "えー、一緒です！可愛いですよね！より、お話するのが楽しみなってきました(｡>ω<｡)")
+Notification.create!(user_id: 21, variety: 3, from_user_id: 10)
+Notification.create!(user_id: 21, variety: 3, from_user_id: 7)
