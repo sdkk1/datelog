@@ -20,7 +20,7 @@
   </div>
   <div class="datespot-index-info__user">
     <% if @datespot.user.avatars.attached? %>
-      <%= image_tag @datespot.user.avatars.first.variant(resize:'24x24').processed, class: "datespot-index-info__user--avatar" %>
+      <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-index-info__user--avatar" %>
     <% else %>
       <%= image_tag 'thumb50_default.png', class: "datespot-index-info__user--avatar" %>
     <% end %>

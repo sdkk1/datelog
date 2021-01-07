@@ -5,7 +5,7 @@
         <li class="message-index" id="message-<%= message.id %>">
           <div class="message-index__right">
             <% if message.user.avatars.attached? %>
-              <%= image_tag message.user.avatars.first.variant(resize:'50x50').processed, class: "message-index__right--avatar" %><br>
+              <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__right--avatar" %><br>
             <% else %>
               <%= image_tag 'thumb50_default.png', class: "message-index__right--avatar" %><br>
             <% end %>
@@ -27,7 +27,7 @@
         <li class="message-index" id="message-<%= message.id %>">
           <div class="message-index__left">
             <% if message.user.avatars.attached? %>
-              <%= image_tag message.user.avatars.first.variant(resize:'50x50').processed, class: "message-index__left--avatar" %><br>
+              <%= image_tag message.user.avatars.first.variant(resize:'200x200').processed, class: "message-index__left--avatar" %><br>
             <% else %>
               <%= image_tag 'thumb50_default.png', class: "message-index__left--avatar" %><br>
             <% end %>

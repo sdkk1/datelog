@@ -44,7 +44,7 @@
               <div class="comment-index__lower--info">
                 <div class="comment-index__lower--info-user">
                   <% if comment.user.avatars.attached? %>
-                    <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
                   <% else %>
                     <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
                   <% end %>
@@ -96,7 +96,7 @@
                 <div class="comment-index__lower--info">
                   <div class="comment-index__lower--info-user">
                     <% if comment.user.avatars.attached? %>
-                      <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
                     <% else %>
                       <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
                     <% end %>

@@ -14,7 +14,7 @@
               <% @match_users.each do |match_user| %>
                 <li class="matching-index__match-users">
                   <% if match_user.avatars.attached? %>
-                    <%= image_tag match_user.avatars.first.variant(resize:'50x50').processed, class: "matching-index__match-users--avatar" %>
+                    <%= image_tag match_user.avatars.first.variant(resize:'200x200').processed, class: "matching-index__match-users--avatar" %>
                   <% else %>
                     <%= image_tag 'thumb50_default.png', class: "matching-index__match-users--avatar" %>
                   <% end %>

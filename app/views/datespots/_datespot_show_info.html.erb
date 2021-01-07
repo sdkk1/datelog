@@ -3,7 +3,7 @@
   <div class="datespot-show-info__top">
     <div class="datespot-show-info__top--user">
       <% if @datespot.user.avatars.attached? %>
-        <%= image_tag @datespot.user.avatars.first.variant(resize:'40x40').processed, class: "datespot-show-info__top--user-avatar" %>
+        <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-show-info__top--user-avatar" %>
       <% else %>
         <%= image_tag 'thumb50_default.png', class: "datespot-show-info__top--user-avatar" %>
       <% end %>
