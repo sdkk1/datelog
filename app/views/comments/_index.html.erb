@@ -4,15 +4,13 @@
       <% if comments.present? %>
         <div id="rate-average"></div>
         <script>
-          $(document).on('turbolinks:load', function() {
-            $('#rate-average').raty({
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= @datespot.rate_average.round(1) %>,
-            });
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @datespot.rate_average.round(1) %>,
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：<%= @datespot.rate_average.round(1) %>点</div>
@@ -21,15 +19,13 @@
       <% else %>
         <div id="rate-average"></div>
         <script>
-          $(document).on('turbolinks:load', function() {
-            $('#rate-average').raty({
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: 0,
-            });
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: 0,
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：0点</div>
@@ -44,9 +40,21 @@
               <div class="comment-index__lower--info">
                 <div class="comment-index__lower--info-user">
                   <% if comment.user.avatars.attached? %>
-                    <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <% if logged_in? %>
+                      <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                        <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                    <% end %>
                   <% else %>
-                    <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                    <% if logged_in? %>
+                      <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                        <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                    <% end %>
                   <% end %>
                   <% if logged_in? %>
                     <%= link_to comment.user.name, user_path(comment.user.id) %>
@@ -61,19 +69,17 @@
               <div class="comment-index__lower--icon">
                 <div id="star-rate-<%= comment.id %>"></div>
                 <script>
-                  $(document).on('turbolinks:load', function() {
-                    $('#star-rate-<%= comment.id %>').raty({
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half: true,
-                      readOnly: true,
-                      score: <%= comment.rate %>,
-                    });
+                  $('#star-rate-<%= comment.id %>').raty({
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
                   });
                 </script>
                 <% if comment.user == current_user %>
-                  <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, remote: true do %>
+                  <%= link_to datespot_comment_path(comment.datespot_id, comment.id), method: :delete, class: "comment-index__lower--icon-delete", remote: true do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 <% end %>
@@ -96,9 +102,21 @@
                 <div class="comment-index__lower--info">
                   <div class="comment-index__lower--info-user">
                     <% if comment.user.avatars.attached? %>
-                      <%= image_tag comment.user.avatars.first.variant(resize:'40x40').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% if logged_in? %>
+                        <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                          <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag comment.user.avatars.first.variant(resize:'200x200').processed, class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
                     <% else %>
-                      <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% if logged_in? %>
+                        <%= link_to user_path(comment.user), class: "comment-index__lower--info-user-link" do %>
+                          <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                        <% end %>
+                      <% else %>
+                        <%= image_tag 'thumb50_default.png', class: "comment-index__lower--info-user-avatar" %>
+                      <% end %>
                     <% end %>
                     <% if logged_in? %>
                       <%= link_to comment.user.name, user_path(comment.user.id) %>
@@ -113,15 +131,13 @@
                 <div class="comment-index__lower--icon">
                   <div id="star-rate-<%= comment.id %>"></div>
                   <script>
-                    $(document).on('turbolinks:load', function() {
-                      $('#star-rate-<%= comment.id %>').raty({
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn : '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: <%= comment.rate %>,
-                      });
+                    $('#star-rate-<%= comment.id %>').raty({
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= comment.rate %>,
                     });
                   </script>
                   <% if comment.user == current_user %>

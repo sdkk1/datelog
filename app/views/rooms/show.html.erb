@@ -10,9 +10,13 @@
         <div class="matching-show">
           <div class="matching-show__user-info">
             <% if @message_user.avatars.attached? %>
-              <%= image_tag @message_user.avatars.first.variant(resize:'200x200').processed, class: "matching-show__user-info--avatar" %>
+              <%= link_to user_path(@message_user) do %>
+                <%= image_tag @message_user.avatars.first.variant(resize:'200x200').processed, class: "matching-show__user-info--avatar" %>
+              <% end %>
             <% else %>
-              <%= image_tag 'thumb200_default.png', class: "matching-show__user-info--avatar" %>
+              <%= link_to user_path(@message_user) do %>
+                <%= image_tag 'thumb200_default.png', class: "matching-show__user-info--avatar" %>
+              <% end %>
             <% end %>
             <span class="matching-show__user-info--name"><%= link_to @message_user.name, @message_user %></span>
           </div>

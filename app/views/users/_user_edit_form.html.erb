@@ -13,6 +13,9 @@
   </div>
   <%= render partial: 'user_info_form', locals: { form: form } %>
 <% end %>
+<div class="info-form__back">
+  <%= link_to "ユーザー詳細へ戻る", user_path(@user) %>
+</div>
 <div class="info-form__delete">
   <%= link_to "ユーザーを削除する", user_path(@user), method: :delete, data: { confirm: "本当にこのユーザーを削除してもよろしいですか？" } %>
 </div>

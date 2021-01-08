@@ -1,4 +1,4 @@
-$(window).on('turbolinks:load', function() {
+$(function($){
   if($('.sidebar__nav').length){
     const row = $(".row");
     const sidebar = $(".sidebar");

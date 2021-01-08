@@ -4,6 +4,7 @@
 .matching-index {
   &__user-count {
     font-size: 2.4rem;
+    margin-bottom: 3%;
   }
 
   &__match-users {
@@ -18,14 +19,18 @@
 
     &--avatar {
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 72px;
+      height: 72px;
       object-fit: cover;
-      margin-right: 5%;
+    }
+
+    &--avatar:hover {
+      opacity: 0.7;
     }
 
     &--name {
       font-size: 2rem;
+      margin-left: 5%;
     }
   }
 
@@ -41,10 +46,21 @@
       width: 50px;
       height: 50px;
       border-radius: 5px;
+      box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
 
       i {
         color: white;
       }
+    }
+
+    &--icon:hover {
+      border: 2px solid $button-hover-color__pink;
+      background-color: $button-hover-color__pink;
+    }
+
+    &--icon:active {
+      @include ProprtySetPrefix(transform, translateY(4px));
+      box-shadow: 0px 0px 0px rgba(0,0,0,0);
     }
   }
 

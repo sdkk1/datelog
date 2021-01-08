@@ -1,12 +1,12 @@
 require "rails_helper"
 
-RSpec.describe "投稿削除", type: :request do
+RSpec.describe "提案削除", type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:datespot) { create(:datespot, user: user) }
 
-  context "ログインしていて、自分の投稿を削除する場合" do
-    it "処理が成功し、投稿一覧にリダイレクトすること" do
+  context "ログインしていて、自分の提案を削除する場合" do
+    it "処理が成功し、提案一覧にリダイレクトすること" do
       login_for_request(user)
       expect {
         delete datespot_path(datespot)
@@ -17,8 +17,8 @@ RSpec.describe "投稿削除", type: :request do
     end
   end
 
-  context "ログインしていて、他人の投稿を削除する場合" do
-    it "処理が失敗し、投稿一覧にリダイレクトすること" do
+  context "ログインしていて、他人の提案を削除する場合" do
+    it "処理が失敗し、提案一覧にリダイレクトすること" do
       login_for_request(other_user)
       expect {
         delete datespot_path(datespot)

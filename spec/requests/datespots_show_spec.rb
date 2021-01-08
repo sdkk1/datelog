@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "投稿詳細ページ", type: :request do
+RSpec.describe "提案詳細ページ", type: :request do
   let!(:datespot) { create(:datespot) }
 
   it "レスポンスが正常に表示されること" do

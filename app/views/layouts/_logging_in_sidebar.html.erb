@@ -10,7 +10,11 @@
       <li class="logging-in-sidebar__nav--item"><%= link_to followers_user_path(current_user), class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-thumbs-up logging-in-sidebar__nav--item-icon"></i>お相手から<% end %></li>
       <li class="logging-in-sidebar__nav--item"><%= link_to rooms_path, class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-comments logging-in-sidebar__nav--item-icon"></i>メッセージ<% end %></li>
       <li class="logging-in-sidebar__nav--item"><%= link_to current_user, class: "logging-in-sidebar__nav--item-link" do %><i class="zmdi zmdi-account-box zmdi-hc-lg logging-in-sidebar__nav--item-icon"></i>プロフィール<% end %></li>
-      <li class="logging-in-sidebar__nav--item"><%= link_to notifications_path, class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-bell logging-in-sidebar__nav--item-icon"></i>通知一覧<% end %></li>
+      <% if current_user.notification == true %>
+        <li class="logging-in-sidebar__nav--item"><%= link_to notifications_path, class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-bell"></i><i class="fas fa-circle logging-in-sidebar__nav--item-icon-circle"></i>通知一覧<% end %></li>
+      <% else %>
+        <li class="logging-in-sidebar__nav--item"><%= link_to notifications_path, class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-bell logging-in-sidebar__nav--item-icon"></i>通知一覧<% end %></li>
+      <% end %>
       <li class="logging-in-sidebar__nav--item"><%= link_to logout_path, method: :delete, class: "logging-in-sidebar__nav--item-link" do %><i class="fas fa-sign-out-alt logging-in-sidebar__nav--item-icon"></i>ログアウト<% end %></li>
     </ul>
   </nav>

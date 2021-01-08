@@ -2,7 +2,7 @@
   <div class="swiper-container user-slider">
     <div class="swiper-wrapper">
       <% @user.avatars.each do |avatar| %>
-        <div class="swiper-slide"><%= image_tag avatar.variant(resize:'400x400').processed, class: "user-slider--image" %></div>
+        <div class="swiper-slide"><%= image_tag avatar.variant(resize:'800x800').processed, class: "user-slider--image" %></div>
       <% end %>
     </div>
     <div class="swiper-button-prev"></div>

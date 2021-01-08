@@ -30,26 +30,26 @@ RSpec.describe "リスト機能", type: :request do
         login_for_request(user)
       end
 
-      it "投稿のリスト登録ができること" do
+      it "提案のリスト登録ができること" do
         expect {
           post "/lists/#{datespot.id}/create"
         }.to change(other_user.lists, :count).by(1)
       end
 
-      it "投稿のAjaxによるリスト登録ができること" do
+      it "提案のAjaxによるリスト登録ができること" do
         expect {
           post "/lists/#{datespot.id}/create", xhr: true
         }.to change(other_user.lists, :count).by(1)
       end
 
-      it "投稿のリスト解除ができること" do
+      it "提案のリスト解除ができること" do
         other_user.list(datespot)
         expect {
           delete "/lists/#{List.first.id}/destroy"
         }.to change(other_user.lists, :count).by(-1)
       end
 
-      it "投稿のAjaxによるリスト解除ができること" do
+      it "提案のAjaxによるリスト解除ができること" do
         other_user.list(datespot)
         expect {
           delete "/lists/#{List.first.id}/destroy", xhr: true

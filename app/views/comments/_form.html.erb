@@ -1,7 +1,7 @@
 <div class="datespot-comment__comment-form">
   <% if logged_in? %>
     <h3 class="datespot-comment__comment-form--title">コメントをする</h3>
-    <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot) ) do |form| %>
+    <%= form_with(model: [datespot, comment], url: datespot_comments_path(@datespot)) do |form| %>
       <div id="error_messages" class='comment-form__error-messages'></div>
       <div class='comment-form' id="star">
         <%= form.label :rate %><span class="comment-form__input-need">※必須(0.5~5の段階評価)</span><br>
@@ -22,7 +22,6 @@
   <% end %>
 </div>
 <script>
-$(document).on('turbolinks:load', function() {
   $('#star').raty({
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
@@ -30,5 +29,4 @@ $(document).on('turbolinks:load', function() {
     half: true,
     scoreName: "comment[rate]",
   });
-});
 </script>

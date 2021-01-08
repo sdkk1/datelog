@@ -7,7 +7,7 @@ RSpec.describe "Datespots", type: :system do
   let!(:datespot) { create(:datespot, user: user) }
   let!(:comment) { create(:comment, user: user, datespot: datespot) }
 
-  describe "投稿一覧ページ" do
+  describe "提案一覧ページ" do
     before do
       create_list(:datespot, 5)
     end
@@ -37,7 +37,7 @@ RSpec.describe "Datespots", type: :system do
         visit datespots_path
       end
 
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
+      it "デートスポットの情報が表示されていることを確認(提案者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.address
@@ -48,8 +48,8 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "投稿削除(管理者ユーザーの場合)", js: true do
-      it "投稿を削除後、削除成功のフラッシュが表示されること" do
+    context "提案削除(管理者ユーザーの場合)", js: true do
+      it "提案を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
         visit datespots_path
         within first('.datespot-index__card') do
@@ -57,7 +57,7 @@ RSpec.describe "Datespots", type: :system do
             find('#datespot-delete').click
           end
         end
-        expect(page).to have_content '投稿が削除されました'
+        expect(page).to have_content '提案が削除されました'
       end
     end
 
@@ -66,7 +66,7 @@ RSpec.describe "Datespots", type: :system do
         login_for_system(user)
       end
 
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
+      it "デートスポットの情報が表示されていることを確認(提案者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.address
@@ -76,15 +76,15 @@ RSpec.describe "Datespots", type: :system do
         end
       end
 
-      it "自分の投稿のみ削除ボタンが表示されること" do
+      it "自分の提案のみ削除ボタンが表示されること" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link "削除" if datespot == user.datespots
         end
       end
     end
 
-    context "投稿削除(管理者ユーザー以外の場合)", js: true do
-      it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
+    context "提案削除(管理者ユーザー以外の場合)", js: true do
+      it "自分の提案を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(user)
         visit datespots_path
         if datespot == user.datespots
@@ -93,13 +93,13 @@ RSpec.describe "Datespots", type: :system do
               find('#datespot-delete').click
             end
           end
-          expect(page).to have_content '投稿が削除されました'
+          expect(page).to have_content '提案が削除されました'
         end
       end
     end
 
     context "お気に入り登録/解除" do
-      it "投稿一覧ページから投稿のお気に入り登録/解除ができること" do
+      it "提案一覧ページから提案のお気に入り登録/解除ができること" do
         login_for_system(user)
         visit datespots_path
         expect(user.favorite?(datespot)).to be_falsey
@@ -111,7 +111,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "リスト登録/解除" do
-      it "投稿一覧ページから投稿のリスト登録/解除ができること" do
+      it "提案一覧ページから提案のリスト登録/解除ができること" do
         login_for_system(user)
         visit datespots_path
         expect(user.list?(datespot)).to be_falsey
@@ -123,14 +123,14 @@ RSpec.describe "Datespots", type: :system do
     end
   end
 
-  describe "投稿ページ" do
+  describe "提案ページ" do
     before do
       login_for_system(user)
       visit new_datespot_path
     end
 
     context "ページレイアウト" do
-      it "「投稿する」の文字列が存在すること" do
+      it "「提案する」の文字列が存在すること" do
         expect(page).to have_content '提案する'
       end
 
@@ -151,8 +151,8 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "投稿する処理" do
-      it "有効な情報で投稿を行うと投稿が成功する" do
+    context "提案する処理" do
+      it "有効な情報で提案を行うと提案が成功する" do
         fill_in "名称・店名", with: "ももたろう"
         select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
@@ -163,7 +163,7 @@ RSpec.describe "Datespots", type: :system do
         click_button "提案する"
       end
 
-      it "無効な情報で投稿を行うと投稿失敗のフラッシュが表示されること" do
+      it "無効な情報で提案を行うと提案失敗のフラッシュが表示されること" do
         fill_in "名称・店名", with: ""
         select "東京都", from: '都道府県'
         fill_in "住所", with: "東京都渋谷区恵比寿西"
@@ -177,7 +177,7 @@ RSpec.describe "Datespots", type: :system do
     end
   end
 
-  describe "投稿詳細ページ" do
+  describe "提案詳細ページ" do
     before do
       visit datespot_path(datespot)
     end
@@ -194,7 +194,7 @@ RSpec.describe "Datespots", type: :system do
         visit datespot_path(datespot)
       end
 
-      it "投稿情報が表示されること(投稿者のリンクあり)" do
+      it "提案情報が表示されること(提案者のリンクあり)" do
         expect(page).to have_content datespot.name
         expect(page).to have_link datespot.user.name
         expect(page).to have_content datespot.address
@@ -205,14 +205,14 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "投稿削除(管理者ユーザーの場合)", js: true do
-      it "投稿を削除後、削除成功のフラッシュが表示されること" do
+    context "提案削除(管理者ユーザーの場合)", js: true do
+      it "提案を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(admin_user)
         visit datespot_path(datespot)
         page.accept_confirm("本当に削除しますか？") do
           find('#datespot-delete').click
         end
-        expect(page).to have_content '投稿が削除されました'
+        expect(page).to have_content '提案が削除されました'
       end
     end
 
@@ -222,7 +222,7 @@ RSpec.describe "Datespots", type: :system do
         visit datespot_path(datespot)
       end
 
-      it "投稿情報が表示されること(投稿者のリンクあり)" do
+      it "提案情報が表示されること(提案者のリンクあり)" do
         expect(page).to have_content datespot.name
         expect(page).to have_link datespot.user.name
         expect(page).to have_content datespot.address
@@ -232,26 +232,26 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content datespot.plan
       end
 
-      it "自分の投稿のみ削除ボタンが表示されること" do
+      it "自分の提案のみ削除ボタンが表示されること" do
         expect(page).to have_link "削除" if datespot == user.datespots
       end
     end
 
-    context "投稿削除(管理者ユーザー以外の場合)", js: true do
-      it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
+    context "提案削除(管理者ユーザー以外の場合)", js: true do
+      it "自分の提案を削除後、削除成功のフラッシュが表示されること" do
         login_for_system(user)
         visit datespot_path(datespot)
         if datespot == user.datespots
           page.accept_confirm("本当に削除しますか？") do
             click_on "削除"
           end
-          expect(page).to have_content '投稿が削除されました'
+          expect(page).to have_content '提案が削除されました'
         end
       end
     end
 
     context "ページレイアウト(ログインしていないユーザーの場合)" do
-      it "投稿情報が表示されること(投稿者のリンクなし)" do
+      it "提案情報が表示されること(提案者のリンクなし)" do
         expect(page).to have_content datespot.name
         expect(page).to have_content datespot.user.name
         expect(page).to have_content datespot.address
@@ -267,7 +267,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "お気に入り登録/解除" do
-      it "投稿詳細ページから投稿のお気に入り登録/解除ができること", js: true do
+      it "提案詳細ページから提案のお気に入り登録/解除ができること" do
         login_for_system(user)
         visit datespot_path(datespot)
         link = find('.like')
@@ -282,7 +282,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "リスト登録/解除" do
-      it "投稿詳細ページからリスト登録/解除ができること", js: true do
+      it "提案詳細ページからリスト登録/解除ができること" do
         login_for_system(user)
         visit datespot_path(datespot)
         if datespot == user.datespots
@@ -298,8 +298,8 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "コメント登録/削除", js: true do
-      it "別ユーザーによる投稿のコメントには削除リンクが無いこと" do
+    context "コメント登録/削除" do
+      it "別ユーザーによる提案のコメントには削除リンクが無いこと" do
         login_for_system(other_user)
         visit datespot_path(datespot)
         within find("#comment-#{comment.id}") do
@@ -311,7 +311,7 @@ RSpec.describe "Datespots", type: :system do
     end
   end
 
-  describe "投稿編集ページ" do
+  describe "提案編集ページ" do
     before do
       login_for_system(user)
       visit datespot_path(datespot)
@@ -336,7 +336,7 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "投稿の更新処理" do
+    context "提案の更新処理" do
       it "有効な更新" do
         fill_in "名称・店名", with: "ももたろう"
         select "東京都", from: '都道府県'
@@ -363,12 +363,12 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "投稿削除", js: true do
-      it "投稿を削除後、削除成功のフラッシュが表示されること" do
-        page.accept_confirm("本当にこの投稿を削除してもよろしいですか？") do
-          click_on "投稿を削除する"
+    context "提案削除", js: true do
+      it "提案を削除後、削除成功のフラッシュが表示されること" do
+        page.accept_confirm("本当にこの提案を削除してもよろしいですか？") do
+          click_on "提案を削除する"
         end
-        expect(page).to have_content '投稿が削除されました'
+        expect(page).to have_content '提案が削除されました'
       end
     end
   end

@@ -13,7 +13,8 @@
   &__top {
     display:flex;
     justify-content: space-between;
-    margin-bottom: 1%;
+    align-items: center;
+    margin-bottom: 1.5%;
 
     &--user {
       width: 50%;
@@ -22,25 +23,34 @@
 
       &-avatar {
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         object-fit: cover;
         margin-right: 5%;
+      }
+
+      &-link:hover {
+        text-decoration: none;
+        opacity: 0.7;
       }
     }
 
     &--datespot-change {
-      font-size: 3rem;
+      font-size: 3.6rem;
 
       a:hover {
         text-decoration: none;
+      }
+
+      &-edit:hover, &-delete:hover {
+        opacity: 0.7;
       }
     }
   }
 
   &__address, &__range, &__invitation, &__reference-url {
     display: inline-block;
-    margin-bottom: 1%;
+    margin-bottom: 1.5%;
     width: 100%;
     font-size: 2rem;
     text-align: left;
@@ -49,6 +59,7 @@
   &__bottom {
     display:flex;
     justify-content: space-between;
+    align-items: center;
 
     &--timestamp {
       font-size: 2rem;
@@ -57,7 +68,7 @@
     &--actions {
       display:flex;
       justify-content: flex-end;
-      font-size: 2.4rem;
+      font-size: 3rem;
 
       &-impressions {
         display:flex;

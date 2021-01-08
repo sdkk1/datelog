@@ -5,7 +5,7 @@ $(function(){
   //querySelectorでfile_fieldを取得
   const file_field = document.querySelector('input[type=file]')
 
-   //fileが選択された時に発火するイベント
+  //fileが選択された時に発火するイベント
   $('#user_avatars').change(function(){
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む

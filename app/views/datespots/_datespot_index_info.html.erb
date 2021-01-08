@@ -5,13 +5,13 @@
     </h4>
     <div class="datespot-index-info__top--datespot-change">
       <% if current_user == @datespot.user %>
-        <%= link_to edit_datespot_path(@datespot), id: 'datespot-edit' do %>　
+        <%= link_to edit_datespot_path(@datespot), class: "datespot-index-info__top--datespot-change-edit", id: 'datespot-edit' do %>　
           <i class="far fa-edit"></i>
         <% end %>
       <% end %>
       <% if logged_in? %>
         <% if current_user.admin? || (current_user == @datespot.user) %>
-          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, id: 'datespot-delete' do %>
+          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-index-info__top--datespot-change-delete", id: 'datespot-delete' do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         <% end %>
@@ -20,9 +20,21 @@
   </div>
   <div class="datespot-index-info__user">
     <% if @datespot.user.avatars.attached? %>
-      <%= image_tag @datespot.user.avatars.first.variant(resize:'24x24').processed, class: "datespot-index-info__user--avatar" %>
+      <% if logged_in? %>
+        <%= link_to user_path(@datespot.user), class: "datespot-index-info__user--link" do %>
+          <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-index-info__user--avatar" %>
+        <% end %>
+      <% else %>
+        <%= image_tag @datespot.user.avatars.first.variant(resize:'200x200').processed, class: "datespot-index-info__user--avatar" %>
+      <% end %>
     <% else %>
-      <%= image_tag 'thumb50_default.png', class: "datespot-index-info__user--avatar" %>
+      <% if logged_in? %>
+        <%= link_to user_path(@datespot.user), class: "datespot-index-info__user--link" do %>
+          <%= image_tag 'thumb50_default.png', class: "datespot-index-info__user--avatar" %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'thumb50_default.png', class: "datespot-index-info__user--avatar" %>
+      <% end %>
     <% end %>
     <% if logged_in? %>
       <%= link_to @datespot.user.name, user_path(@datespot.user.id) %>
