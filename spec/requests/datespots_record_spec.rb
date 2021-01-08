@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "投稿", type: :request do
+RSpec.describe "提案", type: :request do
   let!(:user) { create(:user) }
   let!(:datespot) { create(:datespot, user: user) }
 
@@ -16,7 +16,7 @@ RSpec.describe "投稿", type: :request do
       end
     end
 
-    it "有効な投稿で登録できること" do
+    it "有効な提案で登録できること" do
       expect {
         post datespots_path, params: { datespot: {
           name: "ももたろう",
@@ -32,7 +32,7 @@ RSpec.describe "投稿", type: :request do
       expect(response).to render_template('datespots/index')
     end
 
-    it "無効な投稿では登録できないこと" do
+    it "無効な提案では登録できないこと" do
       expect {
         post datespots_path, params: { datespot: {
           name: "",

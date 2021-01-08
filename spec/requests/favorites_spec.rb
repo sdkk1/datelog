@@ -29,26 +29,26 @@ RSpec.describe "お気に入り機能", type: :request do
         login_for_request(user)
       end
 
-      it "投稿のお気に入り登録ができること" do
+      it "提案のお気に入り登録ができること" do
         expect {
           post "/favorites/#{datespot.id}/create"
         }.to change(user.favorites, :count).by(1)
       end
 
-      it "投稿のAjaxによるお気に入り登録ができること" do
+      it "提案のAjaxによるお気に入り登録ができること" do
         expect {
           post "/favorites/#{datespot.id}/create", xhr: true
         }.to change(user.favorites, :count).by(1)
       end
 
-      it "投稿のお気に入り解除ができること" do
+      it "提案のお気に入り解除ができること" do
         user.favorite(datespot)
         expect {
           delete "/favorites/#{datespot.id}/destroy"
         }.to change(user.favorites, :count).by(-1)
       end
 
-      it "投稿のAjaxによるお気に入り解除ができること" do
+      it "提案のAjaxによるお気に入り解除ができること" do
         user.favorite(datespot)
         expect {
           delete "/favorites/#{datespot.id}/destroy", xhr: true

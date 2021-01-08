@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "投稿編集", type: :request do
+RSpec.describe "提案編集", type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:datespot) { create(:datespot, user: user) }

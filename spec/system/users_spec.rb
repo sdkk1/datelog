@@ -134,7 +134,7 @@ RSpec.describe "Users", type: :system do
     end
 
     context "お気に入り登録/解除" do
-      it "ユーザー詳細ページから投稿のお気に入り登録/解除ができること" do
+      it "ユーザー詳細ページから提案のお気に入り登録/解除ができること" do
         expect(user.favorite?(datespot)).to be_falsey
         user.favorite(datespot)
         expect(user.favorite?(datespot)).to be_truthy
@@ -144,7 +144,7 @@ RSpec.describe "Users", type: :system do
     end
 
     context "リスト登録/解除" do
-      it "ユーザー詳細ページから投稿のリスト登録/解除ができること" do
+      it "ユーザー詳細ページから提案のリスト登録/解除ができること" do
         expect(user.list?(datespot)).to be_falsey
         user.list(datespot)
         expect(user.list?(datespot)).to be_truthy

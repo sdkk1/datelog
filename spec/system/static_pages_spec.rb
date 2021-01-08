@@ -30,7 +30,7 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
+      it "デートスポットの情報が表示されていることを確認(提案者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.address
@@ -47,7 +47,7 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクあり)" do
+      it "デートスポットの情報が表示されていることを確認(提案者のリンクあり)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.address
@@ -57,25 +57,25 @@ RSpec.describe "StaticPages", type: :system do
         end
       end
 
-      it "自分の投稿のみ削除ボタンが表示されること" do
+      it "自分の提案のみ削除ボタンが表示されること" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link "削除" if datespot == user.datespots
         end
       end
     end
 
-    context "投稿削除(管理者ユーザー以外の場合)", js: true do
+    context "提案削除(管理者ユーザー以外の場合)", js: true do
       before do
         login_for_system(user)
         visit root_path
       end
 
-      it "自分の投稿を削除後、削除成功のフラッシュが表示されること" do
+      it "自分の提案を削除後、削除成功のフラッシュが表示されること" do
         if datespot == user.datespots
           page.accept_confirm("本当に削除しますか？") do
             click_on "削除", match: :first
           end
-          expect(page).to have_content '投稿が削除されました'
+          expect(page).to have_content '提案が削除されました'
         end
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "デートスポットの情報が表示されていることを確認(投稿者のリンクなし)" do
+      it "デートスポットの情報が表示されていることを確認(提案者のリンクなし)" do
         Datespot.take(5).each do |datespot|
           expect(page).to have_link datespot.name
           expect(page).to have_content datespot.address

@@ -32,7 +32,7 @@ RSpec.describe "通知機能", type: :request do
       login_for_request(user)
     end
 
-    context "自分以外のユーザーの投稿に対して" do
+    context "自分以外のユーザーの提案に対して" do
       it "リスト登録によって通知が作成されること" do
         post "/lists/#{other_datespot.id}/create"
         expect(user.reload.notification).to be_falsey
@@ -49,7 +49,7 @@ RSpec.describe "通知機能", type: :request do
       end
     end
 
-    context "自分の投稿に対して" do
+    context "自分の提案に対して" do
       it "リスト登録によって通知が作成されないこと" do
         post "/lists/#{datespot.id}/create"
         expect(user.reload.notification).to be_falsey

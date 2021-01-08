@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "投稿一覧ページ", type: :request do
+RSpec.describe "提案一覧ページ", type: :request do
   let!(:user) { create(:user) }
 
   before do

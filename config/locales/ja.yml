@@ -40,7 +40,7 @@ ja:
         user_id: ユーザーID
       comment:
         user_id: コメント者のID
-        dish_id: コメントされた投稿のID
+        datespot_id: コメントされた提案のID
         content: コメント
         rate: 評価
         picture: 写真

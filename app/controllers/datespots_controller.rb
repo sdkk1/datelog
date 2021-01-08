@@ -50,7 +50,7 @@ class DatespotsController < ApplicationController
   def create
     @datespot = current_user.datespots.build(datespot_params)
     if @datespot.save
-      flash[:success] = "投稿が登録されました！"
+      flash[:success] = "提案が登録されました！"
       redirect_to datespots_url
     else
       render 'datespots/new'
@@ -70,7 +70,7 @@ class DatespotsController < ApplicationController
       end
     end
     if @datespot.update_attributes(datespot_params)
-      flash[:success] = "投稿が更新されました！"
+      flash[:success] = "提案が更新されました！"
       redirect_to @datespot
     else
       render 'edit'
@@ -81,10 +81,10 @@ class DatespotsController < ApplicationController
     @datespot = Datespot.find(params[:id])
     if current_user.admin? || current_user?(@datespot.user)
       @datespot.destroy
-      flash[:success] = "投稿が削除されました！"
+      flash[:success] = "提案が削除されました！"
       redirect_to request.referrer == user_url(@datespot.user) ? user_url(@datespot.user) : datespots_url
     else
-      flash[:error] = "他人の投稿は削除できません。"
+      flash[:error] = "他人の提案は削除できません。"
       redirect_to datespots_url
     end
   end

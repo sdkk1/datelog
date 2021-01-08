@@ -11,7 +11,7 @@
 #       login_for_system(user)
 #     end
 
-#     context "自分以外のユーザーの投稿に対して" do
+#     context "自分以外のユーザーの提案に対して" do
 #       it "リスト登録によって通知が作成されること" do
 #         visit datespot_path(other_datespot)
 #         find('.list').click
@@ -22,12 +22,12 @@
 #         expect(page).to have_css 'li.new_notification'
 #         visit notifications_path
 #         expect(page).to have_css 'li.no_notification'
-#         expect(page).to have_content "あなたの投稿が#{user.name}さんから行きたいリクエストされました。"
+#         expect(page).to have_content "あなたの提案が#{user.name}さんから行きたいリクエストされました。"
 #         expect(page).to have_content other_datespot.name
 #       end
 #     end
 
-#     context "自分の投稿に対して" do
+#     context "自分の提案に対して" do
 #       it "リスト登録によって通知が作成されないこと" do
 #         visit datespot_path(datespot)
 #         find('.list').click
