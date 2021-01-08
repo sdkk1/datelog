@@ -15,7 +15,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # 画像が未設定の時にデフォルトで設定する画像のURL
   def default_url(*args)
-    "default.png"
+    "thumb400_default.png"
   end
 
   # Process files as they are uploaded:
