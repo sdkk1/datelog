@@ -22,7 +22,6 @@
   <% end %>
 </div>
 <script>
-$(document).on('turbolinks:load', function() {
   $('#star').raty({
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
@@ -30,5 +29,4 @@ $(document).on('turbolinks:load', function() {
     half: true,
     scoreName: "comment[rate]",
   });
-});
 </script>

@@ -4,15 +4,13 @@
       <% if comments.present? %>
         <div id="rate-average"></div>
         <script>
-          $(document).on('turbolinks:load', function() {
-            $('#rate-average').raty({
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= @datespot.rate_average.round(1) %>,
-            });
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @datespot.rate_average.round(1) %>,
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：<%= @datespot.rate_average.round(1) %>点</div>
@@ -21,15 +19,13 @@
       <% else %>
         <div id="rate-average"></div>
         <script>
-          $(document).on('turbolinks:load', function() {
-            $('#rate-average').raty({
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: 0,
-            });
+          $('#rate-average').raty({
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: 0,
           });
         </script>
         <div class="comment-index__upper--rate-average">平均評価：0点</div>
@@ -73,15 +69,13 @@
               <div class="comment-index__lower--icon">
                 <div id="star-rate-<%= comment.id %>"></div>
                 <script>
-                  $(document).on('turbolinks:load', function() {
-                    $('#star-rate-<%= comment.id %>').raty({
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn : '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half: true,
-                      readOnly: true,
-                      score: <%= comment.rate %>,
-                    });
+                  $('#star-rate-<%= comment.id %>').raty({
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
                   });
                 </script>
                 <% if comment.user == current_user %>
@@ -137,15 +131,13 @@
                 <div class="comment-index__lower--icon">
                   <div id="star-rate-<%= comment.id %>"></div>
                   <script>
-                    $(document).on('turbolinks:load', function() {
-                      $('#star-rate-<%= comment.id %>').raty({
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn : '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: <%= comment.rate %>,
-                      });
+                    $('#star-rate-<%= comment.id %>').raty({
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score: <%= comment.rate %>,
                     });
                   </script>
                   <% if comment.user == current_user %>
