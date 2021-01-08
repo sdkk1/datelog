@@ -124,12 +124,12 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "ユーザーをいいね！する", js: true do
+    context "ユーザーをいいね！する" do
       it "ユーザーをいいね！できること" do
         visit user_path(other_user)
         expect(page).to have_button 'いいね！'
         click_button 'いいね！'
-        expect(page).to have_content 'いいね！済'
+        expect(page).to have_button 'いいね！済'
       end
     end
 

@@ -267,7 +267,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "お気に入り登録/解除" do
-      it "提案詳細ページから提案のお気に入り登録/解除ができること", js: true do
+      it "提案詳細ページから提案のお気に入り登録/解除ができること" do
         login_for_system(user)
         visit datespot_path(datespot)
         link = find('.like')
@@ -282,7 +282,7 @@ RSpec.describe "Datespots", type: :system do
     end
 
     context "リスト登録/解除" do
-      it "提案詳細ページからリスト登録/解除ができること", js: true do
+      it "提案詳細ページからリスト登録/解除ができること" do
         login_for_system(user)
         visit datespot_path(datespot)
         if datespot == user.datespots
@@ -298,7 +298,7 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "コメント登録/削除", js: true do
+    context "コメント登録/削除" do
       it "別ユーザーによる提案のコメントには削除リンクが無いこと" do
         login_for_system(other_user)
         visit datespot_path(datespot)
