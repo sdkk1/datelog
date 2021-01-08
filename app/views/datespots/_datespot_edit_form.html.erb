@@ -13,6 +13,9 @@
   </div>
   <%= render partial: 'datespot_info_form', locals: { form: form } %>
 <% end %>
+<div class="info-form__back">
+  <%= link_to "提案詳細へ戻る", datespot_path(@datespot) %>
+</div>
 <div class="info-form__delete">
-  <%= link_to "投稿を削除する", datespot_path(@datespot), method: :delete, data: { confirm: "本当にこの投稿を削除してもよろしいですか？" } %>
+  <%= link_to "提案を削除する", datespot_path(@datespot), method: :delete, data: { confirm: "本当にこの提案を削除してもよろしいですか？" } %>
 </div>

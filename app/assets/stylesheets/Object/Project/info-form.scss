@@ -89,7 +89,7 @@
     @include ProprtySetPrefix(transform, scale(1, 1));
   }
 
-  &__guest-login, &__signup, &__delete {
+  &__guest-login, &__signup, &__back, &__delete {
     margin-bottom: 2%;
     font-size: 1.6rem;
   }
