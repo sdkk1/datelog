@@ -24,11 +24,11 @@
                   <% end %>
                   <span class="matching-index__match-users--name"><%= link_to match_user.name, match_user %></span>
                   <div class="matching-index__room-entry">
-                    <%= form_with model: @room do |form| %>
+                    <%= form_with model: @room, local: true do |form| %>
                       <%= form.hidden_field :user_id, value: match_user.id %>
-                      <%= form.button :type => "submit", class: "matching-index__room-entry--icon" do %>
+                      <button type="submit" class="matching-index__room-entry--icon">
                         <i class="far fa-comment-dots"></i>
-                      <% end %>
+                      </button>
                     <% end %>
                   </div>
                 </li>
