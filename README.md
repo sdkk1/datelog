@@ -1,24 +1,95 @@
-# README
+# date-match
+デート提案型　マッチングサービス<br>
+〜お互い行きたいところから始まる新しい出会い形〜<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# URL
+https://www.date-match.net/
 
-Things you may want to cover:
+ゲストログインですぐに閲覧いただけます。
 
-* Ruby version
+# 機能一覧
+### 提案機能
+- デートの登録・編集・削除
+- 一覧表示、詳細表示
+- ページネーション
+- 写真の複数枚登録・編集・削除（Active Storage）
+- 3D フリップスライダー（Swiper）
+- オートコンプリートによる住所検索（Google Maps API）
+- 地図表示（Google Maps API）
+- 天気予報表示（Open Weather Map API）
+- タグ付け
+- お気に入り登録・削除（Ajax）
+- 行きたい！リクエスト登録・削除（Ajax）
+- 閲覧履歴
+- 閲覧数カウント
+- 検索（名称・店名、提案者、住所、キーワード検索）
+- 並び替え（更新日の新しい・古い順、予算の高い・低い順、評価の高い順、コメント数の多い順、閲覧数の多い順）
 
-* System dependencies
+### コメント機能
+- 提案に対するコメントの投稿・削除（Ajax）
+- 写真の投稿・削除（Active Storage）
+- 一覧表示
+- 星5段階評価（Raty）
 
-* Configuration
+### ユーザー機能
+- ユーザー登録・編集・削除
+- 一覧表示、詳細表示
+- ページネーション
+- ゲストログイン
+- プロフィール画像の複数枚登録・編集・削除（Active Storage）
+- 3D フリップスライダー（Swiper）
+- 足跡カウント
+- 検索（ユーザー名、居住地、年齢、性別検索）
+- 並び替え（更新日の新しい・古い順、年齢の高い・低い順、足跡の多い順、提案数の多い順、いいね！の多い順）
 
-* Database creation
+### マッチング機能
+- ユーザーへのいいね！（Ajax）
+- いいね！（自分から・相手から）の一覧表示
+- マッチングしたユーザーの一覧表示
 
-* Database initialization
+### メッセージ機能
+- マッチングしたユーザー同士のメッセージ送信・削除（Ajax）
+- 写真の投稿・削除（Active Storage）
+- メッセージ一覧の表示
 
-* How to run the test suite
+### 通知機能
+  - 以下のタイミングでユーザーに通知を送信
+    - 自分の提案に行きたい！リクエストされた時
+    - 自分の提案にコメントされた時
+    - 他のユーザーからいいね！された時
+    - 他のユーザーからメッセージが届いた時
+  - 一覧表示
+  - 通知の全削除
+  - 未確認の通知がある場合はマークを表示
 
-* Services (job queues, cache servers, search engines, etc.)
+### その他
+  - モデルテスト、リクエストテスト、 システムテスト（200 examples）
 
-* Deployment instructions
+# 使用技術
+### フロントエンド
+- HTML
+- CSS（BEM・FLOCSS）
+- Sass
+- JavaScript
+- jQuery
 
-* ...
+### バックエンド
+- Ruby
+- Ruby on Rails
+
+### データベース
+- PostgreSQL
+
+### テスト
+- RSpec
+- FactoryBot
+- rubocop
+
+### 開発環境
+- Docker
+- Visual Studio Code
+
+### 本番環境
+- AWS（VPC、EC2、S3、RDS、Route53、ACM、ALB）、https化
+- Nginx、Unicorn
+- CircleCI（CI/CD）、Capistrano
