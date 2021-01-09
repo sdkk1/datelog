@@ -13,6 +13,7 @@ class Comment < ApplicationRecord
   validate :picture_type, :picture_size
 
   after_save :update_rate_avarage
+  after_destroy :update_rate_avarage
 
   def update_rate_avarage
     datespot.update_rate_avarage

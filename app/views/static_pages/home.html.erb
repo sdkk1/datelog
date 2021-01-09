@@ -14,32 +14,59 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="home__features">
-        <div class="home__features--title">
-          <span>date-match　3つの特徴</span>
+      <div class="home__usage">
+        <div class="home__usage--title">
+          <span>date-match　簡単4ステップ</span>
         </div>
-        <div class="home__features--suggestion">
-          <div>
-            <span class="home__features--suggestion-title">1.デートの提案ができる</span><br>
-            <span class="home__features--suggestion-description">あなたの最近気になっている場所や<br>行きたいなと思っている場所を<br>提案してみましょう！</span>
+        <div class="home__usage--suggestion">
+          <span class="home__usage--suggestion-title">提案してみよう！</span><br>
+          <div class="home__usage--suggestion-items">
+            <div class="home__usage--suggestion-item">
+              <span class="home__usage--suggestion-item-number">01</span><br>
+              <%= image_tag 'suggestion1.png', class: "home__usage--suggestion-item-image" %><br>
+              <span class="home__usage--suggestion-item-description">あなたの気になっている場所や<br>行きたいなと思っている場所を<br>提案してみましょう！</span>
+            </div>
+            <div class="home__usage--suggestion-item">
+              <span class="home__usage--suggestion-item-number">02</span><br>
+              <%= image_tag 'suggestion2.png', class: "home__usage--suggestion-item-image" %><br>
+              <span class="home__usage--suggestion-item-description">あなたの提案に行きたい！リクエストが<br>送られてくるかも！送ってくれた人の<br>プロフィールを確認してみましょう！</span>
+            </div>
+            <div class="home__usage--suggestion-item">
+              <span class="home__usage--suggestion-item-number">03</span><br>
+              <%= image_tag 'suggestion3.png', class: "home__usage--suggestion-item-image" %><br>
+              <span class="home__usage--suggestion-item-description">その人のプロフィールを読んで<br>気になったらいいね！<br>お互いにいいね！をしたらマッチング！</span>
+            </div>
+            <div class="home__usage--suggestion-item">
+              <span class="home__usage--suggestion-item-number">04</span><br>
+              <%= image_tag 'suggestion4.png', class: "home__usage--suggestion-item-image" %><br>
+              <span class="home__usage--suggestion-item-description">マッチングしたらメッセージができます！<br>メッセージをして<br>デートにお誘いしてみましょう！</span>
+            </div>
           </div>
-          <%# 写真は後で入れ替える %>
-          <%= image_tag 'home__features--search-sample.png', class: "home__features--suggestion-sample" %>
         </div>
-        <div class="home__features--search">
-          <%= image_tag 'home__features--search-sample.png', class: "home__features--search-sample" %>
-          <div>
-            <span class="home__features--search-title">2.デートの検索ができる</span><br>
-            <span class="home__features--search-description">自分から提案する勇気がない人は、<br>自分の行きたい場所や気になっている場所が<br>提案されていないか検索してみましょう！</span>
+        <div class="home__usage--search">
+          <span class="home__usage--search-title">検索してみよう！</span><br>
+          <div class="home__usage--search-items">
+            <div class="home__usage--search-item">
+              <span class="home__usage--search-item-number">01</span><br>
+              <%= image_tag 'search1.png', class: "home__usage--search-item-image" %><br>
+              <span class="home__usage--search-item-description">あなたの気になっている場所や<br>行きたいなと思っている場所を<br>検索してみましょう！</span>
+            </div>
+            <div class="home__usage--search-item">
+              <span class="home__usage--search-item-number">02</span><br>
+              <%= image_tag 'search2.png', class: "home__usage--search-item-image" %><br>
+              <span class="home__usage--search-item-description">気になる提案を見つけたら、行きたい！<br>リクエストをしてみましょう！お相手に<br>行きたい意思を伝えることができます！</span>
+            </div>
+            <div class="home__usage--search-item">
+              <span class="home__usage--search-item-number">03</span><br>
+              <%= image_tag 'search3.png', class: "home__usage--search-item-image" %><br>
+              <span class="home__usage--search-item-description">提案している人のプロフィールを読んで<br>気になったらいいね！<br>お互いにいいね！をしたらマッチング！</span>
+            </div>
+            <div class="home__usage--search-item">
+              <span class="home__usage--search-item-number">04</span><br>
+              <%= image_tag 'search4.png', class: "home__usage--search-item-image" %><br>
+              <span class="home__usage--search-item-description">マッチングしたらメッセージができます！<br>メッセージで<br>デートにお誘いされるかも！</span>
+            </div>
           </div>
-        </div>
-        <div class="home__features--invitation">
-          <div>
-            <span class="home__features--invitation-title">3.デートの招待ができる</span><br>
-            <span class="home__features--invitation-description">気になる提案している人を見つけたら、<br>「いいね！」をしてみましょう！<br>お互い「いいね！」したらマッチング！<br>メッセージして、招待してみましょう！</span>
-          </div>
-          <%# 写真は後で入れ替える %>
-          <%= image_tag 'home__features--search-sample.png', class: "home__features--invitation-sample" %>
         </div>
       </div>
       <div class="home__datespots">
