@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_054739) do
     t.string "address", null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "impressions_count", default: 0, null: false
-    t.float "rate_average", default: 0.0, null: false
+    t.float "rate_average", default: 0.0
     t.integer "prefecture_code", null: false
     t.string "reference_url"
     t.string "invitation", null: false
