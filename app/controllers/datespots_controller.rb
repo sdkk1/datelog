@@ -96,8 +96,12 @@ class DatespotsController < ApplicationController
                                      :invitation, :plan, :reference_url, :tag_list, images: [])
   end
 
+  # 正しいユーザーかどうか確認
   def correct_user
     @datespot = current_user.datespots.find_by(id: params[:id])
-    redirect_to root_url if @datespot.nil?
+    if @datespot.nil?
+      flash[:error] = "このページへはアクセスできません。"
+      redirect_to(datespots_url)
+    end
   end
 end

@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if !current_user?(@user)
       flash[:error] = "このページへはアクセスできません。"
-      redirect_to(root_url)
+      redirect_to(datespots_url)
     end
   end
 
