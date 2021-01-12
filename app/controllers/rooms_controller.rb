@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :logged_in_user
+  before_action :correct_user, only: [:show]
 
   def index
     get_followed_user_ids = Relationship.where(followed_id: current_user.id).pluck(:follower_id)
@@ -26,5 +27,18 @@ class RoomsController < ApplicationController
 
     @message = Message.new
     @messages = @room.messages.preload(:user)
+  end
+
+  private
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @room = Room.find(params[:id])
+    @message_user1 = @room.entries.first.user
+    @message_user2 = @room.entries.second.user
+    if !current_user?(@message_user1 || @message_user2)
+      flash[:error] = "このページへはアクセスできません。"
+      redirect_to(datespots_url)
+    end
   end
 end
