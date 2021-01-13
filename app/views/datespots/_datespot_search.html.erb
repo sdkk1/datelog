@@ -13,7 +13,7 @@
       <%= form.search_field :user_name_cont, placeholder: "提案者で検索", class: 'datespot-search__search-form--search-field' %>
       <%= form.search_field :address_cont, placeholder: "住所で検索", class: 'datespot-search__search-form--search-field' %>
       <%= form.search_field :tags_name_cont, placeholder: "キーワードで検索", class: 'datespot-search__search-form--search-field' %>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '評価の高い順': 'rate_average desc', 'コメント数の多い順': 'comments_count desc', '閲覧数の多い順': 'impressions_count desc'}, { selected: params[:q][:sorts] }, class: 'datespot-search__search-form--search-field' ) %>
+      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc', '予算の高い順': 'range desc', '予算の安い順': 'range asc', '評価の高い順': 'rate_average desc', 'コメント数の多い順': 'comments_count desc', '閲覧数の多い順': 'impressions_count desc'}, { selected: params[:q][:sorts] }, class: 'datespot-search__search-form--sort-field' ) %>
       <button type="submit" class="datespot-search__search-form--search-button">
         <i class="fas fa-search datespot-search__search-form--search-icon"></i>
       </button>

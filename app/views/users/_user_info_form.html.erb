@@ -27,7 +27,7 @@
 </div>
 <div class='info-form'>
   <%= form.label :avatars %><span class="info-form__input-unneed">※任意(4枚まで)</span><br>
-  <%= form.file_field :avatars, multiple: true, class: 'info-form__input-form', id: 'user_avatars' %>
+  <%= form.file_field :avatars, multiple: true, class: 'info-form__file-form', id: 'user_avatars' %>
 </div>
 <div class='info-form'>
   <%= form.label :prefecture_code %><span class="info-form__input-unneed">※任意</span><br>
@@ -35,7 +35,7 @@
 </div>
 <div class='info-form'>
   <%= form.label :age %><span class="info-form__input-unneed">※任意</span><br>
-  <%= form.select :age, options_for_select(User.ages_i18n.invert, selected: form.object.age), { include_blank: "年齢を選択" }, { class: 'info-form__input-form' } %>
+  <%= form.select :age, options_for_select(User.ages_i18n.invert, selected: form.object.age), { include_blank: "年齢を選択" }, { class: 'info-form__select-form' } %>
 </div>
 <div class='info-form'>
   <%= form.label :introduction %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>

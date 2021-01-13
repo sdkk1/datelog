@@ -25,13 +25,30 @@
   &__input-form {
     width: 40%;
     font-size: 1.2rem;
-    line-height: 2;
+    line-height: 2.5;
     border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
+    padding: 0 5px;
   }
 
-  &__input-form::placeholder {
-    padding-left: 2%;
+  &__input-form {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0 5px;
+  }
+
+  &__file-form {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
   }
 }

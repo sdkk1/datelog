@@ -13,7 +13,7 @@
 <div class="collapse" id="map-new"><%= render "map-new" %></div>
 <div class='info-form'>
   <%= form.label :range %><span class="info-form__input-need">※必須</span><br>
-  <%= form.select :range, options_for_select(Datespot.ranges_i18n.invert, selected: form.object.range), { include_blank: "価格帯を選択" }, { class: 'info-form__input-form', required: true } %>
+  <%= form.select :range, options_for_select(Datespot.ranges_i18n.invert, selected: form.object.range), { include_blank: "価格帯を選択" }, { class: 'info-form__select-form', required: true } %>
 </div>
 <div class='info-form'>
   <%= form.label :invitation %><span class="info-form__input-need">※必須(50文字以内)</span><br>
@@ -21,7 +21,7 @@
 </div>
 <div class='info-form'>
   <%= form.label :images %><span class="info-form__input-unneed">※任意(6枚まで)</span><br>
-  <%= form.file_field :images, multiple: true, class: 'info-form__input-form' %>
+  <%= form.file_field :images, multiple: true, class: 'info-form__file-form' %>
 </div>
 <div class='info-form'>
   <%= form.label :tag_list %><span class="info-form__input-unneed">※任意</span><br>

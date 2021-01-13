@@ -7,7 +7,7 @@
   </div>
   <div class='message-form' id="picture">
     <%= form.label :picture %><span class="message-form__input-unneed">※任意(1枚まで)</span><br>
-    <%= form.file_field :picture, class: 'message-form__input-form', id: 'message_picture' %>
+    <%= form.file_field :picture, class: 'message-form__file-form', id: 'message_picture' %>
   </div>
   <div class="action-button">
     <%= form.submit "送信する", class: "action-button__submit" %>
