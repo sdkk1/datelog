@@ -51,4 +51,14 @@
     background-color: white;
     padding: 5px;
   }
+
+  &__textarea-form {
+    width: 40%;
+    font-size: 1.2rem;
+    line-height: 2;
+    border: 2px solid $font-color__wine-red;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0 5px;
+  }
 }
