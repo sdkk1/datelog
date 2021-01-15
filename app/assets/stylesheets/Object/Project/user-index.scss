@@ -29,6 +29,8 @@
   }
 
   &__card-upper {
+    position: relative;
+
     &--image {
       width: 100%;
       opacity: 1;
@@ -37,6 +39,19 @@
 
     &--image:hover {
       opacity: 0.5;
+    }
+
+    &--count {
+      color: white;
+      font-size: 2rem;
+      position: absolute;
+      right: 5%;
+      top: 5%;
+      z-index: 9;
+
+      &-icon {
+        color: white;
+      }
     }
   }
 
