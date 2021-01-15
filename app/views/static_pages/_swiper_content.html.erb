@@ -1,14 +1,24 @@
 <div class="home__key-visual">
   <div class="home__key-visual--title">
     <h1>date-match</h1>
-    <h2>デート提案型　マッチングサービス<br>〜お互いの行きたいところから始まる新しい出会いの形〜</h2>
+    <h2>デート提案型　マッチングサービス<br>〜行きたいところから始まる新しい出会いの形〜</h2>
   </div>
-  <div class="home__key-visual--sign">
-    <%= link_to '新規登録', signup_path, class: "home__key-visual--sign-button" %>
-    <%= link_to 'ログイン', login_path, class: "home__key-visual--sign-button" %>
-  </div>
-  <div class="home__key-visual--guest">
-    <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "home__key-visual--guest-button" %><br>
-    <span class="home__key-visual--guest-description">※ ゲストログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せずに閲覧いただけます。</span>
-  </div>
+  <% if logged_in? %>
+    <div class="home__key-visual--search">
+      <%= link_to 'デートを探す', datespots_path, class: "home__key-visual--search-button" %>
+      <%= link_to 'ユーザーを探す', users_path, class: "home__key-visual--search-button" %>
+    </div>
+    <div class="home__key-visual--profile">
+      <%= link_to 'プロフィール', current_user, class: "home__key-visual--profile-button" %>
+    </div>
+  <% else %>
+    <div class="home__key-visual--sign">
+      <%= link_to '新規登録', signup_path, class: "home__key-visual--sign-button" %>
+      <%= link_to 'ログイン', login_path, class: "home__key-visual--sign-button" %>
+    </div>
+    <div class="home__key-visual--guest">
+      <%= link_to 'ゲストログイン', guest_login_path, method: :post, class: "home__key-visual--guest-button" %><br>
+      <span class="home__key-visual--guest-description">※ ゲストログインはポートフォリオ閲覧用です。<br>メールアドレス等を入力せずに閲覧いただけます。</span>
+    </div>
+  <% end %>
 </div>
