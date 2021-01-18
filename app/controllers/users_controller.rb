@@ -15,11 +15,11 @@ class UsersController < ApplicationController
 
   def index
     if params[:q].present?
-      @search = User.ransack(params[:q])
+      @search = User.where.not(id: current_user.id).ransack(params[:q])
       @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 9)
     else
       params[:q] = { sorts: 'updated_at desc' }
-      @search = User.ransack(params[:q])
+      @search = User.where.not(id: current_user.id).ransack(params[:q])
       @users = @search.result.with_attached_avatars.paginate(page: params[:page], per_page: 9)
     end
   end
