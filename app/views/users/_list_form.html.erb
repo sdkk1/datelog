@@ -1,4 +1,4 @@
-<span class="datespot-index-info__bottom--actions-list" id="list-<%= @datespot.id %>">
+<span class="list-button" id="list-<%= @datespot.id %>">
   <% if !current_user.nil? && current_user.list?(@datespot) %>
     <%= render 'users/unlist' %>
   <% else %>

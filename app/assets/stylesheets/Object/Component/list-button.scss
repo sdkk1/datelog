@@ -1,14 +1,15 @@
 @import "Object/Utility/colors";
 @import "Object/Utility/prefix";
 
-.follow-button {
+.list-button {
   &__before {
     display: inline-block;
     color: white;
+    text-align: center;
     vertical-align: middle;
-    width: 40%;
-    font-size: 1.2rem;
-    line-height: 2.5;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 2;
     border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: $font-color__wine-red;
@@ -17,7 +18,7 @@
     &--icon {
       color: white;
       font-size: 1.6rem;
-      margin-right: 3%;
+      margin-right: 5%;
     }
   }
 
@@ -33,21 +34,32 @@
 
   &__after {
     display: inline-block;
-    margin: 0 auto;
     color: white;
+    text-align: center;
     vertical-align: middle;
-    width: 40%;
-    font-size: 1.2rem;
-    line-height: 2.5;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 2;
     border: 2px solid $button-hover-color__pink;
     border-radius: 5px;
     background-color: $button-hover-color__pink;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.4);
 
     &--icon {
       color: white;
       font-size: 1.6rem;
-      margin-right: 3%;
+      margin-right: 5%;
     }
+  }
+
+  &__after:hover {
+    border: 2px solid $font-color__wine-red;
+    background-color: $font-color__wine-red;
+  }
+
+  &__after:active {
+    @include ProprtySetPrefix(transform, translateY(4px));
+    box-shadow: 0px 0px 0px rgba(0,0,0,0);
   }
 
   a:hover {
