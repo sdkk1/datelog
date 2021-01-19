@@ -1,1 +1,2 @@
 $("#list-<%= @datespot.id %>").html("<%= escape_javascript(render('users/unlist')) %>");
+$("#list-count-<%= @datespot.id %>").html('<i class="fas fa-hand-paper"></i>&nbsp;<%= @datespot.lists.count %>');

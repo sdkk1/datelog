@@ -35,16 +35,27 @@
       }
     }
 
-    &--datespot-change {
-      font-size: 3.6rem;
+    &--actions {
+      display:flex;
+      justify-content: flex-end;
+      font-size: 3rem;
+
+      &-favorite {
+        display:flex;
+        align-items: center;
+      }
 
       a:hover {
         text-decoration: none;
       }
 
-      &-edit:hover, &-delete:hover {
+      &-edit:hover, &-delete:hover, &-favorite:hover {
         opacity: 0.7;
       }
+    }
+
+    &--actions >:first-child {
+      margin-right: auto;
     }
   }
 
@@ -68,7 +79,7 @@
       text-align: center;
       vertical-align: middle;
       padding: 0 1.5%;
-      margin-right: 5%;
+      margin-right: 3%;
       font-size: 1.8rem;
       line-height: 2;
       background-color: whitesmoke;
@@ -92,10 +103,17 @@
 
       &-impressions {
         display:flex;
+        align-items: center;
 
         &-icon {
-          margin-top: 15%;
+          margin-top: 5%;
         }
+      }
+
+      &-list {
+        display:flex;
+        align-items: center;
+        margin-left: 15%;
       }
     }
 

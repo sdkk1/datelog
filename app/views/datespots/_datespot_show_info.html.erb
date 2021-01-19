@@ -25,17 +25,17 @@
         <%= @datespot.user.name %>
       <% end %>
     </div>
-    <div class="datespot-show-info__top--datespot-change">
-      <% if current_user == @datespot.user %>
-        <%= link_to edit_datespot_path(@datespot), class: "datespot-show-info__top--datespot-change-edit", id: 'datespot-edit' do %>　
-          <i class="far fa-edit"></i>
-        <% end %>
-      <% end %>
+    <div class="datespot-show-info__top--actions">
       <% if logged_in? %>
-        <% if current_user.admin? || (current_user == @datespot.user) %>
-          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-show-info__top--datespot-change-delete", id: 'datespot-delete' do %>
+        <% if current_user == @datespot.user %>
+          <%= link_to edit_datespot_path(@datespot), class: "datespot-show-info__top--actions-edit", id: 'datespot-edit' do %>　
+            <i class="far fa-edit"></i>
+          <% end %>&ensp;
+          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-show-info__top--actions-delete", id: 'datespot-delete' do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
+        <% else %>
+          <%= render 'users/favorite_form' %>
         <% end %>
       <% end %>
     </div>
@@ -55,7 +55,9 @@
       <span class="datespot-show-info__bottom--actions-impressions">
         <i class="fas fa-eye datespot-show-info__bottom--actions-impressions-icon"></i>&nbsp;<%= @datespot.impressions_count %>
       </span>
-      <%= render 'users/favorite_form' if logged_in? %>
+      <span class="datespot-show-info__bottom--actions-list" id="list-count-<%= @datespot.id %>">
+        <i class="fas fa-hand-paper"></i>&nbsp;<%= @datespot.lists.count %>
+      </span>
     </div>
   </div>
   <div class="datespot-show-info__list">

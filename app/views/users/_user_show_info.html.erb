@@ -5,7 +5,7 @@
       <span class="user-show-info__status--impressions-count"><i class="fas fa-shoe-prints"></i><%= @user.impressions_count %>人が訪れました</span>
     </div>
     <div class="user-show-info__status--stats">
-      <%= render 'shared/stats' %>
+      <%= render 'shared/follow_stats' %>
     </div>
     <div class="user-show-info__status--follow-form">
       <%= render 'follow_form' if logged_in? %>

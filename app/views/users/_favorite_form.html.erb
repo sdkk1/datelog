@@ -1,4 +1,4 @@
-<span class="datespot-index-info__bottom--actions-favorite" id="favorite-<%= @datespot.id %>">
+<span class="datespot-index-info__top--actions-favorite" id="favorite-<%= @datespot.id %>">
   <% if !current_user.nil? && current_user.favorite?(@datespot) %>
     <%= render 'users/unfavorite' %>
   <% else %>
