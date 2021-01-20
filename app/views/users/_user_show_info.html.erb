@@ -13,9 +13,15 @@
   </div>
   <div class="user-show-info__introduction">
     <span class="user-show-info__introduction--title">自己紹介</span>
-    <div class="user-show-info__introduction--content">
-      <%= simple_format(h(@user.introduction)) %>
-    </div>
+    <% if @user.introduction.present? %>
+      <div class="user-show-info__introduction--content">
+        <%= simple_format(h(@user.introduction)) %>
+      </div>
+    <% else %>
+      <div class="user-show-info__introduction--content">
+        自己紹介文はありません
+      </div>
+    <% end %>
   </div>
   <div class="user-show-info__profile">
     <div class="user-show-info__profile--user-change">
@@ -35,14 +41,14 @@
       <% if @user.prefecture.present? %>
         <span class="user-show-info__profile--content-residence">居住地：<%= @user.prefecture.name %></span><br>
       <% else %>
-        <span class="user-show-info__profile--content-residence">居住地：</span><br>
+        <span class="user-show-info__profile--content-residence">居住地：未選択</span><br>
       <% end %>
       <% if @user.age.present? %>
-        <span class="user-show-info__profile--content-age">年齢：<%= @user.age_i18n %></span><br>
+        <span class="user-show-info__profile--content-age">年齢&emsp;：<%= @user.age_i18n %></span><br>
       <% else %>
-        <span class="user-show-info__profile--content-age">年齢：</span><br>
+        <span class="user-show-info__profile--content-age">年齢&emsp;：未選択</span><br>
       <% end %>
-      <span class="user-show-info__profile--content-sex">性別：<%= @user.sex_i18n %></span><br>
+      <span class="user-show-info__profile--content-sex">性別&emsp;：<%= @user.sex_i18n %></span><br>
       <span class="user-show-info__profile--content-timestamp">更新日：<%= l @user.updated_at %></span>
     </div>
   </div>

@@ -146,7 +146,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content 'お誘い一言'
         expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content '参考URL'
+        expect(page).to have_content '参考サイト'
         expect(page).to have_content 'デート詳細'
       end
     end
@@ -331,7 +331,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content 'お誘い一言'
         expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content '参考URL'
+        expect(page).to have_content '参考サイト'
         expect(page).to have_content 'デート詳細'
       end
     end

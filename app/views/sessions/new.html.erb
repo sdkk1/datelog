@@ -10,7 +10,7 @@
         <%= form_for(:session, url: login_path, local: true) do |form| %>
           <div class='info-form'>
             <%= form.label 'メールアドレス' %><span class="info-form__input-need">※必須(255文字以内)</span><br>
-            <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'info-form__input-form', id: 'user_email', required: true %>
+            <%= form.email_field :email, placeholder: "メールアドレスを入力", class: 'info-form__input-form', id: 'user_email', required: true, autofocus: true %>
           </div>
           <div class='info-form'>
             <%= form.label 'パスワード' %><span class="info-form__input-need">※必須(6文字以上)</span><br>

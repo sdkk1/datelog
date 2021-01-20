@@ -1,6 +1,6 @@
 <div class='info-form'>
   <%= form.label :name %><span class="info-form__input-need">※必須(50文字以内)</span><br>
-  <%= form.text_field :name, placeholder: "店名を入力", class: 'info-form__input-form', required: true %>
+  <%= form.text_field :name, placeholder: "店名を入力", class: 'info-form__input-form', required: true, autofocus: true %>
 </div>
 <div class='info-form'>
   <%= form.label :prefecture_code %><span class="info-form__input-need">※必須</span><br>
@@ -24,12 +24,16 @@
   <%= form.file_field :images, multiple: true, class: 'info-form__file-form' %>
 </div>
 <div class='info-form'>
-  <%= form.label :tag_list %><span class="info-form__input-unneed">※任意</span><br>
-  <%= form.text_field :tag_list, placeholder: "キーワードをカンマ区切りで入力：(例) オシャレ,安い", value: @datespot.tag_list.join(',') , class: 'info-form__input-form', id: 'datespot_tag' %>
+  <%= form.label :date %><span class="info-form__input-unneed">※任意</span><br>
+  <%= form.date_field :date, class: 'info-form__input-form' %>
 </div>
 <div class='info-form'>
   <%= form.label :reference_url %><span class="info-form__input-unneed">※任意</span><br>
-  <%= form.text_field :reference_url, placeholder: "参考URLを入力", class: 'info-form__input-form' %>
+  <%= form.text_field :reference_url, placeholder: "参考サイトを入力", class: 'info-form__input-form' %>
+</div>
+<div class='info-form'>
+  <%= form.label :tag_list %><span class="info-form__input-unneed">※任意</span><br>
+  <%= form.text_field :tag_list, placeholder: "キーワードをカンマ区切りで入力：(例) オシャレ,安い", value: @datespot.tag_list.join(',') , class: 'info-form__input-form', id: 'datespot_tag' %>
 </div>
 <div class='info-form'>
   <%= form.label :plan %><span class="info-form__input-unneed">※任意(255文字以内)</span><br>

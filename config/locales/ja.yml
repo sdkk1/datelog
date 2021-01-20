@@ -35,7 +35,8 @@ ja:
         tag_list: キーワード
         invitation: お誘い一言
         plan: デート詳細
-        reference_url: 参考URL
+        date: 予定日
+        reference_url: 参考サイト
         images: 写真
         user_id: ユーザーID
       comment:

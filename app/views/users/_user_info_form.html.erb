@@ -11,7 +11,7 @@
 </div>
 <div class='info-form'>
   <%= form.label :name %><span class="info-form__input-need">※必須(50文字以内)</span><br>
-  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'info-form__input-form', required: true %>
+  <%= form.text_field :name, placeholder: "ユーザー名を入力", class: 'info-form__input-form', required: true, autofocus: true %>
 </div>
 <div class='info-form'>
   <%= form.label :email %><span class="info-form__input-need">※必須(255文字以内)</span><br>

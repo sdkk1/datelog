@@ -14,7 +14,7 @@
     </script>&nbsp;
     <span class="datespot-index-info__evaluations--rate-average-score"><%= @datespot.rate_average.round(1) %></span>
   </div>
-  <span class="datespot-index-info__evaluations--comment"><i class="fas fa-comment-alt"></i>&ensp;<%= @datespot.comments_count %></span>
+  <span class="datespot-index-info__evaluations--comment"><i class="fas fa-comment-alt"></i>&nbsp;<%= @datespot.comments_count %></span>
 <% else %>
   <div class="datespot-index-info__evaluations--rate-average">
     <div id="rate-average-<%= @datespot.id %>"></div>

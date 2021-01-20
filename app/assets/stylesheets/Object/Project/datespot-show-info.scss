@@ -59,7 +59,7 @@
     }
   }
 
-  &__address, &__range, &__invitation, &__reference-url {
+  &__address, &__range, &__invitation, &__date, &__reference-url {
     display: inline-block;
     margin-bottom: 1.5%;
     width: 100%;
@@ -67,30 +67,19 @@
     text-align: left;
   }
 
-  &__keywords {
+   &__reference-url {
     display: inline-block;
     margin-bottom: 1%;
     width: 100%;
+    font-size: 2rem;
     text-align: left;
-
-    &--tag {
-      display: inline-block;
-      color: $link-color__blue;
-      text-align: center;
-      vertical-align: middle;
-      padding: 0 1.5%;
-      margin-right: 3%;
-      font-size: 1.8rem;
-      line-height: 2;
-      background-color: whitesmoke;
-    }
   }
 
   &__bottom {
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 
     &--timestamp {
       font-size: 2rem;
@@ -119,6 +108,25 @@
 
     &--actions >:first-child {
       margin-right: auto;
+    }
+  }
+
+  &__keywords {
+    display: inline-block;
+    margin-bottom: 2.5%;
+    width: 100%;
+    text-align: left;
+
+    &--tag {
+      display: inline-block;
+      color: $link-color__blue;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0 1.5%;
+      margin-right: 3%;
+      font-size: 1.8rem;
+      line-height: 2;
+      background-color: whitesmoke;
     }
   }
 

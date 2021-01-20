@@ -6,7 +6,7 @@
         <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "datespot-index__card-upper--image" %>
       <% end %>
       <div class="datespot-index__card-upper--count">
-        <i class="far fa-image datespot-index__card-upper--count-icon"></i>&nbsp;
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>
         <%= @datespot.images.count %>
       </div>
     <% else %>
@@ -14,7 +14,7 @@
         <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--image" %>
       <% end %>
       <div class="datespot-index__card-upper--count">
-        <i class="far fa-image datespot-index__card-upper--count-icon"></i>&ensp;０
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>&nbsp;0
       </div>
     <% end %>
   </div>
