@@ -25,7 +25,7 @@
         <input id="q_sex_eq_1" type="radio" name="q[sex_eq]" value="1">
         <label for="q_sex_eq_1">女性</label>
       </div>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc', '足跡の多い順': 'impressions_count desc', '提案数の多い順': 'datespots_count desc', 'いいね！の多い順': 'followed_count desc'}, { selected: params[:q][:sorts] }, class: 'user-search__search-form--sort-field')%>
+      <%= form.select( :sorts, {'更新日が新しい順': 'updated_at desc', '更新日が古い順': 'updated_at asc','年齢が高い順': 'age desc', '年齢が低い順': 'age asc', '足跡が多い順': 'impressions_count desc', 'いいね！が多い順': 'followed_count desc', '提案数が多い順': 'datespots_count desc'}, { selected: params[:q][:sorts] }, class: 'user-search__search-form--sort-field')%>
       <button type="submit" class="user-search__search-form--search-button">
         <i class="fas fa-search user-search__search-form--search-icon"></i>
       </button>
