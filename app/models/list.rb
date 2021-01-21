@@ -1,6 +1,6 @@
 class List < ApplicationRecord
   belongs_to :user
-  belongs_to :datespot
+  belongs_to :datespot, counter_cache: :lists_count
 
   scope :sort_desc, -> { order(created_at: :desc) }
 
