@@ -1,0 +1,46 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.datespot-menu {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+    width: 25%;
+    font-size: 1.8rem;
+    line-height: 2.5;
+    border: 1px solid lightgray;
+    background-color: whitesmoke;
+    margin-bottom: 2%;
+
+    &-icon {
+      color: $link-color__blue;
+      margin-right: 5%;
+    }
+  }
+
+  &__link:hover {
+    border: 1px solid lightgray;
+    background-color: white;
+  }
+
+  #selected-menu {
+    background-color: $font-color__wine-red;
+    border: 1px solid $font-color__wine-red;
+
+    a {
+      color: white;
+      text-decoration: none;
+      pointer-events: none;
+    }
+  }
+
+  #selected-menu-icon {
+    color: white;
+    margin-right: 5%;
+  }
+}

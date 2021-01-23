@@ -5,6 +5,11 @@ class ListsController < ApplicationController
     @lists = current_user.lists.preload(datespot: { images_attachments: :blob }).paginate(page: params[:page], per_page: 5).sort_desc
   end
 
+  def my_index
+    get_my_lists_ids = List.where(from_user_id: current_user.id).pluck(:datespot_id)
+    @datespots = Datespot.where(id: get_my_lists_ids).preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 6).sort_desc
+  end
+
   def create
     @datespot = Datespot.find(params[:datespot_id])
     @user = @datespot.user

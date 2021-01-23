@@ -1,23 +1,37 @@
-<% provide(:title, "閲覧履歴一覧") %>
+<% @user = current_user %>
+<% provide(:title, "#{@user.name}") %>
 <div class="container-fluid">
   <div class="row">
     <%= render 'layouts/logging_in_sidebar' %>
     <div class="main">
       <div class="heading">
-        <h1 class="heading__title">閲覧履歴一覧</h1>
+        <h1 class="heading__title"><%= @user.name %></h1>
       </div>
       <div class="content">
-        <% if @histories.present? %>
-          <p class="history-index__datespot-count">閲覧履歴： <%= @histories.count %>件<br>(最大10件まで)</p>
-          <ol>
-            <%= render @histories %>
-          </ol>
-          <%= will_paginate @histories, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
-        <% else %>
-          <span class="history-index__no-datespot">履歴はありません</span>
-        <% end %>
+        <div class="user-show">
+          <div class="user-show__card-upper">
+            <div class="user-show__card-upper--image">
+              <%= render 'users/user-slider' %>
+            </div>
+          </div>
+          <div class="user-show__card-lower">
+            <div class="user-show__card-lower--info">
+              <%= render 'users/user_show_info' %>
+              <% if current_user == @user %>
+                <ul class="datespot-menu">
+                  <li class="datespot-menu__link"><%= link_to current_user do %><i class="zmdi zmdi-male-female zmdi-hc-lg datespot-menu__link-icon"></i>自分の提案<% end %></li>
+                  <li class="datespot-menu__link"  id="selected-menu"><%= link_to browsing_histories_path do %><i class="fas fa-eye"  id="selected-menu-icon"></i>閲覧した提案<% end %></li>
+                  <li class="datespot-menu__link"><%= link_to '/lists/my_lists' do %><i class="fas fa-hand-paper datespot-menu__link-icon"></i>行きたい！した提案<% end %></li>
+                  <li class="datespot-menu__link"><%= link_to favorites_path do %><i class="fa fa-heart datespot-menu__link-icon"></i>お気に入りした提案<% end %></li>
+                </ul>
+              <% end %>
+              <%= render 'browsing_histories/my_browsing_history_datespots' %>
+            </div>
+          </div>
+        </div>
       </div>
       <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
+<%= render 'layouts/user-slider_script' %>

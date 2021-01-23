@@ -8,7 +8,7 @@
       <%= render 'shared/follow_stats' %>
     </div>
     <div class="user-show-info__status--follow-form">
-      <%= render 'follow_form' if logged_in? %>
+      <%= render 'users/follow_form' if logged_in? %>
     </div>
   </div>
   <div class="user-show-info__introduction">
@@ -50,19 +50,6 @@
       <% end %>
       <span class="user-show-info__profile--content-sex">性別&emsp;：<%= @user.sex_i18n %></span><br>
       <span class="user-show-info__profile--content-timestamp">更新日：<%= l @user.updated_at %></span>
-    </div>
-  </div>
-  <div class="user-show-info__datespots">
-    <span class="user-show-info__datespots--title">提案一覧(<%= @user.datespots.count %>件)</span>
-    <div class="user-show-info__datespots--content">
-      <% if @user.datespots.any? %>
-        <ol class="datespot-index">
-          <%= render @datespots %>
-        </ol>
-        <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
-      <% else %>
-        <span class="datespot-index__no-datespot-small">まだ提案をしていません</span>
-      <% end %>
     </div>
   </div>
 </div>

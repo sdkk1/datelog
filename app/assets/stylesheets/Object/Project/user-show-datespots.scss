@@ -1,0 +1,20 @@
+@import "Object/Utility/colors";
+@import "Object/Utility/prefix";
+
+.user-show-datespots {
+  text-align: left;
+
+  &__title {
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  &__caution {
+    font-size: 2rem;
+    margin-left: 1%;
+  }
+
+  &__content {
+    margin-top: 2%;
+  }
+}
