@@ -1,11 +1,20 @@
+<% if current_user?(@user) %>
+  <ul class="datespot-menu">
+    <li class="datespot-menu__link"><%= link_to current_user, remote: true do %><i class="zmdi zmdi-male-female zmdi-hc-lg datespot-menu__link-icon"></i>自分の提案<% end %></li>
+    <li class="datespot-menu__link"  id="selected-menu"><%= link_to browsing_histories_path do %><i class="fas fa-eye"  id="selected-menu-icon"></i>閲覧した提案<% end %></li>
+    <li class="datespot-menu__link"><%= link_to '/lists/my_lists', remote: true do %><i class="fas fa-hand-paper datespot-menu__link-icon"></i>行きたい！した提案<% end %></li>
+    <li class="datespot-menu__link"><%= link_to favorites_path, remote: true do %><i class="fa fa-heart datespot-menu__link-icon"></i>お気に入りした提案<% end %></li>
+  </ul>
+<% end %>
 <div class="user-show-datespots">
   <span class="user-show-datespots__title">提案一覧(<%= @datespots_all.count %>件)</span>
   <span class="user-show-datespots__caution">※最大12件</span>
   <div class="user-show-datespots__content">
     <% if @datespots.any? %>
-      <div id="datespot_index">
-        <%= render partial: 'browsing_histories/datespot_index' %>
-      </div>
+      <ol class="datespot-index">
+        <%= render @datespots %>
+      </ol>
+      <%= paginate @datespots, remote: true %>
     <% else %>
       <span class="datespot-index__no-datespot-small">提案はありません</span>
     <% end %>

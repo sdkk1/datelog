@@ -1,4 +1,3 @@
-<% @user = current_user %>
 <% provide(:title, "#{@user.name}") %>
 <div class="container-fluid">
   <div class="row">
@@ -17,15 +16,9 @@
           <div class="user-show__card-lower">
             <div class="user-show__card-lower--info">
               <%= render 'users/user_show_info' %>
-              <% if current_user == @user %>
-                <ul class="datespot-menu">
-                  <li class="datespot-menu__link"><%= link_to current_user do %><i class="zmdi zmdi-male-female zmdi-hc-lg datespot-menu__link-icon"></i>自分の提案<% end %></li>
-                  <li class="datespot-menu__link"  id="selected-menu"><%= link_to browsing_histories_path do %><i class="fas fa-eye"  id="selected-menu-icon"></i>閲覧した提案<% end %></li>
-                  <li class="datespot-menu__link"><%= link_to '/lists/my_lists' do %><i class="fas fa-hand-paper datespot-menu__link-icon"></i>行きたい！した提案<% end %></li>
-                  <li class="datespot-menu__link"><%= link_to favorites_path do %><i class="fa fa-heart datespot-menu__link-icon"></i>お気に入りした提案<% end %></li>
-                </ul>
-              <% end %>
-              <%= render 'browsing_histories/my_browsing_history_datespots' %>
+              <div id="datespot_index">
+                <%= render 'browsing_histories/my_browsing_history_datespots' %>
+              </div>
             </div>
           </div>
         </div>
