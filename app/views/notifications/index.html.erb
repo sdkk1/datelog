@@ -8,7 +8,7 @@
       </div>
       <div class="content">
         <% if @notifications.present? %>
-          <p class="notification-index__notification-count">通知： <%= @notifications.count %>件</p><br>
+          <p class="notification-index__notification-count">通知： <%= @notifications_all.count %>件</p><br>
           <div class="notification-index__notification-all-delete">
             <%= link_to "全削除", "/notifications/destroy", method: :delete,
             data: { confirm: '全ての通知を削除します。本当に削除してよろしいでしょうか？' } %>
@@ -16,7 +16,7 @@
           <ol>
             <%= render @notifications %>
           </ol>
-          <%= will_paginate @notifications, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+          <%= paginate @notifications %>
         <% else %>
           <span class="notification-index__no-notification">通知はありません</span>
         <% end %>
