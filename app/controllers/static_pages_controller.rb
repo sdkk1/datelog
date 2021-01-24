@@ -2,8 +2,8 @@ class StaticPagesController < ApplicationController
   def home
     if params[:q].present?
       @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments)
-      @datespots = Kaminari.paginate_array(@datespots).page(params[:page]).per(9)
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
         @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
         @datespots = Kaminari.paginate_array(@datespots).page(params[:page]).per(9)
@@ -11,11 +11,11 @@ class StaticPagesController < ApplicationController
     else
       params[:q] = { sorts: 'updated_at desc' }
       @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments)
-      @datespots = Kaminari.paginate_array(@datespots).page(params[:page]).per(9)
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
-        @datespots = Kaminari.paginate_array(@datespots).page(params[:page]).per(9)
+        @datespots_all = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
+        @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       end
     end
 
