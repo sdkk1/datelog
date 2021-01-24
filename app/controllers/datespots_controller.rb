@@ -33,16 +33,20 @@ class DatespotsController < ApplicationController
   def index
     if params[:q].present?
       @search = Datespot.where.not(user_id: current_user.id).ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 9)
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 9)
+        @datespots_all = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
+        @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       end
     else
       params[:q] = { sorts: 'date asc' }
       @search = Datespot.where.not(user_id: current_user.id).ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 9)
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 9)
+        @datespots_all = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
+        @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       end
     end
   end

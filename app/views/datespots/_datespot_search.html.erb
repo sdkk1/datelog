@@ -3,7 +3,7 @@
     <% if params[:q][:name_cont].present? || params[:q][:user_name_cont].present? || params[:q][:address_cont].present? || params[:q][:tags_name_cont].present? %>
       <p>検索結果: <%= @datespots.count %>件</p>
     <% else %>
-      <p class="datespot-search__datespots-count">みんなの提案: <%= @datespots.count %>件</p>
+      <p class="datespot-search__datespots-count">みんなの提案: <%= @datespots_all.count %>件</p>
       <p class="datespot-search__search-description">※AND検索ができます</p>
     <% end %>
   </div>
