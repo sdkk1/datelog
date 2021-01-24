@@ -78,10 +78,9 @@
         </div>
         <div class="home__datespots--content">
           <% if @datespots.any? %>
-            <ol class="datespot-index">
-              <%= render @datespots %>
-            </ol>
-            <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+            <div id="home__datespot--index">
+              <%= render partial: 'datespot_index' %>
+            </div>
           <% end %>
         </div>
       </div>
