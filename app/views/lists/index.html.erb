@@ -8,11 +8,11 @@
       </div>
       <div class="content">
         <% if @lists.present? %>
-          <p class="list-index__datespot-count">行きたい！リクエスト： <%= @lists.count %>件</p>
+          <p class="list-index__datespot-count">行きたい！リクエスト： <%= @lists_all.count %>件</p>
           <ol>
             <%= render @lists %>
           </ol>
-          <%= will_paginate @lists, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+          <%= paginate @lists %>
         <% else %>
           <span class="list-index__no-datespot">行きたい！リクエストはありません</span>
         <% end %>
