@@ -42,8 +42,6 @@ gem "mini_magick"
 gem "aws-sdk-s3", require: false
 gem 'faker'
 gem 'kaminari'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
 gem 'enum_help'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rack-mini-profiler', require: false
