@@ -5,7 +5,8 @@ class RoomsController < ApplicationController
   def index
     get_followed_user_ids = Relationship.where(followed_id: current_user.id).pluck(:follower_id)
     get_match_user_ids = Relationship.where(followed_id: get_followed_user_ids, follower_id: current_user.id).pluck(:followed_id)
-    @match_users = User.eager_load(:passive_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC")
+    @match_users_all = User.eager_load(:passive_relationships).where(id: get_match_user_ids).order("relationships.created_at DESC")
+    @match_users = Kaminari.paginate_array(@match_users_all).page(params[:page]).per(10)
   end
 
   def create

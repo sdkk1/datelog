@@ -9,7 +9,7 @@
       <div class="content">
         <div class="matching-index">
           <% if @match_users.present?%>
-            <p class="matching-index__user-count"><%= @match_users.size %>人とマッチングしています</p>
+            <p class="matching-index__user-count"><%= @match_users_all.size %>人とマッチングしています</p>
             <ul>
               <% @match_users.each do |match_user| %>
                 <li class="matching-index__match-users">
@@ -34,6 +34,7 @@
                 </li>
               <% end %>
             </ul>
+          <%= paginate @match_users %>
           <% else %>
             <p class="matching-index__no-user">マッチングしているユーザーはいません</p>
           <% end %>
