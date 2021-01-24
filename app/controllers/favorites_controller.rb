@@ -2,7 +2,14 @@ class FavoritesController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @datespots = current_user.favorite_datespots.preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).paginate(page: params[:page], per_page: 6).sort_desc
+    @datespots_all = current_user.favorite_datespots.preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).sort_desc
+    @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(1)
+    @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
