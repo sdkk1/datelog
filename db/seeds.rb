@@ -570,6 +570,29 @@ datespot = Datespot.find(12)
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-1.jpg"), filename: "datespot12-1.jpg")
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-2.jpg"), filename: "datespot12-2.jpg")
 
+Datespot.create!(
+  # id: 13,
+  name: "東京ドームシティ アトラクションズ",
+  prefecture_code: 13,
+  address: "東京都文京区後楽1-3-61",
+  range: 2,
+  invitation: "遊園地で一緒に遊びませんか？",
+  date: Date.today + 1,
+  tag_list: "遊園地,ジェットコースター,観覧車",
+  reference_url: "https://at-raku.com/",
+  plan: "都心からアクセスしやすい遊園地で一緒に遊びませんか？
+  最高傾斜角度80度！最高速度130km/h！
+  観覧車の中心をくぐり抜けるスリルを味わえるジェットコースター「サンダードルフィン」や
+  地上80mから東京を眺められる観覧車「ビック・オー」など
+  絶叫好きも大満足のスリル系からほのぼの系まで約26種類のアトラクションが揃っています。
+  是非、ご一緒に行けるのを楽しみにしています！！",
+  user_id: 14,
+)
+
+# デートの写真を1枚設定
+datespot = Datespot.find(13)
+datespot.images.attach(io: File.open("app/assets/images/datespots/datespot13.jpg"), filename: "datespot13.jpg")
+
 # ============================== 行きたい！リクエスト ==============================
 # ゲストユーザーの提案が行きたい！リクエストされる
 List.create!(user_id: 21, datespot_id: 12, from_user_id: 18)
@@ -579,6 +602,11 @@ List.create!(user_id: 21, datespot_id: 9, from_user_id: 6)
 # ゲストユーザーが行きたい！リクエストをする
 List.create!(user_id: 7, datespot_id: 5, from_user_id: 21)
 
+# それ以外の行きたい！リクエスト
+List.create!(user_id: 14, datespot_id: 13, from_user_id: 7)
+List.create!(user_id: 4, datespot_id: 11, from_user_id: 8)
+List.create!(user_id: 11, datespot_id: 10, from_user_id: 16)
+
 # ============================== お気に入り登録 ==============================
 # ゲストユーザーの提案がお気に入り登録される
 Favorite.create!(user_id: 19, datespot_id: 12)
@@ -587,6 +615,10 @@ Favorite.create!(user_id: 6, datespot_id: 9)
 # ゲストユーザーがお気に入り登録をする
 Favorite.create!(user_id: 21, datespot_id: 5)
 Favorite.create!(user_id: 21, datespot_id: 2)
+
+# それ以外のお気に入り登録
+Favorite.create!(user_id: 7, datespot_id: 13)
+Favorite.create!(user_id: 16, datespot_id: 10)
 
 # ============================== 閲覧履歴 ==============================
 # ゲストユーザーの閲覧履歴
@@ -629,6 +661,11 @@ Comment.create!(user_id: 1, datespot_id: 11, rate: 5, content: "水族館で癒�
 # ゲストユーザーの提案にコメントされる-2
 Comment.create!(user_id: 9, datespot_id: 12, rate: 4, content: "自由の女神像の前で記念撮影したい！")
 Comment.create!(user_id: 10, datespot_id: 12, rate: 4, content: "臨海副都心の大パノラマを写真で撮りたい！")
+
+# 他の提案にコメントを作成-5
+Comment.create!(user_id: 7, datespot_id: 13, rate: 5, content: "観覧車に乗りたいです！")
+Comment.create!(user_id: 19, datespot_id: 13, rate: 5, content: "ジェットコースター面白そう！")
+Comment.create!(user_id: 2, datespot_id: 13, rate: 4, content: "男でもいいですか？笑")
 
 # ============================== 通知 ==============================
 # ゲストユーザーの通知を作成(varietyは順不同)
