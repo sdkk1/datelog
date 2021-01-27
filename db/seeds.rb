@@ -572,13 +572,13 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-2.j
 
 Datespot.create!(
   # id: 13,
-  name: "東京ドームシティ アトラクションズ",
+  name: "東京ドームシティ",
   prefecture_code: 13,
   address: "東京都文京区後楽1-3-61",
   range: 2,
   invitation: "遊園地で一緒に遊びませんか？",
   date: Date.today + 1,
-  tag_list: "遊園地,ジェットコースター,観覧車",
+  tag_list: "遊園地,観覧車",
   reference_url: "https://at-raku.com/",
   plan: "都心からアクセスしやすい遊園地で一緒に遊びませんか？
   最高傾斜角度80度！最高速度130km/h！

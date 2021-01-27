@@ -41,14 +41,14 @@ RSpec.describe "プロフィール編集", type: :request do
       login_for_request(other_user)
       get edit_user_path(user)
       expect(response).to have_http_status "302"
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to datespots_path
 
       patch user_path(user), params: { user: {
         name: user.name,
         email: user.email
       } }
       expect(response).to have_http_status "302"
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to datespots_path
     end
   end
 end
