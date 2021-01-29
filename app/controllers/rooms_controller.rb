@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @message_user1 = @room.entries.first.user
     @message_user2 = @room.entries.second.user
-    if !current_user?(@message_user1 || @message_user2)
+    unless current_user?(@message_user1) || current_user?(@message_user2)
       flash[:error] = "このページへはアクセスできません。"
       redirect_to(datespots_url)
     end

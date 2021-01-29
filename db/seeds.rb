@@ -596,8 +596,8 @@ datespot.images.attach(io: File.open("app/assets/images/datespots/datespot13.jpg
 # ============================== 行きたい！リクエスト ==============================
 # ゲストユーザーの提案が行きたい！リクエストされる
 List.create!(user_id: 21, datespot_id: 12, from_user_id: 18)
-List.create!(user_id: 21, datespot_id: 8, from_user_id: 17)
 List.create!(user_id: 21, datespot_id: 9, from_user_id: 6)
+List.create!(user_id: 21, datespot_id: 8, from_user_id: 17)
 
 # ゲストユーザーが行きたい！リクエストをする
 List.create!(user_id: 7, datespot_id: 5, from_user_id: 21)
