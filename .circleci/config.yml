@@ -11,7 +11,7 @@ jobs:
         environment:
           POSTGRES_PASSWORD: password
 
-    working_directory: ~/datelog
+    working_directory: ~/date-match
 
     steps:
       - checkout
