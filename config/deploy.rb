@@ -2,16 +2,16 @@
 lock '3.14.1'
 
 # デプロイするアプリケーション名
-set :application, 'datelog'
+set :application, 'date-match'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@github.com:sdkk1/datelog.git'
+set :repo_url, 'git@github.com:sdkk1/date-match.git'
 
 # deployするブランチ（デフォルトはmasterなのでなくても可）
 set :branch, 'master'
 
 # deploy先のディレクトリ
-set :deploy_to, '/var/www/rails/datelog'
+set :deploy_to, '/var/www/rails/date-match'
 
 # シンボリックリンクをはるファイル
 set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
