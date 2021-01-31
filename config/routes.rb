@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :notifications,　only: [:index, :destroy]
 
   get :lists, to: 'lists#index'
+  get   "lists/my_lists" => "lists#my_index"
   post   "lists/:datespot_id/create" => "lists#create"
   delete "lists/:list_id/destroy"    => "lists#destroy"
 

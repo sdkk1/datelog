@@ -22,7 +22,7 @@ class DatespotsController < ApplicationController
       end
       new_history.save
 
-      histories_stock_limit = 10
+      histories_stock_limit = 12
       histories = current_user.browsing_histories.all
       if histories.count > histories_stock_limit
         histories[0].destroy
@@ -32,17 +32,21 @@ class DatespotsController < ApplicationController
 
   def index
     if params[:q].present?
-      @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 9)
+      @search = Datespot.where.not(user_id: current_user.id).ransack(params[:q])
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 9)
+        @datespots_all = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
+        @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       end
     else
-      params[:q] = { sorts: 'updated_at desc' }
-      @search = Datespot.ransack(params[:q])
-      @datespots = @search.result.with_attached_images.preload(:user, :taggings, :comments).paginate(page: params[:page], per_page: 9)
+      params[:q] = { sorts: 'date asc' }
+      @search = Datespot.where.not(user_id: current_user.id).ransack(params[:q])
+      @datespots_all = @search.result.with_attached_images.preload(:user, :taggings, :comments)
+      @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       if params[:tag_name]
-        @datespots = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings).paginate(page: params[:page], per_page: 9)
+        @datespots_all = @search.result.tagged_with("#{params[:tag_name]}").with_attached_images.preload(:user, :taggings)
+        @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(9)
       end
     end
   end
@@ -92,12 +96,16 @@ class DatespotsController < ApplicationController
   private
 
   def datespot_params
-    params.require(:datespot).permit(:name, :prefecture_code, :address, :range,
+    params.require(:datespot).permit(:name, :prefecture_code, :address, :range, :date,
                                      :invitation, :plan, :reference_url, :tag_list, images: [])
   end
 
+  # 正しいユーザーかどうか確認
   def correct_user
     @datespot = current_user.datespots.find_by(id: params[:id])
-    redirect_to root_url if @datespot.nil?
+    if @datespot.nil?
+      flash[:error] = "このページへはアクセスできません。"
+      redirect_to(datespots_url)
+    end
   end
 end

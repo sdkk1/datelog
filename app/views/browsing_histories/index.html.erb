@@ -1,23 +1,30 @@
-<% provide(:title, "閲覧履歴一覧") %>
+<% provide(:title, "#{@user.name}") %>
 <div class="container-fluid">
   <div class="row">
     <%= render 'layouts/logging_in_sidebar' %>
     <div class="main">
       <div class="heading">
-        <h1 class="heading__title">閲覧履歴一覧</h1>
+        <h1 class="heading__title"><%= @user.name %></h1>
       </div>
       <div class="content">
-        <% if @histories.present? %>
-          <p class="history-index__datespot-count">閲覧履歴： <%= @histories.count %>件<br>(最大10件まで)</p>
-          <ol>
-            <%= render @histories %>
-          </ol>
-          <%= will_paginate @histories, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
-        <% else %>
-          <span class="history-index__no-datespot">履歴はありません</span>
-        <% end %>
+        <div class="user-show">
+          <div class="user-show__card-upper">
+            <div class="user-show__card-upper--image">
+              <%= render 'users/user-slider' %>
+            </div>
+          </div>
+          <div class="user-show__card-lower">
+            <div class="user-show__card-lower--info">
+              <%= render 'users/user_show_info' %>
+              <div id="datespot_index">
+                <%= render 'browsing_histories/my_browsing_history_datespots' %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <%= render 'layouts/footer' %>
     </div>
   </div>
 </div>
+<%= render 'layouts/user-slider_script' %>

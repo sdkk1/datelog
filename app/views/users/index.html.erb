@@ -12,7 +12,7 @@
           <ol class="user-index">
             <%= render @users %>
           </ol>
-          <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+          <%= paginate @users %>
         <% end %>
       </div>
       <%= render 'layouts/footer' %>

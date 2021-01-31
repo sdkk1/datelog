@@ -2,7 +2,20 @@ class ListsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @lists = current_user.lists.preload(datespot: { images_attachments: :blob }).paginate(page: params[:page], per_page: 5).sort_desc
+    @lists_all = current_user.lists.preload(datespot: { images_attachments: :blob }).sort_desc
+    @lists = Kaminari.paginate_array(@lists_all).page(params[:page]).per(5)
+  end
+
+  def my_index
+    get_my_lists_ids = List.where(from_user_id: current_user.id).pluck(:datespot_id)
+    @datespots_all = Datespot.where(id: get_my_lists_ids).preload(:taggings, :comments, images_attachments: :blob, user: { avatars_attachments: :blob }).sort_desc
+    @datespots = Kaminari.paginate_array(@datespots_all).page(params[:page]).per(6)
+    @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

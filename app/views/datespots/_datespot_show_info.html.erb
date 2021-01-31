@@ -25,37 +25,48 @@
         <%= @datespot.user.name %>
       <% end %>
     </div>
-    <div class="datespot-show-info__top--datespot-change">
-      <% if current_user == @datespot.user %>
-        <%= link_to edit_datespot_path(@datespot), class: "datespot-show-info__top--datespot-change-edit", id: 'datespot-edit' do %>　
-          <i class="far fa-edit"></i>
-        <% end %>
-      <% end %>
+    <div class="datespot-show-info__top--actions">
       <% if logged_in? %>
-        <% if current_user.admin? || (current_user == @datespot.user) %>
-          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-show-info__top--datespot-change-delete", id: 'datespot-delete' do %>
+        <% if current_user == @datespot.user %>
+          <%= link_to edit_datespot_path(@datespot), class: "datespot-show-info__top--actions-edit", id: 'datespot-edit' do %>　
+            <i class="far fa-edit"></i>
+          <% end %>&ensp;
+          <%= link_to datespot_path(@datespot), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "datespot-show-info__top--actions-delete", id: 'datespot-delete' do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
+        <% else %>
+          <%= render 'users/favorite_form' %>
         <% end %>
       <% end %>
     </div>
   </div>
-  <span class="datespot-show-info__address" id="datespot-address">住所：<%= @datespot.address %></span><br>
-  <span class="datespot-show-info__range">予算：<%= @datespot.range_i18n %></span><br>
+  <span class="datespot-show-info__address" id="datespot-address">住所&emsp;&emsp;&emsp;：<%= @datespot.address %></span><br>
+  <span class="datespot-show-info__range">予算&emsp;&emsp;&emsp;：<%= @datespot.range_i18n %></span><br>
   <span class="datespot-show-info__invitation">お誘い一言：<%= @datespot.invitation %></span><br>
-  <span class="datespot-show-info__reference-url">参考URL：<a href="<%= @datespot.reference_url %>" target="_blank" rel="noopener noreferrer"><%= @datespot.reference_url %></a></span><br>
+  <% if @datespot.date.present? %>
+    <span class="datespot-show-info__date">予定日&emsp;&emsp;：<%= l @datespot.date %></span><br>
+  <% else %>
+    <span class="datespot-show-info__date">予定日&emsp;&emsp;：未定</span><br>
+  <% end %>
+  <span class="datespot-show-info__reference-url">参考サイト：<a href="<%= @datespot.reference_url %>" target="_blank" rel="noopener noreferrer"><%= @datespot.reference_url %></a></span><br>
   <div class="datespot-show-info__bottom">
-    <span class="datespot-show-info__bottom--timestamp">更新日：<%= l @datespot.updated_at %></span>
+    <span class="datespot-show-info__bottom--timestamp">更新日&emsp;&emsp;：<%= l @datespot.updated_at %></span>
     <div class="datespot-show-info__bottom--actions">
       <span class="datespot-show-info__bottom--actions-impressions">
         <i class="fas fa-eye datespot-show-info__bottom--actions-impressions-icon"></i>&nbsp;<%= @datespot.impressions_count %>
       </span>
-      <%= render 'users/list_form' if logged_in? %>
-      <%= render 'users/favorite_form' if logged_in? %>
+      <span class="datespot-show-info__bottom--actions-list" id="list-count-<%= @datespot.id %>">
+        <i class="fas fa-hand-paper"></i>&nbsp;<%= @datespot.lists_count %>
+      </span>
     </div>
   </div>
   <div class="datespot-show-info__keywords">
-    <%= render 'datespots/tag_list', tag_list: @datespot.tag_list %>
+    <% @datespot.tag_list.each do |tag| %>
+      <span class="datespot-show-info__keywords--tag">#<%= link_to tag, datespots_path(tag_name: tag) %></span>
+    <% end %>
+  </div>
+  <div class="datespot-show-info__list">
+    <%= render 'users/list_form' if logged_in? %>
   </div>
   <h3 class="datespot-show-info__title">デート詳細</h3>
   <div class="datespot-show-info__plan">

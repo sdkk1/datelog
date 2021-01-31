@@ -39,6 +39,9 @@ Airbnb/DefaultScope:
 Metrics/LineLength:
   Enabled: false
 
+Airbnb/SimpleUnless:
+  Enabled: false
+
 Lint/UselessAssignment:
   Exclude:
     - 'app/uploaders/*'

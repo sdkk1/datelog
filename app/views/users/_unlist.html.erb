@@ -1,7 +1,6 @@
 <% list = List.find_by(datespot_id: @datespot.id) %>
 <% if current_user != @datespot.user %>
-  <%= link_to "/lists/#{list.id}/destroy", method: :delete, class: 'unlist', remote: true do %>
-    <span><i class="fas fa-hand-paper"></i></span>
-  <% end %>&nbsp;
-  <span><%= @datespot.lists.count %></span>
+  <%= link_to "/lists/#{list.id}/destroy", method: :delete, class: 'list-button__after', remote: true do %>
+    <i class="fas fa-hand-paper list-button__after--icon"></i>行きたい！済
+  <% end %>
 <% end %>

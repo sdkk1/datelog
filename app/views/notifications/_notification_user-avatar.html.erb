@@ -1,0 +1,11 @@
+<div class="notification-index__user">
+  <% if @user.avatars.attached? %>
+    <%= link_to user_path(@user) do %>
+      <%= image_tag @user.avatars.first.variant(resize:'200x200').processed, class: "notification-index__user-avatar" %>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(@user) do %>
+      <%= image_tag 'thumb50_default.png', class: "notification-index__user-avatar" %>
+    <% end %>
+  <% end %>
+</div>

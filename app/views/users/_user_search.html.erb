@@ -1,9 +1,9 @@
 <div class='user-search'>
   <div class='user-search__search-result'>
     <% if params[:q][:name_cont].present? || params[:q][:prefecture_code_eq].present? || params[:q][:age_gteq].present? || params[:q][:age_lt].present? || params[:q][:sex_eq].present? %>
-      <p>検索結果: <%= @users.count %>人</p>
+      <p>検索結果: <%= @users_all.count %>人</p>
     <% else %>
-      <p class="user-search__users-count">ユーザー: <%= @users.count-1 %>人</p>
+      <p class="user-search__users-count">ユーザー: <%= @users_all.count %>人</p>
       <p class="user-search__search-description">※AND検索ができます</p>
     <% end %>
   </div>
@@ -25,7 +25,7 @@
         <input id="q_sex_eq_1" type="radio" name="q[sex_eq]" value="1">
         <label for="q_sex_eq_1">女性</label>
       </div>
-      <%= form.select( :sorts, {'更新日の新しい順': 'updated_at desc', '更新日の古い順': 'updated_at asc','年齢の高い順': 'age desc', '年齢の低い順': 'age asc', '足跡の多い順': 'impressions_count desc', '提案数の多い順': 'datespots_count desc', 'いいね！の多い順': 'followed_count desc'}, { selected: params[:q][:sorts] }, class: 'user-search__search-form--search-field')%>
+      <%= form.select( :sorts, {'更新日が新しい順': 'updated_at desc', '更新日が古い順': 'updated_at asc','年齢が高い順': 'age desc', '年齢が低い順': 'age asc', '足跡が多い順': 'impressions_count desc', 'いいね！が多い順': 'followed_count desc', '提案数が多い順': 'datespots_count desc'}, { selected: params[:q][:sorts] }, class: 'user-search__search-form--sort-field')%>
       <button type="submit" class="user-search__search-form--search-button">
         <i class="fas fa-search user-search__search-form--search-icon"></i>
       </button>

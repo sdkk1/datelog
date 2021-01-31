@@ -18,13 +18,19 @@
   </div>
   <% if @user.prefecture.present? %>
     <span class="user-index-info__residence"><i class="fas fa-map-marker-alt fa-lg user-index-info__icon-residence"></i><%= @user.prefecture.name %></span><br>
+  <% else %>
+    <span class="user-index-info__residence"><i class="fas fa-map-marker-alt fa-lg user-index-info__icon-residence"></i>未選択</span><br>
   <% end %>
   <% if @user.age.present? %>
     <span class="user-index-info__age"><i class="fas fa-calendar user-index-info__icon-age"></i><%= @user.age_i18n %></span><br>
+  <% else %>
+    <span class="user-index-info__age"><i class="fas fa-calendar user-index-info__icon-age"></i>未選択</span><br>
   <% end %>
   <span class="user-index-info__sex"><i class="fas fa-venus-mars user-index-info__icon-sex"></i><%= @user.sex_i18n %></span><br>
   <% if @user.introduction.present? %>
     <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon-introduction"></i><%= @user.introduction.slice(0..11) %>...</span><br>
+  <% else %>
+    <span class="user-index-info__introduction"><i class="fas fa-comment-dots user-index-info__icon-introduction"></i>自己紹介文はありません</span><br>
   <% end %>
   <div class="user-index-info__bottom">
     <span class="user-index-info__bottom--timestamp">

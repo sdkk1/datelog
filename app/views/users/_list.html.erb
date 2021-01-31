@@ -1,6 +1,5 @@
 <% if current_user != @datespot.user %>
-  <%= link_to "/lists/#{@datespot.id}/create", method: :post, class: 'list', remote: true do %>
-    <span><i class="far fa-hand-paper"></i></span>
-  <% end %>&nbsp;
-  <span><%= @datespot.lists.count %></span>
+  <%= link_to "/lists/#{@datespot.id}/create", method: :post, class: 'list-button__before', remote: true do %>
+    <i class="far fa-hand-paper list-button__before--icon"></i>行きたい！
+  <% end %>
 <% end %>

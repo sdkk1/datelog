@@ -1,23 +1,24 @@
 <% @datespot = Datespot.find(browsing_history.datespot_id) %>
-<li class="history-index" id="browsing_history-<%= browsing_history.id %>">
-  <div class="history-index__card" id="datespot-<%= @datespot.id %>">
-    <div class="history-index__card-upper">
-      <% if @datespot.images.attached? %>
-        <%= link_to datespot_path(@datespot) do %>
-          <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "history-index__card-upper--image" %>
-        <% end %>
-      <% else %>
-        <%= link_to datespot_path(@datespot) do %>
-          <%= image_tag 'thumb400_default.png', class: "history-index__card-upper--image" %>
-        <% end %>
+<li class="datespot-index__card" id="datespot-<%= @datespot.id %>">
+  <div class="datespot-index__card-upper">
+    <% if @datespot.images.attached? %>
+      <%= link_to datespot_path(@datespot) do %>
+        <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "datespot-index__card-upper--image" %>
       <% end %>
-    </div>
-    <div class="history-index__card-lower">
-      <%= render 'datespots/datespot_index_info' %>
-    </div>
+      <div class="datespot-index__card-upper--count">
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>
+        <%= @datespot.images.count %>
+      </div>
+    <% else %>
+      <%= link_to datespot_path(@datespot) do %>
+        <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--image" %>
+      <% end %>
+      <div class="datespot-index__card-upper--count">
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>&nbsp;0
+      </div>
+    <% end %>
   </div>
-  <div class="history-index__info">
-    <p class="history-index__info--description">この提案を閲覧しました</p><br>
-    <p class="history-index__info--timestamp"><%= l browsing_history.created_at %></p>
+  <div class="datespot-index__card-lower">
+    <%= render 'datespots/datespot_index_info' %>
   </div>
 </li>

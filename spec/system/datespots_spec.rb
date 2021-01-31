@@ -5,6 +5,7 @@ RSpec.describe "Datespots", type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:datespot) { create(:datespot, user: user) }
+  let!(:datespot2) { create(:datespot, user: other_user) }
   let!(:comment) { create(:comment, user: user, datespot: datespot) }
 
   describe "提案一覧ページ" do
@@ -25,10 +26,6 @@ RSpec.describe "Datespots", type: :system do
       it "正しいタイトルが表示されることを確認" do
         expect(page).to have_title full_title('デートを探す')
       end
-
-      it "みんなの提案の件数が表示されていることを確認" do
-        expect(page).to have_content "みんなの提案: #{Datespot.all.count}件"
-      end
     end
 
     context "ページレイアウト(管理者ユーザーの場合)" do
@@ -48,32 +45,10 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "提案削除(管理者ユーザーの場合)", js: true do
-      it "提案を削除後、削除成功のフラッシュが表示されること" do
-        login_for_system(admin_user)
-        visit datespots_path
-        within first('.datespot-index__card') do
-          page.accept_confirm("本当に削除しますか？") do
-            find('#datespot-delete').click
-          end
-        end
-        expect(page).to have_content '提案が削除されました'
-      end
-    end
-
     context "ページレイアウト(管理者ユーザー以外の場合)" do
       before do
         login_for_system(user)
-      end
-
-      it "デートスポットの情報が表示されていることを確認(提案者のリンクあり)" do
-        Datespot.take(5).each do |datespot|
-          expect(page).to have_link datespot.name
-          expect(page).to have_content datespot.address
-          expect(page).to have_content datespot.range_i18n
-          expect(page).to have_content datespot.tag_list
-          expect(page).to have_link datespot.user.name
-        end
+        visit datespots_path
       end
 
       it "自分の提案のみ削除ボタンが表示されること" do
@@ -146,7 +121,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content 'お誘い一言'
         expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content '参考URL'
+        expect(page).to have_content '参考サイト'
         expect(page).to have_content 'デート詳細'
       end
     end
@@ -205,17 +180,6 @@ RSpec.describe "Datespots", type: :system do
       end
     end
 
-    context "提案削除(管理者ユーザーの場合)", js: true do
-      it "提案を削除後、削除成功のフラッシュが表示されること" do
-        login_for_system(admin_user)
-        visit datespot_path(datespot)
-        page.accept_confirm("本当に削除しますか？") do
-          find('#datespot-delete').click
-        end
-        expect(page).to have_content '提案が削除されました'
-      end
-    end
-
     context "ページレイアウト(管理者ユーザー以外の場合)" do
       before do
         login_for_system(user)
@@ -269,32 +233,30 @@ RSpec.describe "Datespots", type: :system do
     context "お気に入り登録/解除" do
       it "提案詳細ページから提案のお気に入り登録/解除ができること" do
         login_for_system(user)
-        visit datespot_path(datespot)
+        visit datespot_path(datespot2)
         link = find('.like')
-        expect(link[:href]).to include "/favorites/#{datespot.id}/create"
+        expect(link[:href]).to include "/favorites/#{datespot2.id}/create"
         link.click
         link = find('.unlike')
-        expect(link[:href]).to include "/favorites/#{datespot.id}/destroy"
+        expect(link[:href]).to include "/favorites/#{datespot2.id}/destroy"
         link.click
         link = find('.like')
-        expect(link[:href]).to include "/favorites/#{datespot.id}/create"
+        expect(link[:href]).to include "/favorites/#{datespot2.id}/create"
       end
     end
 
     context "リスト登録/解除" do
       it "提案詳細ページからリスト登録/解除ができること" do
         login_for_system(user)
-        visit datespot_path(datespot)
-        if datespot == user.datespots
-          link = find('.list')
-          expect(link[:href]).to include "/lists/#{datespot.id}/create"
-          link.click
-          link = find('.unlist')
-          expect(link[:href]).to include "/lists/#{List.first.id}/destroy"
-          link.click
-          link = find('.list')
-          expect(link[:href]).to include "/lists/#{datespot.id}/create"
-        end
+        visit datespot_path(datespot2)
+        link = find('.list-button__before')
+        expect(link[:href]).to include "/lists/#{datespot2.id}/create"
+        link.click
+        link = find('.list-button__after')
+        expect(link[:href]).to include "/lists/#{List.first.id}/destroy"
+        link.click
+        link = find('.list-button__before')
+        expect(link[:href]).to include "/lists/#{datespot2.id}/create"
       end
     end
 
@@ -331,7 +293,7 @@ RSpec.describe "Datespots", type: :system do
         expect(page).to have_content 'お誘い一言'
         expect(page).to have_content '写真'
         expect(page).to have_content 'キーワード'
-        expect(page).to have_content '参考URL'
+        expect(page).to have_content '参考サイト'
         expect(page).to have_content 'デート詳細'
       end
     end

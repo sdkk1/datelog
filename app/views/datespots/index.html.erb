@@ -16,13 +16,13 @@
           <ol class="datespot-index">
             <%= render @datespots %>
           </ol>
-          <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+          <%= paginate @datespots %>
         <% else %>
           <span class="datespot-index__no-datespot-large">提案はありません</span>
         <% end %>
         <% if logged_in? %>
-          <span class="fab">
-            <%= link_to new_datespot_path, class: "fab__circle" do %><i class="fas fa-plus fab__circle--icon"></i><% end %>
+          <span class="fab-new">
+            <%= link_to new_datespot_path, class: "fab-new__circle" do %><i class="fas fa-plus fab-new__circle--icon"></i><% end %>
           </span>
         <% end %>
       </div>

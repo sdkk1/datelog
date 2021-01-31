@@ -22,19 +22,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 1% 0 3%;
-    z-index: 9;
 
-    &--search-field {
+    &--search-field, &--sort-field {
       width: 18%;
       font-size: 1.2rem;
       line-height: 2.5;
       border: 2px solid $font-color__wine-red;
       border-radius: 5px;
       background-color: white;
-    }
-
-    &--search-field::placeholder {
-      padding-left: 3%;
+      padding: 0 5px;
     }
 
     &--search-button {

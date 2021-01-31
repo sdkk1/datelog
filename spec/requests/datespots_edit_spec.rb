@@ -50,7 +50,7 @@ RSpec.describe "提案編集", type: :request do
       login_for_request(other_user)
       get edit_datespot_path(datespot)
       expect(response).to have_http_status "302"
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to datespots_path
 
       patch datespot_path(datespot), params: { datespot: {
         name: "ももたろう",
@@ -62,7 +62,7 @@ RSpec.describe "提案編集", type: :request do
         plan: "オシャレなお店でお食事をしながら、会話を楽しむ。",
       } }
       expect(response).to have_http_status "302"
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to datespots_path
     end
   end
 end

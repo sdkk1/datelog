@@ -1,16 +1,19 @@
 <div class="home">
   <div class="swiper-container home__slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide home__slider--section1">
-          <%= render 'swiper_content' %>
-        </div>
-        <div class="swiper-slide home__slider--section2">
-          <%= render 'swiper_content' %>
-        </div>
-        <div class="swiper-slide home__slider--section3">
-          <%= render 'swiper_content' %>
-        </div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide home__slider--section1">
+        <%= render 'swiper_content' %>
       </div>
+      <div class="swiper-slide home__slider--section2">
+        <%= render 'swiper_content' %>
+      </div>
+      <div class="swiper-slide home__slider--section3">
+        <%= render 'swiper_content' %>
+      </div>
+    </div>
+    <div class="home__slider--scroll">
+      <i class="fas fa-long-arrow-alt-down faa-float animated home__slider--scroll-icon"></i>
+    </div>
   </div>
   <div class="container-fluid">
     <div class="row">
@@ -75,10 +78,9 @@
         </div>
         <div class="home__datespots--content">
           <% if @datespots.any? %>
-            <ol class="datespot-index">
-              <%= render @datespots %>
-            </ol>
-            <%= will_paginate @datespots, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
+            <div id="datespot_index">
+              <%= render partial: 'static_pages/datespot_index' %>
+            </div>
           <% end %>
         </div>
       </div>

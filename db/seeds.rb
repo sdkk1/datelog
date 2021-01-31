@@ -357,6 +357,7 @@ Datespot.create!(
   address: "東京都台東区浅草2-3-1",
   range: 3,
   invitation: "仲見世通り商店街で食べ歩き！",
+  date: Date.today + 7,
   tag_list: "食べ歩き,浅草",
   reference_url: "https://e-asakusa.jp/",
   plan: "きびだんごやあげまんじゅうなどの浅草名物を食べ歩きしませんか？
@@ -371,6 +372,7 @@ Datespot.create!(
   address: "東京都武蔵野市御殿山1-18−31",
   range: 0,
   invitation: "公園をゆったりお散歩！",
+  date: Date.today + 6,
   tag_list: "公園,散歩,吉祥寺",
   reference_url: "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/seibuk/inokashira/index.html",
   plan: "緑が豊かな公園をゆったり散歩しながら、お話しませんか？
@@ -385,6 +387,7 @@ Datespot.create!(
   address: "東京都港区六本木7-14-4",
   range: 5,
   invitation: "美味しい焼肉食べませんか？",
+  date: Date.today + 6,
   tag_list: "焼肉,六本木",
   reference_url: "https://www.jojoen.co.jp/shop/jojoen/roppongi/",
   plan: "美味しいお肉を食べながら、二人でゆっくりとお話しましょう。
@@ -399,6 +402,7 @@ Datespot.create!(
   address: "神奈川県藤沢市江の島1-4-13",
   range: 3,
   invitation: "江の島の観光地を巡ろう！",
+  date: Date.today + 5,
   tag_list: "江の島,散歩",
   reference_url: "https://www.fujisawa-kanko.jp/",
   plan: "江の島の様々な観光地を巡りながら散歩ツアー！！
@@ -412,9 +416,10 @@ Datespot.create!(
   # id: 5,
   name: "プラネタリウム満天",
   prefecture_code: 13,
-  address: "東東京都豊島区東池袋3-1-3",
+  address: "東京都豊島区東池袋3-1-3",
   range: 2,
   invitation: "プラネタリウムが観たい！！",
+  date: Date.today + 5,
   tag_list: "プラネタリウム,癒し",
   reference_url: "https://planetarium.konicaminolta.jp/manten/",
   plan: "プラネタリウムで日頃の疲れを癒しませんか？
@@ -429,6 +434,7 @@ Datespot.create!(
   address: "東京都港区芝公園4-2-8",
   range: 3,
   invitation: "東京タワーから最高の夜景を！",
+  date: Date.today + 5,
   tag_list: "東京タワー,夜景",
   reference_url: "https://www.tokyotower.co.jp/",
   plan: "地上250メートルのトップデッキからの夜景を二人で楽しみませんか？
@@ -443,6 +449,7 @@ Datespot.create!(
   address: "神奈川県横浜市中区山下町",
   range: 3,
   invitation: "中華街で食べ歩きをしよう！",
+  date: Date.today + 4,
   tag_list: "中華,食べ歩き,横浜",
   reference_url: "https://www.chinatown.or.jp/",
   plan: "中華街をブラブラ歩きながら、食べ歩きしませんか？
@@ -457,6 +464,7 @@ Datespot.create!(
   address: "東京都立川市泉町500-4",
   range: 2,
   invitation: "一緒にバスケ観戦しませんか？",
+  date: Date.today + 4,
   tag_list: "バスケ,スポーツ",
   reference_url: "https://www.arenatachikawatachihi.com/",
   plan: "Bリーグの試合を１階席から観戦！大迫力の試合を間近で観れる絶好の席です！
@@ -480,6 +488,7 @@ Datespot.create!(
   address: "東京都武蔵野市吉祥寺2-13-14",
   range: 1,
   invitation: "猫カフェで癒してもらおう！",
+  date: Date.today + 3,
   tag_list: "猫カフェ,癒し,吉祥寺",
   reference_url: "http://www.temarinoouchi.com/",
   plan: "扉を開くと、そこには異空間にトリップしたようなメルヘンな世界が広がっています！
@@ -500,6 +509,7 @@ Datespot.create!(
   address: "東京都新宿区西新宿1-2",
   range: 3,
   invitation: "一緒に飲み歩きしませんか？",
+  date: Date.today + 2,
   tag_list: "お酒,飲み歩き,新宿",
   reference_url: "http://shinjuku-omoide.com/",
   plan: "70軒以上の飲食店が立ち並ぶ、昭和ノスタルジーを感じさせてくれるスポットで飲み歩き！
@@ -519,6 +529,7 @@ Datespot.create!(
   address: "東京都港区高輪4-10−30",
   range: 2,
   invitation: "イルカショーを観に行こう！！",
+  date: Date.today + 2,
   tag_list: "水族館,イルカショー,癒し",
   reference_url: "http://www.aqua-park.jp/aqua/index.html",
   plan: "光と音が織りなす圧巻のイルカショー「ドルフィンパフォーマンス」を一緒に観ませんか？
@@ -542,6 +553,7 @@ Datespot.create!(
   address: "東京都港区台場1-4",
   range: 3,
   invitation: "お台場で最高の一日を！",
+  date: Date.today + 1,
   tag_list: "お台場,フジテレビ,お散歩",
   reference_url: "https://www.tokyo-odaiba.net/",
   plan: "お台場の様々なスポットを回るデートツアー！！
@@ -558,14 +570,42 @@ datespot = Datespot.find(12)
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-1.jpg"), filename: "datespot12-1.jpg")
 datespot.images.attach(io: File.open("app/assets/images/datespots/datespot12-2.jpg"), filename: "datespot12-2.jpg")
 
+Datespot.create!(
+  # id: 13,
+  name: "東京ドームシティ",
+  prefecture_code: 13,
+  address: "東京都文京区後楽1-3-61",
+  range: 2,
+  invitation: "遊園地で一緒に遊びませんか？",
+  date: Date.today + 1,
+  tag_list: "遊園地,観覧車",
+  reference_url: "https://at-raku.com/",
+  plan: "都心からアクセスしやすい遊園地で一緒に遊びませんか？
+  最高傾斜角度80度！最高速度130km/h！
+  観覧車の中心をくぐり抜けるスリルを味わえるジェットコースター「サンダードルフィン」や
+  地上80mから東京を眺められる観覧車「ビック・オー」など
+  絶叫好きも大満足のスリル系からほのぼの系まで約26種類のアトラクションが揃っています。
+  是非、ご一緒に行けるのを楽しみにしています！！",
+  user_id: 14,
+)
+
+# デートの写真を1枚設定
+datespot = Datespot.find(13)
+datespot.images.attach(io: File.open("app/assets/images/datespots/datespot13.jpg"), filename: "datespot13.jpg")
+
 # ============================== 行きたい！リクエスト ==============================
 # ゲストユーザーの提案が行きたい！リクエストされる
 List.create!(user_id: 21, datespot_id: 12, from_user_id: 18)
-List.create!(user_id: 21, datespot_id: 8, from_user_id: 17)
 List.create!(user_id: 21, datespot_id: 9, from_user_id: 6)
+List.create!(user_id: 21, datespot_id: 8, from_user_id: 17)
 
 # ゲストユーザーが行きたい！リクエストをする
 List.create!(user_id: 7, datespot_id: 5, from_user_id: 21)
+
+# それ以外の行きたい！リクエスト
+List.create!(user_id: 14, datespot_id: 13, from_user_id: 7)
+List.create!(user_id: 4, datespot_id: 11, from_user_id: 8)
+List.create!(user_id: 11, datespot_id: 10, from_user_id: 16)
 
 # ============================== お気に入り登録 ==============================
 # ゲストユーザーの提案がお気に入り登録される
@@ -575,6 +615,10 @@ Favorite.create!(user_id: 6, datespot_id: 9)
 # ゲストユーザーがお気に入り登録をする
 Favorite.create!(user_id: 21, datespot_id: 5)
 Favorite.create!(user_id: 21, datespot_id: 2)
+
+# それ以外のお気に入り登録
+Favorite.create!(user_id: 7, datespot_id: 13)
+Favorite.create!(user_id: 16, datespot_id: 10)
 
 # ============================== 閲覧履歴 ==============================
 # ゲストユーザーの閲覧履歴
@@ -617,6 +661,11 @@ Comment.create!(user_id: 1, datespot_id: 11, rate: 5, content: "水族館で癒�
 # ゲストユーザーの提案にコメントされる-2
 Comment.create!(user_id: 9, datespot_id: 12, rate: 4, content: "自由の女神像の前で記念撮影したい！")
 Comment.create!(user_id: 10, datespot_id: 12, rate: 4, content: "臨海副都心の大パノラマを写真で撮りたい！")
+
+# 他の提案にコメントを作成-5
+Comment.create!(user_id: 7, datespot_id: 13, rate: 5, content: "観覧車に乗りたいです！")
+Comment.create!(user_id: 19, datespot_id: 13, rate: 5, content: "ジェットコースター面白そう！")
+Comment.create!(user_id: 2, datespot_id: 13, rate: 4, content: "男でもいいですか？笑")
 
 # ============================== 通知 ==============================
 # ゲストユーザーの通知を作成(varietyは順不同)

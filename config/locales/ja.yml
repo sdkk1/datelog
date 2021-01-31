@@ -35,7 +35,8 @@ ja:
         tag_list: キーワード
         invitation: お誘い一言
         plan: デート詳細
-        reference_url: 参考URL
+        date: 予定日
+        reference_url: 参考サイト
         images: 写真
         user_id: ユーザーID
       comment:
@@ -297,3 +298,10 @@ ja:
         age49: 49歳
         age50: 50歳
         age50over: 51歳~
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

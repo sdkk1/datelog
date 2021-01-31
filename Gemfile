@@ -41,8 +41,7 @@ gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "aws-sdk-s3", require: false
 gem 'faker'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'kaminari'
 gem 'enum_help'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'rack-mini-profiler', require: false

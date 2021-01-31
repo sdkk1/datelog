@@ -5,10 +5,17 @@
       <%= link_to datespot_path(@datespot) do %>
         <%= image_tag @datespot.images.first.variant(resize:'400x400').processed, class: "datespot-index__card-upper--image" %>
       <% end %>
+      <div class="datespot-index__card-upper--count">
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>
+        <%= @datespot.images.count %>
+      </div>
     <% else %>
       <%= link_to datespot_path(@datespot) do %>
         <%= image_tag 'thumb400_default.png', class: "datespot-index__card-upper--image" %>
       <% end %>
+      <div class="datespot-index__card-upper--count">
+        <i class="far fa-image datespot-index__card-upper--count-icon"></i>&nbsp;0
+      </div>
     <% end %>
   </div>
   <div class="datespot-index__card-lower">

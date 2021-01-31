@@ -1,0 +1,30 @@
+<% provide(:title, "#{@user.name}") %>
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'layouts/logging_in_sidebar' %>
+    <div class="main">
+      <div class="heading">
+        <h1 class="heading__title"><%= @user.name %></h1>
+      </div>
+      <div class="content">
+        <div class="user-show">
+          <div class="user-show__card-upper">
+            <div class="user-show__card-upper--image">
+              <%= render 'users/user-slider' %>
+            </div>
+          </div>
+          <div class="user-show__card-lower">
+            <div class="user-show__card-lower--info">
+              <%= render 'users/user_show_info' %>
+              <div id="datespot_index">
+                <%= render 'lists/my_list_datespots' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/user-slider_script' %>

@@ -36,31 +36,25 @@ RSpec.describe "Sessions", type: :system do
       end
     end
 
-    # context "ログイン処理" do
-    #   it "無効なユーザーでログインを行うとログインが失敗することを確認" do
-    #     fill_in "user_email", with: "user@example.com"
-    #     fill_in "user_password", with: "pass"
-    #     click_button "ログイン"
-    #     expect(page).to have_content 'メールアドレスとパスワードの組み合わせが間違っています'
+    context "ログイン処理" do
+      it "有効なユーザーでのログイン前後でサイドバーが正しく表示されていることを確認" do
+        expect(page).to have_link 'トップ', href: root_url
+        expect(page).to have_link '新規登録', href: signup_path
+        expect(page).to have_link 'ログイン', href: login_path
 
-    #     visit root_path
-    #     expect(page).not_to have_content 'メールアドレスとパスワードの組み合わせが間違っています'
-    #   end
+        fill_in "user_email", with: user.email
+        fill_in "user_password", with: user.password
+        click_button "ログイン"
 
-    #   it "有効なユーザーでのログイン前後でヘッダーが正しく表示されていることを確認" do
-    #     expect(page).to have_link '新規登録', href: signup_path
-    #     expect(page).to have_link 'ログイン', href: login_path
-    #     expect(page).not_to have_link 'ログアウト', href: logout_path
-
-    #     fill_in "user_email", with: user.email
-    #     fill_in "user_password", with: user.password
-    #     click_button "ログイン"
-
-    #     expect(page).to have_link 'ユーザー一覧', href: users_path
-    #     expect(page).to have_link 'ユーザー詳細', href: user_path(user)
-    #     expect(page).to have_link 'ログアウト', href: logout_path
-    #     expect(page).not_to have_link 'ログイン', href: login_path
-    #   end
-    # end
+        expect(page).to have_link 'デートを探す', href: datespots_path
+        expect(page).to have_link '行きたい！', href: lists_path
+        expect(page).to have_link 'ユーザーを探す', href: users_path
+        expect(page).to have_link 'いいね！', href: followers_user_path(user)
+        expect(page).to have_link 'メッセージ', href: rooms_path
+        expect(page).to have_link 'プロフィール', href: user_path(user)
+        expect(page).to have_link '通知一覧', href: notifications_path
+        expect(page).to have_link 'ログアウト', href: logout_path
+      end
+    end
   end
 end

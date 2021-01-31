@@ -11,18 +11,15 @@
     border: 2px solid $font-color__wine-red;
     border-radius: 5px;
     background-color: white;
-    margin-right: 1%;
-  }
-
-  &__form::placeholder {
-    padding-left: 1%;
+    margin-right: 2%;
+    padding: 0 5px;
   }
 
   &__submit {
     display: inline-block;
     color: white;
     vertical-align: middle;
-    width: 9%;
+    width: 8%;
     font-size: 1.2rem;
     line-height: 2.5;
     border: 2px solid $font-color__wine-red;

@@ -1,19 +1,24 @@
 <% @user = user %>
-<% if @user != current_user %>
-  <li class="user-index__card" id="user-<%= @user.id %>">
-    <div class="user-index__card-upper">
-      <% if @user.avatars.attached? %>
-        <%= link_to user_path(@user) do %>
-          <%= image_tag @user.avatars.first.variant(resize:'400x400').processed, class: "user-index__card-upper--image" %>
-        <% end %>
-      <% else %>
-        <%= link_to user_path(@user) do %>
-          <%= image_tag 'thumb400_default.png', class: "user-index__card-upper--image" %>
-        <% end %>
+<li class="user-index__card" id="user-<%= @user.id %>">
+  <div class="user-index__card-upper">
+    <% if @user.avatars.attached? %>
+      <%= link_to user_path(@user) do %>
+        <%= image_tag @user.avatars.first.variant(resize:'400x400').processed, class: "user-index__card-upper--image" %>
       <% end %>
+    <div class="user-index__card-upper--count">
+      <i class="far fa-image user-index__card-upper--count-icon"></i>
+      <%= @user.avatars.count %>
     </div>
-    <div class="user-index__card-lower">
-      <%= render 'users/user_index_info' %>
+    <% else %>
+      <%= link_to user_path(@user) do %>
+        <%= image_tag 'thumb400_default.png', class: "user-index__card-upper--image" %>
+      <% end %>
+    <div class="user-index__card-upper--count">
+      <i class="far fa-image user-index__card-upper--count-icon"></i>&nbsp;0
     </div>
-  </li>
-<% end %>
+    <% end %>
+  </div>
+  <div class="user-index__card-lower">
+    <%= render 'users/user_index_info' %>
+  </div>
+</li>
