@@ -331,9 +331,9 @@ Entry.create!(user_id: 21, room_id: 2)
 Entry.create!(user_id: 17, room_id: 2)
 Message.create!(user_id:17, room_id:2, content: "桜木さんのバスケ観戦デートが気になって、マッチングさせてもらいました！よろしくお願いします！")
 Message.create!(user_id:21, room_id:2, content: "バスケ好きさんとマッチングできて、嬉しいです！是非、バスケ観戦行きませんか？")
-Message.create!(user_id:17, room_id:2, content: "是非行きましょう！1階席から観戦できるなんて最高ですね！")
-Message.create!(user_id:21, room_id:2, content: "そうなんですよ！是非、楽しみましょう！後ほど、日時や集合場所をお伝えしますね！")
-Message.create!(user_id:17, room_id:2, content: "分かりました！お待ちしています(^ー^)")
+Message.create!(user_id:17, room_id:2, content: "ぜひ、行きましょう！記載頂いている日時で大丈夫です！")
+Message.create!(user_id:21, room_id:2, content: "良かったです！では後ほど、集合場所をお伝えしますね！")
+Message.create!(user_id:17, room_id:2, content: "はーい、お待ちしています(^ー^)")
 
 # ゲストユーザーとuser6とのメッセージ内容
 Room.create!
@@ -346,7 +346,9 @@ Message.create!(user_id:21, room_id:3, content: "私は、スコティッシュ�
 message = Message.find(14)
 message.picture.attach(io: File.open("app/assets/images/message/message1.jpg"), filename: "message1.jpg")
 Message.create!(user_id:6, room_id:3, content: "えー、一緒です！可愛いですよね！より、お話するのが楽しみなってきました(｡>ω<｡)")
-Message.create!(user_id:21, room_id:3, content: "本当ですか！それは嬉しい！是非、たくさんお話しましょう！")
+Message.create!(user_id:21, room_id:3, content: "本当ですか！それは嬉しい！記載の日時でご都合大丈夫ですか？")
+Message.create!(user_id:6, room_id:3, content: "はい、大丈夫ですよ！")
+Message.create!(user_id:21, room_id:3, content: "分かりました！では、当日は吉祥寺駅北口に集合でお願いします！")
 
 # ============================== デート作成 ==============================
 # デートを作成(12件)
@@ -358,6 +360,7 @@ Datespot.create!(
   range: 3,
   invitation: "仲見世通り商店街で食べ歩き！",
   date: Date.today + 7,
+  time_zone: 2,
   tag_list: "食べ歩き,浅草",
   reference_url: "https://e-asakusa.jp/",
   plan: "きびだんごやあげまんじゅうなどの浅草名物を食べ歩きしませんか？
@@ -372,7 +375,8 @@ Datespot.create!(
   address: "東京都武蔵野市御殿山1-18−31",
   range: 0,
   invitation: "公園をゆったりお散歩！",
-  date: Date.today + 6,
+  date: Date.today + 7,
+  time_zone: 1,
   tag_list: "公園,散歩,吉祥寺",
   reference_url: "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/seibuk/inokashira/index.html",
   plan: "緑が豊かな公園をゆったり散歩しながら、お話しませんか？
@@ -388,6 +392,7 @@ Datespot.create!(
   range: 5,
   invitation: "美味しい焼肉食べませんか？",
   date: Date.today + 6,
+  time_zone: 3,
   tag_list: "焼肉,六本木",
   reference_url: "https://www.jojoen.co.jp/shop/jojoen/roppongi/",
   plan: "美味しいお肉を食べながら、二人でゆっくりとお話しましょう。
@@ -403,6 +408,7 @@ Datespot.create!(
   range: 3,
   invitation: "江の島の観光地を巡ろう！",
   date: Date.today + 5,
+  time_zone: 4,
   tag_list: "江の島,散歩",
   reference_url: "https://www.fujisawa-kanko.jp/",
   plan: "江の島の様々な観光地を巡りながら散歩ツアー！！
@@ -420,6 +426,7 @@ Datespot.create!(
   range: 2,
   invitation: "プラネタリウムが観たい！！",
   date: Date.today + 5,
+  time_zone: 2,
   tag_list: "プラネタリウム,癒し",
   reference_url: "https://planetarium.konicaminolta.jp/manten/",
   plan: "プラネタリウムで日頃の疲れを癒しませんか？
@@ -435,6 +442,7 @@ Datespot.create!(
   range: 3,
   invitation: "東京タワーから最高の夜景を！",
   date: Date.today + 5,
+  time_zone: 3,
   tag_list: "東京タワー,夜景",
   reference_url: "https://www.tokyotower.co.jp/",
   plan: "地上250メートルのトップデッキからの夜景を二人で楽しみませんか？
@@ -450,6 +458,7 @@ Datespot.create!(
   range: 3,
   invitation: "中華街で食べ歩きをしよう！",
   date: Date.today + 4,
+  time_zone: 2,
   tag_list: "中華,食べ歩き,横浜",
   reference_url: "https://www.chinatown.or.jp/",
   plan: "中華街をブラブラ歩きながら、食べ歩きしませんか？
@@ -465,6 +474,7 @@ Datespot.create!(
   range: 2,
   invitation: "一緒にバスケ観戦しませんか？",
   date: Date.today + 4,
+  time_zone: 2,
   tag_list: "バスケ,スポーツ",
   reference_url: "https://www.arenatachikawatachihi.com/",
   plan: "Bリーグの試合を１階席から観戦！大迫力の試合を間近で観れる絶好の席です！
@@ -489,6 +499,7 @@ Datespot.create!(
   range: 1,
   invitation: "猫カフェで癒してもらおう！",
   date: Date.today + 3,
+  time_zone: 2,
   tag_list: "猫カフェ,癒し,吉祥寺",
   reference_url: "http://www.temarinoouchi.com/",
   plan: "扉を開くと、そこには異空間にトリップしたようなメルヘンな世界が広がっています！
@@ -510,6 +521,7 @@ Datespot.create!(
   range: 3,
   invitation: "一緒に飲み歩きしませんか？",
   date: Date.today + 2,
+  time_zone: 3,
   tag_list: "お酒,飲み歩き,新宿",
   reference_url: "http://shinjuku-omoide.com/",
   plan: "70軒以上の飲食店が立ち並ぶ、昭和ノスタルジーを感じさせてくれるスポットで飲み歩き！
@@ -530,6 +542,7 @@ Datespot.create!(
   range: 2,
   invitation: "イルカショーを観に行こう！！",
   date: Date.today + 2,
+  time_zone: 2,
   tag_list: "水族館,イルカショー,癒し",
   reference_url: "http://www.aqua-park.jp/aqua/index.html",
   plan: "光と音が織りなす圧巻のイルカショー「ドルフィンパフォーマンス」を一緒に観ませんか？
@@ -554,6 +567,7 @@ Datespot.create!(
   range: 3,
   invitation: "お台場で最高の一日を！",
   date: Date.today + 1,
+  time_zone: 4,
   tag_list: "お台場,フジテレビ,お散歩",
   reference_url: "https://www.tokyo-odaiba.net/",
   plan: "お台場の様々なスポットを回るデートツアー！！
@@ -578,6 +592,7 @@ Datespot.create!(
   range: 2,
   invitation: "遊園地で一緒に遊びませんか？",
   date: Date.today + 1,
+  time_zone: 2,
   tag_list: "遊園地,観覧車",
   reference_url: "https://at-raku.com/",
   plan: "都心からアクセスしやすい遊園地で一緒に遊びませんか？
@@ -670,33 +685,29 @@ Comment.create!(user_id: 2, datespot_id: 13, rate: 4, content: "男でもいい�
 # ============================== 通知 ==============================
 # ゲストユーザーの通知を作成(varietyは順不同)
 # variety: 1 → 行きたい！リクエストをもらう, variety: 2 → コメントをもらう, variety: 3 → いいね！をもらう, variety: 4 → メッセージをもらう
-# 5ページ目
 Notification.create!(user_id: 21, variety: 2, from_user_id: 2, datespot_id: 8, content: "男でもいいですか？笑")
 Notification.create!(user_id: 21, variety: 1, from_user_id: 18, datespot_id: 12)
 Notification.create!(user_id: 21, variety: 2, from_user_id: 1, datespot_id: 9, content: "猫カフェで癒されたい・・・笑")
 Notification.create!(user_id: 21, variety: 3, from_user_id: 19)
+Notification.create!(user_id: 21, variety: 1, from_user_id: 6, datespot_id: 9)
 Notification.create!(user_id: 21, variety: 3, from_user_id: 6)
-# 4ページ目
-Notification.create!(user_id: 21, variety: 2, from_user_id: 17, datespot_id: 8, content: "バスケ観戦いいですね！")
 Notification.create!(user_id: 21, variety: 2, from_user_id: 6, datespot_id: 9, content: "猫カフェ最高ですね！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 19, content: "斎藤と申します。こちらこそ、よろしくお願いします！")
+Notification.create!(user_id: 21, variety: 1, from_user_id: 17, datespot_id: 8)
 Notification.create!(user_id: 21, variety: 3, from_user_id: 17)
 Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "桜木さんと猫カフェに行きたいなと思って、マッチングさせてもらいました！")
-# 3ページ目
 Notification.create!(user_id: 21, variety: 2, from_user_id: 18, datespot_id: 8, content: "ルールを教えてくれるのはいいですね！")
 Notification.create!(user_id: 21, variety: 2, from_user_id: 7, datespot_id: 9, content: "興味あるんですけど、初めてでも大丈夫ですか？")
+Notification.create!(user_id: 21, variety: 2, from_user_id: 17, datespot_id: 8, content: "バスケ観戦いいですね！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "桜木さんのバスケ観戦デートが気になって、マッチングさせてもらいました！よろしくお願いします！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "ぜひお願いします！ちなみに、桜木さんはどんな猫の種類がお好きなんですか？")
 Notification.create!(user_id: 21, variety: 3, from_user_id: 18)
-# 2ページ目
-Notification.create!(user_id: 21, variety: 1, from_user_id: 17, datespot_id: 8)
 Notification.create!(user_id: 21, variety: 2, from_user_id: 9, datespot_id: 12, content: "自由の女神像の前で記念撮影したい！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 19, content: "やっぱりハワイですかね！プロフィール写真はハワイで撮ったものです！")
-Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "是非行きましょう！1階席から観戦できるなんて最高ですね！")
-Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "分かりました！お待ちしています(^ー^)")
-# 1ページ目
-Notification.create!(user_id: 21, variety: 1, from_user_id: 6, datespot_id: 9)
+Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "ぜひ、行きましょう！記載頂いている日時で大丈夫です！")
+Notification.create!(user_id: 21, variety: 4, from_user_id: 17, content: "はーい、お待ちしています(^ー^)")
 Notification.create!(user_id: 21, variety: 2, from_user_id: 10, datespot_id: 12, content: "臨海副都心の大パノラマを写真で撮りたい！")
 Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "えー、一緒です！可愛いですよね！より、お話するのが楽しみなってきました(｡>ω<｡)")
+Notification.create!(user_id: 21, variety: 4, from_user_id: 6, content: "はい、大丈夫ですよ！")
 Notification.create!(user_id: 21, variety: 3, from_user_id: 10)
 Notification.create!(user_id: 21, variety: 3, from_user_id: 7)
