@@ -36,6 +36,7 @@ ja:
         invitation: お誘い一言
         plan: デート詳細
         date: 予定日
+        time_zone: 時間帯
         reference_url: 参考サイト
         images: 写真
         user_id: ユーザーID
@@ -259,6 +260,12 @@ ja:
         price25000: 20,000~25,000
         price30000: 25,000~30,000
         price_max: 30,000~
+      time_zone:
+        undecided: 未定
+        midmorning: 午前
+        afternoon: 午後
+        night: 夜
+        allday: １日
     user:
       sex:
         man: 男性

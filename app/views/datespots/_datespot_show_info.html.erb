@@ -44,7 +44,7 @@
   <span class="datespot-show-info__range">予算&emsp;&emsp;&emsp;：<%= @datespot.range_i18n %></span><br>
   <span class="datespot-show-info__invitation">お誘い一言：<%= @datespot.invitation %></span><br>
   <% if @datespot.date.present? %>
-    <span class="datespot-show-info__date">予定日&emsp;&emsp;：<%= l @datespot.date %></span><br>
+    <span class="datespot-show-info__date">予定日&emsp;&emsp;：<%= l @datespot.date %>&emsp;<%= @datespot.time_zone_i18n %></span><br>
   <% else %>
     <span class="datespot-show-info__date">予定日&emsp;&emsp;：未定</span><br>
   <% end %>

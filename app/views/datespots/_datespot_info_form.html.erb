@@ -28,6 +28,10 @@
   <%= form.date_field :date, class: 'info-form__input-form' %>
 </div>
 <div class='info-form'>
+  <%= form.label :time_zone %><span class="info-form__input-unneed">※任意</span><br>
+  <%= form.select :time_zone, options_for_select(Datespot.time_zones_i18n.invert, selected: form.object.time_zone), { include_blank: "時間帯を選択" }, { class: 'info-form__select-form' } %>
+</div>
+<div class='info-form'>
   <%= form.label :reference_url %><span class="info-form__input-unneed">※任意</span><br>
   <%= form.text_field :reference_url, placeholder: "参考サイトを入力", class: 'info-form__input-form' %>
 </div>

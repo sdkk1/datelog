@@ -96,7 +96,7 @@ class DatespotsController < ApplicationController
   private
 
   def datespot_params
-    params.require(:datespot).permit(:name, :prefecture_code, :address, :range, :date,
+    params.require(:datespot).permit(:name, :prefecture_code, :address, :range, :date, :time_zone,
                                      :invitation, :plan, :reference_url, :tag_list, images: [])
   end
 
