@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_074211) do
+ActiveRecord::Schema.define(version: 2021_02_03_021522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_074211) do
     t.datetime "date"
     t.integer "lists_count", default: 0, null: false
     t.integer "favorites_count", default: 0, null: false
+    t.integer "time_zone"
     t.index ["user_id", "created_at"], name: "index_datespots_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_datespots_on_user_id"
   end

@@ -29,6 +29,10 @@ class Datespot < ApplicationRecord
     price15000: 5, price20000: 6, price25000: 7, price30000: 8, price_max: 9
   }
 
+  enum time_zone: {
+    undecided: 0, midmorning: 1, afternoon: 2, night: 3, allday: 4
+  }
+
   def feed_comment(datespot_id)
     Comment.where("datespot_id = ?", datespot_id)
   end

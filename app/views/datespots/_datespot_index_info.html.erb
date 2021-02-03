@@ -46,7 +46,7 @@
   <span class="datespot-index-info__range"><i class="fas fa-yen-sign fa-lg datespot-index-info__icon"></i><%= @datespot.range_i18n %></span><br>
   <span class="datespot-index-info__invitation"><i class="fas fa-exclamation-circle fa-lg datespot-index-info__icon-invitation"></i><%= @datespot.invitation %></span><br>
   <% if @datespot.date.present? %>
-    <span class="datespot-index-info__date"><i class="fas fa-clock fa-lg datespot-index-info__icon-date"></i><%= l @datespot.date %></span><br>
+    <span class="datespot-index-info__date"><i class="fas fa-clock fa-lg datespot-index-info__icon-date"></i><%= l @datespot.date %>&ensp;<%= @datespot.time_zone_i18n %></span><br>
   <% else %>
     <span class="datespot-index-info__date"><i class="fas fa-clock fa-lg datespot-index-info__icon-date"></i>未定</span><br>
   <% end %>
