@@ -106,6 +106,12 @@ https://www.date-match.net/
 以下のリンク先に調査結果をまとめました！<br>
 [date-match アンケート調査結果](https://docs.google.com/presentation/d/14lzIfpN_Kx4_ba2EvlSe-qxqHdli0Cc6jijH6SUiVd4/edit?usp=sharing)
 
+※以下に、調査結果を一部抜粋しました。
+
+[![Image from Gyazo](https://i.gyazo.com/8cfc89d631cfe5129047fe32e849b6b6.png)](https://gyazo.com/8cfc89d631cfe5129047fe32e849b6b6)
+
+[![Image from Gyazo](https://i.gyazo.com/f07f1472a5e0be574e60e985be620b3c.jpg)](https://gyazo.com/f07f1472a5e0be574e60e985be620b3c)
+
 ## 2.バックエンド
 ### `オートコンプリートによる住所検索機能`
 - Google Maps APIを用いて、名称や店名を入力すると、オートコンプリートで検索候補を補完し、その住所が表示される機能を実装
@@ -120,7 +126,7 @@ https://www.date-match.net/
 ### `非同期通信（Ajax）を用いてユーザーストレスの軽減`
 - コメント投稿・削除機能やページネーションなどに非同期通信（Ajax）を用いてユーザーストレスの軽減を実現
 
-[![Image from Gyazo](https://i.gyazo.com/9ac482224d7a4fb8be3eb48760072d9e.gif)](https://gyazo.com/9ac482224d7a4fb8be3eb48760072d9e)
+[![Image from Gyazo](https://i.gyazo.com/92b86283037bb167697f9d52d61a7ab4.gif)](https://gyazo.com/92b86283037bb167697f9d52d61a7ab4)
 
 ## 3.インフラ
 ### `CircleCIによる自動テスト・自動デプロイ`
@@ -144,3 +150,11 @@ https://www.date-match.net/
 * __その他__
   * __Railsのバージョンアップ__
   * __テストコードの充実__
+
+# 作者
+現在Web系エンジニアを目指して、転職活動中です。
+以下に、WantedlyのプロフィールやTwitterのリンクがありますので、
+もし、少しでも興味を持って頂けましたら、ご連絡を頂けますと幸いです。
+
+- Wantedly　https://www.wantedly.com/id/sdkk_tkks
+- Twitter　https://twitter.com/sdkk_tkks
