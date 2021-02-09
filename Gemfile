@@ -37,7 +37,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem "font-awesome-sass"
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem "mini_magick"
 gem "aws-sdk-s3", require: false
 gem 'faker'
