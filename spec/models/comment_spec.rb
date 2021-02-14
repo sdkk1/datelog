@@ -33,5 +33,10 @@ RSpec.describe Comment, type: :model do
       comment = build(:comment, rate: nil)
       expect(comment).not_to be_valid
     end
+
+    it "評価が5以上だと無効な状態であること" do
+      comment = build(:comment, rate: 6)
+      expect(comment).not_to be_valid
+    end
   end
 end
