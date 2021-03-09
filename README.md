@@ -150,11 +150,3 @@ https://www.date-match.net/
 * __その他__
   * __Railsのバージョンアップ__
   * __テストコードの充実__
-
-# 作者
-現在Web系エンジニアを目指して、転職活動中です。
-以下に、WantedlyのプロフィールやTwitterのリンクがありますので、
-もし、少しでも興味を持って頂けましたら、ご連絡を頂けますと幸いです。
-
-- Wantedly　https://www.wantedly.com/id/sdkk_tkks
-- Twitter　https://twitter.com/sdkk_tkks
